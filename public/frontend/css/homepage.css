@@ -1,0 +1,198 @@
+.image_container {
+    position: relative; /* Enable positioning for child elements */
+}
+.text_overlay {
+    position: absolute; /* Position the text overlay on top of the image */
+    top: 20%; /* Center vertically */
+    left: 10%;
+    padding: 20px;
+    text-align:start;
+}
+.text_overlay_title{
+    color: #080808;
+    text-transform:uppercase;
+    line-height: 65px;
+}
+.text_overlay_p{
+    color: #282828;
+    margin-top: 12px;
+}
+.text_overlay_btn{
+    background-color: #FBC31C;
+    color: #fdfdfd;
+    height: 35px;
+    width: 120px;
+    margin-top:35px;
+    border: none;
+    border-radius: 12px;
+    margin-right: 55px;
+}
+
+/* --------------------- */
+
+.service-content h4
+{
+	font-size: 18px;
+	color: #282828;
+	font-weight: bold;
+}
+.service-content p
+{
+	font-size: 16px;
+	color: #666;
+    line-height: 20px;
+}
+.service-item
+{
+	margin-top: 140px;
+}
+
+/* --------------------- */
+
+.categories_item{
+    box-shadow: 5px 5px 10px #f3f3f3;
+}
+.categories_item img{
+    padding: 45px;
+}
+.categories_item p{
+    color: #080808;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+.categories_title{
+    color: #080808;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+/* --------------------- */
+
+.marquee marquee
+{
+	width: 100%;
+	height: 70px;
+	color: #fdfdfd;
+	background-color: #FBC31C;
+	line-height: 70px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* --------------------- */
+
+.feature_pr_title{
+    color: #080808;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* --------------------- */
+
+.banner_btn{
+    background-color: #080808;
+    color: #FBC31C;
+    height: 35px;
+    width: 120px;
+    margin-top:35px;
+    border: none;
+    border-radius: 12px;
+    margin-right: 55px;
+}
+.bg_banner{
+    background-color: #FBC31C;
+}
+.banner_title{
+    color: #080808;
+    padding-top: 25%;
+}
+.banner_para{
+    color: #282828;
+    margin-top: 20px;
+}
+
+/* --------------------- */
+
+.sub_banner_title{
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+.sub_banner p
+{
+	color: #282828;
+	font-size: 14px;
+}
+.sub_banner h3
+{
+	color: #080808;
+	font-size: 18px;
+	font-weight: bold;
+}
+.sub_banner
+{
+	padding: 30px 20px;
+	margin-bottom: 16px;
+	background-size: cover;
+}
+.sub_banner button{
+    background-color: #FBC31C;
+    color: #fdfdfd;
+    height: 35px;
+    width: 120px;
+    margin-top:35px;
+    border: none;
+    border-radius: 12px;
+    margin-right: 55px;
+}
+
+/* --------------------- */
+
+.getintouch{
+    /* background-position: center; */
+    background-size:100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.getintouch_info{
+    padding: 70px;
+    text-align: center;
+}
+.getintouch_search{
+    width: 100%;
+    height: 43px;
+    color: #666666;
+    height: 45px;
+    border: none;
+    padding: 0;
+    background-color: #fdfdfd;
+    border-radius: 20px;
+}
+.getintouch_search input{
+    color: #666666;
+    height: 45px;
+    border: none;
+    padding: 0;
+    background: none;
+}
+.btn_submit{
+    background-color: #080808;
+    color: #FBC31C;
+    height: 38px;
+    padding: 0;
+    border-radius: 20px;
+    width: 100%;
+    border: none;
+    margin: 2px;
+}
+.getintouch_search .col-4
+{
+    padding-right: 5px;
+}
+.getintouch_search{
+    margin-top: 10px;
+    border: 1px solid #666666;
+    border-radius: 22px;
+    height: 44px;
+}

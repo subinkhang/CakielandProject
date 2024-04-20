@@ -1,0 +1,79 @@
+.search
+{
+    padding-left: 10px;
+    margin-bottom: 30px;
+}
+
+.btn_search{
+    background-color: #FBC31C;
+    height: 38px;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    border: none;
+    margin: 2px;
+}
+#title{
+    color:#FBC31C;
+    margin-bottom: 40px;
+    margin-top: 80px;
+}
+
+#voucher-text{
+    color:#FBC31C;
+    margin-bottom: 15px;
+}
+
+.pr-list-co{
+    margin-bottom: 5px;
+}
+
+.price{
+    color:#FBC31C
+}
+
+.bt-pay{
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: center;
+    border: none;
+    border-radius:20px;
+    background-color: #FBC31C;
+    width: 150px;
+}
+
+.boxvoucher{
+    color: #666666
+}
+
+.bg-breadcrub {
+    background-image: url(../header-footer/img/pr-detail/banner.png);
+    background-size: cover;
+    padding: 120px 0;
+}
+
+.my-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.bg-breadcrub h2
+{
+	color: #282828;
+	font-size: 55px;
+	font-weight: 700;
+}
+.breadcrumb
+{
+	justify-content: center;
+}
+.breadcrumb-item a
+{
+	font-size: 18px;
+	color: #282828 !important;
+	font-weight: bold;
+}
+.bg-breadcrub .active
+{
+	color: #666666;
+}

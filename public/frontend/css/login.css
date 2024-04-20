@@ -1,0 +1,90 @@
+*{
+    outline: none;
+} 
+@font-face {
+    font-family: VN;
+    src: url('fonts/BeVietnamPro-Regular.ttf');
+}
+/* FORM SIGN IN */
+.formsignin{
+    text-align: center;
+    width: 636px;
+    height: 560px;
+    border: 1px solid #666;
+    border-radius: 30px;
+    display: grid;
+    place-content: center;
+}
+div .formsignin{
+    margin-top: 130px;
+    
+}
+.headingsignin{
+    color: #080808;
+    text-align: center;
+}
+.parasignin{
+    color: #666;
+}
+.box1signin{
+    margin-top: 30px;
+    height: 50px;
+    background-color: #f3f3f3;
+    border-radius: 100px;
+    border: #f3f3f3;
+    text-indent: 20px;
+    width: 300px;
+}
+.box2signin{
+    margin-top: 30px;
+    height: 50px;
+    width: 300px;
+    background-color: #f3f3f3;
+    border-radius: 100px;
+    border: #f3f3f3;
+    text-indent: 20px;
+}
+.buttonsignin{
+    width: 120px;
+    height: 35px;
+    background-color: #FBC31C;
+    border: #FBC31C;
+    border-radius: 30px;
+    margin-top: 30px;
+}
+div .linepw{
+    margin-top: 30px;
+}
+.checksignin p{
+    color: #666;
+}
+.getpw p{
+    color: #666;
+    text-decoration: underline;
+}
+.linksu2 p{
+    color: #666;
+}
+div .linksu{
+    margin-top: 30px;
+}
+p{
+    display: inline;
+}
+.p2{
+    text-decoration: underline;
+}
+.buttonsignin:hover{
+    background-color: #080808;
+    color: #FBC31C;
+}
+.p2:hover{
+    font-weight: bold;
+    font-style: italic;
+}
+.getpw p:hover{
+    font-weight: bold;
+    font-style: italic;
+}
+
+

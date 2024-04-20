@@ -1,0 +1,425 @@
+/* dinh nghia file */
+*
+{
+    outline: none;
+}
+ul, ol{
+    list-style: none;
+}
+a
+{
+	text-decoration: none;
+}
+@font-face {
+    font-family: VN;
+    src: url('fonts/BeVietnamPro-Regular.ttf');
+}
+body, button, input{
+    font-family: VN;
+    background-color: #fdfdfd;
+}
+.text_h1{
+    font-family: VN;
+    font-size: 55px;
+    font-weight: 600
+}
+.text_h2{
+    font-family: VN;
+    font-size: 32px;
+    font-weight: 600
+}
+.text_h3{
+    font-family: VN;
+    font-size: 26px;
+    font-weight: 600
+}
+.text_h4{
+    font-family: VN;
+    font-size: 22px;
+    font-weight: 600
+}
+.text_h5{
+    font-family: VN;
+    font-size: 18px;
+    font-weight: 600
+}
+.text_h6{
+    font-family: VN;
+    font-size: 16px;
+    font-weight: 600
+}
+.text_p1{
+    font-family: VN;
+    font-size: 14px;
+}
+.text_p2{
+    font-family: VN;
+    font-size: 12px;
+}
+
+.nav_top{
+    margin-top: 20px;
+}
+
+/* --------------------------- */
+
+.search input{
+    color: #666666;
+    height: 45px;
+    border: none;
+    padding: 0;
+    background: none;
+}
+.btn_search{
+    background-color: #FBC31C;
+    color: #fdfdfd;
+    height: 38px;
+    padding: 0;
+    border-radius: 20px;
+    width: 100%;
+    border: none;
+    margin: 2px;
+}
+.search .col-4
+{
+    padding-right: 5px;
+}
+.search{
+    margin-top: 10px;
+    border: 1px solid #666666;
+    border-radius: 22px;
+    height: 44px;
+}
+
+/* --------------------------- */
+
+.cart_item{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+}
+.cart_item div{
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    text-align: center;
+    line-height: 18px;
+    background-color: #FBC31C;
+    position: absolute;
+    top: 7px;
+    right: 4px;
+    color: #fdfdfd;
+    font-size: 12px;
+}
+.cart_item i{
+    font-size: 22px;
+    color: #080808;
+    line-height: 70px;
+}
+.page_item a{
+    color: #080808;
+    line-height: 70px;
+    font-size: 22pz;
+}
+.page_item{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* --------------------------- */
+
+.bg-footer
+{
+	color: #fdfdfd;
+	font-size: 16px;
+	line-height: 35px;
+    background-color: #282828;
+}
+.footer-title
+{
+	color: #fdfdfd;
+	font-size: 22px;
+	font-weight: bold;
+	margin-bottom: 32px;
+}
+.bg-footer ul
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.bg-footer ul li a
+{
+	color: #fdfdfd;
+	font-size: 16px;
+	line-height: 35px;
+	text-transform: capitalize;
+}
+
+/* --------------------------- */
+
+/* //============================================================================================================================================================ */
+/* //============================================================================================================================================================ */
+/* //============================================================================================================================================================ */
+/* //============================================================================================================================================================ */
+
+
+.pr-i2-name
+{
+	font-size: 18px;
+	font-weight: bold;
+	color: #282828;
+	line-height: 40px;
+	text-decoration: none
+}
+.pr-i2-name:hover
+{
+	font-size: 18px;
+	font-weight: bold;
+	color: #FBC31C;
+	line-height: 40px;
+}
+.pr-rating, .pr-i2-rating
+{
+    padding: 0px;
+}
+.pr-i2-rating li i
+{
+	font-size: 16px;
+	color: #fba82b;
+	padding: 0 1px;
+}
+.pr-i2-rating
+{
+    width: 196px;
+    height: 16px;
+	list-style-type: none
+}
+.old-price
+{
+	font-size: 14px;
+	color: #666666;
+	text-decoration: line-through;
+    margin-top: 2px;
+}
+.new-price
+{
+	font-size: 18px;
+	color: #FBC31C;
+    font-weight:bold;
+}
+.text_product
+{
+    margin-top: 19px;
+	font-size: 14px;
+	color: #666666;
+    line-height: 18px;
+}
+.productList_image{
+    
+    width: 100%;
+    height: 238px;
+	border-radius: 10px;
+    
+}
+.btn_add {
+    position: absolute; /* Đặt vị trí tuyệt đối cho nút */
+    top: 194px;  /* Cách đáy container ảnh 10px */
+    left: 252px;   /* Cách mép phải container ảnh 10px */
+    font-size: 24px; /* Kích thước font của icon */
+    cursor: pointer; /* Con trỏ thành tay khi di chuột qua */
+    color:#FBC31C
+  }
+.pr-i3
+{
+	background-color: #fff;
+    border-radius: 10px;
+	margin-bottom: 30px;
+    width: 300px;
+    height: 450px;
+    box-shadow: 0px 4px 8px #888888;
+    position: relative;
+}
+
+
+.container_information {
+    margin: 16px 6px 0px 6px;
+}
+.productList_price{
+    margin-top: 18px;
+}
+
+.pr-i3:hover{
+    transform: scale(1.05); /* Sản phẩm phóng to 110% kích thước gốc */
+    transition: transform 0.3s ease-in-out; /* Hiệu ứng chuyển đổi mượt mà */
+  }
+/* END PRODUCT LIST */
+
+/* CSS PRODUCT LIST */
+.pr-list-sidebar ul
+{
+	padding: 0;
+	margin-bottom: 0;
+}
+.pr-list-sidebar ul li a
+{
+	font-size: 16px;
+	/* color: #666; */
+	line-height: 40px;
+	border-bottom: 1px dashed #f3f3f3;
+	display: block;
+}
+.pr-list-sidebar ul li:nth-last-child(1) a
+{
+	border: none;
+}
+.pr-list-sidebar
+{
+	border: 1px solid #f3f3f3;
+	padding: 0 16px;
+	margin-bottom: 24px;
+	padding-top: 16px;
+}
+.pr-list-sidebar .line
+{
+	margin-bottom: 0;
+}
+.line
+{
+	height: 1px;
+	background-color: #f3f3f3;
+	margin-top: 16px;
+}
+.pr-list-sidebar .line
+{
+	margin-bottom: 0;
+}
+.menutitle{
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+.star{
+	color: #FBC31C;
+}
+.text-product{
+	color: #080808;
+}
+.getintouch {
+    background-image: url(../header-footer/img/Group\ 13943.png);
+    /* background-position: center; */
+    background-size: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .getintouch_info {
+    padding: 70px;
+    text-align: center;
+  }
+  
+  .getintouch_search {
+    width: 100%;
+    height: 43px;
+    color: #666666;
+    height: 45px;
+    border: none;
+    padding: 0;
+    background-color: #fdfdfd;
+    border-radius: 20px;
+  }
+  
+  .getintouch_search input {
+    color: #666666;
+    height: 45px;
+    border: none;
+    padding: 0;
+    background: none;
+  }
+  
+  .btn_submit {
+    /* background-color: #080808;
+    color: #FBC31C; */
+    background-color: #FBC31C;
+    color: #fdfdfd;
+    height: 38px;
+    padding: 0;
+    border-radius: 20px;
+    width: 100%;
+    border: none;
+    margin: 2px;
+  }
+  
+  .getintouch_search .col-4 {
+    padding-right: 5px;
+  }
+  
+  .getintouch_search {
+    margin-top: 10px;
+    border: 1px solid #666666;
+    border-radius: 22px;
+    height: 44px;
+  }
+.mainmenu a {
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    /* color: #666; */
+}
+.mainmenu li a{
+    color: #000;
+}
+.mainmenu li ul li a{
+    color: #666;
+}
+.mainmenu a:hover {
+    background-color: #C5C5C5;
+}
+.mainmenu li:hover .menucon
+{
+    display: block;
+    max-height: 200px;
+}
+.submenu a:hover {
+    background-color: #666;
+}
+.menucon {
+    overflow: hidden;
+    max-height: 0;
+    list-style: none;
+}
+.menucon li:hover {
+    display: block;
+    max-height: 200px;
+}
+.icon_arrow{
+    margin-right: 20px;
+}
+.menu_title{
+    padding-left: 35px;
+}
+.mainmenu{
+    cursor: pointer;
+}
+.pr-i3{
+    cursor: pointer;
+}
+.cartegory_page_number{
+    text-align: center;
+    letter-spacing: 10px;
+    color: #282828;
+    margin-top: 30px;
+}
+.mainmenu_title{
+    color: #000;
+}
+.menucon{
+    color: #666;
+}
+.icon_arrow{
+    padding-top: 20px;
+}
+.icon_add{
+    left: 100%;
+}
+
