@@ -1,0 +1,135 @@
+/* HEADER */
+.search input{
+    color: #666666;
+    height: 45px;
+    border: none;
+    padding: 0;
+    background: none;
+}
+.btn_search{
+    background-color: #FBC31C;
+    color: #fdfdfd;
+    height: 38px;
+    padding: 0;
+    border-radius: 20px;
+    width: 100%;
+    border: none;
+    margin: 2px;
+}
+.search .col-4
+{
+    padding-right: 5px;
+}
+.search{
+    margin-top: 10px;
+    border: 1px solid #666666;
+    border-radius: 22px;
+    height: 44px;
+}
+/* --------------------------- */
+.cart_item{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+}
+.cart_item div{
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    text-align: center;
+    line-height: 18px;
+    background-color: #FBC31C;
+    position: absolute;
+    top: 7px;
+    right: 4px;
+    color: #fdfdfd;
+    font-size: 12px;
+}
+.cart_item i{
+    font-size: 22px;
+    color: #080808;
+    line-height: 70px;
+}
+.page_item a{
+    color: #080808;
+    line-height: 70px;
+    font-size: 22pz;
+}
+.page_item{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+/* --------------------------- */
+
+/* FOOTER */
+.bg-footer
+{
+	color: #fdfdfd;
+	font-size: 16px;
+	line-height: 35px;
+    background-color: #282828;
+}
+.footer-title
+{
+	color: #fdfdfd;
+	font-size: 22px;
+	font-weight: bold;
+	margin-bottom: 32px;
+}
+.bg-footer ul
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.bg-footer ul li a
+{
+	color: #fdfdfd;
+	font-size: 16px;
+	line-height: 35px;
+	text-transform: capitalize;
+}
+.bg-xam
+{
+	background-color: #666;
+}
+.bg-vang{
+    background-color: #FBC31C;
+}
+.bg-trang{
+    background-color: #fdfdfd;
+}
+.bg-breadcrub {
+    background-image: url(../header-footer/img/pr-detail/banner.png);
+    background-size: cover;
+    padding: 120px 0;
+}
+.my-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.bg-breadcrub h1
+{
+	color: #282828;
+	font-size: 55px;
+	font-weight: bold;
+}
+.breadcrumb
+{
+	justify-content: center;
+}
+.breadcrumb-item p
+{
+	font-size: 18px;
+	color: #282828 !important;
+	font-weight: bold;
+}
+/* BODY */
+.description_in4{
+    /* border: 1px solid #666666; */
+    display: grid;
+    justify-content: center;
+    place-items: center;
+}
