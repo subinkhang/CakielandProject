@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product List</title>
-    <link rel="stylesheet" href="{{('public/frontend/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/style.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/productList.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/productList.css') }}">
 </head>
 <body>
 
@@ -15,7 +15,7 @@
     <div class="container nav_top">
         <div class="row">
             <div class="col-2 logo">
-                <img src="{{('public/frontend/images/logo - temp.png')}}" alt=""class="w-100">
+                <img src="{{ asset('frontend/images/logo - temp.png')}}" alt=""class="w-100">
             </div>
             <div class="col-2"></div>
             <div class="col-4 search">
@@ -111,7 +111,7 @@
 						<div class="line"></div>
 						<div class="row pr-sidebar my-3">
 							<div class="col-3 pt-3">
-								<img src="{{('public/frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
+								<img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
 							</div>
 							<div class="col-9">
 								<h4 class="pr-i1-cat">HEADPHONE</h4>
@@ -133,7 +133,7 @@
 								</div>
 							</div>
                             <div class="col-3 pt-3">
-								<img src="{{('public/frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
+								<img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
 							</div>
 							<div class="col-9">
 								<h4 class="pr-i1-cat">HEADPHONE</h4>
@@ -155,7 +155,7 @@
 								</div>
 							</div>
                             <div class="col-3 pt-3">
-								<img src="{{('public/frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
+								<img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
 							</div>
 							<div class="col-9">
 								<h4 class="pr-i1-cat">HEADPHONE</h4>
@@ -185,7 +185,7 @@
                 <div class="row">
 				    <div class="col-4">
                         <div class="pr-i3">
-                            <img src="{{('public/frontend/images/product.png')}}" alt="" class="w-100 productList_image">
+                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
                             <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
                             <div class="container_information">
                                 <a href="#" class="pr-i2-name">Slim</a>
@@ -208,7 +208,7 @@
                     </div>
                     <div class="col-4">
                         <div class="pr-i3">
-                            <img src="{{('public/frontend/images/product.png')}}" alt="" class="w-100 productList_image">
+                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
                             <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
                             <div class="container_information">
                                 <a href="#" class="pr-i2-name">Slim</a>
@@ -231,7 +231,7 @@
                         </div>
                     <div class="col-4">
                         <div class="pr-i3">
-                            <img src="{{('public/frontend/images/product.png')}}" alt="" class="w-100 productList_image">
+                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
                             <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
                             <div class="container_information">
                             <a href="#" class="pr-i2-name">Slim</a>
@@ -254,7 +254,7 @@
                     </div>
                     <div class="col-4">
                         <div class="pr-i3">
-                            <img src="{{('public/frontend/images/product.png')}}" alt="" class="w-100 productList_image">
+                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
                             <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
                             <div class="container_information">
                                 <a href="#" class="pr-i2-name">Slim</a>
@@ -277,7 +277,7 @@
                     </div>
                     <div class="col-4">
                         <div class="pr-i3">
-                            <img src="{{('public/frontend/images/product.png')}}" alt="" class="w-100 productList_image">
+                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
                             <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
                             <div class="container_information">
                                 <a href="#" class="pr-i2-name">Slim</a>
@@ -304,7 +304,14 @@
                         <div class="col-3"></div>
                         <div class="col-6">
                             <div class="cartegory_page_number">
-                                <p><span>&#171;</span class="text_p1">1  2  3  4  5<span>&#187;</span></p>
+                                <!-- <p><span>&#171;</span class="text_p1">1  2  3  4  5<span>&#187;</span></p> -->
+                                <p class="pagination">
+                                    <a href="#">&laquo;</a>
+                                    <a href="#" class="active">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">&raquo;</a>
+                                </p>
                             </div>
                         </div>
                         <div class="col-3"></div>
@@ -319,7 +326,7 @@
         <div class="row">
             <div class="col-4">	
                 <div class="pr-i3">
-                    <img src="{{('public/frontend/images/product.png')}}" alt="" class="w-100 productList_image">
+                    <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
                     <div class="container_information">
                         <a href="#" class="pr-i2-name">Slim</a>
                         <ul class="pr-i2-rating d-flex">
@@ -428,14 +435,15 @@
 				</div>
 				<div class="col-3 bocongthuong">
 					<div class="d-flex">
-						<img src="{{('public/frontend/images/bocongthuong.png')}}" alt="" class="w-100">
+						<img src="{{ asset('frontend/images/bocongthuong.png')}}" alt="" class="w-100">
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-    <script src="../header-footer/js/jquery-3.7.1.min.js"></script>
-    <script src="../header-footer/js/bootstrap.bundle.js"></script>
+    <script src="{{('frontend/js/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{('frontend/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{('frontend/js/productList.js')}}"></script>
     <!-- END FOOTER -->
 
 </body>
