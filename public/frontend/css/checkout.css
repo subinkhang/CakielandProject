@@ -109,50 +109,8 @@
         align-items: center;
         text-align: center;
     }
-    /* .popup{
-        display: flex;
-        width: 350px;
-        border-radius: 20px;
-        background-color: #f3f3f3;
-        padding: 20px 20px;
-        align-items: center;
-        flex-direction: column;
-        opacity: 0;
-        position: fixed;
-        top: 50%;  
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1.25);
-        transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
-    }
-    .modalbox i{
-        font-size: 60px;
-        color: green;
-    }
-    .modalbox h3{
-        margin-top: 20px;
-    }
-    .closebtn{
-        margin-top: 10px;
-        border-radius: 20px;
-        width: 100px;
-        padding: 5px;
-        background-color: #FBC31C;
-        border: none;
-    }
-    .overlay{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.2);
-        opacity: 1;
-    }
 
-    .popup .active{
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-        transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
-
-    } */
+    /*-------------------------DONE--------------*/
     .popup {
         display: none;  /* Initially hidden */
         position: fixed;
@@ -161,29 +119,64 @@
         transform: translate(-50%, -50%);  /* Center the popup */
         background-color: #f3f3f3;
         padding: 20px;
-        border-radius: 5px;
+        border-radius: 25px;
         z-index: 10;  /* Ensure the popup is on top of other content */
       }
+     
       
-      .overlay {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.2);  /* Darken the background */
-        opacity: 1;
-      }
-      
-      .modalbox {
+    .modalbox {
         text-align: center;
+        width: 500px;
       }
       
       .closebtn {
-        padding: 5px 10px;
-        background-color: #ccc;
+        margin-top: 50px;
+        text-align: center;
         border: none;
-        border-radius: 5px;
-        cursor: pointer;
+        border-radius:20px;
+        background-color: #FBC31C;
+        width: 200px;
+        height: 40px;
       }
-      .popup.active {  /* Show the popup when active class is added */
+    .popup.active {  /* Show the popup when active class is added */
         display: block;
       }      
+    .modalbox i{
+        font-size: 60px;
+        color: green;
+    }
+    .modalbox h3{
+        margin-top: 20px;
+    }
+    .overlay{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.75);
+        display: none;
+        z-index: 9;
+    }
+    .overlay.active{
+        display: block;
+    }
+
+    /*---------------Bank Method----------------   IF DONE -----> LINK ABOVE */
+    .bankmethod{
+        display: none;  /* Initially hidden */
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);  /* Center the popup */
+        background-color: #f3f3f3;
+        border-radius: 25px;
+        z-index: 10;
+    }
+    .bankmethod.active{
+        display: block;
+    }
+    .qr{
+        width: 320px;
+        height: 320px;
+    }

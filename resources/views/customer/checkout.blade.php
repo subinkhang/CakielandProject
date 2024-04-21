@@ -186,15 +186,22 @@
 		</div>
 	</div>
     </div>
-<div class="popup">
-    <span class="overlay"></span>
+
+    <!-----------DONE--------------->
+    <div class="overlay"></div>
+    <div class="popup">
     <div class="modalbox center">
         <i class="fa-solid fa-circle-check"></i>
         <h3>PAYMENT COMPLETE</h3>
         <div class="btnback">
-            <button class="closebtn"> Close </button>
+            <button class="closebtn"> Back to HomePage </button>
         </div>
     </div>
+</div>
+
+<!------------QR---------------->
+<div class="bankmethod">
+<img src="{{asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg')}}"  class="qr">
 </div>
     <script src="{{asset('frontend/js/bootstrap.bundle.js')}}"></script>
     <script src="{{asset('frontend/js/jquery-3.7.1.min.js')}}"></script>

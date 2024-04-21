@@ -118,3 +118,7 @@
     -ms-flex-item-align: center;
     text-align:center
 }
+.removeitem{
+    border: none;
+    color: red;
+}

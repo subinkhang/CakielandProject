@@ -38,3 +38,8 @@
             document.getElementById('subtotal').style.fontFamily = 'Be Vietnam Pro';
             console.log('tong', subtt);
         }
+
+        function rmitem1(){
+            const removeitem1 = document.getElementById("item1");
+            removeitem1.remove();
+        }

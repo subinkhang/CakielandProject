@@ -42,7 +42,7 @@
                         <td class="col-8">NAME</td>
                         <td class="col-2 text-end">SUBTOTAL</td>
                     </tr>
-                    <tr>
+                    <tr id="item1">
                         <th scope="row"></th>
                         <td class="col-2 text-center">1</td>
                         <td class="col-8">
@@ -51,18 +51,23 @@
                                     <img src="{{ asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg')}}"  class="img-fluid">
                                 </div>
                                 <div class="col-9 row">
-                                <h6>lăn bột hjghvhhgfhgvhvjvjvjvjvjgc</h6>
-                                <div class="d-flex">
+                                    <h6>lăn bột hjghvhhgfhgvhvjvjvjvjvjgc</h6>
+                                    <div class="d-flex">
                                     <button id="btn-minus" class="btn-minuse" type="button" onclick="decreaseQuantity()"><i class="fa-solid fa-minus"></i></button>
                                     <span id="numb"><input type="number" value="1" id="pr-number" name="quan[1]" min="1"></span>
                                     <button id="btn-plus" class="btn-pluss" type="button" onclick="increaseQuantity()"><i class="fa-solid fa-plus"></i></button>
-                                </div>
-                                <h6 class="price">$112.00</h6>             
+                                    </div>
+                                    <h6 class="price">$112.00</h6>             
                             </div>
                         </td>
-                        <td class="col-2 text-end subprice" id="subtotal"><b>$112.00</b></td>
+                        <td class="col-2 text-end subprice" id="subtotal">
+                            <b>$112.00</b>
+                            <p></p>
+                            <p></P>
+                            <button class="removeitem" onclick = "rmitem1()"> <h7> remove </h7> </button>
+                        </td>
                     </tr>
-                    <tr>
+                    <tr id="item2">
                         <th scope="row"></th>
                         <td class="col-2 text-center">1</td>
                         <td class="col-8">
