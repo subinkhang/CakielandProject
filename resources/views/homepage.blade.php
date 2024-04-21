@@ -8,12 +8,6 @@
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/homepage.css')}}">
-    <!-- <style>
-        @font-face {
-            font-family: VN;
-            src: url({{ asset('frontend/fonts/BeVietnamPro-Regular.ttf') }});
-        }  
-  </style> -->
 </head>
 <body>
     <div class="container-fluid  nav_top">

@@ -173,7 +173,6 @@ body, button, input{
 
 /* PRODUCT DETAIL */
 .bg-breadcrub {
-    background-image: url(../header-footer/img/pr-detail/banner.png);
     background-size: cover;
     padding: 120px 0;
 }
@@ -267,10 +266,6 @@ body, button, input{
     border-radius: 12px;
     color: #fdfdfd;
 }
-.btn-shopnow:hover{
-	background-color: #080808;
-	color: #FBC31C;
-}
 #pr-number
 {
     text-align: center;
@@ -314,23 +309,27 @@ body, button, input{
 }
 .pr-color li:nth-child(1)
 {
-	background-color: #f5bfe0;
+	background-color: #666;
 }
 .pr-color li:nth-child(2)
 {
-	background-color: #ada7a7;
+	background-color: #ef77b1;
 }
 .pr-color li:nth-child(3)
 {
-	background-color: #9bcde6;
+	background-color: #5bcbe4;
 }
 .pr-color li:nth-child(4)
 {
-	background-color: #dcae8f;
+	background-color: #2b4398;
 }
-.pr-color li:hover{
-	box-shadow: 5px 5px 5px #303130;
+.pr-color li:nth-child(1),
+.pr-color li:nth-child(2),
+.pr-color li:nth-child(3),
+.pr-color li:nth-child(4) {
+    cursor: pointer; /* Sử dụng kiểu con trỏ bàn tay */
 }
+
 .star{
     padding-left: 0px;
     color: #FBC31C;
@@ -446,18 +445,182 @@ body, button, input{
 }
 .pr-i3
 {
-	background-color: #fdfdfd;
+	/* background-color: #fdfdfd;
 	padding: 0 16px;
-	margin-bottom: 12px;
+	margin-bottom: 12px; */
+	background-color: #fff;
+    border-radius: 10px;
+	margin-bottom: 30px;
+    width: 300px;
+    height: 450px;
+    box-shadow: 0px 4px 8px #888888;
+    position: relative;
 }
 .pr-i3-name
 	{
 		font-size: 15px;
 		line-height: 25px;
 	}
-.pr-color li
-{
-	width: 45px;
-	height: 45px;
-	margin: 0 5px 0 0;
+
+/* --------------------------- */
+/* cài thông báo hiển thị add to cart thành công */
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #FBC31C;
+    color: #fdfdfd;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 3;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
 }
+
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+.productList_image{
+    
+    width: 100%;
+    height: 238px;
+	border-radius: 10px;
+    
+}
+
+.btn_add {
+    position: absolute; /* Đặt vị trí tuyệt đối cho nút */
+    top: 194px;  /* Cách đáy container ảnh 10px */
+    left: 252px;   /* Cách mép phải container ảnh 10px */
+    font-size: 24px; /* Kích thước font của icon */
+    cursor: pointer; /* Con trỏ thành tay khi di chuột qua */
+    color:#FBC31C
+  }
+
+.container_information {
+margin: 16px 6px 0px 6px;
+}
+
+.text_product
+{
+    margin-top: 19px;
+	font-size: 14px;
+	color: #666666;
+    line-height: 18px;
+}
+
+.productList_price{
+    margin-top: 18px;
+}
+
+.old-price
+{
+	font-size: 14px;
+	color: #666666;
+	text-decoration: line-through;
+    margin-top: 2px;
+}
+.new-price
+{
+	font-size: 18px;
+	color: #FBC31C;
+    font-weight:bold;
+}
+
+.pr-i3:hover{
+    transform: scale(1.05); /* Sản phẩm phóng to 110% kích thước gốc */
+    transition: transform 0.3s ease-in-out; /* Hiệu ứng chuyển đổi mượt mà */
+  }
+
+  .pr-i2-name
+{
+	font-size: 18px;
+	font-weight: bold;
+	color: #282828;
+	line-height: 40px;
+	text-decoration: none
+}
+.pr-i2-name:hover
+{
+	font-size: 18px;
+	font-weight: bold;
+	color: #FBC31C;
+	line-height: 40px;
+}
+
+.pr-i2-rating
+{
+    padding: 0px;
+}
+
+.pr-i2-rating
+{
+	font-size: 16px;
+	color: #fba82b;
+	padding: 0 1px;
+}
+
+.pr-i2-rating
+{
+    width: 196px;
+    height: 16px;
+	list-style-type: none
+}
+
+/* --------------cai nay la vut vao style cua header/foooter ne, nho doi ca file html------- */ 
+
+.nav_top {
+    position: fixed;
+    top: -20px; /* Vị trí cố định phía trên cùng */
+    /* left: 50px; Vị trí cố định phía trái */
+    /* width: 100%; Chiều rộng bằng 100% trang */
+    z-index: 10; /* Đặt mức độ ưu tiên hiển thị cao hơn các thành phần khác */
+    background-color: #fdfdfd; /* Thiết lập màu nền (màu trắng) */
+    position: -10px;
+  }
+.slide{
+    z-index: 1;
+    margin-top: 85px;
+}
+.page_ul_li{
+    margin-bottom: 0;
+}
+
+/* --------------cai nay la vut vao style cua header/foooter ne, nho doi ca file html------- */ 
+
+.suggestions {
+    position: absolute; /* Vị trí tuyệt đối */
+    background-color: #fdfdfd; /* Màu nền */
+    top: 54px;
+    border-radius: 12px;
+    width: 300px; /* Chiều rộng bằng 100% */
+    z-index: 10; /* Mức độ ưu tiên hiển thị */
+    display: none; /* Ẩn mặc định */
+    color: #666;
+  }
+  .suggestions ul {
+    list-style: none; /* Xóa dấu đầu dòng */
+    padding: 0;
+    margin: 0;
+  }
+  .suggestions li {
+    padding: 5px; /* Khoảng cách giữa các gợi ý */
+  }
+  .suggestions li:hover {
+    background-color: #f0f0f0; /* Nền khi rê chuột lên */
+  }
