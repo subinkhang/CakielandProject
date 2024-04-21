@@ -452,3 +452,7 @@ body, button, input{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
+
+.page-item {
+    background-color: #FBC31C;
+}

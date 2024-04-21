@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABOUT US</title>
-    <link rel="stylesheet" href="{{('public/frontend/css/aboutus.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/style.css')}}">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{asset('frontend/css/aboutus.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
 </head>
 <body>
     <!-- HEADER -->
     <div class="container nav_top">
         <div class="row">
             <div class="col-2 logo">
-                <img src="{{('public/frontend/images/logo - temp.png')}}" alt=""class="w-100">
+                <img src="{{asset('/frontend/images/logo - temp.png')}}" alt=""class="w-100">
             </div>
             <div class="col-2"></div>
             <div class="col-4 search">
@@ -54,7 +54,7 @@
 <!-- --------------------------------------- -->
     <!-- BODY -->
     <!-- BANNER -->
-    <div class="contanier-fluid bg-breadcrub my-3">
+    <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
 		<div class="col-12 text-center">
 			<h1>ABOUT US</h1>
 			<nav aria-label="breadcrumb">
@@ -68,7 +68,7 @@
             <div class="col-12 infor">
                 <div class="row small_in4">
                     <div class="col-6 img_in4">
-                        <img src="{{('public/frontend/images/About us/tải xuống (17).jfif')}}" alt="" class="img_in4_1 w-100">
+                        <img src="{{asset('/frontend/images/About us/tải xuống (17).jfif')}}" alt="" class="img_in4_1 w-100">
                     </div>
                     <div class="col-6 description_in4">
                         <h1>FROM OVEN TO AWESOME</h1>
@@ -162,7 +162,7 @@
 				</div>
 				<div class="col-3 bocongthuong">
 					<div class="d-flex">
-						<img src="{{('public/frontend/images/bocongthuong.png')}}" alt="" class="w-100">
+						<img src="{{asset('/frontend/images/bocongthuong.png')}}" alt="" class="w-100">
 					</div>
 				</div>
 			</div>

@@ -4,62 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/homepage.css') }}">
+    <link rel="stylesheet" href="{{asset('frontend/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/homepage.css')}}">
+    <!-- <style>
+        @font-face {
+            font-family: VN;
+            src: url({{ asset('frontend/fonts/BeVietnamPro-Regular.ttf') }});
+        }  
+  </style> -->
 </head>
 <body>
-    <div class="container nav_top">
-        <div class="row">
-            <div class="col-2 logo">
-                <a href="{{URL::to('/')}}">
-                    <img src="{{('resources/images/logo - temp.png')}}" alt=""class="w-100">
-                </a>
-            </div>
-            <div class="col-2"></div>
-            <div class="col-4 search">
-                <div class="row">
-                    <div class="col-8"> 
-                        <input type="text" class="w-100 text_p1" placeholder="Search products...">
-                    </div>
-                    <div class="col-4">
-                        <button class="btn_search">Search</button>
-                    </div>
+    <div class="container-fluid  nav_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-2 logo">
+                    <img src="{{asset('frontend/images/logo - temp.png')}}" alt=""class="w-100">
                 </div>
-            </div>
-            <div class="col-4 pages">
-                <ul class="d-flex justify-content-end">
-                    <li class="page_item ">
-                        <div><a href="{{URL::to('/')}}">Home</a></div>
-                    </li>
-                    <li class="page_item ">
-                        <div><a href="{{URL::to('/product-list')}}">Product</a></div>
-                    </li>
-                    <li class="page_item ">
-                        <div><a href="{{URL::to('/error-page')}}">Forum</a></div>
-                    </li>
-                    <li class="cart_item">
-                        <a href="{{URL::to('/cart')}}">
+                <div class="col-2"></div>
+                <div class="col-4 search">
+                    <div class="row">
+                      <div class="col-8">
+                        <input type="text" class="w-100 text_p1" placeholder="Search products..." id="searchInput">
+                        <div class="suggestions text_p1" style="display: none;"></div> </div>
+                      <div class="col-4">
+                        <button class="btn_search">Search</button>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-4 pages">
+                    <ul class="d-flex justify-content-end page_ul_li">
+                        <li class="page_item ">
+                            <div><a href="#">Home</a></div>
+                        </li>
+                        <li class="page_item ">
+                            <div><a href="#">Product</a></div>
+                        </li>
+                        <li class="page_item ">
+                            <div><a href="#">Forum</a></div>
+                        </li>
+                        <li class="cart_item">
                             <i class="fa-solid fa-cart-shopping"></i>
-                        </a>
-                        <div><p>2</p></div>
-                    </li>
-                    <li class="cart_item">
-                        <a href="{{URL::to('/account')}}">
+                            <div><p>2</p></div>
+                        </li>
+                        <li class="cart_item">
                             <i class="fa-solid fa-user"></i>
-                        </a>
-                        <div><p>2</p></div>
-                    </li>
-                </ul>
+                            <div><p>2</p></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
           <div class="carousel-item image_container active">
-            <img src="{{('public/frontend/images/homepage/banner 1.png')}}" class="d-block w-100" alt="...">
+            <img src="{{asset('frontend/images/homepage/banner 1.png')}}" class="d-block w-100" alt="...">
             <div class="text_overlay">
                 <div class="container">
                     <div class="row">
@@ -77,7 +78,7 @@
           </div>
           
           <div class="carousel-item">
-            <img src="{{('resources/images/homepage/banner (2) 1.png')}}" class="d-block w-100" alt="...">
+            <img src="{{asset('frontend/images/homepage/banner (2) 1.png')}}" class="d-block w-100" alt="...">
             <div class="text_overlay">
                 <div class="container">
                     <div class="row">
@@ -109,7 +110,7 @@
 			<div class="col-3 service-item">
 				<div class="row">
 					<div class="col-3 service-icon">
-						<img src="{{('public/frontend/images/homepage/credit-card 1.png')}}" alt="" class="img-fluid">
+						<img src="{{asset('frontend/images/homepage/credit-card 1.png')}}" alt="" class="img-fluid">
 					</div>
 					<div class="col-9 service-content">
 						<h4>PAYMENT & DELIVERY</h4>
@@ -120,7 +121,7 @@
             <div class="col-3 service-item">
 				<div class="row">
 					<div class="col-3 service-icon">
-						<img src="{{('public/frontend/images/homepage/credit-card 1 (1).png')}}" alt="" class="img-fluid">
+						<img src="{{asset('frontend/images/homepage/credit-card 1 (1).png')}}" alt="" class="img-fluid">
 					</div>
 					<div class="col-9 service-content">
 						<h4>RETURN PRODUCT</h4>
@@ -131,7 +132,7 @@
             <div class="col-3 service-item">
 				<div class="row">
 					<div class="col-3 service-icon">
-						<img src="{{('public/frontend/images/homepage/credit-card 1 (2).png')}}" alt="" class="img-fluid">
+						<img src="{{asset('frontend/images/homepage/credit-card 1 (2).png')}}" alt="" class="img-fluid">
 					</div>
 					<div class="col-9 service-content">
 						<h4>MEMBER DISCOUNT</h4>
@@ -142,7 +143,7 @@
             <div class="col-3 service-item">
 				<div class="row">
 					<div class="col-3 service-icon">
-						<img src="{{('public/frontend/images/homepage/credit-card 1 (3).png')}}" alt="" class="img-fluid">
+						<img src="{{asset('frontend/images/homepage/credit-card 1 (3).png')}}" alt="" class="img-fluid">
 					</div>
 					<div class="col-9 service-content">
 						<h4>QUALITY SUPPORT</h4>
@@ -158,37 +159,37 @@
         <div class="row">
             <div class="col-2">
                 <div class="categories_item">
-                    <img src="{{('public/frontend/images/homepage/image 25.png')}}" alt="" class="img-fluid">
+                    <img src="{{asset('frontend/images/homepage/image 25.png')}}" alt="" class="img-fluid">
                     <p class="h6">DRY INGREDIENTS</p>
                 </div>
             </div>
             <div class="col-2">
                 <div class="categories_item">
-                    <img src="{{('public/frontend/images/homepage/image 25 (1).png')}}" alt="" class="img-fluid">
+                    <img src="{{asset('frontend/images/homepage/image 25 (1).png')}}" alt="" class="img-fluid">
                     <p class="h6">wet ingredients</p>
                 </div>
             </div>
             <div class="col-2">
                 <div class="categories_item">
-                    <img src="{{('public/frontend/images/homepage/image 25 (2).png')}}" alt="" class="img-fluid">
+                    <img src="{{asset('frontend/images/homepage/image 25 (2).png')}}" alt="" class="img-fluid">
                     <p class="h6">baking tools</p>
                 </div>
             </div>
             <div class="col-2">
                 <div class="categories_item">
-                    <img src="{{('public/frontend/images/homepage/image 25 (3).png')}}" alt="" class="img-fluid">
+                    <img src="{{asset('frontend/images/homepage/image 25 (3).png')}}" alt="" class="img-fluid">
                     <p class="h6">Cooking Utensils</p>
                 </div>
             </div>
             <div class="col-2">
                 <div class="categories_item">
-                    <img src="{{('public/frontend/images/homepage/image 25 (4).png')}}" alt="" class="img-fluid">
+                    <img src="{{asset('frontend/images/homepage/image 25 (4).pn')}}g" alt="" class="img-fluid">
                     <p class="h6">Bar Tools</p>
                 </div>
             </div>
             <div class="col-2">
                 <div class="categories_item">
-                    <img src="{{('public/frontend/images/homepage/image 25 (5).png')}}" alt="" class="img-fluid">
+                    <img src="{{asset('frontend/images/homepage/image 25 (5).png')}}" alt="" class="img-fluid">
                     <p class="h6">Bar Ingredients</p>
                 </div>
             </div>
@@ -218,7 +219,7 @@
                     <button class="banner_btn">Discuss now</button>
                 </div>
                 <div class="col-6">
-                    <img src="{{('public/frontend/images/homepage/Rectangle 167.png')}}" alt="" class="img-fluid">
+                    <img src="{{asset('frontend/images/homepage/Rectangle 167.png')}}" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -228,21 +229,21 @@
         <p class="sub_banner_title text_h1">TOPIC OF MONTH</p>
 		<div class="row">
 			<div class="col-4">
-				<div class="sub_banner" style="background-image: url('{{'public/frontend/images/homepage/Untitled_design.png'}}');">
+				<div class="sub_banner" style="background-image: url('{{'/frontend/images/homepage/Untitled_design.png'}}');">
 					<p>BAKING TIPS</p>
 					<h3>Make Baking Powder</h3>
 					<button class="btn-shopnow bg-xanh text-white">Discuss Now</button>
 				</div>
 			</div>
 			<div class="col-4">
-				<div class="sub_banner"  style="background-image: url('{{'public/frontend/images/homepage/Untitled_design.png'}}');">
+				<div class="sub_banner" style="background-image: url('{{'/frontend/images/homepage/Untitled_design.png'}}');">
 					<p>COOKING TIPS</p>
 					<h3>Make Baking Powder</h3>
 					<button class="btn-shopnow bg-xanh text-white">Discuss Now</button>
 				</div>
 			</div>
 			<div class="col-4">
-				<div class="sub_banner"  style="background-image: url('{{'public/frontend/images/homepage/Untitled_design.png'}}');">
+				<div class="sub_banner" style="background-image: url('{{'/frontend/images/homepage/Untitled_design.png'}}');">
 					<p>RECOMMEND TIPS</p>
 					<h3>Make Baking Powder</h3>
 					<button class="btn-shopnow bg-xanh text-white">Discuss Now</button>
@@ -251,33 +252,33 @@
 		</div>
 	</div>
 
-    <div class="container getintouch"  style="background-image: url('{{'public/frontend/images/homepage/Mask\ Group.png'}}');">
+    <div class="container getintouch" style="background-image: url('{{'/frontend/images/homepage/Mask Group.png'}}');">
         <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8 getintouch_info">
-                <h1 class="text_h1">GET IN TOUCH WITH US</h1>
-                <p class="text_p1">With the cake baked to perfection, the canvas is set for creativity to flourish.
-                     From simple frosting and sprinkles to elaborate designs and piped decorations, the 
-                     possibilities are endless.</p>
-                <div class="row ">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <div class="row getintouch_search">
-                            <div class="col-8 ">
-                                <input type="text" class="w-100 text_p1" placeholder="Your email address...">
-                            </div>
-                            <div class="col-4 ">
-                                <button class="btn_submit">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2"></div>
+          <div class="col-2"></div>
+          <div class="col-8 getintouch_info">
+            <h1 class="text_h1">GET IN TOUCH WITH US</h1>
+            <p class="text_p1">With the cake baked to perfection, the canvas is set for creativity to flourish.
+              From simple frosting and sprinkles to elaborate designs and piped decorations, the 
+              possibilities are endless.</p>
+            <div class="row ">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <div class="row getintouch_search">
+                  <div class="col-8 ">
+                    <input type="text" id="email" class="w-100 text_p1" placeholder="Your email address...">
+                  </div>
+                  <div class="col-4 ">
+                    <button class="btn_submit" onclick="validateEmail()">Submit</button>
+                  </div>
+                  <p id="email-error" class="text_p1" style="color: red; display: none;">Email is not valid</p>
                 </div>
-                </div>
-                <div class="col-2"></div>
+              </div>
+              <div class="col-2"></div>
             </div>
+          </div>
+          <div class="col-2"></div>
         </div>
-    </div>
+      </div>
 
     <div class="contanier-fluid bg-footer py-5">
 		<div class="container">
@@ -308,9 +309,9 @@
 				<div class="col-2 acc">
 					<h3 class="footer-title">Account</h3>
 					<ul>
-						<li><a href="{{URL::to('/account')}}">Profile</a></li>
-						<li><a href="{{URL::to('/cart')}}">My orders</a></li>
-						<li><a href="{{URL::to('/error-page')}}">Shipping</a></li>
+						<li><a href="#">Profile</a></li>
+						<li><a href="#">My orders</a></li>
+						<li><a href="#">Shipping</a></li>
 					</ul>
 				</div>
 				<div class="col-2 policies">
@@ -326,7 +327,7 @@
 				<div class="col-2 services">
 					<h3 class="footer-title">Policies</h3>
 					<ul>
-						<li><a href="{{URL::to('/about-us')}}">About</a></li>
+						<li><a href="#">About</a></li>
 						<li><a href="#">Contact</a></li>
 						<li><a href="#">Privacy policy</a></li>
 						<li><a href="#">Return policy</a></li>
@@ -335,13 +336,14 @@
 				</div>
 				<div class="col-3 bocongthuong">
 					<div class="d-flex">
-						<img src="{{('public/frontend/images/bocongthuong.png')}}" alt="" class="w-100">
+						<img src="{{asset('frontend/images/bocongthuong.png')}}" alt="" class="w-100">
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-    <script src="../header-footer/js/jquery-3.7.1.min.js"></script>
-    <script src="../header-footer/js/bootstrap.bundle.js"></script>
+    <script src="{{asset('frontend/js/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{asset('frontend/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{asset('frontend/js/homepage.js')}}"></script>
 </body>
 </html>

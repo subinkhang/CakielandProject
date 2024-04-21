@@ -8,7 +8,7 @@
 <body>
     @foreach ($users as $user)
     <tr>
-        <td scope="row">{{ $user->password }}</td>
+        <td>{{ $user->password }}</td>
         <td>{{ $user->level }}</td>
         <td>{{ $user->email }}</td>
     </tr>
@@ -16,7 +16,6 @@
 
     <nav aria-label="Pages">
         {!! $users->links() !!}
-
     </nav>
     
 </body>
