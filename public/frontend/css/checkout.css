@@ -75,7 +75,6 @@
     }
 
     .bg-breadcrub {
-        background-image: url(../header-footer/img/pr-detail/banner.png);
         background-size: cover;
         padding: 120px 0;
     }
@@ -105,3 +104,86 @@
     {
         color: #666666;
     }
+
+    body .modalbox{
+        align-items: center;
+        text-align: center;
+    }
+    /* .popup{
+        display: flex;
+        width: 350px;
+        border-radius: 20px;
+        background-color: #f3f3f3;
+        padding: 20px 20px;
+        align-items: center;
+        flex-direction: column;
+        opacity: 0;
+        position: fixed;
+        top: 50%;  
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.25);
+        transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
+    }
+    .modalbox i{
+        font-size: 60px;
+        color: green;
+    }
+    .modalbox h3{
+        margin-top: 20px;
+    }
+    .closebtn{
+        margin-top: 10px;
+        border-radius: 20px;
+        width: 100px;
+        padding: 5px;
+        background-color: #FBC31C;
+        border: none;
+    }
+    .overlay{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.2);
+        opacity: 1;
+    }
+
+    .popup .active{
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
+
+    } */
+    .popup {
+        display: none;  /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);  /* Center the popup */
+        background-color: #f3f3f3;
+        padding: 20px;
+        border-radius: 5px;
+        z-index: 10;  /* Ensure the popup is on top of other content */
+      }
+      
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);  /* Darken the background */
+        opacity: 1;
+      }
+      
+      .modalbox {
+        text-align: center;
+      }
+      
+      .closebtn {
+        padding: 5px 10px;
+        background-color: #ccc;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .popup.active {  /* Show the popup when active class is added */
+        display: block;
+      }      

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My profile</title>
-    <link rel="stylesheet" href="{{('public/frontend/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/style.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/account.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/account.css')}}">
 </head>
 <body>
     <!-- HEADER -->

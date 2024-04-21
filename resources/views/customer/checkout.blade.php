@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <link rel="stylesheet" href="{{('public/frontend/css/all.min.cs')}}s">
-    <link rel="stylesheet" href="{{('public/frontend/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/style.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/checkout.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/checkout.css')}}">
 </head>
 <body>
     <!-----------HEADER-------------->
-    <div class="contanier-fluid bg-breadcrub my-3">
+    <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{asset('frontend/images/pr-detail/banner.png')}}');">
         <div class="col-12 text-center">
             <h2>Check Out</h2>
             <nav aria-label="breadcrumb">
@@ -22,6 +22,9 @@
             </nav>
         </div>
     </div>
+    <!-----------------LEFT---------------------------->
+    <div class="container">
+    <div class="row">
     <div class="container">
         <div class="row">
             <div class="col-6"></div>
@@ -32,23 +35,23 @@
                 <div class="container">
                 <div class="row pr-list-co">
                     <div class="col-3">
-                        <img src="{{('public/frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg')}}"  class="img-fluid">
+                        <img src="{{asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg')}}"  class="img-fluid">
                     </div>
                     <div class="col-9 row">
                     <h5><b>lăn bột hjghvhhgfhgvhvjvjvjvjvjgc</b></h5>
-                    <h6 class="col-3" >Quantity</h6>
-                    <h6 class="col-9">1</h6>
+                    <h6 class="col-2" >Quantity:</h6>
+                    <h6 class="col-10">1</h6>
                     <h5 class="price"><b>$112.00</b></h5>             
                 </div>           
                 </div>
                 <div class="row pr-list-co">
                     <div class="col-3">
-                        <img src="{{('')}}"  class="img-fluid">
+                    <img src="{{asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg')}}"  class="img-fluid">
                     </div>
                     <div class="col-9 row">
                     <h5><b>lăn bột hjghvhhgfhgvhvjvjvjvjvjgc</b></h5>
-                    <h6 class="col-3" >Quantity</h6>
-                    <h6 class="col-9">1</h6>
+                    <h6 class="col-2" >Quantity:</h6>
+                    <h6 class="col-10">1</h6>
                     <h5 class="price"><b>$112.00</b></h5>             
                 </div>           
                 </div>
@@ -102,6 +105,7 @@
                 <h6 class="pmmt"><b>Payment Methods</b></h6>
                 <select class="form-select form-select-pm pmbox">
                     <option selected>COD</option>
+                    <option>Bank</option>
                 </select>
                 <div class="col-8 bt-pay pm">
                     <button class="btn" id="btn-p">
@@ -181,8 +185,20 @@
 			</div>
 		</div>
 	</div>
-    <script src="../header-footer/js/bootstrap.bundle.js"></script>
-    <script src="../header-footer/js/jquery-3.7.1.min.js"></script>
+    </div>
+<div class="popup">
+    <span class="overlay"></span>
+    <div class="modalbox center">
+        <i class="fa-solid fa-circle-check"></i>
+        <h3>PAYMENT COMPLETE</h3>
+        <div class="btnback">
+            <button class="closebtn"> Close </button>
+        </div>
+    </div>
+</div>
+    <script src="{{asset('frontend/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{asset('frontend/js/checkout.js')}}"></script>
     
 </body>
 </html>
