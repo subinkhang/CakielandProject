@@ -4,56 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Detail</title>
-    <link rel="stylesheet" href="{{('public/frontend/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/style.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/productDetail.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/productDetail.css')}}">
 </head>
 <body>
     <!-- HEADER -->
-    <div class="container nav_top">
-        <div class="row">
-            <div class="col-2 logo">
-                <img src="{{('public/frontend/images/logo - temp.png')}}" alt=""class="w-100">
-            </div>
-            <div class="col-2"></div>
-            <div class="col-4 search">
-                <div class="row">
-                    <div class="col-8">
-                        <input type="text" class="w-100 text_p1" placeholder="Search products...">
-                    </div>
-                    <div class="col-4">
-                        <button class="btn_search">Search</button>
-                    </div>
+    <div class="container-fluid  nav_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-2 logo">
+                    <img src="{{asset('frontend/images/logo - temp.png')}}" alt=""class="w-100">
                 </div>
-            </div>
-            <div class="col-4 pages">
-                <ul class="d-flex justify-content-end">
-                    <li class="page_item ">
-                        <div><a href="#">Home</a></div>
-                    </li>
-                    <li class="page_item ">
-                        <div><a href="#">Product</a></div>
-                    </li>
-                    <li class="page_item ">
-                        <div><a href="#">Forum</a></div>
-                    </li>
-                    <li class="cart_item">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <div><p>2</p></div>
-                    </li>
-                    <li class="cart_item">
-                        <i class="fa-solid fa-user"></i>
-                        <div><p>2</p></div>
-                    </li>
-                </ul>
+                <div class="col-2"></div>
+                <div class="col-4 search">
+                    <div class="row">
+                      <div class="col-8">
+                        <input type="text" class="w-100 text_p1" placeholder="Search products..." id="searchInput">
+                        <div class="suggestions text_p1" style="display: none;"></div> </div>
+                      <div class="col-4">
+                        <button class="btn_search">Search</button>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-4 pages">
+                    <ul class="d-flex justify-content-end page_ul_li">
+                        <li class="page_item ">
+                            <div><a href="#">Home</a></div>
+                        </li>
+                        <li class="page_item ">
+                            <div><a href="#">Product</a></div>
+                        </li>
+                        <li class="page_item ">
+                            <div><a href="#">Forum</a></div>
+                        </li>
+                        <li class="cart_item">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <div><p>2</p></div>
+                        </li>
+                        <li class="cart_item">
+                            <i class="fa-solid fa-user"></i>
+                            <div><p>2</p></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
     <!-- END HEADER -->
 
     <!-- PRODUCT DETAIL -->
-    <div class="contanier-fluid bg-breadcrub my-3">
+    <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
 		<div class="col-12 text-center">
 			<h2>Product detail</h2>
 			<nav aria-label="breadcrumb">
@@ -81,15 +83,15 @@
 						</div>
 					</div>
 				</div>
-				<div class="carousel-inner">
+				<div class="carousel-inner parent">
 					<div class="carousel-item active">
-						<img src="{{('public/frontend/images/pr-detail/máy đánh trứng 1.web')}}p" alt="" class="w-100 img-fluid">
+						<img src="{{asset('frontend/images/pr-detail/máy đánh trứng 1.webp')}}" alt="" class="w-100 img-fluid">
 					</div>
 					<div class="carousel-item">
-						<img src="{{('public/frontend/images/pr-detail/máy dánh trứng 2.webp')}}" alt="" class="img-fluid w-100">
+						<img src="{{asset('frontend/images/pr-detail/máy dánh trứng 2.webp')}}" alt="" class="img-fluid w-100">
 					</div>
 					<div class="carousel-item">
-						<img src="{{('public/frontend/images/pr-detail/máy đánh trứng 3.webp')}}" alt="" class="img-fluid w-100">
+						<img src="{{asset('frontend/images/pr-detail/máy đánh trứng 3.webp')}}" alt="" class="img-fluid w-100">
 					</div>
 				</div>
 			</div>
@@ -112,7 +114,7 @@
 						</div>
 					</div>
 					<p class="pr-detail-content">Philips HR3705 Egg Beater (300W) has a compact design with a sturdy handle so you can use it easily without getting tired of your hands after long use. The parts are easily removable and can be cleaned in the dishwasher.</p>
-					<h4 class="pr-property">COLOR</h4>
+					<h4 class="pr-property">Color</h4>
 					<ul class="pr-color d-flex ps-0 mt-3">
 						<li></li>
 						<li></li>
@@ -124,9 +126,8 @@
 						<input type="number" value="1" id="pr-number">
 						<button id="btn-plus"><i class="fa-solid fa-plus"></i></button>
 					</div>
-					<button class="btn-shopnow bg-vang my-3">Add to cart</button>
+					<button class="btn-shopnow bg-vang my-3" onclick="addToCart(this)">Add to cart</button>
 				</div>
-				
 			</div>
 		</div>
 	</div>
@@ -212,78 +213,31 @@
 			<div class="col-12 justify-content-start mb-3">
 				<h3>Related Product</h3>
 			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6 col-12">
-				<div class="pr-i3">
-					<img src="{{('public/frontend/images/pr-detail/bình lắc.webp')}}" alt="" class="w-100 img-fluid">
-					<a href="#" class="pr-i3-name">High quality mixing shaker</a>
-					<ul class="pr-i3-rating d-flex">
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-					</ul>
-                    <p>Trong bộ dụng cụ pha chế cocktail, café và rượu, bình lắc pha chế là một trong những dụng cụ không thể thiếu của người pha chế.</p>
-					<div class="row">
-						<div class="col-6"><p class="old-price">$134.00</p></div>
-						<div class="col-6 text-end"><p class="new-price">$112.00</p></div>
+			@for ($i = 0; $i < 4; $i++)
+				<div class="col-lg-3 col-md-6 col-sm-6 col-12">
+					<div class="pr-i3">
+						<img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
+						<span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
+						<div class="container_information">
+							<a href="#" class="pr-i2-name">Slim</a>
+							<ul class="pr-i2-rating d-flex">
+								<li><i class="fa-solid fa-star"></i></li>
+								<li><i class="fa-solid fa-star"></i></li>
+								<li><i class="fa-solid fa-star"></i></li>
+								<li><i class="fa-solid fa-star"></i></li>
+								<li><i class="fa-solid fa-star"></i></li>
+							</ul>
+							<div class="text_product">
+								Taque earum rerum hic tenetur a sapiente maiores alias consequatur aut perferendis doloribus asperiores...
+							</div>
+							<div class="row productList_price">
+								<div class="col-6"><p class="old-price">$134.00</p></div>
+								<div class="col-6 text-end"><p class="new-price">$112.00</p></div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6 col-12">
-				<div class="pr-i3">
-					<img src="{{('public/frontend/images/pr-detail/muỗng múc đá 3.jpg')}}" alt="" class="w-100 img-fluid">
-					<a href="#" class="pr-i3-name">Stainless Steel Ice Scoop</a>
-					<ul class="pr-i3-rating d-flex">
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-					</ul>
-                    <p>Trong bộ dụng cụ pha chế cocktail, café và rượu, bình lắc pha chế là một trong những dụng cụ không thể thiếu của người pha chế.</p>
-					<div class="row">
-						<div class="col-6"><p class="old-price">$134.00</p></div>
-						<div class="col-6 text-end"><p class="new-price">$112.00</p></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6 col-12">
-				<div class="pr-i3">
-					<img src="{{('public/frontend/images/pr-detail/máy tạo bọt 1.jpg')}}" alt="" class="w-100 img-fluid">
-					<a href="#" class="pr-i3-name">Multi-function coffee foam maker</a>
-					<ul class="pr-i3-rating d-flex">
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-					</ul>
-                    <p>Trong bộ dụng cụ pha chế cocktail, café và rượu, bình lắc pha chế là một trong những dụng cụ không thể thiếu của người pha chế.</p>
-					<div class="row">
-						<div class="col-6"><p class="old-price">$134.00</p></div>
-						<div class="col-6 text-end"><p class="new-price">$112.00</p></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6 col-12">
-				<div class="pr-i3">
-					<img src="{{('public/frontend/images/pr-detail/rây 1.webp')}}" alt="" class="w-100 img-fluid">
-					<a href="#" class="pr-i3-name">Stainless steel tea strainer</a>
-					<ul class="pr-i3-rating d-flex">
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-						<li><i class="fa-solid fa-star"></i></li>
-					</ul>
-                    <p>Trong bộ dụng cụ pha chế cocktail, café và rượu, bình lắc pha chế là một trong những dụng cụ không thể thiếu của người pha chế.</p>
-					<div class="row">
-						<div class="col-6"><p class="old-price">$134.00</p></div>
-						<div class="col-6 text-end"><p class="new-price">$112.00</p></div>
-					</div>
-				</div>
-			</div>
+			@endfor
 		</div>
 	</div>
     <!-- END PRODUCT DETAIL -->
@@ -345,13 +299,14 @@
 				</div>
 				<div class="col-3 bocongthuong">
 					<div class="d-flex">
-						<img src="{{('public/frontend/images/bocongthuong.png')}}" alt="" class="w-100">
+						<img src="{{asset('frontend/images/bocongthuong.png')}}" alt="" class="w-100">
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-    <script src="../header-footer/js/jquery-3.7.1.min.js"></script>
-    <script src="../header-footer/js/bootstrap.bundle.js"></script>
+    <script src="{{asset('frontend/js/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{asset('frontend/js/bootstrap.bundle.js')}}"></script>
+	<script src="{{asset('frontend/js/productDetail.js')}}"></script>
 </body>
 </html>

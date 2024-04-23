@@ -196,3 +196,46 @@
     border-radius: 22px;
     height: 44px;
 }
+
+/* --------------cai nay la vut vao style cua header/foooter ne, nho doi ca file html------- */ 
+
+.nav_top {
+    position: fixed;
+    top: -20px; /* Vị trí cố định phía trên cùng */
+    /* left: 50px; Vị trí cố định phía trái */
+    /* width: 100%; Chiều rộng bằng 100% trang */
+    z-index: 10; /* Đặt mức độ ưu tiên hiển thị cao hơn các thành phần khác */
+    background-color: #fdfdfd; /* Thiết lập màu nền (màu trắng) */
+    position: -10px;
+  }
+.slide{
+    z-index: 1;
+    margin-top: 85px;
+}
+.page_ul_li{
+    margin-bottom: 0;
+}
+
+/* --------------cai nay la vut vao style cua header/foooter ne, nho doi ca file html------- */ 
+
+.suggestions {
+    position: absolute; /* Vị trí tuyệt đối */
+    background-color: #fdfdfd; /* Màu nền */
+    top: 54px;
+    border-radius: 12px;
+    width: 300px; /* Chiều rộng bằng 100% */
+    z-index: 10; /* Mức độ ưu tiên hiển thị */
+    display: none; /* Ẩn mặc định */
+    color: #666;
+  }
+  .suggestions ul {
+    list-style: none; /* Xóa dấu đầu dòng */
+    padding: 0;
+    margin: 0;
+  }
+  .suggestions li {
+    padding: 5px; /* Khoảng cách giữa các gợi ý */
+  }
+  .suggestions li:hover {
+    background-color: #f0f0f0; /* Nền khi rê chuột lên */
+  }

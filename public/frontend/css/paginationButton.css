@@ -1,0 +1,39 @@
+.pagination {
+    display: inline-block;
+}
+
+.pagination li {
+color: black;
+float: left;
+padding: 10px 0px 8px 16px;
+text-decoration: none;
+/* transition: background-color .3s; */
+border-radius: 5px;
+text-align: center;
+}
+
+.pagination li.active {
+background-color: #FBC31C;
+color: white;
+padding: 10px 7px 8px 16px;
+border-radius: 5px;
+margin-left: 16px;
+}
+
+.pagination a:hover:not(.active) {
+background-color: #ddd;
+border-radius: 5px;
+}
+
+.nexttext {
+    width: 10px;
+    padding-right: 10px;
+}
+
+.activetext {
+    /* padding-right: 5px; */
+}
+
+.unactivetext {
+    width: 45px;
+}

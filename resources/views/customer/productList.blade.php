@@ -10,44 +10,44 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/productList.css') }}">
 </head>
 <body>
-
-    <!-- HEADER -->
-    <div class="container nav_top">
-        <div class="row">
-            <div class="col-2 logo">
-                <img src="{{ asset('frontend/images/logo - temp.png')}}" alt=""class="w-100">
-            </div>
-            <div class="col-2"></div>
-            <div class="col-4 search">
-                <div class="row">
-                    <div class="col-8">
-                        <input type="text" class="w-100 text_p1" placeholder="Search products...">
-                    </div>
-                    <div class="col-4">
-                        <button class="btn_search">Search</button>
-                    </div>
+<div class="container-fluid  nav_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-2 logo">
+                    <img src="{{asset('frontend/images/logo - temp.png')}}" alt=""class="w-100">
                 </div>
-            </div>
-            <div class="col-4 pages">
-                <ul class="d-flex justify-content-end">
-                    <li class="page_item ">
-                        <div><a href="#">Home</a></div>
-                    </li>
-                    <li class="page_item ">
-                        <div><a href="#">Product</a></div>
-                    </li>
-                    <li class="page_item ">
-                        <div><a href="#">Forum</a></div>
-                    </li>
-                    <li class="cart_item">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <div><p>2</p></div>
-                    </li>
-                    <li class="cart_item">
-                        <i class="fa-solid fa-user"></i>
-                        <div><p>2</p></div>
-                    </li>
-                </ul>
+                <div class="col-2"></div>
+                <div class="col-4 search">
+                    <div class="row">
+                      <div class="col-8">
+                        <input type="text" class="w-100 text_p1" placeholder="Search products..." id="searchInput">
+                        <div class="suggestions text_p1" style="display: none;"></div> </div>
+                      <div class="col-4">
+                        <button class="btn_search">Search</button>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-4 pages">
+                    <ul class="d-flex justify-content-end page_ul_li">
+                        <li class="page_item ">
+                            <div><a href="#">Home</a></div>
+                        </li>
+                        <li class="page_item ">
+                            <div><a href="#">Product</a></div>
+                        </li>
+                        <li class="page_item ">
+                            <div><a href="#">Forum</a></div>
+                        </li>
+                        <li class="cart_item">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <div><p>2</p></div>
+                        </li>
+                        <li class="cart_item">
+                            <i class="fa-solid fa-user"></i>
+                            <div><p>2</p></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -183,58 +183,14 @@
             <!--  -->
             <div class="col-lg-9">
                 <div class="row">
-				    <div class="col-4">
-                        <div class="pr-i3">
-                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
-                            <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
-                            <div class="container_information">
-                                <a href="#" class="pr-i2-name">Slim</a>
-                                    <ul class="pr-i2-rating d-flex">
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                    </ul>
-                                    <div class="text_product">
-                                        Taque earum rerum hic tenetur a sapiente maiores alias consequatur aut perferendis doloribus asperiores...
-                                    </div>
-                                    <div class="row productList_price">
-                                        <div class="col-6"><p class="old-price">$134.00</p></div>
-                                        <div class="col-6 text-end"><p class="new-price">$112.00</p></div>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
+                                                              <!-- ĐỔI THÀNH PRODUCT KHI CÓ DATA -->
+                @foreach ($users as $user)
                     <div class="col-4">
                         <div class="pr-i3">
                             <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
                             <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
                             <div class="container_information">
-                                <a href="#" class="pr-i2-name">Slim</a>
-                                    <ul class="pr-i2-rating d-flex">
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                    </ul>
-                                    <div class="text_product">
-                                        Taque earum rerum hic tenetur a sapiente maiores alias consequatur aut perferendis doloribus asperiores...
-                                    </div>
-                                    <div class="row productList_price">
-                                        <div class="col-6"><p class="old-price">$134.00</p></div>
-                                        <div class="col-6 text-end"><p class="new-price">$112.00</p></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <div class="col-4">
-                        <div class="pr-i3">
-                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
-                            <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
-                            <div class="container_information">
-                            <a href="#" class="pr-i2-name">Slim</a>
+                                <a href="#" class="pr-i2-name">Slim {{ $user->name }}</a>
                                 <ul class="pr-i2-rating d-flex">
                                     <li><i class="fa-solid fa-star"></i></li>
                                     <li><i class="fa-solid fa-star"></i></li>
@@ -252,67 +208,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="pr-i3">
-                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
-                            <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
-                            <div class="container_information">
-                                <a href="#" class="pr-i2-name">Slim</a>
-                                <ul class="pr-i2-rating d-flex">
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                </ul>
-                                <div class="text_product">
-                                    Taque earum rerum hic tenetur a sapiente maiores alias consequatur aut perferendis doloribus asperiores...
-                                </div>
-                                <div class="row productList_price">
-                                    <div class="col-6"><p class="old-price">$134.00</p></div>
-                                    <div class="col-6 text-end"><p class="new-price">$112.00</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="pr-i3">
-                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
-                            <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
-                            <div class="container_information">
-                                <a href="#" class="pr-i2-name">Slim</a>
-                                <ul class="pr-i2-rating d-flex">
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                </ul>
-                                <div class="text_product">
-                                    Taque earum rerum hic tenetur a sapiente maiores alias consequatur aut perferendis doloribus asperiores...
-                                </div>
-                                <div class="row productList_price">
-                                    <div class="col-6"><p class="old-price">$134.00</p></div>
-                                    <div class="col-6 text-end"><p class="new-price">$112.00</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                @endforeach
+                
+    <!-- <nav aria-label="Pages"> -->
+        <!-- {!! $users->links() !!} -->
+    <!-- </nav> -->
                 </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-3"></div>
                         <div class="col-6">
-                            <div class="cartegory_page_number">
-                                <!-- <p><span>&#171;</span class="text_p1">1  2  3  4  5<span>&#187;</span></p> -->
-                                <p class="pagination">
-                                    <a href="#">&laquo;</a>
-                                    <a href="#" class="active">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">&raquo;</a>
-                                </p>
-                            </div>
+                        <div class="cartegory_page_number">
+                                                              <!-- ĐỔI THÀNH PRODUCT KHI CÓ DATA -->
+                                {!! $users->links('components/paginationButton') !!}
+                        </div>
                         </div>
                         <div class="col-3"></div>
                     </div>
@@ -379,7 +288,7 @@
         </div>
     </div>
     <!-- FOOTER -->
-    <div class="contanier-fluid bg-footer py-5 footer">
+    <div class="contanier-fluid bg-footer py-5">
 		<div class="container">
 			<div class="row">
 				<div class="col-3 contact">
@@ -435,12 +344,13 @@
 				</div>
 				<div class="col-3 bocongthuong">
 					<div class="d-flex">
-						<img src="{{ asset('frontend/images/bocongthuong.png')}}" alt="" class="w-100">
+						<img src="{{asset('frontend/images/bocongthuong.png')}}" alt="" class="w-100">
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+    
     <script src="{{('frontend/js/jquery-3.7.1.min.js')}}"></script>
     <script src="{{('frontend/js/bootstrap.bundle.js')}}"></script>
     <script src="{{('frontend/js/productList.js')}}"></script>
