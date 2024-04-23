@@ -139,7 +139,7 @@
                   </table>
                 </div>
                   <div class="col-8 bt-pay pm">
-                    <a class="btn" href="http://localhost:8000/checkout" class="btn" id="btn-p">
+                    <a class="btn" href="http://localhost:8000/checkout" id="btn-p">
                         <p1>Payment</p1>
                     </a>
                 </div>
