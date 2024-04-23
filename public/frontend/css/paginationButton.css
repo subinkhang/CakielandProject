@@ -27,12 +27,13 @@ border-radius: 5px;
 
 .nexttext {
     width: 10px;
+    padding-right: 10px;
 }
 
 .activetext {
     /* padding-right: 5px; */
 }
 
-.hahatext {
-    width: 40px;
+.unactivetext {
+    width: 45px;
 }

@@ -8,45 +8,24 @@
     <div class="pull-right pagination">
         <ul class="pagination">
             {{-- Previous Page Link --}}
-            @if ($paginator->onFirstPage())
-                <li class="disabled">
-                    <div class="hahatext"></div>
-                </li>
-            @else
-                <li>
-                    <a href="{{ $paginator->previousPageUrl() }}">
-                        <div class="nexttext">&laquo</div>
-                    </a>
-                </li>
+            @if (!$paginator->onFirstPage())
+                <li><a href="{{ $paginator->previousPageUrl() }}" class="nexttext">&laquo</a></li>
             @endif
 
             {{-- Pagination Elements --}}
-            @foreach ($elements as $element)
-                {{-- Array Of Links --}}
-                @if (is_array($element))
-                    @foreach ($element as $page => $url)
-                        @if ($page == $paginator->currentPage())
-                            <li class="active"><div class="activetext">{{ $page }}</div></li>
-                        @elseif (($page == $paginator->currentPage() - 1 || $page == $paginator->currentPage() + 1) || $page == $paginator->lastPage())
-                            <li><a class="hahatext" href="{{ $url }}">{{ $page }}</a></li>
-                        @elseif ($page == $paginator->lastPage() - 1)
-                            <li><div class="activetext"><i class="fa fa-ellipsis-h"></i></div></li>
-                        @endif
-                    @endforeach
+            @foreach (range(1, $paginator->lastPage()) as $page)
+                @if ($page >= $paginator->currentPage() - 2 && $page <= $paginator->currentPage() + 2)
+                    @if ($page == $paginator->currentPage())
+                        <li class="active"><span>{{ $page }}</span></li>
+                    @else
+                        <li><a href="{{ $paginator->url($page) }}" class="unactivetext">{{ $page }}</a></li>
+                    @endif
                 @endif
             @endforeach
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
-                <li>
-                    <a href="{{ $paginator->nextPageUrl() }}">
-                        <div class="nexttext">&raquo</div>
-                    </a>
-                </li>
-            @else
-                <li class="disabled">
-                    <div class="hahatext"></div>
-                </li>
+                <li><a href="{{ $paginator->nextPageUrl() }}" class="nexttext">&raquo</a></li>
             @endif
         </ul>
     </div>
