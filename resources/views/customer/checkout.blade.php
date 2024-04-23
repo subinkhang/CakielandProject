@@ -92,16 +92,16 @@
 <!----------------------right----------------------------->
         
             <div class="col-5 cont">
-                <form>
+            <form required>
             <div class="row">
                 <h6><b>E-mail</b></h6>
-                <input type="email" placeholder="Nguyenvana@gmail.com" class="deli">
+                <input type="email" placeholder="Nguyenvana@gmail.com" class="deli" id="email">
                 <h6 class="ip"><b>Name</b></h6>
-                <input type="text" placeholder="Nguyen Van A" class="deli">
+                <input type="text" placeholder="Nguyen Van A" class="deli" id="name">
                 <h6 class="ip"><b>Phone Number</b></h6>
-                <input type="tel" placeholder="0123456789" class="deli">
+                <input type="tel" placeholder="0123456789" class="deli" id="phone">
                 <h6 class="ip"><b>Address</b></h6>
-                <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli">
+                <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli" id="address">
                 <h6 class="pmmt"><b>Payment Methods</b></h6>
                 <select class="form-select form-select-pm pmbox">
                     <option selected>COD</option>
@@ -113,9 +113,9 @@
                     </button>
                 </div>
             </div>
-                
-            </div>
             </form>
+
+            </div>
         </div>
         </div>
         
@@ -194,7 +194,7 @@
         <i class="fa-solid fa-circle-check"></i>
         <h3>PAYMENT COMPLETE</h3>
         <div class="btnback">
-            <button class="closebtn"> Back to HomePage </button>
+            <a class="btn" href="http://localhost:8000"> Back to HomePage </a>
         </div>
     </div>
 </div>

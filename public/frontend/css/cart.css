@@ -78,15 +78,16 @@
 }
 
 #btn-minus
-{   text-align: center;
+{   text-align: right;
 	height: 20px;
 	border: none;
 	width: 20px;
-	margin-right: 10px;
-    margin-bottom: 5px;
+	margin-right: 5px;
+    margin-bottom: 10px;
 	/*background-color: #666;*/
 	color: #080808;
     border-radius: 8px;
+    font-weight: 700;
 }
 
 #btn-plus{
@@ -94,19 +95,18 @@
 	height: 20px;
 	border: none;
 	width: 20px;
-	margin-right: 5px;
-    margin-bottom: 5px;
+	margin-right: 10px;
+    margin-bottom: 15px;
 	/*background-color: #666;*/
 	color: #080808;
     border-radius: 8px;
-
-
+    font-weight: 700;
 }
 #pr-number
 {   
     text-align: center;
 	width: 50px;
-	height: 20px;
+	height: 22px;
 	border: 1px solid #666;
     margin-top: 2px;
 	margin-right: 5px;
@@ -121,4 +121,5 @@
 .removeitem{
     border: none;
     color: red;
+    
 }

@@ -1,45 +1,37 @@
         var inputElement = document.getElementById('pr-number');
-        var subtotal = document.getElementById('subprice');
-        var price = document.getElementById('price');
+        var price = document.getElementsById('pricee');
+        var subtt;
         function decreaseQuantity() {
             var currentValue = parseInt(inputElement.value);
             if (currentValue > 1) {
                 inputElement.value = currentValue - 1;
             }
-            subtotal = currentValue * price;
-            // Bạn có thể thêm phần xử lý khác ở đây nếu cần.
-
+            //Addition
             var num = inputElement.value;
             console.log('num', num);
-            var subtt = document.getElementById('subprice');
-                const subp = 112;
-                    subtt = subp * num;
-            
-            document.getElementById('subtotal').innerHTML=subtt;
-            document.getElementById('subtotal').style.fontWeight = 'bold, san-serif';
-            document.getElementById('subtotal').style.fontFamily = 'Be Vietnam Pro';
+                const subp = 112.00;
+                subtt = subp * num;
+            document.getElementById('subtotal').innerHTML = `<span>$${subtt.toFixed(2)}</span>`;
             console.log('tong', subtt);
+            return subtt;
         }
         function increaseQuantity() {
             var currentValue = parseInt(inputElement.value);
             if (!isNaN(currentValue)) {
                 inputElement.value = currentValue + 1;
             }
-
-            //aa
-            subtotal = currentValue * price;
             var num = inputElement.value;
             console.log('num', num);
-            var subtt = document.getElementById('subprice');
-            const subp = 112;
-                    subtt = subp * num;
-            document.getElementById('subtotal').innerHTML=subtt;
-            document.getElementById('subtotal').style.fontWeight = 'bold, san-serif';
-            document.getElementById('subtotal').style.fontFamily = 'Be Vietnam Pro';
+                const subp = 112.00;
+                subtt = subp * num;
+            document.getElementById('subtotal').innerHTML = `<span>$${subtt.toFixed(2)}</span>`;
             console.log('tong', subtt);
+            return subtt;
         }
-
+/*-------------REMOVE ITEM------------*/
         function rmitem1(){
             const removeitem1 = document.getElementById("item1");
             removeitem1.remove();
         }
+
+/*------TOTAL------------*/

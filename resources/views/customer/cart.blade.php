@@ -53,15 +53,15 @@
                                 <div class="col-9 row">
                                     <h6>lăn bột hjghvhhgfhgvhvjvjvjvjvjgc</h6>
                                     <div class="d-flex">
-                                    <button id="btn-minus" class="btn-minuse" type="button" onclick="decreaseQuantity()"><i class="fa-solid fa-minus"></i></button>
+                                    <button id="btn-minus" class="btn-minuse" type="button" onclick="decreaseQuantity()">-</button>
                                     <span id="numb"><input type="number" value="1" id="pr-number" name="quan[1]" min="1"></span>
-                                    <button id="btn-plus" class="btn-pluss" type="button" onclick="increaseQuantity()"><i class="fa-solid fa-plus"></i></button>
+                                    <button id="btn-plus" class="btn-pluss" type="button" onclick="increaseQuantity()">+</button>
                                     </div>
-                                    <h6 class="price">$112.00</h6>             
+                                    <h6 class="price" id="pricee">$112.00</h6>             
                             </div>
                         </td>
-                        <td class="col-2 text-end subprice" id="subtotal">
-                            <b>$112.00</b>
+                        <td class="col-2 text-end">
+                            <b class="subprice" id="subtotal">$112.00</b>
                             <p></p>
                             <p></P>
                             <button class="removeitem" onclick = "rmitem1()"> <h7> remove </h7> </button>
@@ -118,30 +118,30 @@
                 <tr>
                     <th scope="row"></th>
                     <td class="col-8"><p1>Subtotal</p1></td>
-                    <td class="col-4 text-end"><p1>199.00</p1></td>
+                    <td class="col-4 text-end"><p1 id="rightsub">199.00</p1></td>
                 </tr>
                 <tr>
                     <th scope="row"></th>
                     <td class="col-8"><p1>Shipping</p1></td>
-                    <td class="col-4 text-end"><p1>2.00</p1></td>
+                    <td class="col-4 text-end"id="shipping-price"><p1>2.00</p1></td>
                 </tr>
                 <tr>
                     <th scope="row"></th>
                     <td class="col-8"><p1>Discount</p1</td>
-                    <td class="col-4 text-end"><p1>2.00</p1></td>
+                    <td class="col-4 text-end" id="discount-price"><p1>2.00</p1></td>
                 </tr>
                 
                 <tr class="total" style="margin-top: 100px;">
                     <th scope="row"></th>
                     <td class="col-8"><h3><b>TOTAL</b></h3></td>
-                    <td class="col-2 text-end"><h3><b>199.00</b></h3></td>
+                    <td class="col-2 text-end" id="totalprice"><h3><b>199.00</b></h3></td>
                 </tr>
                   </table>
                 </div>
                   <div class="col-8 bt-pay pm">
-                    <button class="btn" id="btn-p">
+                    <a class="btn" href="http://localhost:8000/checkout" class="btn" id="btn-p">
                         <p1>Payment</p1>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

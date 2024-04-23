@@ -127,10 +127,15 @@
     .modalbox {
         text-align: center;
         width: 500px;
-      }
+    }
+
+    .modalbox.btnback{
+        text-align: center;
+    }
       
-      .closebtn {
+    .btnback {
         margin-top: 50px;
+        margin-left: 150px;
         text-align: center;
         border: none;
         border-radius:20px;

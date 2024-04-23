@@ -1,6 +1,6 @@
 const btn = document.getElementById("btn-p");
 const popup = document.querySelector(".popup");
-const closeBtn = document.querySelector(".closebtn");
+const closeBtn = document.querySelector(".btnback");
 const overlay = document.querySelector(".overlay");
 
 // btn.addEventListener("click", (e) => {
@@ -33,5 +33,36 @@ closeBtn.addEventListener("click", () => {
     };
 });
 
+//---------------------CHECK------------
+const emailInput = document.getElementById("email");
+const nameInput = document.getElementById("name");
+const phoneInput = document.getElementById("phone");
+const addressInput = document.getElementById("address");
+const paymentButton = document.getElementById("btn-p");
+
+function allInputsFilledAndEmailValid() {
+  const email = emailInput.value;
+  const phone = phoneInput.value;
+  const isValidEmail = email !== "" && email.includes("@");
+  const isValidPhone = phone !== "" && phone.length > 0 && !isNaN(phone);
+  return isValidEmail && nameInput.value !== "" && phoneInput.value !== "" && addressInput.value !== "";
+}
+
+// Add event listeners to all input elements
+emailInput.addEventListener("input", () => {
+  paymentButton.disabled = !allInputsFilledAndEmailValid();
+});
+nameInput.addEventListener("input", () => {
+  paymentButton.disabled = !allInputsFilledAndEmailValid();
+});
+phoneInput.addEventListener("input", () => {
+  paymentButton.disabled = !allInputsFilledAndEmailValid();
+});
+addressInput.addEventListener("input", () => {
+  paymentButton.disabled = !allInputsFilledAndEmailValid();
+});
+
+// Check initial state (disable button if any input is empty or email is invalid)
+paymentButton.disabled = !allInputsFilledAndEmailValid();
 
 
