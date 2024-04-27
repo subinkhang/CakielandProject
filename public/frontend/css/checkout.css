@@ -75,7 +75,6 @@
     }
 
     .bg-breadcrub {
-        background-image: url(../header-footer/img/pr-detail/banner.png);
         background-size: cover;
         padding: 120px 0;
     }
@@ -104,4 +103,85 @@
     .bg-breadcrub .active
     {
         color: #666666;
+    }
+
+    body .modalbox{
+        align-items: center;
+        text-align: center;
+    }
+
+    /*-------------------------DONE--------------*/
+    .popup {
+        display: none;  /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);  /* Center the popup */
+        background-color: #f3f3f3;
+        padding: 20px;
+        border-radius: 25px;
+        z-index: 10;  /* Ensure the popup is on top of other content */
+      }
+     
+      
+    .modalbox {
+        text-align: center;
+        width: 500px;
+    }
+
+    .modalbox.btnback{
+        text-align: center;
+    }
+      
+    .btnback {
+        margin-top: 50px;
+        margin-left: 150px;
+        text-align: center;
+        border: none;
+        border-radius:20px;
+        background-color: #FBC31C;
+        width: 200px;
+        height: 40px;
+      }
+    .popup.active {  /* Show the popup when active class is added */
+        display: block;
+      }      
+    .modalbox i{
+        font-size: 60px;
+        color: green;
+    }
+    .modalbox h3{
+        margin-top: 20px;
+    }
+    .overlay{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.75);
+        display: none;
+        z-index: 9;
+    }
+    .overlay.active{
+        display: block;
+    }
+
+    /*---------------Bank Method----------------   IF DONE -----> LINK ABOVE */
+    .bankmethod{
+        display: none;  /* Initially hidden */
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);  /* Center the popup */
+        background-color: #f3f3f3;
+        border-radius: 25px;
+        z-index: 10;
+    }
+    .bankmethod.active{
+        display: block;
+    }
+    .qr{
+        width: 320px;
+        height: 320px;
     }

@@ -47,7 +47,6 @@
 }
 
 .bg-breadcrub {
-    background-image: url(../header-footer/img/pr-detail/banner.png);
     background-size: cover;
     padding: 120px 0;
 }
@@ -76,4 +75,51 @@
 .bg-breadcrub .active
 {
 	color: #666666;
+}
+
+#btn-minus
+{   text-align: right;
+	height: 20px;
+	border: none;
+	width: 20px;
+	margin-right: 5px;
+    margin-bottom: 10px;
+	/*background-color: #666;*/
+	color: #080808;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+#btn-plus{
+    text-align: left;
+	height: 20px;
+	border: none;
+	width: 20px;
+	margin-right: 10px;
+    margin-bottom: 15px;
+	/*background-color: #666;*/
+	color: #080808;
+    border-radius: 8px;
+    font-weight: 700;
+}
+#pr-number
+{   
+    text-align: center;
+	width: 50px;
+	height: 22px;
+	border: 1px solid #666;
+    margin-top: 2px;
+	margin-right: 5px;
+	/* padding-left: 10px; */
+    border-radius: 8px;
+}
+
+#numb{
+    -ms-flex-item-align: center;
+    text-align:center
+}
+.removeitem{
+    border: none;
+    color: red;
+    
 }

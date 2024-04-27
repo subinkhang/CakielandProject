@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <link rel="stylesheet" href="{{('public/frontend/css/all.min.cs')}}s">
-    <link rel="stylesheet" href="{{('public/frontend/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/style.css')}}">
-    <link rel="stylesheet" href="{{('public/frontend/css/checkout.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/checkout.css')}}">
 </head>
 <body>
     <!-----------HEADER-------------->
-    <div class="contanier-fluid bg-breadcrub my-3">
+    <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{asset('frontend/images/pr-detail/banner.png')}}');">
         <div class="col-12 text-center">
             <h2>Check Out</h2>
             <nav aria-label="breadcrumb">
@@ -22,6 +22,9 @@
             </nav>
         </div>
     </div>
+    <!-----------------LEFT---------------------------->
+    <div class="container">
+    <div class="row">
     <div class="container">
         <div class="row">
             <div class="col-6"></div>
@@ -32,23 +35,23 @@
                 <div class="container">
                 <div class="row pr-list-co">
                     <div class="col-3">
-                        <img src="{{('public/frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg')}}"  class="img-fluid">
+                        <img src="{{asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg')}}"  class="img-fluid">
                     </div>
                     <div class="col-9 row">
                     <h5><b>lăn bột hjghvhhgfhgvhvjvjvjvjvjgc</b></h5>
-                    <h6 class="col-3" >Quantity</h6>
-                    <h6 class="col-9">1</h6>
+                    <h6 class="col-2" >Quantity:</h6>
+                    <h6 class="col-10">1</h6>
                     <h5 class="price"><b>$112.00</b></h5>             
                 </div>           
                 </div>
                 <div class="row pr-list-co">
                     <div class="col-3">
-                        <img src="{{('')}}"  class="img-fluid">
+                    <img src="{{asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg')}}"  class="img-fluid">
                     </div>
                     <div class="col-9 row">
                     <h5><b>lăn bột hjghvhhgfhgvhvjvjvjvjvjgc</b></h5>
-                    <h6 class="col-3" >Quantity</h6>
-                    <h6 class="col-9">1</h6>
+                    <h6 class="col-2" >Quantity:</h6>
+                    <h6 class="col-10">1</h6>
                     <h5 class="price"><b>$112.00</b></h5>             
                 </div>           
                 </div>
@@ -89,19 +92,20 @@
 <!----------------------right----------------------------->
         
             <div class="col-5 cont">
-                <form>
+            <form required>
             <div class="row">
                 <h6><b>E-mail</b></h6>
-                <input type="email" placeholder="Nguyenvana@gmail.com" class="deli">
+                <input type="email" placeholder="Nguyenvana@gmail.com" class="deli" id="email">
                 <h6 class="ip"><b>Name</b></h6>
-                <input type="text" placeholder="Nguyen Van A" class="deli">
+                <input type="text" placeholder="Nguyen Van A" class="deli" id="name">
                 <h6 class="ip"><b>Phone Number</b></h6>
-                <input type="tel" placeholder="0123456789" class="deli">
+                <input type="tel" placeholder="0123456789" class="deli" id="phone">
                 <h6 class="ip"><b>Address</b></h6>
-                <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli">
+                <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli" id="address">
                 <h6 class="pmmt"><b>Payment Methods</b></h6>
                 <select class="form-select form-select-pm pmbox">
                     <option selected>COD</option>
+                    <option>Bank</option>
                 </select>
                 <div class="col-8 bt-pay pm">
                     <button class="btn" id="btn-p">
@@ -109,9 +113,9 @@
                     </button>
                 </div>
             </div>
-                
-            </div>
             </form>
+
+            </div>
         </div>
         </div>
         
@@ -181,8 +185,27 @@
 			</div>
 		</div>
 	</div>
-    <script src="../header-footer/js/bootstrap.bundle.js"></script>
-    <script src="../header-footer/js/jquery-3.7.1.min.js"></script>
+    </div>
+
+    <!-----------DONE--------------->
+    <div class="overlay"></div>
+    <div class="popup">
+    <div class="modalbox center">
+        <i class="fa-solid fa-circle-check"></i>
+        <h3>PAYMENT COMPLETE</h3>
+        <div class="btnback">
+            <a class="btn" href="http://localhost:8000"> Back to HomePage </a>
+        </div>
+    </div>
+</div>
+
+<!------------QR---------------->
+<div class="bankmethod">
+<img src="{{asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg')}}"  class="qr">
+</div>
+    <script src="{{asset('frontend/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{asset('frontend/js/checkout.js')}}"></script>
     
 </body>
 </html>
