@@ -35,6 +35,6 @@ Route::get('/about-us', 'App\Http\Controllers\AboutUsController@index');
 
 Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
 
-// Route::fallback(function () {
-//     return redirect()->action('App\Http\Controllers\ErrorPageController@index');
-// });
+Route::fallback(function () {
+    return redirect()->action('App\Http\Controllers\ErrorPageController@index');
+});
