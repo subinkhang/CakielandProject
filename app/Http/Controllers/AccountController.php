@@ -8,6 +8,6 @@ class AccountController extends Controller
 {
     public function index()
     {
-        return view('customer/account');
+        return view('user/account');
     }
 }

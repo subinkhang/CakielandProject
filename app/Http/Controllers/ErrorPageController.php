@@ -8,6 +8,6 @@ class ErrorPageController extends Controller
 {
     public function index()
     {
-        return view('customer/errorPage');
+        return view('user/errorPage');
     }
 }

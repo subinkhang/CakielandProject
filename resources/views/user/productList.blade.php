@@ -219,7 +219,7 @@
                         <div class="col-3"></div>
                         <div class="col-6">
                         <div class="cartegory_page_number">
-                                                              <!-- ĐỔI THÀNH PRODUCT KHI CÓ DATA -->
+                                                              <!-- ĐỔI THÀNH PRODUCT KHI CÓ -->
                                 {!! $users->links('components/paginationButton') !!}
                         </div>
                         </div>
