@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/homepage.css')}}">
+    <link rel="stylesheet" href="{{('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css')}}">
 </head>
 <body>
     <div class="container-fluid  nav_top">
@@ -246,7 +247,7 @@
 		</div>
 	</div>
 
-    <div class="container getintouch" style="background-image: url('{{'/frontend/images/homepage/Mask Group.png'}}');">
+    <div class="container getintouch">
         <div class="row">
           <div class="col-2"></div>
           <div class="col-8 getintouch_info">
@@ -265,6 +266,7 @@
                     <button class="btn_submit" onclick="validateEmail()">Submit</button>
                   </div>
                   <p id="email-error" class="text_p1" style="color: red; display: none;">Email is not valid</p>
+                  <p id="success-message" class="text_p1" style="color: green; display: none;">Success! Your email has been submitted.</p>
                 </div>
               </div>
               <div class="col-2"></div>

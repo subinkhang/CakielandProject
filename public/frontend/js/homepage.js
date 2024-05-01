@@ -62,13 +62,20 @@ document.addEventListener('click', function(event) {
 function validateEmail() {
     var emailInput = document.getElementById('email');
     var emailError = document.getElementById('email-error');
+    var successMessage = document.getElementById('success-message');
     var email = emailInput.value;
+  
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  
     if (!emailPattern.test(email)) {
-        emailError.style.display = 'block';
+      emailError.style.display = 'block';
+      successMessage.style.display = 'none'; // Hide success message if email is invalid
     } else {
-        emailError.style.display = 'none';
-        // Gửi email hoặc thực hiện các hành động khác sau khi kiểm tra email hợp lệ ở đây
+      emailError.style.display = 'none';
+      successMessage.style.display = 'block';
+
+      console.log("Captured email:", email);
+      emailInput.value = '';
+  
     }
-}
+  }
