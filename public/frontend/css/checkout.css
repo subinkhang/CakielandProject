@@ -185,3 +185,10 @@
         width: 320px;
         height: 320px;
     }
+    /*------------------------------CHECK INFO-----------------------*/
+    #checkinfo{
+        display: none;
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }

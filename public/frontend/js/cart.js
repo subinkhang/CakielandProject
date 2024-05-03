@@ -33,5 +33,8 @@
             const removeitem1 = document.getElementById("item1");
             removeitem1.remove();
         }
-
+        function rmitem2(){
+            const removeitem2 = document.getElementById("item2");
+            removeitem2.remove();
+        }
 /*------TOTAL------------*/
