@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGN_UP</title>
+    <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}">

@@ -224,11 +224,11 @@ body, button, input{
     
 }
 .btn_add {
-    position: absolute; /* Đặt vị trí tuyệt đối cho nút */
-    top: 194px;  /* Cách đáy container ảnh 10px */
-    left: 252px;   /* Cách mép phải container ảnh 10px */
-    font-size: 24px; /* Kích thước font của icon */
-    cursor: pointer; /* Con trỏ thành tay khi di chuột qua */
+    position: absolute;
+    top: 194px;
+    left: 252px;
+    font-size: 24px;
+    cursor: pointer;
     color:#FBC31C
   }
 .pr-i3
@@ -306,11 +306,9 @@ body, button, input{
 	color: #080808;
 }
 .getintouch {
-    background-image: url(../header-footer/img/Group\ 13943.png);
-    /* background-position: center; */
-    background-size: 100%;
+    /* background-size: 100%;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 50px; */
   }
   
   .getintouch_info {
@@ -338,8 +336,6 @@ body, button, input{
   }
   
   .btn_submit {
-    /* background-color: #080808;
-    color: #FBC31C; */
     background-color: #FBC31C;
     color: #fdfdfd;
     height: 38px;
@@ -364,7 +360,6 @@ body, button, input{
     display: block;
     text-decoration: none;
     padding: 10px;
-    /* color: #666; */
 }
 .mainmenu li a{
     color: #000;
@@ -499,3 +494,39 @@ body, button, input{
   .suggestions li:hover {
     background-color: #f0f0f0; /* Nền khi rê chuột lên */
   }
+
+
+.bg-breadcrub {
+    background-size: cover;
+    padding: 120px 0;
+}
+
+.my-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.bg-breadcrub h2
+{
+	color: #282828;
+	font-size: 55px;
+	font-weight: 700;
+}
+.breadcrumb
+{
+	justify-content: center;
+}
+.breadcrumb-item a
+{
+	font-size: 18px;
+	color: #282828 !important;
+	font-weight: bold;
+}
+.bg-breadcrub .active
+{
+	color: #666666;
+}
+
+.image_getintouch {
+    width: 1185px;
+}
