@@ -154,3 +154,11 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Adding product to cart with color: " + color);
     }
 });
+function selectColor(element) {
+    // Loại bỏ class 'selected' từ tất cả các ô màu
+    const colorOptions = document.querySelectorAll('.pr-color li');
+    colorOptions.forEach(option => option.classList.remove('selected'));
+
+    // Thêm class 'selected' vào ô màu được chọn
+    element.classList.add('selected');
+}

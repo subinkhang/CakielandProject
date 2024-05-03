@@ -73,13 +73,13 @@
 				<div class="carousel-indicators">
 					<div class="row">
 						<div class="col-4">
-							<button data-bs-target="#pr-slide" data-bs-slide-to="0" class="active carousel-btn1"></button>
+							<img data-bs-target="#pr-slide" data-bs-slide-to="0" class="active carousel-btn1" src="{{asset('frontend/images/pr-detail/máy đánh trứng 1.webp')}}"/>
 						</div>
 						<div class="col-4">
-							<button data-bs-target="#pr-slide" data-bs-slide-to="1" class="carousel-btn2"></button>
+							<img data-bs-target="#pr-slide" data-bs-slide-to="1" class="carousel-btn2" src="{{asset('frontend/images/pr-detail/máy đánh trứng 2.webp')}}"/>
 						</div>
 						<div class="col-4">
-							<button data-bs-target="#pr-slide" data-bs-slide-to="2" class="carousel-btn3"></button>
+							<img data-bs-target="#pr-slide" data-bs-slide-to="2" class="carousel-btn3" src="{{asset('frontend/images/pr-detail/máy đánh trứng 3.webp')}}"/>
 						</div>
 					</div>
 				</div>
@@ -115,11 +115,11 @@
 					</div>
 					<p class="pr-detail-content">Philips HR3705 Egg Beater (300W) has a compact design with a sturdy handle so you can use it easily without getting tired of your hands after long use. The parts are easily removable and can be cleaned in the dishwasher.</p>
 					<h4 class="pr-property">Color</h4>
-					<ul class="pr-color d-flex ps-0 mt-3">
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li> 
+					<ul class="pr-color d-flex ps-0 mt-3" id="colorList">
+						<li onclick="selectColor(this)"></li>
+						<li onclick="selectColor(this)"></li>
+						<li onclick="selectColor(this)"></li>
+						<li onclick="selectColor(this)"></li> 
 					</ul>
 					<div class="d-flex">
 						<button id="btn-minus"><i class="fa-solid fa-minus"></i></button>

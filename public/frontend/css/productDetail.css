@@ -205,17 +205,14 @@ body, button, input{
 
 .carousel-btn1
 {
-	background-image: url("../header-footer/img/pr-detail/máy\ đánh\ trứng\ 1.webp");
 	background-size: cover;
 }
 .carousel-btn2
 {
-	background-image: url("../header-footer/img/pr-detail/máy\ dánh\ trứng\ 2.webp");
 	background-size: cover;
 }
 .carousel-btn3
 {
-	background-image: url("../header-footer/img/pr-detail/máy\ đánh\ trứng\ 3.webp");
 	background-size: cover;
 }
 
@@ -329,7 +326,12 @@ body, button, input{
 .pr-color li:nth-child(4) {
     cursor: pointer; /* Sử dụng kiểu con trỏ bàn tay */
 }
-
+.pr-color li:hover {
+    transform: scale(1.1); /* Phóng to khi hover */
+  }
+.selected {
+    border: 3px solid #080808; /* Hiển thị viền đen khi được chọn */
+}
 .star{
     padding-left: 0px;
     color: #FBC31C;
