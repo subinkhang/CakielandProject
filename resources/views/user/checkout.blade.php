@@ -1,20 +1,11 @@
 @extends('components.layout')
 @section('checkout')
 
-<title>Checkout</title>
+<title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
 <link rel="stylesheet" href="{{ asset('frontend/css/checkout.css')}}">
-<!-----------HEADER-------------->
-<div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{asset('frontend/images/pr-detail/banner.png')}}');">
-    <div class="col-12 text-center">
-        <h2>Check Out</h2>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Checkout</li>
-            </ol>
-        </nav>
-    </div>
-</div>
+
+<livewire:breadcrumb-banner />
+
 <!-----------------LEFT---------------------------->
 <div class="container">
 <div class="row">

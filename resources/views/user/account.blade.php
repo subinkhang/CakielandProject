@@ -1,9 +1,10 @@
 @extends('components.layout')
 @section('account')
 
-<title>Account</title>
+<title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
 <link rel="stylesheet" href="{{asset('/frontend/css/account.css')}}">
 
+<livewire:breadcrumb-banner />
     <!-- ACCOUNT -->
 <div class="container">
     <div class="row">

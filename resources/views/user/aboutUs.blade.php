@@ -1,17 +1,11 @@
 @extends('components.layout')
 @section('aboutUs')
 
-<title>About Us</title>
+<title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
 <link rel="stylesheet" href="{{asset('frontend/css/aboutus.css')}}">
 
-<div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
-    <div class="col-12 text-center">
-        <h1>About Us</h1>
-        <nav aria-label="breadcrumb">
-            <p class="breadcrumb-item">From cake pans to sprinkles, all your baking tinkles.</p>
-        </nav>
-    </div>
-</div>
+<livewire:breadcrumb-banner />
+
 <!-- DESCRIPTION -->
 <div class="container information">
     <div class="row in4_us">

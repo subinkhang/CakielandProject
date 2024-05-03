@@ -1,20 +1,10 @@
 @extends('components.layout')
 @section('productList')
 
-<title>Product List</title>    
+<title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title> 
 <link rel="stylesheet" href="{{ asset('frontend/css/productList.css') }}">
 
-<div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
-	<div class="col-12 text-center">
-		<h2>Product List</h2>
-		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Home</a></li>
-				<li class="breadcrumb-item active">Philips HR3705 Egg Beater</li>
-			</ol>
-		</nav>
-	</div>
-</div>
+<livewire:breadcrumb-banner />
 
 <div class="container header">
     <div class="row">
