@@ -219,23 +219,6 @@ body, button, input{
 .detail{
     margin-top: 140px;
 }
-/* Lướt tự động */
-/* @media screen and (max-width:1199px)
-{
-	.pr-detail-name
-	{
-		font-size: 32px;
-	}
-	#pr-slide .carousel-indicators
-	{
-		bottom: 30px;
-	}
-	#pr-slide .carousel-indicators [data-bs-target]
-	{
-		width: 100px;
-		height: 100px;
-	}
-} */
 #pr-slide .carousel-indicators
 	{
 		bottom: -150px;
@@ -506,11 +489,11 @@ body, button, input{
 }
 
 .btn_add {
-    position: absolute; /* Đặt vị trí tuyệt đối cho nút */
-    top: 194px;  /* Cách đáy container ảnh 10px */
-    left: 252px;   /* Cách mép phải container ảnh 10px */
-    font-size: 24px; /* Kích thước font của icon */
-    cursor: pointer; /* Con trỏ thành tay khi di chuột qua */
+    position: absolute;
+    top: 194px;
+    left: 252px;
+    font-size: 24px;
+    cursor: pointer;
     color:#FBC31C
   }
 
