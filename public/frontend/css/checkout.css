@@ -1,4 +1,4 @@
-.container{
+    #all{
     margin-bottom: 100px;
     }
     p1{
@@ -26,6 +26,7 @@
         margin-top: 15px;
     }
     .bt-pay{
+        margin-bottom: 50px;
         margin-top: 50px;
         text-align: center;
         border: none;
@@ -73,7 +74,7 @@
     .col4.info.num{
         text-align: left;
     }
-
+/*----------------header---------------*/
     .bg-breadcrub {
         background-size: cover;
         padding: 120px 0;
@@ -104,7 +105,7 @@
     {
         color: #666666;
     }
-
+/*============================*/
     body .modalbox{
         align-items: center;
         text-align: center;

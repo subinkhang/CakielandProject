@@ -50,7 +50,7 @@ input::-webkit-inner-spin-button {
 .boxvoucher{
     color: #666666
 }
-
+/*---------------------header----------------*/
 .bg-breadcrub {
     background-size: cover;
     padding: 120px 0;
@@ -81,7 +81,7 @@ input::-webkit-inner-spin-button {
 {
 	color: #666666;
 }
-
+/*=============================*/
 #btn-minus
 {   text-align: right;
 	height: 20px;
