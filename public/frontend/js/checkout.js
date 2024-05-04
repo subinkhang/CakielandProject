@@ -2,6 +2,8 @@ const btn = document.getElementById("btn-p");
 const popup = document.querySelector(".popup");
 const closeBtn = document.querySelector(".btnback");
 const overlay = document.querySelector(".overlay");
+const qr = document.querySelector(".qr");
+const bankmethod = document.querySelector(".bankmethod")
 
 // btn.addEventListener("click", (e) => {
 //     e.preventDefault();
@@ -9,9 +11,10 @@ const overlay = document.querySelector(".overlay");
 //     overlay.classList.add("active");
 // });
 
-closeBtn.addEventListener("click", () => {
+overlay.addEventListener("click", () => {
   popup.classList.remove("active");
   overlay.classList.remove("active");
+  bankmethod.classList.remove("active");
 });
 
 
@@ -39,6 +42,7 @@ const nameInput = document.getElementById("name");
 const phoneInput = document.getElementById("phone");
 const addressInput = document.getElementById("address");
 const paymentButton = document.getElementById("btn-p");
+const errorMessage = document.getElementById("checkinfo");
 
 function allInputsFilledAndEmailValid() {
   const email = emailInput.value;
@@ -48,21 +52,21 @@ function allInputsFilledAndEmailValid() {
   return isValidEmail && nameInput.value !== "" && phoneInput.value !== "" && addressInput.value !== "";
 }
 
-// Add event listeners to all input elements
-emailInput.addEventListener("input", () => {
-  paymentButton.disabled = !allInputsFilledAndEmailValid();
-});
-nameInput.addEventListener("input", () => {
-  paymentButton.disabled = !allInputsFilledAndEmailValid();
-});
-phoneInput.addEventListener("input", () => {
-  paymentButton.disabled = !allInputsFilledAndEmailValid();
-});
-addressInput.addEventListener("input", () => {
-  paymentButton.disabled = !allInputsFilledAndEmailValid();
-});
+function updatePaymentButtonState() {
+  if (allInputsFilledAndEmailValid()) {
+    paymentButton.removeAttribute("disabled");
+    errorMessage.style.display = "none";
+  } else {
+    paymentButton.setAttribute("disabled", true);
+    errorMessage.style.display = "block";
+  }
+}
 
-// Check initial state (disable button if any input is empty or email is invalid)
-paymentButton.disabled = !allInputsFilledAndEmailValid();
+emailInput.addEventListener("input", updatePaymentButtonState);
+nameInput.addEventListener("input", updatePaymentButtonState);
+phoneInput.addEventListener("input", updatePaymentButtonState);
+addressInput.addEventListener("input", updatePaymentButtonState);
+
+updatePaymentButtonState();
 
 

@@ -1,3 +1,8 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .search
 {
     padding-left: 10px;
@@ -45,7 +50,7 @@
 .boxvoucher{
     color: #666666
 }
-
+/*---------------------header----------------*/
 .bg-breadcrub {
     background-size: cover;
     padding: 120px 0;
@@ -76,7 +81,7 @@
 {
 	color: #666666;
 }
-
+/*=============================*/
 #btn-minus
 {   text-align: right;
 	height: 20px;
