@@ -26,6 +26,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link rel="stylesheet" href="{{asset('backend/css/morris.css')}}" type="text/css"/>
 	<!-- calendar -->
 	<link rel="stylesheet" href="{{asset('backend/css/monthly.css')}}">
+	<link rel="stylesheet" href="{{asset('backend/css/adminDashboard.css')}}" >
+	<link rel="stylesheet" href="{{('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css')}}">
 	<!-- //calendar -->
 	<!-- //font-awesome icons -->
 	<script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
@@ -39,198 +41,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!--logo start-->
 	<div class="brand">
 		<a href="{{asset('backend/index.html')}}" class="logo">
-			Cakieland
+			<img src="{{asset('frontend/images/logo - temp.png')}}" alt=""class="">
 		</a>
-		<div class="sidebar-toggle-box">
-			<div class="fa fa-bars"></div>
-		</div>
 	</div>
 	<!--logo end-->
-	<div class="nav notify-row" id="top_menu">
-		<!--  notification start -->
-		<ul class="nav top-menu">
-			<!-- settings start -->
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-					<i class="fa fa-tasks"></i>
-					<span class="badge bg-success">8</span>
-				</a>
-				<ul class="dropdown-menu extended tasks-bar">
-					<li>
-						<p class="">You have 8 pending tasks</p>
-					</li>
-					<li>
-						<a href="#">
-							<div class="task-info clearfix">
-								<div class="desc pull-left">
-									<h5>Target Sell</h5>
-									<p>25% , Deadline  12 June’13</p>
-								</div>
-										<span class="notification-pie-chart pull-right" data-percent="45">
-								<span class="percent"></span>
-								</span>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="task-info clearfix">
-								<div class="desc pull-left">
-									<h5>Product Delivery</h5>
-									<p>45% , Deadline  12 June’13</p>
-								</div>
-										<span class="notification-pie-chart pull-right" data-percent="78">
-								<span class="percent"></span>
-								</span>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="task-info clearfix">
-								<div class="desc pull-left">
-									<h5>Payment collection</h5>
-									<p>87% , Deadline  12 June’13</p>
-								</div>
-										<span class="notification-pie-chart pull-right" data-percent="60">
-								<span class="percent"></span>
-								</span>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="task-info clearfix">
-								<div class="desc pull-left">
-									<h5>Target Sell</h5>
-									<p>33% , Deadline  12 June’13</p>
-								</div>
-										<span class="notification-pie-chart pull-right" data-percent="90">
-								<span class="percent"></span>
-								</span>
-							</div>
-						</a>
-					</li>
-
-					<li class="external">
-						<a href="#">See All Tasks</a>
-					</li>
-				</ul>
-			</li>
-			<!-- settings end -->
-			<!-- inbox dropdown start-->
-			<li id="header_inbox_bar" class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-					<i class="fa fa-envelope-o"></i>
-					<span class="badge bg-important">4</span>
-				</a>
-				<ul class="dropdown-menu extended inbox">
-					<li>
-						<p class="red">You have 4 Mails</p>
-					</li>
-					<li>
-						<a href="#">
-							<span class="photo"><img alt="avatar" src="{{asset('backend/images/3.png')}}"></span>
-									<span class="subject">
-									<span class="from">Jonathan Smith</span>
-									<span class="time">Just now</span>
-									</span>
-									<span class="message">
-										Hello, this is an example msg.
-									</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="photo"><img alt="avatar" src="{{asset('backend/images/1.png')}}"></span>
-									<span class="subject">
-									<span class="from">Jane Doe</span>
-									<span class="time">2 min ago</span>
-									</span>
-									<span class="message">
-										Nice admin template
-									</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="photo"><img alt="avatar" src="{{asset('backend/images/3.png')}}"></span>
-									<span class="subject">
-									<span class="from">Tasi sam</span>
-									<span class="time">2 days ago</span>
-									</span>
-									<span class="message">
-										This is an example msg.
-									</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="photo"><img alt="avatar" src="{{asset('backend/images/2.png')}}"></span>
-									<span class="subject">
-									<span class="from">Mr. Perfect</span>
-									<span class="time">2 hour ago</span>
-									</span>
-									<span class="message">
-										Hi there, its a test
-									</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">See all messages</a>
-					</li>
-				</ul>
-			</li>
-			<!-- inbox dropdown end -->
-			<!-- notification dropdown start-->
-			<li id="header_notification_bar" class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-
-					<i class="fa fa-bell-o"></i>
-					<span class="badge bg-warning">3</span>
-				</a>
-				<ul class="dropdown-menu extended notification">
-					<li>
-						<p>Notifications</p>
-					</li>
-					<li>
-						<div class="alert alert-info clearfix">
-							<span class="alert-icon"><i class="fa fa-bolt"></i></span>
-							<div class="noti-info">
-								<a href="#"> Server #1 overloaded.</a>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="alert alert-danger clearfix">
-							<span class="alert-icon"><i class="fa fa-bolt"></i></span>
-							<div class="noti-info">
-								<a href="#"> Server #2 overloaded.</a>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="alert alert-success clearfix">
-							<span class="alert-icon"><i class="fa fa-bolt"></i></span>
-							<div class="noti-info">
-								<a href="#"> Server #3 overloaded.</a>
-							</div>
-						</div>
-					</li>
-
-				</ul>
-			</li>
-			<!-- notification dropdown end -->
-		</ul>
-		<!--  notification end -->
-	</div>
 	<div class="top-nav clearfix">
 		<!--search & user info start-->
 		<ul class="nav pull-right top-menu">
-			<li>
-				<input type="text" class="form-control search" placeholder=" Search">
-			</li>
-			<!-- user login dropdown start-->
 			<li class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 					<img alt="" src="{{asset('backend/images/2.png')}}">
@@ -238,8 +55,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu extended logout">
-					<li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-					<li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
 					<li><a href="{{asset('backend/login.html')}}"><i class="fa fa-key"></i> Log Out</a></li>
 				</ul>
 			</li>
@@ -256,99 +71,33 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<!-- sidebar menu start-->
 			<div class="leftside-navigation">
 				<ul class="sidebar-menu" id="nav-accordion">
+					<h1>ADMIN</h1>
 					<li>
-						<a class="active" href="index.html">
+						<a class="active" href="">
 							<i class="fa fa-dashboard"></i>
 							<span>Dashboard</span>
 						</a>
 					</li>
-					
-					<li class="sub-menu">
-						<a href="javascript:;">
-							<i class="fa fa-book"></i>
-							<span>UI Elements</span>
+					<li>
+						<a href="">
+							<i class="fa-solid fa-utensils"></i>
+							<span>Products</span>
 						</a>
-						<ul class="sub">
-							<li><a href="typography.html">Typography</a></li>
-							<li><a href="glyphicon.html">glyphicon</a></li>
-							<li><a href="grids.html">Grids</a></li>
-						</ul>
 					</li>
 					<li>
-						<a href="fontawesome.html">
-							<i class="fa fa-bullhorn"></i>
-							<span>Font awesome </span>
+						<a href="">
+							<i class="fa-solid fa-truck-fast"></i>
+							<span>Orders</span>
 						</a>
-					</li>
-					<li class="sub-menu">
-						<a href="javascript:;">
-							<i class="fa fa-th"></i>
-							<span>Data Tables</span>
-						</a>
-						<ul class="sub">
-							<li><a href="basic_table.html">Basic Table</a></li>
-							<li><a href="{{asset('adminListProduct.blade.php')}}">Responsive Table</a></li>
-						</ul>
-					</li>
-					<li class="sub-menu">
-						<a href="javascript:;">
-							<i class="fa fa-tasks"></i>
-							<span>Form Components</span>
-						</a>
-						<ul class="sub">
-							<li><a href="form_component.html">Form Elements</a></li>
-							<li><a href="form_validation.html">Form Validation</a></li>
-							<li><a href="dropzone.html">Dropzone</a></li>
-						</ul>
-					</li>
-					<li class="sub-menu">
-						<a href="javascript:;">
-							<i class="fa fa-envelope"></i>
-							<span>Mail </span>
-						</a>
-						<ul class="sub">
-							<li><a href="mail.html">Inbox</a></li>
-							<li><a href="mail_compose.html">Compose Mail</a></li>
-						</ul>
-					</li>
-					<li class="sub-menu">
-						<a href="javascript:;">
-							<i class=" fa fa-bar-chart-o"></i>
-							<span>Charts</span>
-						</a>
-						<ul class="sub">
-							<li><a href="chartjs.html">Chart js</a></li>
-							<li><a href="flot_chart.html">Flot Charts</a></li>
-						</ul>
-					</li>
-					<li class="sub-menu">
-						<a href="javascript:;">
-							<i class=" fa fa-bar-chart-o"></i>
-							<span>Maps</span>
-						</a>
-						<ul class="sub">
-							<li><a href="google_map.html">Google Map</a></li>
-							<li><a href="vector_map.html">Vector Map</a></li>
-						</ul>
-					</li>
-					<li class="sub-menu">
-						<a href="javascript:;">
-							<i class="fa fa-glass"></i>
-							<span>Extra</span>
-						</a>
-						<ul class="sub">
-							<li><a href="gallery.html">Gallery</a></li>
-							<li><a href="404.html">404 Error</a></li>
-							<li><a href="registration.html">Registration</a></li>
-						</ul>
 					</li>
 					<li>
-						<a href="login.html">
+						<a href="">
 							<i class="fa fa-user"></i>
-							<span>Login Page</span>
+							<span>User</span>
 						</a>
 					</li>
-				</ul>            </div>
+				</ul>            
+			</div>
 			<!-- sidebar menu end-->
 		</div>
 	</aside>
@@ -364,7 +113,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<i class="fa fa-eye"> </i>
 						</div>
 						<div class="col-md-8 market-update-left">
-						<h4>Visitors</h4>
+						<h4>Buyers</h4>
 						<h3>13,500</h3>
 						<p>Other hand, we denounce</p>
 					</div>
@@ -420,7 +169,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="agileinfo-grap">
 								<div class="agileits-box">
 									<header class="agileits-box-header clearfix">
-										<h3>Admin</h3>
+										<h3>Daily sales performance chart</h3>
 											<div class="toolbar">
 												
 												
@@ -727,13 +476,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="clearfix"> </div>
 					</div>
 	</section>
-	<!-- footer -->
-			<div class="footer">
-				<div class="wthree-copyright">
-				<p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
-				</div>
-			</div>
-	<!-- / footer -->
 	</section>
 	<!--main content end-->
 	</section>
@@ -762,37 +504,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			function gd(year, day, month) {
 				return new Date(year, month - 1, day).getTime();
 			}
-			
+			data = [
+			{ date: "2023-10-01", toys_children: 100, toys_men: 50, toys_women: 70 },
+			{ date: "2023-10-02", toys_children: 120, toys_men: 65, toys_women: 85 },
+			{ date: "2023-10-03", toys_children: 80, toys_men: 40, toys_women: 60 },
+			{ date: "2023-10-04", toys_children: 150, toys_men: 80, toys_women: 100 },
+			{ date: "2023-10-05", toys_children: 130, toys_men: 70, toys_women: 90 },
+			// ... thêm dữ liệu cho các ngày khác
+			];
 			graphArea2 = Morris.Area({
 				element: 'hero-area',
 				padding: 10,
-			behaveLikeLine: true,
-			gridEnabled: false,
-			gridLineColor: '#dddddd',
-			axes: true,
-			resize: true,
-			smooth:true,
-			pointSize: 0,
-			lineWidth: 0,
-			fillOpacity:0.85,
-				data: [
-					{period: '2015 Q1', iphone: 2668, ipad: null, itouch: 2649},
-					{period: '2015 Q2', iphone: 15780, ipad: 13799, itouch: 12051},
-					{period: '2015 Q3', iphone: 12920, ipad: 10975, itouch: 9910},
-					{period: '2015 Q4', iphone: 8770, ipad: 6600, itouch: 6695},
-					{period: '2016 Q1', iphone: 10820, ipad: 10924, itouch: 12300},
-					{period: '2016 Q2', iphone: 9680, ipad: 9010, itouch: 7891},
-					{period: '2016 Q3', iphone: 4830, ipad: 3805, itouch: 1598},
-					{period: '2016 Q4', iphone: 15083, ipad: 8977, itouch: 5185},
-					{period: '2017 Q1', iphone: 10697, ipad: 4470, itouch: 2038},
-				
-				],
-				lineColors:['#eb6f6f','#926383','#eb6f6f'],
-				xkey: 'period',
-				redraw: true,
-				ykeys: ['iphone', 'ipad', 'itouch'],
-				labels: ['All Visitors', 'Returning Visitors', 'Unique Visitors'],
+				behaveLikeLine: false,
+				gridEnabled: false,
+				gridLineColor: '#dddddd',
+				axes: true,
+				resize: true,
+				smooth: true,
 				pointSize: 2,
+				lineWidth: 2,
+				fillOpacity: 0.85,
+				data: data,
+				xkey: 'date',
+				ykeys: ['toys_children', 'toys_men', 'toys_women'],
+				labels: ['Đồ chơi Trẻ em', 'Đồ chơi Nam', 'Đồ chơi Nữ'],
 				hideHover: 'auto',
 				resize: true
 			});
