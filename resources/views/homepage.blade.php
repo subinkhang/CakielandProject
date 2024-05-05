@@ -199,32 +199,34 @@
     </div>
 </div>
 
-<div class="container getintouch">
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8 getintouch_info">
-        <h1 class="text_h1">GET IN TOUCH WITH US</h1>
-        <p class="text_p1">With the cake baked to perfection, the canvas is set for creativity to flourish.
-            From simple frosting and sprinkles to elaborate designs and piped decorations, the 
-            possibilities are endless.</p>
-        <div class="row ">
+<div class="container image_getintouch">
+    <div class="the_image" style="background-image: url('{{'/frontend/images/homepage/Mask\ Group.png'}}');">
+        <div class="row">
             <div class="col-2"></div>
-            <div class="col-8">
-            <div class="row getintouch_search">
-                <div class="col-8 ">
-                <input type="text" id="email" class="w-100 text_p1" placeholder="Your email address...">
+            <div class="col-8 getintouch_info">
+            <h1 class="text_h1">GET IN TOUCH WITH US</h1>
+            <p class="text_p1">With the cake baked to perfection, the canvas is set for creativity to flourish.
+                From simple frosting and sprinkles to elaborate designs and piped decorations, the 
+                possibilities are endless.</p>
+            <div class="row ">
+                <div class="col-2"></div>
+                <div class="col-8">
+                <div class="row getintouch_search">
+                    <div class="col-8 ">
+                    <input type="text" id="email" class="w-100 text_p1" placeholder="Your email address...">
+                    </div>
+                    <div class="col-4 ">
+                    <button class="btn_submit" onclick="validateEmail()">Submit</button>
+                    </div>
+                    <p id="email-error" class="text_p1" style="color: red; display: none;">Email is not valid</p>
+                    <p id="success-message" class="text_p1" style="color: green; display: none;">Success! Your email has been submitted.</p>
                 </div>
-                <div class="col-4 ">
-                <button class="btn_submit" onclick="validateEmail()">Submit</button>
                 </div>
-                <p id="email-error" class="text_p1" style="color: red; display: none;">Email is not valid</p>
-                <p id="success-message" class="text_p1" style="color: green; display: none;">Success! Your email has been submitted.</p>
+                <div class="col-2"></div>
             </div>
             </div>
             <div class="col-2"></div>
         </div>
-        </div>
-        <div class="col-2"></div>
     </div>
 </div>
 

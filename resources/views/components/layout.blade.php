@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-2 logo">
-                    <img src="{{asset('frontend/images/logo - temp.png')}}" alt=""class="w-100">
+                    <a href="{{ url('/') }}"><img src="{{asset('frontend/images/logo - temp.png')}}" alt=""class="w-100"></a>
                 </div>
                 <div class="col-2"></div>
                 <div class="col-4 search">
@@ -33,7 +33,7 @@
                             <div><a href="#">Home</a></div>
                         </li>
                         <li class="page_item ">
-                            <div><a href="#">Product</a></div>
+                            <div><a href="{{ url('/product-list') }}">Product</a></div>
                         </li>
                         <li class="page_item ">
                             <div><a href="#">Forum</a></div>
@@ -43,7 +43,7 @@
                             <div><p>2</p></div>
                         </li>
                         <li class="cart_item">
-                            <i class="fa-solid fa-user"></i>
+                            <a href="{{ url('/account') }}"><i class="fa-solid fa-user"></i></a>
                             <div><p>2</p></div>
                         </li>
                     </ul>
@@ -90,9 +90,9 @@
 				<div class="col-2 acc">
 					<h3 class="footer-title">Account</h3>
 					<ul>
-						<li><a href="#">Profile</a></li>
-						<li><a href="#">My orders</a></li>
-						<li><a href="#">Shipping</a></li>
+						<li><a href="{{ url('/account') }}">Profile</a></li>
+						<li><a href="{{ url('/my-orders') }}">My orders</a></li>
+						<li><a href="{{ url('/my-orders') }}">Shipping</a></li>
 					</ul>
 				</div>
 				<div class="col-2 policies">
@@ -108,7 +108,7 @@
 				<div class="col-2 services">
 					<h3 class="footer-title">Policies</h3>
 					<ul>
-						<li><a href="#">About</a></li>
+						<li><a href="about-us">About</a></li>
 						<li><a href="#">Contact</a></li>
 						<li><a href="#">Privacy policy</a></li>
 						<li><a href="#">Return policy</a></li>
@@ -117,7 +117,7 @@
 				</div>
 				<div class="col-3 bocongthuong">
 					<div class="d-flex">
-						<img src="{{asset('frontend/images/bocongthuong.png')}}" alt="" class="w-100">
+						<a href="http://online.gov.vn/Home/AppDetails/29"><img src="{{asset('frontend/images/bocongthuong.png')}}" alt="" class="w-100"></a>
 					</div>
 				</div>
 			</div>
