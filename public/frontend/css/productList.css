@@ -530,3 +530,12 @@ body, button, input{
 .image_getintouch {
     width: 1185px;
 }
+
+  /* --------------filter brand------- */ 
+
+ .filter-box label{
+    color: #282828;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+ }
