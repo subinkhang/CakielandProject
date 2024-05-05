@@ -54,9 +54,156 @@
                     </ul>
                 </div>
             </div>
-            <div class="pr-list-sidebar">
-                <h3>Filter by price</h3>
-            </div>
+        </div>
+    </div>
+    <!-- END HEADER -->
+    <!-- PRODUCT LIST -->
+    <div class="container">
+		<div class="row">
+            <h2 class="menutitle">MENU</h2>
+			<div class="col-3" id="aside">
+				<div class="pr-list-sidebar">
+					<div class="pr-list-sidebar-title">
+						<h3>Categories</h3>
+						<div class="line"></div>
+						<ul class="mainmenu">
+							<li class="mainmenu_title"><a href="#"><span>Wet ingredients</span><i class="fa-solid fa-sort-down icon_arrow"></i></a>
+                                <ul class="menucon">
+                                    <li class="menu_title"><a href="">Milk</a></li>
+                                    <li class="menu_title"><a href="">Butter</a></li>
+                                </ul>
+                            </li>
+							<li class="mainmenu_title"><a href="#"><span>Dry ingredients</span><i class="fa-solid fa-sort-down icon_arrow"></i></a>
+                                <ul class="menucon">
+                                    <li class="menu_title"><a href="">Flour</a></li>
+                                    <li class="menu_title"><a href="">Baking soda</a></li>
+                                </ul>
+                            </li>
+							<li class="mainmenu_title"><a href="#"><span>Baking tools</span><i class="fa-solid fa-sort-down icon_arrow"></i></a>
+                                <ul class="menucon">
+                                    <li class="menu_title"><a href="">Egg beater</a></li>
+                                    <li class="menu_title"><a href="">Mold</a></li>
+                                </ul>
+                            </li>
+							<li class="mainmenu_title"><a href="#"><span>Cooking utensils</span><i class="fa-solid fa-sort-down icon_arrow"></i></a>
+                                <ul class="menucon">
+                                    <li class="menu_title"><a href="">Stainless steel pot set</a></li>
+                                    <li class="menu_title"><a href="">Kitchen knife set</a></li>
+                                </ul>
+                            </li>
+							<li class="mainmenu_title"><a href="#"><span>Bar tool</span><i class="fa-solid fa-sort-down icon_arrow"></i></a>
+                                <ul class="menucon">
+                                    <li class="menu_title"><a href="">Coffee foam maker</a></li>
+                                    <li class="menu_title"><a href="">Measuring cup</a></li>
+                                </ul>
+                            </li>
+							<li class="mainmenu_title"><a href="#"><span>Bar ingredients</span><i class="fa-solid fa-sort-down icon_arrow"></i></a>
+                                <ul class="menucon">
+                                    <li class="menu_title"><a href="">Tea</a></li>
+                                    <li class="menu_title"><a href="">Syrup</a></li>
+                                </ul>
+                            </li>
+						</ul>
+					</div>
+				</div>
+				<div class="pr-list-sidebar">
+                    <div class="pr-list-sidebar-title">
+                        <h3>Filter by brand</h3>
+                        <div class="line"></div>
+                        <div class="row">
+                            <div class="col-6 filter-box">
+                                <input type="checkbox" class="filter-checkbox" id="checkbox-oppo" value="oppo">
+                                <label for="checkbox-oppo">Oppo</label> <br>
+                                <input type="checkbox" class="filter-checkbox" id="checkbox-xiaomi" value="xiaomi">
+                                <label for="checkbox-xiaomi">Xiaomi</label> <br>
+                            </div>
+                            <div class="col-6 filter-box">
+                                <input type="checkbox" class="filter-checkbox" id="checkbox-apple" value="apple" checked>
+                                <label for="checkbox-apple">Apple</label> <br>
+                                <input type="checkbox" class="filter-checkbox" id="checkbox-samsung" value="samsung">
+                                <label for="checkbox-samsung">Samsung</label> <br>
+                                <input type="checkbox" class="filter-checkbox" id="checkbox-sony" value="sony">
+                                <label for="checkbox-samsung">Sony</label> <br>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+                <!--  -->
+                <div class="pr-list-sidebar">
+					<div class="pr-list-sidebar-title">
+						<h3>Products</h3>
+						<div class="line"></div>
+						<div class="row pr-sidebar my-3">
+							<div class="col-3 pt-3">
+								<img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
+							</div>
+							<div class="col-9">
+								<h4 class="pr-i1-cat">HEADPHONE</h4>
+								<a href="#" class="text-product">JBL Everest 710 Gun Metal Front</a>
+								<ul class="pr-i3-rating d-flex star">
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+								</ul>
+								<div class="row">
+									<div class="col-6">
+										<p class="old-price">$134.00</p>
+									</div>
+									<div class="col-6 text-end">
+										<p class="new-price">$112.00</p>
+									</div>
+								</div>
+							</div>
+                            <div class="col-3 pt-3">
+								<img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
+							</div>
+							<div class="col-9">
+								<h4 class="pr-i1-cat">HEADPHONE</h4>
+								<a href="#" class="text-product">JBL Everest 710 Gun Metal Front</a>
+								<ul class="pr-i3-rating d-flex star">
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+								</ul>
+								<div class="row">
+									<div class="col-6">
+										<p class="old-price">$134.00</p>
+									</div>
+									<div class="col-6 text-end">
+										<p class="new-price">$112.00</p>
+									</div>
+								</div>
+							</div>
+                            <div class="col-3 pt-3">
+								<img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
+							</div>
+							<div class="col-9">
+								<h4 class="pr-i1-cat">HEADPHONE</h4>
+								<a href="#" class="text-product">JBL Everest 710 Gun Metal Front</a>
+								<ul class="pr-i3-rating d-flex star">
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+								</ul>
+								<div class="row">
+									<div class="col-6">
+										<p class="old-price">$134.00</p>
+									</div>
+									<div class="col-6 text-end">
+										<p class="new-price">$112.00</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
             <!--  -->
             <div class="pr-list-sidebar">
                 <div class="pr-list-sidebar-title">
