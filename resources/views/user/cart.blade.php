@@ -21,7 +21,7 @@
                 <table class="table">
                     <tr class="text-center">
                         <th scope="row"></th>
-                        <td class="col-2">#</td>
+                        <td class="col-2">No.</td>
                         <td class="col-8">NAME</td>
                         <td class="col-2 text-end">SUBTOTAL</td>
                     </tr>

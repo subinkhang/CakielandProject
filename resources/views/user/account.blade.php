@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-2"></div>
                         <div class="col-4">
-                            <button class="button_ac1">Cancel</button>
+                            <button class="button_ac1" type="reset">Cancel</button>
                         </div>
                         <div class="col-4">
                             <button class="button_ac2">Save</button>
