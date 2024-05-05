@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="{{ asset('frontend/images/Logo Title.png') }}">
-    <link rel="stylesheet" href="{{asset('frontend/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/homepage.css')}}">
@@ -40,7 +39,7 @@
                             <div><a href="#">Forum</a></div>
                         </li>
                         <li class="cart_item">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <a href="{{ url('/cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                             <div><p>2</p></div>
                         </li>
                         <li class="cart_item">
@@ -59,6 +58,7 @@
     @yield('cart')
     @yield('checkout')
     @yield('aboutUs')
+    @yield('myOrders')
     @yield('account')
 
     <div class="contanier-fluid bg-footer py-5">

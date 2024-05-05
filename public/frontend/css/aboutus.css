@@ -101,6 +101,7 @@
     background-color: #fdfdfd;
 }
 .bg-breadcrub {
+    background-image: url(../header-footer/img/pr-detail/banner.png);
     background-size: cover;
     padding: 120px 0;
 }
@@ -126,9 +127,57 @@
 	font-weight: bold;
 }
 /* BODY */
+.img_in4 img{
+    height: 600px;
+    width: 400px;
+    border-radius: 30px;
+}
+
+.small_in4 {
+    display: flex; 
+    align-items: center; 
+}
+.img_in4, .description_in4 {
+    flex: 1; 
+}
 .description_in4{
-    /* border: 1px solid #666666; */
-    display: grid;
-    justify-content: center;
-    place-items: center;
+    padding: 100px;
+}
+.description_in4 h1{
+    font-weight: bold;
+    text-align: center;
+    color: #080808;
+}
+.description_in4 p{
+    text-align: center;
+    color: #666;
+}
+ .policy_header h1{
+    margin-top: 80px;
+    font-weight: bold;
+    color: #080808;
+ }
+ .policy_small h3{
+    margin-top: 30px;
+ }
+.policy_small .img_policy{
+    height: 200px;
+    width: 200px;
+    margin-top: 30px;
+}
+.policy_small p{
+    margin-bottom: 30px;
+}
+.policy_small{
+    text-align: center;
+}
+.img_in4{
+    transition: 1s ease;
+}
+    
+.img_in4:hover{
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
+    transition: 1s ease;
 }
