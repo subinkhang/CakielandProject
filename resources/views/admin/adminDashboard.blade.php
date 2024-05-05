@@ -287,7 +287,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</a>
 						<ul class="sub">
 							<li><a href="basic_table.html">Basic Table</a></li>
-							<li><a href="responsive_table.html">Responsive Table</a></li>
+							<li><a href="{{asset('adminListProduct.blade.php')}}">Responsive Table</a></li>
 						</ul>
 					</li>
 					<li class="sub-menu">
