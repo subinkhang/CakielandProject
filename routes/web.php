@@ -2,17 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
+
+// User routes
 Route::get('/', 'App\Http\Controllers\HomepageController@index');
 
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@index');
@@ -40,3 +32,13 @@ Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
 Route::fallback(function () {
     return redirect()->action('App\Http\Controllers\ErrorPageController@index');
 });
+
+
+// Admin routes
+Route::get('/admin-login', 'App\Http\Controllers\AdminController@index');
+Route::get('/admin-dashboard', 'App\Http\Controllers\AdminController@show_dashboard');
+
+// Product Routes
+Route::get('/admin-add-product', 'App\Http\Controllers\AdminController@add_product');
+Route::get('/admin-list-product', 'App\Http\Controllers\AdminController@list_product');
+Route::get('/admin-list-bill', 'App\Http\Controllers\AdminController@list_bill');

@@ -1,0 +1,19 @@
+
+.btn_addpro
+{
+    width: 60px;
+    height: 30px;
+    border: #FBC31C;
+    border-radius: 12px;
+    color: #fdfdfd;
+    background-color: #FBC31C;
+}
+#icon{
+    color: #FBC31C;
+}
+#heading{
+    background-color: #ffd145 !important;
+}
+#background{
+    background-color: #ffe69b !important;
+}
