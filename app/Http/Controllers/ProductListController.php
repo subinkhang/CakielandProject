@@ -18,6 +18,6 @@ class ProductListController extends Controller
         // return view('customer/productList', $data);
         
         $data['users'] = User::paginate(6);
-        return view('customer/productList', $data);
+        return view('user/productList', $data);
     }
 }

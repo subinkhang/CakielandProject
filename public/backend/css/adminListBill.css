@@ -1,0 +1,80 @@
+.status_column {
+    /* margin-left: 200px; */
+    margin-right: 30px;
+}
+
+.all_column {
+    /* margin-left: 200px; */
+    margin-left: 100px;
+}
+
+.order_column {
+    /* margin-left: 200px; */
+    margin-left: 30px;
+}
+
+.search_button {
+    margin-left: 30px;
+}
+
+#order_list_heading {
+    background-color: #FBC31C !important;
+    z-index: 100;
+}
+
+#table_agile_info {
+    background-color: #FFD065 !important;
+    z-index: 100;
+}
+
+.my-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.bg-vang{
+    background-color: #FBC31C;
+    color: white;
+}
+
+.btn-shopnow{
+    width: 120px;
+    height: 35px;
+    border-radius: 12px;
+}
+
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #FBC31C;
+    color: #fdfdfd;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 3;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+.option_status{
+    background-color: white !important;
+    color: grey
+}

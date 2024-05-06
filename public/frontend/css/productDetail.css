@@ -205,40 +205,20 @@ body, button, input{
 
 .carousel-btn1
 {
-	background-image: url("../header-footer/img/pr-detail/máy\ đánh\ trứng\ 1.webp");
 	background-size: cover;
 }
 .carousel-btn2
 {
-	background-image: url("../header-footer/img/pr-detail/máy\ dánh\ trứng\ 2.webp");
 	background-size: cover;
 }
 .carousel-btn3
 {
-	background-image: url("../header-footer/img/pr-detail/máy\ đánh\ trứng\ 3.webp");
 	background-size: cover;
 }
 
 .detail{
     margin-top: 140px;
 }
-/* Lướt tự động */
-/* @media screen and (max-width:1199px)
-{
-	.pr-detail-name
-	{
-		font-size: 32px;
-	}
-	#pr-slide .carousel-indicators
-	{
-		bottom: 30px;
-	}
-	#pr-slide .carousel-indicators [data-bs-target]
-	{
-		width: 100px;
-		height: 100px;
-	}
-} */
 #pr-slide .carousel-indicators
 	{
 		bottom: -150px;
@@ -329,7 +309,12 @@ body, button, input{
 .pr-color li:nth-child(4) {
     cursor: pointer; /* Sử dụng kiểu con trỏ bàn tay */
 }
-
+.pr-color li:hover {
+    transform: scale(1.1); /* Phóng to khi hover */
+  }
+.selected {
+    border: 3px solid #080808; /* Hiển thị viền đen khi được chọn */
+}
 .star{
     padding-left: 0px;
     color: #FBC31C;
@@ -504,11 +489,11 @@ body, button, input{
 }
 
 .btn_add {
-    position: absolute; /* Đặt vị trí tuyệt đối cho nút */
-    top: 194px;  /* Cách đáy container ảnh 10px */
-    left: 252px;   /* Cách mép phải container ảnh 10px */
-    font-size: 24px; /* Kích thước font của icon */
-    cursor: pointer; /* Con trỏ thành tay khi di chuột qua */
+    position: absolute;
+    top: 194px;
+    left: 252px;
+    font-size: 24px;
+    cursor: pointer;
     color:#FBC31C
   }
 

@@ -148,6 +148,7 @@ form.boxac{
     border-radius: 30px;
     margin-top: 30px;
     color: #080808;
+    margin-bottom: 150px;
 }
 .circle {
     margin-top: 30px;
@@ -221,4 +222,35 @@ form.boxac{
 .my_account h3{
     font-weight: bold;
     color: #080808;
+}
+
+.bg-breadcrub {
+    background-size: cover;
+    padding: 120px 0;
+}
+
+.my-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.bg-breadcrub h2
+{
+	color: #282828;
+	font-size: 55px;
+	font-weight: 700;
+}
+.breadcrumb
+{
+	justify-content: center;
+}
+.breadcrumb-item a
+{
+	font-size: 18px;
+	color: #282828 !important;
+	font-weight: bold;
+}
+.bg-breadcrub .active
+{
+	color: #666666;
 }

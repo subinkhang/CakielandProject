@@ -10,6 +10,6 @@ class PaginationController extends Controller
     public function index()
     {
         $data['users'] = User::paginate(2);
-        return view('customer/Pagination', $data);
+        return view('user/Pagination', $data);
     }
 }
