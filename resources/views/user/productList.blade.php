@@ -205,80 +205,7 @@
 				</div>
 			</div>
             <!--  -->
-            <div class="pr-list-sidebar">
-                <div class="pr-list-sidebar-title">
-                    <h3>Products</h3>
-                    <div class="line"></div>
-                    <div class="row pr-sidebar my-3">
-                        <div class="col-3 pt-3">
-                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
-                        </div>
-                        <div class="col-9">
-                            <h4 class="pr-i1-cat">HEADPHONE</h4>
-                            <a href="#" class="text-product">JBL Everest 710 Gun Metal Front</a>
-                            <ul class="pr-i3-rating d-flex star">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                            </ul>
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="old-price">$134.00</p>
-                                </div>
-                                <div class="col-6 text-end">
-                                    <p class="new-price">$112.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 pt-3">
-                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
-                        </div>
-                        <div class="col-9">
-                            <h4 class="pr-i1-cat">HEADPHONE</h4>
-                            <a href="#" class="text-product">JBL Everest 710 Gun Metal Front</a>
-                            <ul class="pr-i3-rating d-flex star">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                            </ul>
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="old-price">$134.00</p>
-                                </div>
-                                <div class="col-6 text-end">
-                                    <p class="new-price">$112.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 pt-3">
-                            <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 img-fluid">
-                        </div>
-                        <div class="col-9">
-                            <h4 class="pr-i1-cat">HEADPHONE</h4>
-                            <a href="#" class="text-product">JBL Everest 710 Gun Metal Front</a>
-                            <ul class="pr-i3-rating d-flex star">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                            </ul>
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="old-price">$134.00</p>
-                                </div>
-                                <div class="col-6 text-end">
-                                    <p class="new-price">$112.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
         <!--  -->
         <div class="col-lg-9">
@@ -290,7 +217,7 @@
                         <img src="{{ asset('frontend/images/product.png')}}" alt="" class="w-100 productList_image">
                         <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
                         <div class="container_information">
-                            <a href="#" class="pr-i2-name">Slim {{ $user->name }}</a>
+                            <a href="#" class="pr-i2-name">Slim {{ $user->id }}</a>
                             <ul class="pr-i2-rating d-flex">
                                 <li><i class="fa-solid fa-star"></i></li>
                                 <li><i class="fa-solid fa-star"></i></li>
