@@ -103,27 +103,50 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <section id="main-content">
 	<section class="wrapper">
 		<!-- page start-->
+        <form role="form" action="{{ URL::to('/save-product')}}" method="POST">
+            {{ csrf_field() }}
+
 		<div class="mail-w3agile">
         <div class="row">
             <div class="col-sm-8 com-w3ls">
+                @php
+                    $message = Session::get('message');
+                @endphp
+
+                @if($message)
+                    <h3 style="white-space: nowrap; color: red">{{ $message }}</h3>
+                    {{ Session::put('message', null) }}
+                @endif
+
                 <section class="panel">
+                    <h4 class="menu"id="text-name"><b>ID</b></h4>
+                    <textarea name="id" type="text" id="name" class="text-title"></textarea>
+
                     <h4 class="menu"id="text-name"><b>Name</b></h4>
-                    <textarea type="text" id="name" class="text-title"></textarea>
-                    <h4 class="menu"><b>Current Price</b></h4>
-                    <textarea type="text" id="curp" class="text-title"></textarea>
+                    <textarea name="name" type="text" id="name" class="text-title"></textarea>
+
+                    <h4 class="menu"><b>Fake Price</b></h4>
+                    <textarea name="fake_price" type="text" id="curp" class="text-title"></textarea>
+
                     <h4 class="menu"><b>New Price</b></h4>
-                    <textarea type="text" id="newp" class="text-title"></textarea>
+                    <textarea name="price" type="text" id="newp" class="text-title"></textarea>
+
                     <h4 class="menu"><b>Brand</b></h4>
-                    <textarea type="text" id="brand" class="text-title"></textarea>
+                    <textarea name="brand" type="text" id="brand" class="text-title"></textarea>
+
                     <h4 class="menu"><b>Description</b></h4>
-                    <textarea type="text" id="desc" class="text-title"></textarea>
+                    <textarea name="description" type="text" id="desc" class="text-title"></textarea>
+
                     <h4 class="menu"><b>Detail</b></h4>
-                    <textarea type="text" id="detail"  class="text-title"></textarea>
+                    <textarea name="description_detail" type="text" id="detail"  class="text-title"></textarea>
+
                     <h4 class="menu"><b>Technical</b></h4>
-                    <textarea type="text" id="tech" class="text-title"></textarea>
+                    <textarea name="description_technique" type="text" id="tech" class="text-title"></textarea>
+
                     <div class="col-8 bt-pay pm">
-                    <button class="btn" id="btn-p">
-                        <p1>Update</p1>
+
+                    <button class="btn" id="btn-p" type="submit" name="admin-add-product">
+                        <p1>Add product</p1>
                     </button>
                 </div>
                 </section>
@@ -196,15 +219,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         <!-- page end-->
 		 </div>
+
+        </form>
          
 </section>
- <!-- footer -->
-		  <div class="footer">
-			<div class="wthree-copyright">
-			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
-			</div>
-		  </div>
-  <!-- / footer -->
 </section>
 
 <!--main content end-->
