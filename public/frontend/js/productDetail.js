@@ -162,3 +162,7 @@ function selectColor(element) {
     // Thêm class 'selected' vào ô màu được chọn
     element.classList.add('selected');
 }
+
+function AddCart(number) {
+    number 
+}

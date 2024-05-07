@@ -40,7 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<header class="header fixed-top clearfix">
 	<!--logo start-->
 	<div class="brand">
-		<a href="{{asset('backend/index.html')}}" class="logo">
+		<a href="{{asset('/admin-dashboard')}}" class="logo">
 			<img src="{{asset('frontend/images/logo - temp.png')}}" alt=""class="">
 		</a>
 	</div>
@@ -73,19 +73,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<ul class="sidebar-menu" id="nav-accordion">
 					<h1>ADMIN</h1>
 					<li>
-						<a class="active" href="">
+						<a class="active" href="{{ url('/admin-dashboard') }}">
 							<i class="fa fa-dashboard"></i>
 							<span>Dashboard</span>
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="{{ url('/admin-list-product') }}">
 							<i class="fa-solid fa-utensils"></i>
 							<span>Products</span>
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="{{ url('/admin-list-bill') }}">
 							<i class="fa-solid fa-truck-fast"></i>
 							<span>Orders</span>
 						</a>

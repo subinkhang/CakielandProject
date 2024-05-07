@@ -65,7 +65,7 @@
 					<input type="number" value="1" id="pr-number">
 					<button id="btn-plus"><i class="fa-solid fa-plus"></i></button>
 				</div>
-				<button class="btn-shopnow bg-vang my-3" onclick="addToCart(this)">Add to cart</button>
+				<button class="btn-shopnow bg-vang my-3" onclick="addToCart(this)" onclick="AddCart(4)">Add to cart</button>
 			</div>
 		</div>
 	</div>
