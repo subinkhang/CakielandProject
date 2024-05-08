@@ -3,21 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ProductModel;
-use App\Models\User;
+use DB;
+use Session;
+use App\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\Product;
+
+session_start();
 
 class ProductListController extends Controller
 {
-    public function index()
+    public function getAllProducts()
     {
-        // return view('customer/productList');
+        $all_product = DB::table('product')->get();
+        return view('user/productList', ['all_product' => $all_product]);
+    }
 
-
-        // USE AFTER HAVE DATABASE
-        // $data['Products'] = Product::paginate(6);
-        // return view('customer/productList', $data);
-        
-        $data['users'] = User::paginate(6);
-        return view('user/productList', $data);
+    public function getPagedProducts()
+    {
+        $data['list_product'] = Product::paginate(2);
+        $all_product = DB::table('product')->get();
+        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product]);
     }
 }

@@ -1,10 +1,9 @@
 @extends('components.layout')
 @section('myOrders')
+    <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
+    <link rel="stylesheet" href="{{ asset('/frontend/css/myorder.css') }}">
 
-<title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
-<link rel="stylesheet" href="{{asset('/frontend/css/myorder.css')}}">
-
-<livewire:breadcrumb-banner />
+    <livewire:breadcrumb-banner />
     <!-- ACCOUNT -->
     <div class="container my_orders_container">
         <div class="row">
@@ -32,7 +31,8 @@
                         </div>
                         <div class="row">
                             <div class="col-3" class="img_order">
-                                <img src="{{asset('frontend/images/My-order/71012Ro-efL.jpg')}}" alt="" class="w-100">
+                                <img src="{{ asset('frontend/images/My-order/71012Ro-efL.jpg') }}" alt=""
+                                    class="w-100">
                             </div>
                             <div class="col-5 order_name">
                                 <h5>Cook Classic Wood Rolling Pin</h5>
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                </div>  
+                </div>
                 <div class="row">
                     <div class="col-12 product_detail_2">
                         <div class="col-12 order_title">
@@ -61,7 +61,8 @@
                         </div>
                         <div class="row">
                             <div class="col-3" class="img_order">
-                                <img src="{{asset('frontend/images/My-order/71012Ro-efL.jpg')}}" alt="" class="w-100">
+                                <img src="{{ asset('frontend/images/My-order/71012Ro-efL.jpg') }}" alt=""
+                                    class="w-100">
                             </div>
                             <div class="col-5 order_name">
                                 <h5>Cook Classic Wood Rolling Pin</h5>
@@ -78,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
                 <div class="row">
                     <div class="col-12 product_detail_3">
                         <div class="col-12 order_title">
@@ -86,7 +87,8 @@
                         </div>
                         <div class="row">
                             <div class="col-3" class="img_order">
-                                <img src="{{asset('frontend/images/My-order/71012Ro-efL.jpg')}}" alt="" class="w-100">
+                                <img src="{{ asset('frontend/images/My-order/71012Ro-efL.jpg') }}" alt=""
+                                    class="w-100">
                             </div>
                             <div class="col-5 order_name">
                                 <h5>Cook Classic Wood Rolling Pin</h5>
@@ -95,8 +97,9 @@
                             <div class="col-4">
                                 <p class="price">$112.00</p>
                             </div>
-                            <div class="col-3 img_order_2" >
-                                <img src="{{asset('frontend/images/My-order/71012Ro-efL.jpg')}}" alt="" class="w-100">
+                            <div class="col-3 img_order_2">
+                                <img src="{{ asset('frontend/images/My-order/71012Ro-efL.jpg') }}" alt=""
+                                    class="w-100">
                             </div>
                             <div class="col-5 order_name_2">
                                 <h5>Cook Classic Wood Rolling Pin</h5>
@@ -121,9 +124,8 @@
             </div>
         </div>
     </div>
-    
-<script src="{{asset('frontend/js/jquery-3.7.1.min.js')}}"></script>
-<script src="{{asset('frontend/js/bootstrap.bundle.js')}}"></script>
-<script src="{{asset('frontend/js/myorder.js')}}"></script>
 
+    <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
+    <script src="{{ asset('frontend/js/myorder.js') }}"></script>
 @endsection

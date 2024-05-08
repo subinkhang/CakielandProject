@@ -1,12 +1,11 @@
 @extends('components.layout')
 @section('account')
+    <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
+    <link rel="stylesheet" href="{{ asset('/frontend/css/account.css') }}">
 
-<title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
-<link rel="stylesheet" href="{{asset('/frontend/css/account.css')}}">
-
-<livewire:breadcrumb-banner />
+    <livewire:breadcrumb-banner />
     <!-- ACCOUNT -->
-<div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-3 pr-list-sidebar">
                 <div class="row pr-list-sidebar-title">
@@ -94,15 +93,14 @@
             </div>
             <div class="col-2 avatar">
                 <label for="avatarUpload">
-                  <div class="circle"></div>
+                    <div class="circle"></div>
                 </label>
                 <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
             </div>
         </div>
     </div>
-    
-<script src="{{asset('frontend/js/jquery-3.7.1.min.js')}}"></script>
-<script src="{{asset('frontend/js/bootstrap.bundle.js')}}"></script>
-<script src="{{asset('frontend/js/account.js')}}"></script>
 
+    <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
+    <script src="{{ asset('frontend/js/account.js') }}"></script>
 @endsection
