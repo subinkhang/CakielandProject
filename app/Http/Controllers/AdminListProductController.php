@@ -12,11 +12,6 @@ session_start();
 
 class AdminListProductController extends Controller
 {
-    // public function index()
-    // {
-    //     return view('admin/admin_login');
-    // }
-
     public function get_list_product()
     {
         $all_product = DB::table('product')->get();
