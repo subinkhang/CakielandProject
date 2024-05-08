@@ -17,6 +17,13 @@ class ProductController extends Controller
         return view('admin/adminAddProduct');
     }
 
+    public function user_list_product()
+    {
+        $list_product = DB::table('product')->get();
+        $manager_product = view('user/productList')->with('list_product', $list_product);
+        return view('user/productList')->with('list_product', $list_product);
+    }
+
     public function list_product()
     {
         return view('admin/adminListProduct');
