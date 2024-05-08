@@ -74,8 +74,6 @@ function validateEmail() {
       emailError.style.display = 'none';
       successMessage.style.display = 'block';
 
-      console.log("Captured email:", email);
-    //   emailInput.value = '';
-  
+      console.log("Captured email:", email);  
     }
   }
