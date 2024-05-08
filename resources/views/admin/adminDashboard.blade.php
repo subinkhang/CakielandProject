@@ -7,7 +7,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 
 <head>
-    <title>Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords"
@@ -18,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.min.css') }}">
     <!-- //bootstrap-css -->
     <!-- Custom CSS -->
-    <link href="{{ asset('backend/css/style.cs') }}s" rel='stylesheet' type='text/css' />
+    <link href="{{ asset('backend/css/style.css') }}" rel='stylesheet' type='text/css' />
     <link href="{{ asset('backend/css/style-responsive.css') }}" rel="stylesheet" />
     <!-- font CSS -->
     <link
@@ -30,82 +29,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link rel="stylesheet" href="{{ asset('backend/css/morris.css') }}" type="text/css" />
     <!-- calendar -->
     <link rel="stylesheet" href="{{ asset('backend/css/monthly.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/adminDashboard.css') }}">
     <link rel="stylesheet" href="{{ 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css' }}">
     <!-- //calendar -->
     <!-- //font-awesome icons -->
     <script src="{{ asset('backend/js/jquery2.0.3.min.js') }}"></script>
     <script src="{{ asset('backend/js/raphael-min.js') }}"></script>
     <script src="{{ asset('backend/js/morris.js') }}"></script>
+    {{-- //====================================== --}}
+    <link rel="stylesheet" href="{{ asset('backend/css/adminDashboard.css') }}">
+    <title>Admin Dashboard</title>
 </head>
 
 <body>
     <section id="container">
-        <!--header start-->
-        <header class="header fixed-top clearfix">
-            <!--logo start-->
-            <div class="brand">
-                <a href="{{ asset('/admin-dashboard') }}" class="logo">
-                    <img src="{{ asset('frontend/images/logo - temp.png') }}" alt=""class="">
-                </a>
-            </div>
-            <!--logo end-->
-            <div class="top-nav clearfix">
-                <!--search & user info start-->
-                <ul class="nav pull-right top-menu">
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <img alt="" src="{{ asset('backend/images/2.png') }}">
-                            <span class="username">Admin</span>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu extended logout">
-                            <li><a href="{{ asset('backend/login.html') }}"><i class="fa fa-key"></i> Log Out</a></li>
-                        </ul>
-                    </li>
-                    <!-- user login dropdown end -->
 
-                </ul>
-                <!--search & user info end-->
-            </div>
-        </header>
-        <!--header end-->
-        <!--sidebar start-->
-        <aside>
-            <div id="sidebar" class="nav-collapse">
-                <!-- sidebar menu start-->
-                <div class="leftside-navigation">
-                    <ul class="sidebar-menu" id="nav-accordion">
-                        <h1>ADMIN</h1>
-                        <li>
-                            <a class="active" href="{{ url('/admin-dashboard') }}">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/admin-list-product') }}">
-                                <i class="fa-solid fa-utensils"></i>
-                                <span>Products</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/admin-list-bill') }}">
-                                <i class="fa-solid fa-truck-fast"></i>
-                                <span>Orders</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i class="fa fa-user"></i>
-                                <span>User</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
+        <livewire:adminHeader />
+
+        <livewire:adminSidebar />
+
         <!--sidebar end-->
         <!--main content start-->
         <section id="main-content">
