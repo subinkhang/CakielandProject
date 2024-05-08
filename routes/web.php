@@ -45,3 +45,6 @@ Route::post('/save-product', 'App\Http\Controllers\ProductController@save_produc
 
 // Order Routes
 Route::get('/admin-list-bill', 'App\Http\Controllers\AdminController@list_bill');
+
+//Homepage Routes
+Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
