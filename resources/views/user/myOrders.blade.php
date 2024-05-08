@@ -23,11 +23,15 @@
                     </div>
                 </div>
             </div>
+            @php
+                $myorders_list = $myorders->toArray();
+            @endphp
             <div class="col-9">
                 <div class="row">
+                @for ($i = 0; $i < count($myorders); $i++)
                     <div class="col-12 product_detail">
                         <div class="col-12 order_title">
-                            <h5>DELIVERING</h5>
+                            <h5>{{ $myorders_status[$i+1]->status }}</h5>
                         </div>
                         <div class="row">
                             <div class="col-3" class="img_order">
@@ -35,25 +39,26 @@
                                     class="w-100">
                             </div>
                             <div class="col-5 order_name">
-                                <h5>Cook Classic Wood Rolling Pin</h5>
-                                <p>Quantity: 1</p>
+                                <h5>{{ $all_products[$i]->name }}</h5>
+                                <p> Quantity: {{ $myorders[$i]->quantity }}</p>
                             </div>
                             <div class="col-4">
-                                <p class="price">$112.00</p>
+                                <p class="price">{{ $myorders[$i]->price }}</p>
                             </div>
                             <div class="col-3 status">
                                 <h5>Order status: </h5>
                             </div>
                             <div class="col-5 order_deli">
-                                <h5>DELIVERING</h5>
+                                <h5>{{ $myorders_status[$i]->status }}</h5>
                             </div>
                             <div class="col-4 total_price">
-                                <h6>Total: $112.00</h6>
+                                <h6>Total: {{ $myorders[$i]->total_money }}</h6>
                                 <button type="submit" class="button_order">Buy Now</button>
                             </div>
                         </div>
                     </div>
-                </div>
+                    @endfor
+                </div>  
                 <div class="row">
                     <div class="col-12 product_detail_2">
                         <div class="col-12 order_title">
