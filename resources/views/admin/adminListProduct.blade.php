@@ -145,12 +145,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           </tr>
         </thead>
         <tbody>
+        @foreach($all_product as $key => $cate_pro)
           <tr>
             <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-            <td>01</td>
-            <td>Philips HR3705 Egg Beater (300W)</td>
-            <td><span class="text-ellipsis">$100.00</span></td>
-            <td><span class="text-ellipsis">Jul 22, 2013</span></td>
+            <td>{{$cate_pro->id}}</td>
+            <td>{{$cate_pro->name}}</td>
+            <td><span class="text-ellipsis">{{$cate_pro->price}}</span></td>
+            <td><span class="text-ellipsis">{{$cate_pro->created_at}}</span></td>
             <td>
                 <a href="{{ url('/admin-add-product') }}" class="active" ui-toggle-class="" id="icon">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -158,97 +159,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </a>
             </td>
           </tr>
-          <tr>
-            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-            <td>02</td>
-            <td>Formasa</td>
-            <td>$200.00</td>
-            <td>Jul 22, 2013</td>
-            <td>
-                <a href="" class="active" ui-toggle-class="" id="icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-regular fa-trash-can" style="margin-left: 20px;"></i>
-                </a>
-            </td>
-          </tr>
-          <tr>
-            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-            <td>03</td>
-            <td>Avatar system</td>
-            <td>$150.00</td>
-            <td>Jul 15, 2013</td>
-            <td>
-                <a href="" class="active" ui-toggle-class="" id="icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-regular fa-trash-can" style="margin-left: 20px;"></i>
-                </a>
-            </td>
-          </tr>
-          <tr>
-            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-            <td>04</td>
-            <td>Throwdown</td>
-            <td>$160.00</td>
-            <td>Jul 11, 2013</td>
-            <td>
-                <a href="" class="active" ui-toggle-class="" id="icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-regular fa-trash-can" style="margin-left: 20px;"></i>
-                </a>
-            </td>
-          </tr>
-          <tr>
-            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-            <td>05</td>
-            <td>Idrawfast</td>
-            <td>$130.00</td>
-            <td>Jul 7, 2013</td>
-            <td>
-                <a href="" class="active" ui-toggle-class="" id="icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-regular fa-trash-can" style="margin-left: 20px;"></i>
-                </a>
-            </td>
-          </tr>
-          <tr>
-            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-            <td>06</td>
-            <td>Formasa</td>
-            <td>$123.00</td>
-            <td>Jul 3, 2013</td>
-            <td>
-                <a href="" class="active" ui-toggle-class="" id="icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-regular fa-trash-can" style="margin-left: 20px;"></i>
-                </a>
-            </td>
-          </tr>
-          <tr>
-            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-            <td>07</td>
-            <td>Avatar system</td>
-            <td>$147.08</td>
-            <td>Jul 2, 2013</td>
-            <td>
-                <a href="" class="active" ui-toggle-class="" id="icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-regular fa-trash-can" style="margin-left: 20px;"></i>
-                </a>
-            </td>
-          </tr>
-          <tr>
-            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-            <td>08</td>
-            <td>Videodown</td>
-            <td>$147.08</td>
-            <td>Jul 1, 2013</td>
-            <td>
-                <a href="" class="active" ui-toggle-class="" id="icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-regular fa-trash-can" style="margin-left: 20px;"></i>
-                </a>
-            </td>
-          </tr>
+          @endforeach
         </tbody>
       </table>
     </div>

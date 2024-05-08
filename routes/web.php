@@ -39,7 +39,8 @@ Route::get('/admin-login', 'App\Http\Controllers\AdminController@index');
 Route::get('/admin-dashboard', 'App\Http\Controllers\AdminController@show_dashboard');
 
 // Product Routes
-Route::get('/admin-list-product', 'App\Http\Controllers\ProductController@list_product');
+// Route::get('/admin-list-product', 'App\Http\Controllers\AdminListProductController@index');
+Route::get('/admin-list-product', 'App\Http\Controllers\AdminListProductController@get_list_product');
 Route::get('/admin-add-product', 'App\Http\Controllers\ProductController@add_product');
 Route::post('/save-product', 'App\Http\Controllers\ProductController@save_product');
 
