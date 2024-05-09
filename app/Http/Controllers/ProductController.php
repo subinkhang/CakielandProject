@@ -28,7 +28,6 @@ class ProductController extends Controller
     {
         return view('admin/adminListProduct');
     }
-
     public function save_product(Request $request)
     {
         $data = array();
