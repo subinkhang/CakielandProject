@@ -26,7 +26,7 @@ Route::get('/login', 'App\Http\Controllers\LoginController@index');
 
 Route::get('/about-us', 'App\Http\Controllers\AboutUsController@index');
 
-Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@index');
+Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@myorders');
 
 Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
 
