@@ -67,9 +67,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 @endif
 
                                 <section class="panel">
-                                    <h4 class="menu"id="text-name"><b>ID</b></h4>
-                                    <textarea name="id" type="text" id="name" class="text-title"></textarea>
-
                                     <h4 class="menu"id="text-name"><b>Name</b></h4>
                                     <textarea name="name" type="text" id="name" class="text-title"></textarea>
 

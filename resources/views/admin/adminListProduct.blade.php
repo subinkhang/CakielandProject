@@ -85,63 +85,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <input type="checkbox"><i></i>
               </label>
             </th> -->
-            <!-- <th></th> -->
-            <th>Id</th>
-            <th>Product's name</th>
-            <th>Price</th>
-            <th>Date</th>
-            <th><a href="{{ url('/admin-add-product') }}"><input type="submit" class="btn_addpro" value="Add"></th></a>
-            <!-- <th style="width:30px;"></th> -->
-          </tr>
-        </thead>
-        <tbody>
-        @foreach($all_product as $key => $cate_pro)
-          <tr>
-            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-            <td>{{$cate_pro->id}}</td>
-            <td>{{$cate_pro->name}}</td>
-            <td><span class="text-ellipsis">{{$cate_pro->price}}</span></td>
-            <td><span class="text-ellipsis">{{$cate_pro->created_at}}</span></td>
-            <td>
-                <a href="{{ url('/admin-add-product') }}" class="active" ui-toggle-class="" id="icon">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-regular fa-trash-can trash-icon" onclick="deleteProduct()" style="margin-left: 20px;"></i>
-                </a>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
-    <footer class="panel-footer">
-      <div class="row">
-        
-        <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 01-08 of 50 items</small>
-        </div>
-        <div class="col-sm-7 text-right text-center-xs">                
-          <ul class="pagination pagination-sm m-t-none m-b-none">
-            <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-            <li><a href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </footer>
-  </div>
-</div>
-</section>
- <!-- footer -->
-		  <div class="footer">
-			<div class="wthree-copyright">
-			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
-			</div>
-		  </div>
-  <!-- / footer -->
-</section>
+                                        <!-- <th></th> -->
+                                        <th>Id</th>
+                                        <th>Product's name</th>
+                                        <th>Price</th>
+                                        <th>Date</th>
+                                        <th><a href="{{ url('/admin-add-product') }}"><input type="submit"
+                                                    class="btn_addpro" value="Add"></th></a>
+                                        <!-- <th style="width:30px;"></th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($all_product as $key => $cate_pro)
+                                        <tr>
+                                            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
+                                            <td>{{ $cate_pro->id }}</td>
+                                            <td>{{ $cate_pro->name }}</td>
+                                            <td><span class="text-ellipsis">{{ $cate_pro->price }}</span></td>
+                                            <td><span class="text-ellipsis">{{ $cate_pro->created_at }}</span></td>
+                                            <td>
+                                                <a href="{{ url('/admin-add-product') }}" class="active"
+                                                    ui-toggle-class="" id="icon">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <i class="fa-regular fa-trash-can trash-icon"
+                                                        onclick="deleteProduct()" style="margin-left: 20px;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer class="panel-footer">
+                            <div class="row">
 
                                 <div class="col-sm-5 text-center">
                                     <small class="text-muted inline m-t-sm m-b-sm">showing 01-08 of 50 items</small>
@@ -161,17 +137,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                 </div>
             </section>
-            <!-- footer -->
-            <div class="footer">
-                <div class="wthree-copyright">
-                    <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a>
-                    </p>
-                </div>
-            </div>
-            <!-- / footer -->
         </section>
+        </div>
+        </footer>
+        </div>
+        </div>
+    </section>
+    </section>
 
-        <!--main content end-->
+    <!--main content end-->
     </section>
     <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
     <script src="{{ asset('backend/js/jquery.dcjqaccordion.2.7.js') }}"></script>

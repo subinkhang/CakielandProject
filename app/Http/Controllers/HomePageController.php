@@ -12,6 +12,10 @@ session_start();
 
 class HomepageController extends Controller
 {
+    public function index() {
+        return view('homepage');
+    }
+
     public function save_email(Request $request){
         $data=array();
         $data['email']=$request->email;
