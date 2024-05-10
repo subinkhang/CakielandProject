@@ -24,5 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Shema::dropIfExists('product');
     }
 };
