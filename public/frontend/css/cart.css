@@ -14,6 +14,15 @@ input::-webkit-inner-spin-button {
     height: 38px;
     padding: 0;
     border-radius: 20px;
+    width: 100%;
+    border: none;
+    margin: 2px;
+}
+.btn_search1{
+    background-color: #FBC31C;
+    height: 38px;
+    padding: 0;
+    border-radius: 20px;
     width: 90%;
     border: none;
     margin: 2px;

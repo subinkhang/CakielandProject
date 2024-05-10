@@ -5,6 +5,8 @@
 
     <livewire:breadcrumb-banner />
 
+
+@foreach($product_detail as $key => $product)
     <div class="container mt-5 carousel_product">
         <div class="row detail">
             <div class="col-lg-6 pr-slide carousel" data-bs-ride="carousel" id="pr-slide">
@@ -41,7 +43,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="col-12">
-                    <h6 class="pr-detail-name"> Philips HR3705 Egg Beater (300W)</h6>
+                    <h6 class="pr-detail-name"> {{$product->name}} </h6>
                     <ul class="pr-i3-rating d-flex mb-3 star">
                         <li><i class="fa-solid fa-star"></i></li>
                         <li><i class="fa-solid fa-star"></i></li>
@@ -51,10 +53,10 @@
                     </ul>
                     <div class="row mb-3">
                         <div class="col-md-2 col-3 ">
-                            <p class="old-price">$139.00</p>
+                            <p class="old-price"> {{$product->fake_price}} </p>
                         </div>
                         <div class="col-md-2 col-3">
-                            <p class="new-price">$110.00</p>
+                            <p class="new-price"> {{$product->price}} </p>
                         </div>
                     </div>
                     <p class="pr-detail-content">Philips HR3705 Egg Beater (300W) has a compact design with a sturdy handle
@@ -165,6 +167,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <div class="container related-pr mt-5 mb-3">
         <div class="row">
             <div class="col-12 justify-content-start mb-3">

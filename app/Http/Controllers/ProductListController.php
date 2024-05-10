@@ -21,8 +21,9 @@ class ProductListController extends Controller
 
     public function getPagedProducts()
     {
-        $data['list_product'] = Product::paginate(2);
+        $data['list_product'] = Product::paginate(9);
         $all_product = DB::table('product')->get();
         return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product]);
     }
+    
 }

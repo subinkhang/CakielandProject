@@ -52,7 +52,7 @@
                                             <p></p>
                                             <p></P>
                                             <button class="removeitem" onclick = "rmitem1()">
-                                                <h7> remove </h7>
+                                                <h7> <i class="fa-solid fa-trash-can" style="margin-top: 30px;"></i> </h7>
                                             </button>
                                         </td>
                                     </tr>
@@ -103,7 +103,7 @@
                                     <input type="text" class="w-100 text_p1 boxvoucher" placeholder="Voucher">
                                 </div>
                                 <div class="col-4">
-                                    <button class="btn_search">SUBMIT</button>
+                                    <button class="btn_search1">SUBMIT</button>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                                 <tr>
                                     <th scope="row"></th>
                                     <td class="col-8">
-                                        <p1>Discount</p1< /td>
+                                        <p1>Discount</p1></td>
                                     <td class="col-4 text-end" id="discount-price">
                                         <p1>2.00</p1>
                                     </td>
