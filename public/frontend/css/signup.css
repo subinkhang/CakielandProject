@@ -19,9 +19,10 @@ div .formsignup{
     margin-top: 130px;
    
 }
-.headingsignup{
+.headingsignup h2{
     color: #080808;
     text-align: center;
+    font-weight: bold;
 }
 .parasignup{
     color: #666;
@@ -32,22 +33,30 @@ div .formsignup{
     border-radius: 100px;
     border: #f3f3f3;
     text-indent: 20px;
-    width: 300px;
-    margin-top: 30px;
+    width: 400px;
 }
 .box2signup{
-    margin-top: 30px;
+    /* margin-top: 30px; */
     height: 50px;
-    width: 300px;
+    width: 400px;
     background-color: #f3f3f3;
     border-radius: 100px;
     border: #f3f3f3;
     text-indent: 20px;
 }
 .box3signup{
-    margin-top: 30px;
+    /* margin-top: 30px; */
     height: 50px;
-    width: 300px;
+    width: 400px;
+    background-color: #f3f3f3;
+    border-radius: 100px;
+    border: #f3f3f3;
+    text-indent: 20px;
+}
+.box4signup{
+    /* margin-top: 30px; */
+    height: 50px;
+    width: 400px;
     background-color: #f3f3f3;
     border-radius: 100px;
     border: #f3f3f3;
@@ -61,17 +70,15 @@ div .formsignup{
     border-radius: 30px;
     margin-top: 30px;
 }
-p{
-    color: #666;
-    display: inline;
-}
+
 div .linksi{
-    margin-top: 30px;
+    margin-top: 20px;
 }
-.p1{
+.linksi2 a{
     text-decoration: underline;
+    color: #666;
 }
-.p1:hover{
+.linksi2 a:hover{
     font-weight: bold;
     font-style: italic;
 }

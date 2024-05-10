@@ -92,7 +92,7 @@ function validateEmail(email) {
     form.addEventListener("submit", checkPasswordLength);
   }
   function togglePasswordVisibility(iconElement) {
-    const passwordInput = document.getElementById("Password"); 
+    const passwordInput = document.getElementById("password"); 
     if (passwordInput.type === "password") {
       passwordInput.type = "text"; 
       iconElement.classList.remove("fa-eye"); 

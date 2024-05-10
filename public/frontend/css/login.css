@@ -59,11 +59,11 @@ div .linepw{
 .checksignin p{
     color: #666;
 }
-.getpw p{
+.getpw a{
     color: #666;
     text-decoration: underline;
 }
-.linksu2 p{
+.linksu2 a{
     color: #666;
 }
 div .linksu{
@@ -79,14 +79,18 @@ p{
     background-color: #080808;
     color: #FBC31C;
 }
-.p2:hover{
+.a:hover{
     font-weight: bold;
     font-style: italic;
 }
-.getpw p:hover{
+.getpw a:hover{
     font-weight: bold;
     font-style: italic;
 }
-.box_eye{
-   padding-top: 45px;
+.linksu2 a:hover{
+    font-weight: bold;
+    font-style: italic;
+}
+.box_eye i{
+   padding-top: 75px;
 }
