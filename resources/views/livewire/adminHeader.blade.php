@@ -25,5 +25,6 @@
         </ul>
         <!--search & user info end-->
     </div>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </header>
 <!--header end-->

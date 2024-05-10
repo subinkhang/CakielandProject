@@ -35,12 +35,16 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="title">
-                                <p>My Name</p>
+                                <p>Full Name</p>
                             </div>
                         </div>
                         <div class="col-8"></div>
                         <div class="col-12 boxac">
-                            <input id="Name" type="text" placeholder="Nguyen Van A" class="inside"> <br>
+                            {{-- <input id="Name" type="text" placeholder="Nguyen Van A" class="inside"> <br> --}}
+                            <div class="font-medium text-base text-gray-800" x-data="{ name: '{{ auth()->user()->name }}', editing: false }" @click.away="editing = false">
+                                <span x-show="!editing" @click="editing = true" x-text="name"></span>
+                                <input x-show="editing" x-model="name" @keydown.enter="editing = false" class="border-0 outline-none bg-transparent">
+                            </div>
                         </div>
                         <div class="col-4">
                             <div class="title">
@@ -53,7 +57,7 @@
                         </div>
                         <div class="col-4">
                             <div class="title">
-                                <p>Phone Number</p>
+                                <p> </p>
                             </div>
                         </div>
                         <div class="col-8"></div>
@@ -67,7 +71,9 @@
                         </div>
                         <div class="col-8"></div>
                         <div class="col-12 boxac">
-                            <input id="Email" type="text" placeholder="Nguyenvana@gmail.com" class="inside" disabled>
+                            <div class="font-medium text-base text-gray-800">
+                                <div>{{ auth()->user()->email }}</div>
+                            </div>
                         </div>
                         <div class="col-4">
                             <div class="title">
