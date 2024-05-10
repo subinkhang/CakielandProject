@@ -67,7 +67,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 @endif
 
                                 <section class="panel">
-                                    <h4 class="menu"id="text-name"><b>Name</b></h4>
+                                    <h4 class="menu"id="text-name"><b></b></h4>
                                     <textarea name="name" type="text" id="name" class="text-title"></textarea>
 
                                     <h4 class="menu"><b>Fake Price</b></h4>
