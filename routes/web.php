@@ -2,18 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::view('/', 'welcome');
 
 
-// User routes
-Route::get('/', 'App\Http\Controllers\HomepageController@index');
-
+// Category & sub-category Routes
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
 Route::get('/category{category_id}', 'App\Http\Controllers\ProductListController@showCategory');
 Route::get('/sub-category{sub_category_id}', 'App\Http\Controllers\ProductListController@showSubCategory');
 
-Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
+// Auth Routes
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::get('/account', 'App\Http\Controllers\AccountController@index');
+Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+require __DIR__.'/auth.php';
 
 Route::get('/cart', 'App\Http\Controllers\CartController@index');
 
