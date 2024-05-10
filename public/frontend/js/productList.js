@@ -12,4 +12,36 @@ document.addEventListener("DOMContentLoaded", function() {
             cartItemCountElement.textContent = newCartItemCount;
         });
     });
+
+    //Add vô local Storage
+    const addButtons = document.querySelectorAll('.btn_add');
+
+    addButtons.forEach((button, index) => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            const product = {
+                name: document.querySelectorAll('.pr-i2-name')[index].innerText,
+                description: document.querySelectorAll('.text_product')[index].innerText,
+                fake_price: document.querySelectorAll('.old-price')[index].innerText,
+                price: document.querySelectorAll('.new-price')[index].innerText,
+            };
+
+            let products = localStorage.getItem('products');
+            products = products ? JSON.parse(products) : [];
+
+            const existingProductIndex = products.findIndex(p => p.name === product.name);
+
+            if (existingProductIndex >= 0) {
+                // If product already exists in the cart, increase the quantity
+                products[existingProductIndex].quantity = (products[existingProductIndex].quantity || 1) + 1;
+            } else {
+                // If product does not exist in the cart, add it
+                product.quantity = 1;
+                products.push(product);
+            }
+
+            localStorage.setItem('products', JSON.stringify(products));
+        });
+    });
 });
