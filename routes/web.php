@@ -30,9 +30,9 @@ Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@myorders');
 
 Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
 
-Route::fallback(function () {
-    return redirect()->action('App\Http\Controllers\ErrorPageController@index');
-});
+// Route::fallback(function () {
+//     return redirect()->action('App\Http\Controllers\ErrorPageController@index');
+// });
 
 
 // Admin routes
@@ -42,7 +42,9 @@ Route::get('/admin-dashboard', 'App\Http\Controllers\AdminController@show_dashbo
 // Product Routes
 Route::get('/admin-list-product', 'App\Http\Controllers\AdminListProductController@get_list_product');
 Route::get('/admin-add-product', 'App\Http\Controllers\ProductController@add_product');
+Route::get('/admin-edit-product/{product_id}', 'App\Http\Controllers\AdminEditProductController@edit_product');
 Route::post('/save-product', 'App\Http\Controllers\ProductController@save_product');
+Route::post('/update-product/{product_id}', 'App\Http\Controllers\AdminEditProductController@update_product');
 
 // Order Routes
 Route::get('/admin-list-bill', 'App\Http\Controllers\AdminController@list_bill');
