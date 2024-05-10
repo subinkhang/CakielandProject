@@ -136,7 +136,7 @@
                                 <div class="pr-i3">
                                     <img src="{{ asset('frontend/images/product.png') }}" alt=""
                                         class="w-100 productList_image">
-                                    <span class="btn_add"><i class="fa-solid fa-circle-plus"></i></span>
+                                    <span class="btn_add"><i class="fa-solid fa-circle-plus" onclick="addToCart(this)"></i></span>
                                     <div class="container_information">
                                         <a href="#" class="pr-i2-name">{{ $list_product_user->name }}</a>
                                         <ul class="pr-i2-rating d-flex">
