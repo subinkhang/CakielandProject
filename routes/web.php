@@ -36,7 +36,6 @@ Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
 
 
 // Admin routes
-Route::get('/admin-login', 'App\Http\Controllers\AdminController@index');
 Route::get('/admin-dashboard', 'App\Http\Controllers\AdminController@show_dashboard');
 Route::get('/admin-dashboard', 'App\Http\Controllers\AdminController@count_data');
 
