@@ -10,7 +10,7 @@ Route::get('/', 'App\Http\Controllers\HomepageController@index');
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getAllProducts');
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
 
-Route::get('/product-detail', 'App\Http\Controllers\ProductDetailController@index');
+Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
 
 Route::get('/account', 'App\Http\Controllers\AccountController@index');
 
@@ -45,6 +45,7 @@ Route::get('/admin-add-product', 'App\Http\Controllers\ProductController@add_pro
 Route::get('/admin-edit-product/{product_id}', 'App\Http\Controllers\AdminEditProductController@edit_product');
 Route::post('/save-product', 'App\Http\Controllers\ProductController@save_product');
 Route::post('/update-product/{product_id}', 'App\Http\Controllers\AdminEditProductController@update_product');
+
 
 // Order Routes
 Route::get('/admin-list-bill', 'App\Http\Controllers\AdminController@list_bill');

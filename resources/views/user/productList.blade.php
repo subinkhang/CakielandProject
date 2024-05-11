@@ -134,8 +134,10 @@
                         @foreach ($list_product as $key => $list_product_user)
                             <div class="col-4">
                                 <div class="pr-i3">
+                                    <a href="{{URL::to('product-detail/'.$list_product_user->id)}}">
                                     <img src="{{ asset('frontend/images/product.png') }}" alt=""
                                         class="w-100 productList_image">
+                                    </a>
                                     <span class="btn_add"><i class="fa-solid fa-circle-plus" onclick="addToCart(this)"></i></span>
                                     <div class="container_information">
                                         <a href="#" class="pr-i2-name">{{ $list_product_user->name }}</a>
