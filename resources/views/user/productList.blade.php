@@ -130,15 +130,33 @@
                 {{-- <div class="col-1"></div> --}}
                 <div class="col-lg-9">
                     <div class="row">
+                        <div class="col-10"></div>
+                        <div class="col-2">
+                            <label for="amount">Sort by</label>
+                            <form id="sortForm">
+                                {{-- @csrf --}}
+                                <select name="sort" id="sort" class="form-control"
+                                    onchange="this.form.submit()">
+                                    <option value="none">Sort</option>
+                                    <option value="tang_dan">Increase</option>
+                                    <option value="giam_dan">Decrease</option>
+                                    <option value="az">A - Z</option>
+                                    <option value="za">Z - A</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
                         <!-- ĐỔI THÀNH PRODUCT KHI CÓ DATA -->
                         @foreach ($list_product as $key => $list_product_user)
                             <div class="col-4">
                                 <div class="pr-i3">
-                                    <a href="{{URL::to('product-detail/'.$list_product_user->id)}}">
-                                    <img src="{{ asset('frontend/images/product.png') }}" alt=""
-                                        class="w-100 productList_image">
+                                    <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
+                                        <img src="{{ asset('frontend/images/product.png') }}" alt=""
+                                            class="w-100 productList_image">
                                     </a>
-                                    <span class="btn_add"><i class="fa-solid fa-circle-plus" onclick="addToCart(this)"></i></span>
+                                    <span class="btn_add"><i class="fa-solid fa-circle-plus"
+                                            onclick="addToCart(this)"></i></span>
                                     <div class="container_information">
                                         <a href="#" class="pr-i2-name">{{ $list_product_user->name }}</a>
                                         <ul class="pr-i2-rating d-flex">
@@ -218,6 +236,17 @@
     </div>
     </div>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#sort').on('change', function() {
+                var sortBy = $(this).val();
+                if (sortBy) {
+                    window.location = '{{ Request::url() }}?sort_by=' + sortBy;
+                }
+                return false;
+            });
+        });
+    </script>
     <script src="{{ 'frontend/js/jquery-3.7.1.min.js' }}"></script>
     <script src="{{ 'frontend/js/bootstrap.bundle.js' }}"></script>
     <script src="{{ 'frontend/js/productList.js' }}"></script>
