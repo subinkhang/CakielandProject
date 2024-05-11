@@ -61,6 +61,7 @@ Route::get('/delivery-order-status/{id}', 'App\Http\Controllers\AdminListBillCon
 
 //Homepage Routes
 Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
+Route::get('/', 'App\Http\Controllers\HomePageController@getAllProducts');
 
 //Admin List Product
 Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');
