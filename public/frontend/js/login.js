@@ -1,19 +1,20 @@
-// LIMIT PASSWORD
-function validateEmail(email) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  }
-  function checkEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return false; 
-    }
+// // LIMIT PASSWORD
+// function validateEmail(email) {
+//     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//     return re.test(String(email).toLowerCase());
+//   }
+//   function checkEmail(email) {
+//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     if (!emailRegex.test(email)) {
+//       return false; 
+//     }
   
-    return true; 
-  }
+//     return true; 
+//   }
   
   function checkPasswordLength() {
-    const passwordInput = document.getElementById("Password");
+    console.log("hello")
+    const passwordInput = document.getElementById("password");
     const password = passwordInput.value;
     const errorMessage = document.getElementById("passwordError");
   
@@ -55,7 +56,7 @@ function validateEmail(email) {
       }
     }
   
-    const emailInput = document.getElementById('Email');
+    const emailInput = document.getElementById('email');
     const email = emailInput.value.trim();
   
     if (!checkEmail(email)) {
@@ -88,8 +89,8 @@ function validateEmail(email) {
       }
     }
   
-    const form = document.querySelector("form");
-    form.addEventListener("submit", checkPasswordLength);
+    // const form = document.querySelector("form");
+    // form.addEventListener("submit", checkPasswordLength);
   }
   function togglePasswordVisibility(iconElement) {
     const passwordInput = document.getElementById("password"); 
@@ -104,33 +105,33 @@ function validateEmail(email) {
     }
   }
   
-  //   -------------------------------
+  // //   -------------------------------
   
-  function saveLogin() {
-  const username = document.getElementById('Email').value;
-  const password = document.getElementById('Password').value;
-  const rememberMe = document.getElementById('saveLogin').checked;
+  // function saveLogin() {
+  // const username = document.getElementById('email').value;
+  // const password = document.getElementById('password').value;
+  // const rememberMe = document.getElementById('saveLogin').checked;
   
-  if (rememberMe) {
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
-  } else {
-    localStorage.removeItem('username');
-    localStorage.removeItem('password');
-  }
-  }
+  // if (rememberMe) {
+  //   localStorage.setItem('username', username);
+  //   localStorage.setItem('password', password);
+  // } else {
+  //   localStorage.removeItem('username');
+  //   localStorage.removeItem('password');
+  // }
+  // }
   
-  document.getElementById('loginForm').addEventListener('submit', function(event) {
-  event.preventDefault(); 
-  saveLogin(); 
-  });
+  // document.getElementById('loginForm').addEventListener('submit', function(event) {
+  // event.preventDefault(); 
+  // saveLogin(); 
+  // });
   
-  window.addEventListener('load', function() {
-  const username = localStorage.getItem('username');
-  const password = localStorage.getItem('password');
-  if (username && password) {
-    document.getElementById('username').value = username;
-    document.getElementById('password').value = password;
-  }
-  });
+  // window.addEventListener('load', function() {
+  // const username = localStorage.getItem('username');
+  // const password = localStorage.getItem('password');
+  // if (username && password) {
+  //   document.getElementById('username').value = username;
+  //   document.getElementById('password').value = password;
+  // }
+  // });
   

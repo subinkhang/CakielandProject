@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component {
+new #[Layout('layouts.guest')] class extends Component
+{
     public LoginForm $form;
 
     /**
@@ -62,9 +63,8 @@ new #[Layout('layouts.guest')] class extends Component {
                                     <br> --}}
                                     {{-- <div> --}}
                                         <x-input-label for="email" :value="__()" />
-                                        <x-text-input wire:model="form.email" id="email" class="box1signin" type="email" name="email" placeholder="Email"
-                                            required autofocus autocomplete="username" />
-                                        <x-input-error :messages="$errors->get('form.email')" class="box1signin" />
+                                        <x-text-input wire:model="form.email" id="email" class="box1signin" type="email" name="email" placeholder="Email" required autofocus autocomplete="username" />
+                                        {{-- <x-input-error :messages="$errors->get('form.email')" class="mt-2" /> --}}
                                     {{-- </div> --}}
                                 </div>
                                 <div class="col-2"></div>
@@ -75,11 +75,12 @@ new #[Layout('layouts.guest')] class extends Component {
                                     {{-- <div class="mt-4"> --}}
                                         <x-input-label for="password" :value="__()" />
                             
-                                        <x-text-input wire:model="form.password" id="password" class="box2signin" type="password" placeholder="Password"
-                                            name="password" required autocomplete="current-password" />
+                                        <x-text-input wire:model="form.password" id="password" class="box2signin" type="password" placeholder="Password" name="password" required autocomplete="current-password" />
                             
-                                        <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
+                                        <x-input-error :messages="$errors->get('form.password')" class="error" />
+                                        <x-input-error :messages="$errors->get('form.email')" class="error" />
                                     {{-- </div> --}}
+                            
                                 </div>
                                 <div class="col-2 box_eye">
                                     <i class="fa-regular fa-eye"onclick="togglePasswordVisibility(this)"></i></div>
@@ -100,7 +101,7 @@ new #[Layout('layouts.guest')] class extends Component {
                                         
                                             <label for="remember" class="inline-flex items-center">
                                                 <input wire:model="form.remember" id="remember" type="checkbox"
-                                                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                                                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember" >
                                                 <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                                             </label>
                                 </div>
@@ -135,6 +136,6 @@ new #[Layout('layouts.guest')] class extends Component {
                 </div>
             </div>
         </body>
-        <script src="frontend/js/login.js"></script>
+        <script src="{{asset('frontend/js/login.js')}}"></script>
     </form>
 </div>
