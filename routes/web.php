@@ -51,3 +51,6 @@ Route::get('/admin-list-bill', 'App\Http\Controllers\AdminController@list_bill')
 
 //Homepage Routes
 Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
+
+//Admin List Product
+Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');
