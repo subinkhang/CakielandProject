@@ -254,20 +254,16 @@
                     <div class="row ">
                         <div class="col-2"></div>
                         <div class="col-8">
-                            <form role="form" class="row getintouch_search" action="{{ URL::to('/save-email') }}"
-                                method="post">
+                            <form role="form" class="row getintouch_search" id="email-form" action="{{ URL::to('/save-email') }}" method="post">
                                 {{ csrf_field() }}
-                                <div class="col-8 ">
-                                    <input type="text" id="email" name="email" class="w-100 text_p1"
-                                        placeholder="Your email address...">
+                                <div class="col-8">
+                                    <input type="text" id="email" name="email" class="w-100 text_p1" placeholder="Your email address...">
                                 </div>
-                                <div class="col-4 ">
-                                    <button type="submit" class="btn_submit" onclick="validateEmail()">Submit</button>
+                                <div class="col-4">
+                                    <button type="button" class="btn_submit" onclick="validateAndSubmit()">Submit</button>
                                 </div>
-                                <p id="email-error" class="text_p1" style="color: red; display: none;">Email is not valid
-                                </p>
-                                <p id="success-message" class="text_p1" style="color: green; display: none;">Success!
-                                    Your email has been submitted.</p>
+                                <p id="email-error" class="text_p1" style="color: red; display: none;">Email is not valid</p>
+                                <p id="success-message" class="text_p1" style="color: green; display: none;">Success! Your email has been submitted.</p>
                             </form>
                         </div>
                         <div class="col-2"></div>
