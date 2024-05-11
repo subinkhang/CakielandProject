@@ -40,6 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     {{-- ADD CSS SUBIN --}}
     <link href="{{ asset('backend/css/adminListBill.css') }}" rel="stylesheet">
     <title>List Bill</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">   
 
 </head>
 
@@ -56,6 +57,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <section class="wrapper">
                 <div class="table-agile-info" id="table_agile_info">
                     <div class="panel panel-default">
+                        @php
+                            $message = Session::get('message');
+                            if($message){
+                                echo '<span class="text-alert">'.$message.'</span>';
+                                Session::put('message', null);
+                            }
+                        @endphp
                         <div class="panel-heading" id="order_list_heading">
                             Order List
                         </div>
@@ -97,32 +105,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @for ($i = 0; $i < 3; $i++)
+                                    @foreach ($all_orders as $key => $cate_pro)
                                         <tr>
-                                            <td><span class="order_column">SP01</span></td>
-                                            <td><span class="all_column">user01</span></td>
-                                            <td><span class="all_column">product01</span></td>
-                                            <td><span class="all_column">$69</span></td>
-                                            <td><span class="all_column">30/04</span></td>
+                                            <td><span class="order_column">{{ $cate_pro->id }}</span></td>
+                                            <td><span class="all_column">{{ $cate_pro->user_id }}</span></td>
+                                            <td><span class="all_column">{{ $cate_pro->user_id }}</span></td>
+                                            <td><span class="all_column">{{ $cate_pro->total_money }}</span></td>
+                                            <td><span class="all_column">{{ $cate_pro->order_date }}</span></td>
                                             <td>
-                                                <select name="option" class="order_column btn-shopnow bg-vang my-3"
-                                                    onchange="addToCart(this)">
-                                                    <option value="" class="option_status"
-                                                        style="background-color: #FBC31C">Delivering</option>
-                                                    <option value="" class="option_status"
-                                                        style="background-color: rgb(66, 151, 66)">Completed</option>
-                                                    <option value="" class="option_status"
-                                                        style="background-color: rgb(231, 29, 29)">Canceled</option>
+                                                <select name="option" class="order_column btn-shopnow bg-vang my-3 oho"
+                                                        onchange="addToCart(this)" 
+                                                        data-id="{{ $cate_pro->id }}">
+                                                    <option value="0" class="option_status"
+                                                            {{ $cate_pro->status == 0 ? 'selected' : '' }}
+                                                            style="background-color: rgb(231, 29, 29)">
+                                                        Canceled
+                                                    </option>
+                                                    <option value="1" class="option_status"
+                                                            style="background-color: rgb(66, 151, 66)"
+                                                            {{ $cate_pro->status == 1 ? 'selected' : '' }}>
+                                                        Completed
+                                                    </option>
+                                                    <option value="2" class="option_status"
+                                                            style="background-color: #FBC31C"
+                                                            {{ $cate_pro->status == 2 ? 'selected' : '' }}>
+                                                        Delivering
+                                                    </option>
                                                 </select>
                                             </td>
                                         </tr>
-                                    @endfor
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <footer class="panel-footer">
                             <div class="row">
-
                                 <div class="col-sm-5 text-center">
                                     <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
                                 </div>
@@ -153,6 +170,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         <!--main content end-->
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.order_column').change(function() {
+        var status = $(this).val();
+        var id = $(this).data('id');
+        var url = '';
+
+        switch(status) {
+            case '0':
+                url = '/cancel-order-status/' + id;
+                break;
+            case '1':
+                url = '/complete-order-status/' + id;
+                break;
+            case '2':
+                url = '/delivery-order-status/' + id;
+                break;
+        }
+
+        if (url) {
+            $.get(url, function(data, status) {
+                // Handle the response here
+                console.log(data);
+            });
+        }
+    });
+});
+</script>
     <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
     <script src="{{ asset('backend/js/jquery.dcjqaccordion.2.7.js') }}"></script>
     <script src="{{ asset('backend/js/scripts.js') }}"></script>

@@ -1,5 +1,5 @@
         var inputElement = document.getElementById('pr-number');
-        var price = document.getElementsById('pricee');
+        var price = document.getElementById('pricee');
         var subtt;
         function decreaseQuantity() {
             var currentValue = parseInt(inputElement.value);
