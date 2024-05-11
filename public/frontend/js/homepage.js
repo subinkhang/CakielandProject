@@ -59,21 +59,19 @@ document.addEventListener('click', function(event) {
     }
 });
 
-function validateEmail() {
+function validateAndSubmit() {
     var emailInput = document.getElementById('email');
     var emailError = document.getElementById('email-error');
     var successMessage = document.getElementById('success-message');
     var email = emailInput.value;
-  
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
-    if (!emailPattern.test(email)) {
-      emailError.style.display = 'block';
-      successMessage.style.display = 'none'; // Hide success message if email is invalid
-    } else {
-      emailError.style.display = 'none';
-      successMessage.style.display = 'block';
 
-      console.log("Captured email:", email);  
+    if (!emailPattern.test(email)) {
+        emailError.style.display = 'block';
+        successMessage.style.display = 'none';
+    } else {
+        emailError.style.display = 'none';
+        successMessage.style.display = 'block';
+        document.getElementById('email-form').submit();
     }
-  }
+}
