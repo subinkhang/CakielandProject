@@ -16,11 +16,6 @@ class AdminController extends Controller
     {
         return view('admin/adminDashboard');
     }
-
-    public function list_bill()
-    {
-        return view('admin/adminListBill');
-    }
     public function count_data()
     {
         $userCount = DB::table('user')->count();

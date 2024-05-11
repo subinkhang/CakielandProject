@@ -48,10 +48,20 @@ Route::post('/update-product/{product_id}', 'App\Http\Controllers\AdminEditProdu
 
 
 // Order Routes
-Route::get('/admin-list-bill', 'App\Http\Controllers\AdminController@list_bill');
+Route::get('/admin-list-bill', 'App\Http\Controllers\AdminListBillController@get_list_orders');
+// Route::get('/canceled-order-status/{ $order_id }', 'App\Http\Controllers\AdminListBillController@canceled_order_status');
+// Route::get('/completed-order-status/{ $order_id }', 'App\Http\Controllers\AdminListBillController@completed_order_status');
+// Route::get('/delivering-order-status/{ $order_id }', 'App\Http\Controllers\AdminListBillController@delivering_order_status');
+// Route::put('/update-order-status/{id}', 'AdminListBillController@updateOrderStatus');
+Route::get('/cancel-order-status/{id}', 'App\Http\Controllers\AdminListBillController@cancelOrderStatus');
+Route::get('/complete-order-status/{id}', 'App\Http\Controllers\AdminListBillController@completeOrderStatus');
+Route::get('/delivery-order-status/{id}', 'App\Http\Controllers\AdminListBillController@deliveryOrderStatus');
+
+
 
 //Homepage Routes
 Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
 
 //Admin List Product
 Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');
+// Route::post('/update-order-status/{id}', 'AdminListBillController@updateOrderStatus');

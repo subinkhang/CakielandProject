@@ -35,7 +35,7 @@
                                                         class="img-fluid">
                                                 </div>
                                                 <div class="col-9 row">
-                                                    <h6>lăn bột hjghvhhgfhgvhvjvjvjvjvjgc</h6>
+                                                    <h6 id="lll"></h6>
                                                     <div class="d-flex">
                                                         <button id="btn-minus" class="btn-minuse" type="button"
                                                             onclick="decreaseQuantity()">-</button>
