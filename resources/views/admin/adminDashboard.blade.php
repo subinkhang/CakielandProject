@@ -59,8 +59,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <i class="fa fa-eye"> </i>
                             </div>
                             <div class="col-md-8 market-update-left">
-                                <h4>Buyers</h4>
-                                <h3>13,500</h3>
+                                <h4>Email</h4>
+                                <h3>{{$emailCount}}</h3>
                                 <p>Other hand, we denounce</p>
                             </div>
                             <div class="clearfix"> </div>
@@ -73,7 +73,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </div>
                             <div class="col-md-8 market-update-left">
                                 <h4>Users</h4>
-                                <h3>1,250</h3>
+                                <h3>{{$userCount}}</h3>
                                 <p>Other hand, we denounce</p>
                             </div>
                             <div class="clearfix"> </div>
@@ -86,7 +86,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </div>
                             <div class="col-md-8 market-update-left">
                                 <h4>Sales</h4>
-                                <h3>1,500</h3>
+                                <h3>{{$totalMoney}}</h3>
                                 <p>Other hand, we denounce</p>
                             </div>
                             <div class="clearfix"> </div>
@@ -99,7 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </div>
                             <div class="col-md-8 market-update-left">
                                 <h4>Orders</h4>
-                                <h3>1,500</h3>
+                                <h3>{{$orderCount}}</h3>
                                 <p>Other hand, we denounce</p>
                             </div>
                             <div class="clearfix"> </div>
@@ -536,53 +536,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- morris JavaScript -->
     <script>
         $(document).ready(function() {
-            //BOX BUTTON SHOW AND CLOSE
-            jQuery('.small-graph-box').hover(function() {
-                jQuery(this).find('.box-button').fadeIn('fast');
-            }, function() {
-                jQuery(this).find('.box-button').fadeOut('fast');
+            // Dữ liệu từ biến chartData sẽ được truyền từ phía server
+            var chartData = {!! $chartData !!};
+    
+            // Biểu đồ
+            var dataForGraph = [];
+            chartData.forEach(function(item) {
+                var row = {
+                    date: item.date
+                };
+                // Thêm dữ liệu của các category vào mảng row
+                item.categories.forEach(function(quantity) {
+                    row['category_' + (item.categories.indexOf(quantity) + 1)] = quantity;
+                });
+                dataForGraph.push(row);
             });
-            jQuery('.small-graph-box .box-close').click(function() {
-                jQuery(this).closest('.small-graph-box').fadeOut(200);
-                return false;
-            });
-
+    
             //CHARTS
-            function gd(year, day, month) {
-                return new Date(year, month - 1, day).getTime();
-            }
-            data = [{
-                    date: "2023-10-01",
-                    toys_children: 100,
-                    toys_men: 50,
-                    toys_women: 70
-                },
-                {
-                    date: "2023-10-02",
-                    toys_children: 120,
-                    toys_men: 65,
-                    toys_women: 85
-                },
-                {
-                    date: "2023-10-03",
-                    toys_children: 80,
-                    toys_men: 40,
-                    toys_women: 60
-                },
-                {
-                    date: "2023-10-04",
-                    toys_children: 150,
-                    toys_men: 80,
-                    toys_women: 100
-                },
-                {
-                    date: "2023-10-05",
-                    toys_children: 130,
-                    toys_men: 70,
-                    toys_women: 90
-                },
-                // ... thêm dữ liệu cho các ngày khác
-            ];
             graphArea2 = Morris.Area({
                 element: 'hero-area',
                 padding: 10,
@@ -595,15 +565,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 pointSize: 2,
                 lineWidth: 2,
                 fillOpacity: 0.85,
-                data: data,
+                data: dataForGraph,
                 xkey: 'date',
-                ykeys: ['toys_children', 'toys_men', 'toys_women'],
-                labels: ['Đồ chơi Trẻ em', 'Đồ chơi Nam', 'Đồ chơi Nữ'],
+                ykeys: ['category_1', 'category_2', 'category_3', 'category_4', 'category_5', 'category_6'], // Số lượng categories phụ thuộc vào số lượng categories thực tế bạn có
+                labels: {!! json_encode($categories->toArray()) !!}, // Tên categories
                 hideHover: 'auto',
                 resize: true
             });
-
-
         });
     </script>
     <!-- calendar -->
@@ -634,7 +602,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 case 'file:':
                     alert('Just a heads-up, events will not work when run locally.');
             }
-
         });
     </script>
     <!-- //calendar -->
