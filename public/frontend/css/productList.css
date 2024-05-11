@@ -579,3 +579,53 @@ to {bottom: 30px; opacity: 1;}
 from {bottom: 30px; opacity: 1;}
 to {bottom: 0; opacity: 0;}
 }
+
+
+/* Style cho form và select */
+#sortForm {
+    margin: 10px 0;
+}
+
+/* Base style */
+.select-custom {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    border: 2px solid #f3e0d2; /* Soft border color */
+    border-radius: 20px; /* Rounded corners */
+    background-image: linear-gradient(to right, #f9f0e3, #f0c8a0); /* Gradient background */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+    cursor: pointer;
+    font-size: 16px;
+    color: #5a3e25; /* Dark brown text color for better readability */
+    transition: all 0.3s ease-in-out; /* Smooth transition for interactions */
+}
+
+.select-custom:hover, .select-custom:focus {
+    box-shadow: 0 8px 16px rgba(178, 150, 99, 0.5); /* Enhanced shadow on hover/focus */
+    background-image: linear-gradient(to right, #f0c8a0, #f9f0e3); /* Reverse gradient for visual effect */
+}
+
+/* Style adjustments for options */
+.select-custom option {
+    padding: 8px;
+    background: white; /* Solid color for options for better readability */
+    border-bottom: 1px solid #f1f1f1; /* Light borders for options */
+}
+
+/* Adding custom styles for the dropdown arrow using Font Awesome */
+.select-custom {
+    appearance: none; /* Disable native UI */
+    background: url('https://s2.svgbox.net/hero-solid.svg?ic=chevron-down&color=5a3e25') no-repeat;
+    background-position: right 10px center; /* Position for the icon */
+    background-size: 20px; /* Icon size */
+}
+
+/* Style for the label */
+label {
+    font-weight: bold;
+    color: #836953;
+    margin-bottom: 8px;
+    display: block;
+}
+

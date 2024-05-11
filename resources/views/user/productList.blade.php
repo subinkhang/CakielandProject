@@ -3,6 +3,18 @@
     <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/productList.css') }}">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+    <script>
+        $(document).ready(function() {
+            $('#sort').select2({
+                minimumResultsForSearch: Infinity, // Disable the search box
+                theme: "classic"
+            });
+        });
+    </script>
+
     <livewire:breadcrumb-banner />
 
     <div class="container header">
@@ -131,13 +143,13 @@
                 <div class="col-lg-9">
                     <div class="row">
                         <div class="col-10"></div>
+                        <link rel="stylesheet" href="path/to/your/custom-style.css">
                         <div class="col-2">
-                            <label for="amount">Sort by</label>
+                            {{-- <label for="amount">Sort by</label> --}}
                             <form id="sortForm">
-                                {{-- @csrf --}}
-                                <select name="sort" id="sort" class="form-control"
+                                <select name="sort" id="sort" class="form-control select-custom"
                                     onchange="this.form.submit()">
-                                    <option value="none">Sort</option>
+                                    <option value="none">Sort by</option>
                                     <option value="tang_dan">Increase</option>
                                     <option value="giam_dan">Decrease</option>
                                     <option value="az">A - Z</option>
@@ -145,6 +157,7 @@
                                 </select>
                             </form>
                         </div>
+                        <script src="path/to/your/custom-script.js"></script>
                     </div>
                     <div class="row">
                         <!-- ĐỔI THÀNH PRODUCT KHI CÓ DATA -->

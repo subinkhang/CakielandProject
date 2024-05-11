@@ -59,3 +59,23 @@ function addToCart(element) {
     toast.className = "toast show";
     setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
 }
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     var select = document.getElementById('sort');
+//     select.onfocus = function() {
+//         this.style.boxShadow = '0 4px 8px rgba(178, 150, 99, 0.5)';
+//     };
+//     select.onblur = function() {
+//         this.style.boxShadow = 'none';
+//     };
+// });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var select = document.getElementById('sort');
+    select.addEventListener('focus', function() {
+        this.style.borderColor = '#b29663'; /* Highlight border when focused */
+    });
+    select.addEventListener('blur', function() {
+        this.style.borderColor = '#f3e0d2'; /* Revert border color on blur */
+    });
+});
