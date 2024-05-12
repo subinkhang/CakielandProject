@@ -23,15 +23,13 @@
                     </div>
                 </div>
             </div>
-            @php
-                $myorders_list = $myorders->toArray();
-            @endphp
             <div class="col-9">
+                @if (count($data) >= 0)
                 <div class="row">
-                @for ($i = 0; $i < count($myorders); $i++)
+                    @foreach ($data as $item)
                     <div class="col-12 product_detail">
                         <div class="col-12 order_title">
-                            <h5>{{ $myorders_status[$i+1]->status }}</h5>
+                            <h5>{{ $item->status }}</h5>
                         </div>
                         <div class="row">
                             <div class="col-3" class="img_order">
@@ -39,27 +37,29 @@
                                     class="w-100">
                             </div>
                             <div class="col-5 order_name">
-                                <h5>{{ $all_products[$i]->name }}</h5>
-                                <p> Quantity: {{ $myorders[$i]->quantity }}</p>
+                                <h5>{{ $item->name }}</h5>
+                                <p> Quantity: {{ $item->quantity }}</p>
                             </div>
                             <div class="col-4">
-                                <p class="price">{{ $myorders[$i]->price }}</p>
+                                <p class="price">{{ $item->price }}</p>
                             </div>
                             <div class="col-3 status">
                                 <h5>Order status: </h5>
                             </div>
                             <div class="col-5 order_deli">
-                                <h5>{{ $myorders_status[$i]->status }}</h5>
+                                <h5>{{ $item->status }}</h5>
                             </div>
                             <div class="col-4 total_price">
-                                <h6>Total: {{ $myorders[$i]->total_money }}</h6>
-                                <button type="submit" class="button_order">Buy Now</button>
+                                <h6>Total: {{ $item->total_money }}</h6>
+                                <button type="submit" class="button_order">Buy Again</button>
                             </div>
                         </div>
                     </div>
-                    @endfor
-                </div>  
+                    @endforeach
+                </div> 
+                
                 <div class="row">
+                    @foreach ($data as $item)
                     <div class="col-12 product_detail_2">
                         <div class="col-12 order_title">
                             <h5>DELIVERED</h5>
@@ -78,14 +78,16 @@
                             </div>
                             <div class="col-3 status"></div>
                             <div class="col-5 order_deli"></div>
-                            <div class="col-4 total_price">
+                            <div class="col-4 total_price">z
                                 <h6>Total: $112.00</h6>
-                                <button type="submit" class="button_order">Buy Now</button>
+                                <button type="submit" class="button_order">Buy Again</button>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
                 <div class="row">
+                    @foreach ($data as $item)
                     <div class="col-12 product_detail_3">
                         <div class="col-12 order_title">
                             <h5>DELIVERING</h5>
@@ -121,11 +123,13 @@
                             </div>
                             <div class="col-4 total_price">
                                 <h6>Total: $112.00</h6>
-                                <button type="submit" class="button_order">Buy Now</button>
+                                <button type="submit" class="button_order">Buy Again</button>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
+                @endif 
             </div>
         </div>
     </div>
