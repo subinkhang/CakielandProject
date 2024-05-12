@@ -9,7 +9,7 @@
     <div class="container mt-5 carousel_product">
         <div class="row detail">
             <div class="col-lg-6 pr-slide carousel" data-bs-ride="carousel" id="pr-slide">
-                <div class="carousel-indicators">
+                {{-- <div class="carousel-indicators">
                     <div class="row">
                         <div class="col-4">
                             <img data-bs-target="#pr-slide" data-bs-slide-to="0" class="active carousel-btn1"
@@ -44,7 +44,7 @@
                         <img src="{{ asset('frontend/images/pr-detail/máy đánh trứng 3.webp') }}" alt=""
                             class="img-fluid w-100">
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="col-lg-6">
                 <div class="col-12">
@@ -58,22 +58,26 @@
                     </ul>
                     <div class="row mb-3">
                         <div class="col-md-2 col-3 ">
-                            <p class="old-price"> ${{$product->fake_price}} </p>
+                            <p class="old-price"> {{$product->fake_price}} </p>
                         </div>
                         <div class="col-md-2 col-3">
-                            <p class="new-price"> ${{$product->price}} </p>
+                            <p class="new-price"> {{$product->price}} </p>
                         </div>
                         <button class="btn-shopnow bg-vang my-3" onclick="addToCart(this)" onclick="AddCart(4)">Add to
                             cart</button>
                     </div>
                     <p class="pr-detail-content">{{$product->description}}</p>
+                    
                     <h4 class="pr-property">Color</h4>
+                    @foreach($product_color as $key => $product_color)
                     <ul class="pr-color d-flex ps-0 mt-3" id="colorList">
+                        <p>{{$product_color->color}}</p>
+                        {{-- <li onclick="selectColor(this)"></li>
                         <li onclick="selectColor(this)"></li>
                         <li onclick="selectColor(this)"></li>
-                        <li onclick="selectColor(this)"></li>
-                        <li onclick="selectColor(this)"></li>
+                        <li onclick="selectColor(this)"></li> --}}
                     </ul>
+                    @endforeach
                     <div class="d-flex">
                         <button id="btn-minus"><i class="fa-solid fa-minus"></i></button>
                         <input type="number" value="1" id="pr-number">
@@ -108,7 +112,7 @@
                         <li>Equipped with two convenient sticks</li>
                     </ul> --}}
                     <h3 class="pr-des">Product Description</h3>
-                    <p>{{$product->description_information}}</p>
+                    <p>{{$product->description_technique}}</p>
                     {{-- <ol>
                         <li>Compact design, convenient to hold</li>
                         <p>Philips HR3705 Egg Beater (300W) has a compact design with a sturdy handle so you can use it
@@ -131,7 +135,7 @@
                 <div class="tab-pane" id="info" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                     <h3 class="pr-des">Product information</h3>
                     <table> 
-                        <p>{{$product->description_technique}}</p>
+                        <p>{{$product->description_information}}</p>
 
                         {{-- <tr>
                             <td>Trademark:</td>
@@ -183,7 +187,37 @@
             <div class="col-12 justify-content-start mb-3">
                 <h3>Related Product</h3>
             </div>
+            @foreach($related_products as $key => $related_products)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="pr-i3">
+                        <img src="{{ asset('frontend/images/product.png') }}" alt=""
+                            class="w-100 productList_image">
+                        <span class="btn_add" onclick="addToCart(this)"><i class="fa-solid fa-circle-plus"></i></span>
+                        <div class="container_information">
+                            <a href="#" class="pr-i2-name">{{$related_products->name}}</a>
+                            <ul class="pr-i2-rating d-flex">
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                            </ul>
+                            <div class="text_product">
+                                <p>{{$related_products->description}}</p>
+                            </div>
+                            <div class="row productList_price">
+                                <div class="col-6">
+                                    <p class="old-price">{{$related_products->fake_price}}</p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p class="new-price">{{$related_products->price}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="pr-i3">
                         <img src="{{ asset('frontend/images/product.png') }}" alt=""
                             class="w-100 productList_image">
@@ -266,38 +300,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="pr-i3">
-                        <img src="{{ asset('frontend/images/product.png') }}" alt=""
-                            class="w-100 productList_image">
-                        <span class="btn_add" onclick="addToCart(this)"><i class="fa-solid fa-circle-plus"></i></span>
-                        <div class="container_information">
-                            <a href="#" class="pr-i2-name">Salim</a>
-                            <ul class="pr-i2-rating d-flex">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                            </ul>
-                            <div class="text_product">
-                                The product is contained in a glass bottle, environmentally friendly and beautiful, can be used to decorate the dispenser.
-                            </div>
-                            <div class="row productList_price">
-                                <div class="col-6">
-                                    <p class="old-price">$123.00</p>
-                                </div>
-                                <div class="col-6 text-end">
-                                    <p class="new-price">$100.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
         </div>
     </div>
-    
     
     <!-- END PRODUCT DETAIL -->
 
