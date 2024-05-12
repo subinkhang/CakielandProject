@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 // User routes
 // Route::get('/', 'App\Http\Controllers\HomepageController@index');
 Route::get('/', function () {
-    return redirect('/dashboard');
+    return view('dashboard');
 });
 
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getAllProducts');
@@ -64,6 +64,7 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+// Product Detail Routes
 Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
 Route::view('profile', 'profile')
     ->middleware(['auth'])
@@ -71,21 +72,21 @@ Route::view('profile', 'profile')
 
 require __DIR__.'/auth.php';
 
-Route::get('/cart', 'App\Http\Controllers\CartController@index');
+// Route::get('/cart', 'App\Http\Controllers\CartController@index');
 
-Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
+// Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
 
-Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
+// Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
 
-Route::get('/signup', 'App\Http\Controllers\SignupController@index');
+// Route::get('/signup', 'App\Http\Controllers\SignupController@index');
 
-Route::get('/login', 'App\Http\Controllers\LoginController@index');
+// Route::get('/login', 'App\Http\Controllers\LoginController@index');
 
-Route::get('/about-us', 'App\Http\Controllers\AboutUsController@index');
+// Route::get('/about-us', 'App\Http\Controllers\AboutUsController@index');
 
 Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@myorders_detail');
 
-Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
+// Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
 
 // Route::fallback(function () {
 //     return redirect()->action('App\Http\Controllers\ErrorPageController@index');
