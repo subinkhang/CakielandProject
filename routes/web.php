@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('dashboard');
 // });
 
-Route::get('/product-list', 'App\Http\Controllers\ProductListController@getAllProducts');
+// Route::get('/product-list', 'App\Http\Controllers\ProductListController@getAllProducts');
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
+Route::post('/search-product-list', 'App\Http\Controllers\ProductListController@search');
 
 // Category & sub-category Routes
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
@@ -130,3 +131,8 @@ Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts
 //Admin List Product
 Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');
 // Route::post('/update-order-status/{id}', 'AdminListBillController@updateOrderStatus');
+
+// Route::get('demo-search', function () {
+//     return view('index');
+// });
+// Route::post('searchdemo', 'ProductListController@searchByName');

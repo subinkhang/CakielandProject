@@ -97,15 +97,12 @@ class ProductListController extends Controller
 
     public function getPagedProducts(Request $request)
     {
-        $cate=DB::table('category')->orderby('id','desc')->get();
-        $sub_cate=DB::table('sub_category')->orderby('id','desc')->get();
-
         $sort = $request->input('sort', 'none');
         $query = Product::query();
 
 
         switch ($sort) {
-            case 'tang_dan':
+            case 'tang_dan': 
                 $query->orderBy('price');
                 break;
             case 'giam_dan':
@@ -127,7 +124,36 @@ class ProductListController extends Controller
 
         $data['list_product'] = $query->paginate(9);
         $all_product = DB::table('product')->get();  // Consider optimizing this if only used for display.
-        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product,
-        'category'=>$cate, 'sub_category'=>$sub_cate, 'brands' => $data['brands']]);
+        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product]);
+    }
+
+    
+    public function search(Request $request)
+    {
+        $keywords = $request->keywords_submit;
+
+        $sort = $request->input('sort', 'none');
+        $query = Product::query();
+
+        switch ($sort) {
+            case 'tang_dan': 
+                $query->orderBy('price');
+                break;
+            case 'giam_dan':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'az':
+                $query->orderBy('name');
+                break;
+            case 'za':
+                $query->orderBy('name', 'desc');
+                break;
+        }
+
+        $data['list_product'] = $query->paginate(9);
+
+        $search_product = DB::table('product')->where('name', 'like', '%' . $keywords . '%')->get();
+
+        return view('user/search', ['list_product' => $data['list_product'], 'search_product' => $search_product]);
     }
 }
