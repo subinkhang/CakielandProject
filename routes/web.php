@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Route;
 // User routes
 Route::get('/', 'App\Http\Controllers\HomepageController@index');
 
-Route::get('/product-list', 'App\Http\Controllers\ProductListController@getAllProducts');
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
+Route::get('/category{category_id}', 'App\Http\Controllers\ProductListController@showCategory');
+Route::get('/sub-category{sub_category_id}', 'App\Http\Controllers\ProductListController@showSubCategory');
 
 Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
 
