@@ -54,12 +54,12 @@
                                         <p1>Subtotal</p1>
                                     </td>
                                     <td class="col-4 text-end">
-                                        <p1 id="rightsub">199.00</p1>
+                                        <p1 id="rightsub"></p1>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row"></th>
-                                    <td class="col-8">
+                                    <td class="col-8" id="shipping">
                                         <p1>Shipping</p1>
                                     </td>
                                     <td class="col-4 text-end"id="shipping-price">
@@ -81,7 +81,7 @@
                                         <h3><b>TOTAL</b></h3>
                                     </td>
                                     <td class="col-2 text-end" id="totalprice">
-                                        <h3><b>199.00</b></h3>
+                                        <h3><b></b></h3>
                                     </td>
                                 </tr>
                             </table>
@@ -103,3 +103,4 @@
     <script src="../header-footer/js/bootstrap.bundle.js"></script>
     <script src="{{ asset('frontend/js/cart.js') }}"></script>
 @endsection
+

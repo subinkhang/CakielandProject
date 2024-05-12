@@ -15,29 +15,11 @@
                     </div>
                     <div class="col-6">
                         <div class="container">
+                            
                             <div class="row pr-list-co">
-                                <div class="col-3">
-                                    <img src="{{ asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg') }}"
-                                        class="img-fluid">
-                                </div>
-                                <div class="col-9 row">
-                                    <h5><b>lăn bột hjghvhhgfhgvhvjvjvjvjvjgc</b></h5>
-                                    <h6 class="col-2">Quantity:</h6>
-                                    <h6 class="col-10">1</h6>
-                                    <h5 class="price"><b>$112.00</b></h5>
-                                </div>
-                            </div>
-                            <div class="row pr-list-co">
-                                <div class="col-3">
-                                    <img src="{{ asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg') }}"
-                                        class="img-fluid">
-                                </div>
-                                <div class="col-9 row">
-                                    <h5><b>lăn bột hjghvhhgfhgvhvjvjvjvjvjgc</b></h5>
-                                    <h6 class="col-2">Quantity:</h6>
-                                    <h6 class="col-10">1</h6>
-                                    <h5 class="price"><b>$112.00</b></h5>
-                                </div>
+                                <table id="list">
+                                    
+                                </table>
                             </div>
                         </div>
 
@@ -48,7 +30,7 @@
                                     <p1>Subtotal</p1>
                                 </td>
                                 <td class="col-4 text-end">
-                                    <p1><b>199.00</b></p1>
+                                    <p1 id="subtotal"><b></b></p1>
                                 </td>
                             </tr>
                             <tr>
@@ -57,15 +39,15 @@
                                     <p1>Shipping</p1>
                                 </td>
                                 <td class="col-4 text-end">
-                                    <p1><b>2.00</b></p1>
+                                    <p1 id="shipping"><b></b></p1>
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row"></th>
                                 <td class="col-8">
-                                    <p1>Discount</p1< /td>
+                                    <p1>Discount</p1></td>
                                 <td class="col-4 text-end">
-                                    <p1><b>2.00</b></p1>
+                                    <p1 id="discount"><b></b></p1>
                                 </td>
                             </tr>
 
@@ -75,7 +57,7 @@
                                     <h3><b>TOTAL</b></h3>
                                 </td>
                                 <td class="col-2 text-end">
-                                    <h3><b>199.00</b></h3>
+                                    <h3 id="total"><b></b></h3>
                                 </td>
                                 <td class="col-2"></td>
                             </tr>

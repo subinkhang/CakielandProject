@@ -1,6 +1,3 @@
-        var inputElement = document.getElementById('pr-number');
-        var price = document.getElementById('pricee');
-        var subtt;
         function decreaseQuantity(index) {
             const inputElement = document.querySelector(`input[name="quan[${index}]"]`);
             var currentValue = parseInt(inputElement.value);
@@ -8,10 +5,19 @@
                 inputElement.value = currentValue - 1;
             }
             var num = inputElement.value
-            const price = document.querySelector(`name="price[${index}]"`);
-            const subp = parseFloat(price.textContent);
-            subtt = subp * num;
+            console.log(num)
+            const priceElement = document.querySelector(`h6[name="price[${index}]"]`)
+            const price = parseFloat(priceElement.textContent);
+            console.log(price)
+            const subtotalElement = document.getElementById(`subprice_${index}`);
+            console.log(subtotalElement)
+            const total = parseFloat(num) * parseFloat(price);
+            console.log(total)
+            subtotalElement.innerHTML = `<span>$${total.toFixed(2)}</span>`;
+            updateTotal();
         }
+
+        
         
         function increaseQuantity(index) {
             const inputElement = document.querySelector(`input[name="quan[${index}]"]`);
@@ -20,34 +26,50 @@
                 inputElement.value = currentValue + 1;
             }
             var num = inputElement.value
-            const nameContent = document.querySelector('[name="price[${index}]"]').textContent;
-            console.log('subp',nameContent)
-            subtt = subp * num;
-
-            console.log('sub',subp)
+            console.log(num)
+            const priceElement = document.querySelector(`h6[name="price[${index}]"]`)
+            const price = parseFloat(priceElement.textContent);
+            console.log(price)
+            const subtotalElement = document.getElementById(`subprice_${index}`);
+            console.log(subtotalElement)
+            const total = parseFloat(num) * parseFloat(price);
+            console.log(total)
+            subtotalElement.innerHTML = `<span>$${total.toFixed(2)}</span>`;
+            
+            updateTotal();
+        }
+        function updateTotal() {
+            const subtotalElements = document.querySelectorAll('.subprice'); // Get all elements with class 'subprice'
+            let total = 0;
+            subtotalElements.forEach(subtotalElement => {
+                total += parseFloat(subtotalElement.textContent.replace("$", ""));
+            });
+            document.getElementById('rightsub').textContent = `$${total.toFixed(2)}`;
+            const shippingPrice = parseFloat(document.getElementById('shipping-price').textContent.replace("$", ""));
+            console.log('ship',shippingPrice)
+            const discountPrice = parseFloat(document.getElementById('discount-price').textContent.replace("$", ""));
+            const full = total + shippingPrice - discountPrice;
+            const totalprice = document.getElementById('totalprice')
+            totalprice.innerHTML = `<span><h3><b>$${full.toFixed(2)}</h3></b></span>`
         }
         
-        function updateSubtotal(index) {
-            const inputElement = document.querySelector(`input[name="quan[${index}]"]`);
-            const currentValue = parseInt(inputElement.value);
-            const subp = parseFloat(products[index].price);
-            const subtt = subp * currentValue;
-            document.getElementById(`subtotal-${index}`).innerHTML = `<span>$${subtt.toFixed(2)}</span>`;
-        }
         
 /*-------------REMOVE ITEM------------*/
+
 function deleteItem(index) {
     const itemId = `item${index}`;
-    const removeItem = document.getElementById(itemId);
-    removeItem.remove();
+    const rmitem = document.getElementById(itemId);
+    rmitem.remove();
+        localStorage.removeItem(itemId);
 }
 
-// /*----------------GET ITEM---------------------*/
+
+/*----------------GET ITEM---------------------*/
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const products = JSON.parse(localStorage.getItem('products'));
     var table = document.getElementById('prod');
-    
+    let total = 0;
     for (let i = 0; i < products.length; i++) {
         var newRow = document.createElement("tr");
         newRow.id = `item${i}`;
@@ -72,11 +94,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         </div>
                         
                         <h6 class="price" name="price[${i}]">${products[i].price}</h6>
+
                     </div>
                 </div>
             </td>
             <td class="col-2 text-end">
-                <b class="subprice">${subtotal}</b>
+                <b class="subprice" id="subprice_${i}">$${subtotal}.00</b>
                 <p></p>
                 <p></p>
                 <button class="removeitem" onclick="deleteItem(${i})">
@@ -84,10 +107,60 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 </button>
             </td>
         `;
-    
+        total += products[i].price * products[i].quantity
         table.appendChild(newRow);
     }
+    const rightsubtotal = document.getElementById('rightsub')
+    rightsubtotal.innerHTML = `<span>$${total.toFixed(2)}</span>`;
+
+        const shippingPrice = parseFloat(document.getElementById('shipping-price').textContent.replace("$", ""));
+        const discountPrice = parseFloat(document.getElementById('discount-price').textContent.replace("$", ""));
+        const full = total + shippingPrice - discountPrice;
+        const totalprice = document.getElementById('totalprice')
+        totalprice.innerHTML = `<span><h3><b>$${full.toFixed(2)}</h3></b></span>`
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Lắng nghe sự kiện click cho nút "Payment"
+    const paymentButton = document.getElementById('btn-p');
+    paymentButton.addEventListener('click', function() {
+        // Gọi hàm để lưu thông tin lên local storage
+        saveCartDataToLocalStorage();
+    });
+});
+
+function saveCartDataToLocalStorage() {
+    const updatedProducts = [];
+    const tableRows = document.querySelectorAll('#prod tr');
+    tableRows.forEach((row, index) => {
+        const quantityInput = row.querySelector(`input[name="quan[${index}]"]`);
+        const quantity = parseInt(quantityInput.value);
+        const priceElement = row.querySelector(`h6[name="price[${index}]"]`);
+        const price = parseFloat(priceElement.textContent);
+        const subtotalElement = row.querySelector(`#subprice_${index}`);
+        const subtotal = parseFloat(subtotalElement.textContent.replace("$", ""));
+        const productName = row.querySelector('h6').textContent;
+        updatedProducts.push({
+            name: productName,
+            quantity: quantity,
+            price: price,
+            subtotal: subtotal
+        });
+    });
+    const shippingPrice = parseFloat(document.getElementById('shipping-price').textContent.replace("$", ""));
+    const discountPrice = parseFloat(document.getElementById('discount-price').textContent.replace("$", ""));
+    const total = parseFloat(document.getElementById('totalprice').textContent.replace("$", ""));
+    const rightsubtotal = parseFloat(document.getElementById('rightsub').textContent.replace("$", ""));
+    const dataToStore = {
+        products: updatedProducts,
+        shippingPrice: shippingPrice,
+        discountPrice: discountPrice,
+        total: total,
+        rightsub: rightsubtotal
+    };
+    localStorage.setItem('cartData', JSON.stringify(dataToStore));
+}
+
 
 
 

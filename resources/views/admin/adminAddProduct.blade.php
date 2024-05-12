@@ -118,15 +118,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <div class="cont">
                                             <div class="grey">
                                                 <input type="checkbox" style="text-align: center" id="op1">
-                                                <div style="background-color: grey" class="color"></div>
+                                                <div name="gray" style="background-color: gray" class="color"></div>
                                             </div>
                                             <div class="black">
                                                 <input type="checkbox" style="text-align: center" id="op2">
-                                                <div style="background-color: black" class="color"></div>
+                                                <div name="black" style="background-color: black" class="color"></div>
                                             </div>
                                             <div class="white">
                                                 <input type="checkbox" style="text-align: center" id="op3">
-                                                <div style="background-color: white" class="color"></div>
+                                                <div name="white" style="background-color: white" class="color"></div>
                                             </div>
 
                                         </div>
@@ -134,29 +134,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <select id="cate"
                                             style="margin-top: 10px, width: 195px; border-radius: 15px;">
                                             <option value="">Categories</option>
-                                            <option value="wet">Wet Indredients</option>
-                                            <option value="dry">Dry Indredients</option>
-                                            <option value="baking">Baking Tools</option>
-                                            <option value="cooking">Utensiles</option>
-                                            <option value="bartool">Bar Tool</option>
-                                            <option value="bar">Bar Ingredients</option>
+                                            <option value="wet" name="wet_indreadients">Wet Indredients</option>
+                                            <option value="dry" name="dry_indreadients">Dry Indredients</option>
+                                            <option value="baking" name="baking_tools">Baking Tools</option>
+                                            <option value="cooking" name="utensiles">Utensiles</option>
+                                            <option value="bartool" name="bartool">Bar Tool</option>
+                                            <option value="bar" name="bar">Bar Ingredients</option>
                                         </select>
                                         <h4 class="right-text"><b>Tag</b></h4>
                                         <select id="tag"
                                             style="margin-top: 10px, width: 195px; border-radius: 15px; margin-bottom: 30px;">
                                             <option value="">Tag</option>
-                                            <option value="milk">Milk</option>
-                                            <option value="butter">Butter</option>
-                                            <option value="flour">Flour</option>
-                                            <option value="bakingsoda">Baking Soda</option>
-                                            <option value="egg">Eggs Beater</option>
-                                            <option value="mold">Mold</option>
-                                            <option value="potset">Stainless Steel Pot Set</option>
-                                            <option value="knifeset">Kitchen Knife Set</option>
-                                            <option value="foammaker">Coffee Foam Maker</option>
-                                            <option value="cup">Measuring Cup</option>
-                                            <option value="tea">Tea</option>
-                                            <option value="syrup">Syrup</option>
+                                            <option value="milk" name="milk">Milk</option>
+                                            <option value="butter" name="milk">Butter</option>
+                                            <option value="flour" name="flour">Flour</option>
+                                            <option value="bakingsoda" name="bakingsoda">Baking Soda</option>
+                                            <option value="egg" name="egg">Eggs Beater</option>
+                                            <option value="mold" name="mold">Mold</option>
+                                            <option value="potset" name="potset">Stainless Steel Pot Set</option>
+                                            <option value="knifeset" name="knifeset">Kitchen Knife Set</option>
+                                            <option value="foammaker" name="foammaker">Coffee Foam Maker</option>
+                                            <option value="cup" name="cup">Measuring Cup</option>
+                                            <option value="tea" name="tea">Tea</option>
+                                            <option value="syrup" name="syrup">Syrup</option>
+                                        </select>
                                     </div>
 
                                 </section>
