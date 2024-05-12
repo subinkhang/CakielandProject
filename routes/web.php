@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 // User routes
 // Route::get('/', 'App\Http\Controllers\HomepageController@index');
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
 
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getAllProducts');
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
@@ -27,9 +27,9 @@ Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
 
 Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
 
-Route::get('/signup', 'App\Http\Controllers\SignupController@index');
+// Route::get('/signup', 'App\Http\Controllers\SignupController@index');
 
-Route::get('/login', 'App\Http\Controllers\LoginController@index');
+// Route::get('/login', 'App\Http\Controllers\LoginController@index');
 
 Route::get('/about-us', 'App\Http\Controllers\AboutUsController@index');
 
@@ -57,20 +57,26 @@ Route::post('/update-product/{product_id}', 'App\Http\Controllers\AdminEditProdu
 Route::get('/admin-list-bill', 'App\Http\Controllers\AdminController@list_bill');
 
 //Homepage Routes
-Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
-
+// Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
+Route::view('/', 'auth/login');
 // Auth Routes
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-// Product Detail Routes
-Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
+
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+
+// Product Detail Routes
+Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
+Route::get('/product-detail', function () {
+    return redirect('/product-list');
+});
 
 // Route::get('/cart', 'App\Http\Controllers\CartController@index');
 
@@ -119,7 +125,7 @@ Route::get('/delivery-order-status/{id}', 'App\Http\Controllers\AdminListBillCon
 
 //Homepage Routes
 Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
-Route::get('/', 'App\Http\Controllers\HomePageController@getAllProducts');
+Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts');
 
 //Admin List Product
 Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');

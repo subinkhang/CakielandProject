@@ -4,7 +4,8 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-<!DOCTYPE html>
+{{-- <!DOCTYPE html> --}}
+<x-app-layout>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,7 +45,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
     <section id="container">
 
-        <livewire:adminHeader />
+        {{-- <livewire:adminHeader /> --}}
 
         <livewire:adminSidebar />
 
@@ -185,3 +186,4 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </body>
 
 </html>
+</x-app-layout>

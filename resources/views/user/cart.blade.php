@@ -1,5 +1,4 @@
-@extends('components.layout')
-@section('cart')
+<x-app-layout>
     <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/cart.css') }}">
 
@@ -69,7 +68,8 @@
                                 <tr>
                                     <th scope="row"></th>
                                     <td class="col-8">
-                                        <p1>Discount</p1></td>
+                                        <p1>Discount</p1>
+                                    </td>
                                     <td class="col-4 text-end" id="discount-price">
                                         <p1>2.00</p1>
                                     </td>
@@ -102,5 +102,5 @@
     <script src="../header-footer/js/jquery-3.7.1.min.js"></script>
     <script src="../header-footer/js/bootstrap.bundle.js"></script>
     <script src="{{ asset('frontend/js/cart.js') }}"></script>
-@endsection
+</x-app-layout>
 

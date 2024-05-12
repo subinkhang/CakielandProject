@@ -34,63 +34,65 @@ new class extends Component {
             <div class="container">
                 <div class="row">
                     <div class="col-2 logo">
-                        <a href="{{ url('/') }}"><img src="{{ asset('frontend/images/logo - temp.png') }}"
+                        <a href="{{ url('/dashboard') }}"><img src="{{ asset('frontend/images/logo - temp.png') }}"
                                 alt=""class="w-100"></a>
                     </div>
                     <div class="col-2"></div>
-                    <div class="col-4 search">
-                        <div class="row">
-                            <div class="col-8">
-                                <input type="text" class="w-100 text_p1" placeholder="Search products..."
-                                    id="searchInput">
-                                <div class="suggestions text_p1" style="display: none;"></div>
-                            </div>
-                            <div class="col-4">
-                                <button class="btn_search">Search</button>
+                    {{-- @if (!request()->is('*admin*')) --}}
+                        <div class="col-4 search">
+                            <div class="row">
+                                <div class="col-8">
+                                    <input type="text" class="w-100 text_p1" placeholder="Search products..."
+                                        id="searchInput">
+                                    <div class="suggestions text_p1" style="display: none;"></div>
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn_search">Search</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-4 pages">
-                        <ul class="d-flex justify-content-end page_ul_li">
-                            <li class="page_item ">
-                                <div><a href="#">Home</a></div>
-                            </li>
-                            <li class="page_item ">
-                                <div><a href="{{ url('/product-list') }}">Product</a></div>
-                            </li>
-                            <li class="page_item ">
-                                <div><a href="#">Forum</a></div>
-                            </li>
-                            <li class="cart_item">
-                                <a href="{{ url('/cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <div>
-                                    <p>2</p>
-                                </div>
-                            </li>
-                            <li class="cart_item">
-                                <x-dropdown width="48">
-                                    <x-slot name="trigger">
-                                        <i class="fa-solid fa-user"></i>
-                                    </x-slot>
+                        <div class="col-4 pages">
+                            <ul class="d-flex justify-content-end page_ul_li">
+                                <li class="page_item ">
+                                    <div><a href="#">Home</a></div>
+                                </li>
+                                <li class="page_item ">
+                                    <div><a href="{{ url('/product-list') }}">Product</a></div>
+                                </li>
+                                <li class="page_item ">
+                                    <div><a href="#">Forum</a></div>
+                                </li>
+                                <li class="cart_item">
+                                    <a href="{{ url('/cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
+                                    <div>
+                                        <p>2</p>
+                                    </div>
+                                </li>
+                                <li class="cart_item">
+                                    <x-dropdown width="48">
+                                        <x-slot name="trigger">
+                                            <i class="fa-solid fa-user"></i>
+                                        </x-slot>
 
-                                    <x-slot name="content">
-                                        <button  class="w-full text-start" onclick="window.location='{{ url('/account') }}'">
-                                            <x-dropdown-link>
-                                                {{ __('Account') }}
-                                            </x-dropdown-link>
-                                        </button>
+                                        <x-slot name="content">
+                                            <button class="w-full text-start"
+                                                onclick="window.location='{{ url('/account') }}'">
+                                                <x-dropdown-link>
+                                                    {{ __('Account') }}
+                                                </x-dropdown-link>
+                                            </button>
 
-                                        <!-- Authentication -->
-                                        <button wire:click="logout" class="w-full text-start">
-                                            <x-dropdown-link>
-                                                {{ __('Log Out') }}
-                                            </x-dropdown-link>
-                                        </button>
-                                    </x-slot>
-                                </x-dropdown>
-                            </li>
-                        </ul>
-                    </div>
+                                            <!-- Authentication -->
+                                            <button wire:click="logout" class="w-full text-start">
+                                                <x-dropdown-link>
+                                                    {{ __('Log Out') }}
+                                                </x-dropdown-link>
+                                            </button>
+                                        </x-slot>
+                                    </x-dropdown>
+                                </li>
+                            </ul>
+                        </div>
                 </div>
             </div>
         </div>

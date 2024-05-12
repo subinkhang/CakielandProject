@@ -1,5 +1,4 @@
-@extends('components.layout')
-@section('checkout')
+<x-app-layout>
     <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/checkout.css') }}">
 
@@ -126,4 +125,4 @@
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/checkout.js') }}"></script>
-@endsection
+</x-app-layout>

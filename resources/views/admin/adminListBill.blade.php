@@ -40,7 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     {{-- ADD CSS SUBIN --}}
     <link href="{{ asset('backend/css/adminListBill.css') }}" rel="stylesheet">
     <title>List Bill</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">   
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 
@@ -59,8 +59,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="panel panel-default">
                         @php
                             $message = Session::get('message');
-                            if($message){
-                                echo '<span class="text-alert">'.$message.'</span>';
+                            if ($message) {
+                                echo '<span class="text-alert">' . $message . '</span>';
                                 Session::put('message', null);
                             }
                         @endphp
@@ -114,21 +114,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <td><span class="all_column">{{ $cate_pro->order_date }}</span></td>
                                             <td>
                                                 <select name="option" class="order_column btn-shopnow bg-vang my-3 oho"
-                                                        onchange="addToCart(this)" 
-                                                        data-id="{{ $cate_pro->id }}">
+                                                    onchange="addToCart(this)" data-id="{{ $cate_pro->id }}">
                                                     <option value="0" class="option_status"
-                                                            {{ $cate_pro->status == 0 ? 'selected' : '' }}
-                                                            style="background-color: rgb(231, 29, 29)">
+                                                        {{ $cate_pro->status == 0 ? 'selected' : '' }}
+                                                        style="background-color: rgb(231, 29, 29)">
                                                         Canceled
                                                     </option>
                                                     <option value="1" class="option_status"
-                                                            style="background-color: rgb(66, 151, 66)"
-                                                            {{ $cate_pro->status == 1 ? 'selected' : '' }}>
+                                                        style="background-color: rgb(66, 151, 66)"
+                                                        {{ $cate_pro->status == 1 ? 'selected' : '' }}>
                                                         Completed
                                                     </option>
                                                     <option value="2" class="option_status"
-                                                            style="background-color: #FBC31C"
-                                                            {{ $cate_pro->status == 2 ? 'selected' : '' }}>
+                                                        style="background-color: #FBC31C"
+                                                        {{ $cate_pro->status == 2 ? 'selected' : '' }}>
                                                         Delivering
                                                     </option>
                                                 </select>
@@ -158,53 +157,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                 </div>
             </section>
-            <!-- footer -->
-            <div class="footer">
-                <div class="wthree-copyright">
-                    <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a>
-                    </p>
-                </div>
-            </div>
-            <!-- / footer -->
         </section>
 
         <!--main content end-->
     </section>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('.order_column').change(function() {
-        var status = $(this).val();
-        var id = $(this).data('id');
-        var url = '';
-
-        switch(status) {
-            case '0':
-                url = '/cancel-order-status/' + id;
-                break;
-            case '1':
-                url = '/complete-order-status/' + id;
-                break;
-            case '2':
-                url = '/delivery-order-status/' + id;
-                break;
-        }
-
-        if (url) {
-            $.get(url, function(data, status) {
-                // Handle the response here
-                console.log(data);
-            });
-        }
-    });
-});
-</script>
     <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
     <script src="{{ asset('backend/js/jquery.dcjqaccordion.2.7.js') }}"></script>
     <script src="{{ asset('backend/js/scripts.js') }}"></script>
     <script src="{{ asset('backend/js/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('backend/js/jquery.nicescroll.js') }}"></script>
-    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
     <script src="{{ asset('backend/js/jquery.scrollTo.js') }}"></script>
     <script src="{{ asset('backend/js/adminListBill.js') }}"></script>
 </body>

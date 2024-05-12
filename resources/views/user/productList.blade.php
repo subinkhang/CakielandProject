@@ -1,5 +1,4 @@
-@extends('components.layout')
-@section('productList')
+<x-app-layout>
     <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/productList.css') }}">
 
@@ -251,4 +250,4 @@
         });
     </script>
     <!-- END FOOTER -->
-@endsection
+</x-app-layout>

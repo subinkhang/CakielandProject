@@ -1,5 +1,4 @@
-@extends('components.layout')
-@section('account')
+<x-app-layout>
     <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
     <link rel="stylesheet" href="{{ asset('/frontend/css/account.css') }}">
 
@@ -41,9 +40,11 @@
                         <div class="col-8"></div>
                         <div class="col-12 boxac">
                             {{-- <input id="Name" type="text" placeholder="Nguyen Van A" class="inside"> <br> --}}
-                            <div class="font-medium text-base text-gray-800" x-data="{ name: '{{ auth()->user()->name }}', editing: false }" @click.away="editing = false">
+                            <div class="font-medium text-base text-gray-800" x-data="{ name: '{{ auth()->user()->name }}', editing: false }"
+                                @click.away="editing = false">
                                 <span x-show="!editing" @click="editing = true" x-text="name"></span>
-                                <input x-show="editing" x-model="name" @keydown.enter="editing = false" class="border-0 outline-none bg-transparent">
+                                <input x-show="editing" x-model="name" @keydown.enter="editing = false"
+                                    class="border-0 outline-none bg-transparent">
                             </div>
                         </div>
                         <div class="col-4">
@@ -109,4 +110,4 @@
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('frontend/js/account.js') }}"></script>
-@endsection
+</x-app-layout>

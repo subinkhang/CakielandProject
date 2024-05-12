@@ -1,4 +1,4 @@
-@extends('components.layout')
+{{-- @extends('components.layout')
 @section('homepage')
     <link rel="stylesheet" href="{{ asset('frontend/css/homepage.css') }}">
     <title>Home Page</title>
@@ -278,4 +278,4 @@
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('frontend/js/homepage.js') }}"></script>
 @endsection
-
+ --}}

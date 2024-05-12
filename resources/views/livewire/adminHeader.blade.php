@@ -1,3 +1,20 @@
+<?php
+
+use App\Livewire\Actions\Logout;
+use Livewire\Volt\Component;
+
+new class extends Component {
+    /**
+     * Log the current user out of the application.
+     */
+    public function logout(Logout $logout): void
+    {
+        $logout();
+
+        $this->redirect('/', navigate: true);
+    }
+}; ?>
+
 <header class="header fixed-top clearfix">
     <link rel="stylesheet" href="{{asset('backend/css/livewire/adminHeader.css')}}">
     <!--logo start-->
@@ -17,7 +34,13 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu extended logout">
-                    <li><a href="{{ asset('backend/login.html') }}"><i class="fa fa-key"></i> Log Out</a></li>
+                    {{-- <li><a href="{{ asset('backend/login.html') }}"><i class="fa fa-key"></i> Log Out</a></li> --}}
+                    <li wire:click="logout" class="">
+                        <x-dropdown-link>
+                            <i class="fa fa-key"></i>
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </li>
                 </ul>
             </li>
             <!-- user login dropdown end -->
