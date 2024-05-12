@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/product-list', 'App\Http\Controllers\ProductListController@getAllProducts');
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
 Route::post('/search-product-list', 'App\Http\Controllers\ProductListController@search');
-Route::post('/dashboard', 'App\Http\Controllers\ProductListController@searchAuto');
+Route::get('/search-product-list', 'App\Http\Controllers\ProductListController@searchSort');
 
 // Category & sub-category Routes
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
@@ -39,9 +39,9 @@ Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@myorders');
 
 Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
 
-Route::fallback(function () {
-    return redirect()->action('App\Http\Controllers\ErrorPageController@index');
-});
+// Route::fallback(function () {
+//     return redirect()->action('App\Http\Controllers\ErrorPageController@index');
+// });
 
 
 // Admin routes
@@ -127,14 +127,9 @@ Route::get('/delivery-order-status/{id}', 'App\Http\Controllers\AdminListBillCon
 
 //Homepage Routes
 Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
+// Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts');
 Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts');
-// Route::get('/dashboard', 'App\Http\Controllers\HomePageController@testheader');
 
 //Admin List Product
 Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');
 // Route::post('/update-order-status/{id}', 'AdminListBillController@updateOrderStatus');
-
-// Route::get('demo-search', function () {
-//     return view('index');
-// });
-// Route::post('searchdemo', 'ProductListController@searchByName');

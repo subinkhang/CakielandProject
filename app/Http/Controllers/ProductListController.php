@@ -158,4 +158,35 @@ class ProductListController extends Controller
 
         return view('user/search', ['list_product' => $data['list_product'], 'search_product' => $search_product]);
     }
+
+    public function searchSort(Request $request)
+    {
+        $keywords = $request->keywords_submit;
+
+        $sort = $request->input('sort', 'none');
+        $query = Product::query();
+
+        switch ($sort) {
+            case 'tang_dan':
+                $query->orderBy('price');
+                break;
+            case 'giam_dan':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'az':
+                $query->orderBy('name');
+                break;
+            case 'za':
+                $query->orderBy('name', 'desc');
+                break;
+        }
+
+        $data['list_product'] = $query->paginate(9);
+
+        $search_product = DB::table('product')
+            ->where('name', 'like', '%' . $keywords . '%')
+            ->get();
+
+        return view('user/search', ['list_product' => $data['list_product'], 'search_product' => $search_product]);
+    }
 }

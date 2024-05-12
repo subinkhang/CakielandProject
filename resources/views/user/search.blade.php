@@ -213,26 +213,8 @@
     </div>
     </div>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#sort').on('change', function() {
-                var sortBy = $(this).val();
-                if (sortBy) {
-                    window.location = '{{ Request::url() }}?sort_by=' + sortBy;
-                }
-                return false;
-            });
-        });
-    </script>
     <script src="{{ 'frontend/js/jquery-3.7.1.min.js' }}"></script>
     <script src="{{ 'frontend/js/bootstrap.bundle.js' }}"></script>
     <script src="{{ 'frontend/js/productList.js' }}"></script>
-    <script>
-        var searchProduct = {!! json_encode($search_product) !!};
-        var names = searchProduct.map(function(item) {
-            return item.name;
-        });
-        localStorage.setItem('search_product_names', JSON.stringify(names));
-    </script>
     <!-- END FOOTER -->
 </x-app-layout>
