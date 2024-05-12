@@ -254,6 +254,15 @@
             </div>
         </div>
     </div>
+    @foreach ($search_product as $key => $product)
+        <script>
+            let productNames = [];
+            @foreach ($search_product as $product)
+                productNames.push('{{ $product->name }}');
+            @endforeach
+            localStorage.setItem('productNames', JSON.stringify(productNames));
+        </script>
+    @endforeach
 
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>

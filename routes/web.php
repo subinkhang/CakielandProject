@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/product-list', 'App\Http\Controllers\ProductListController@getAllProducts');
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
 Route::post('/search-product-list', 'App\Http\Controllers\ProductListController@search');
+Route::post('/dashboard', 'App\Http\Controllers\ProductListController@searchAuto');
 
 // Category & sub-category Routes
 Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
@@ -127,6 +128,7 @@ Route::get('/delivery-order-status/{id}', 'App\Http\Controllers\AdminListBillCon
 //Homepage Routes
 Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
 Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts');
+// Route::get('/dashboard', 'App\Http\Controllers\HomePageController@testheader');
 
 //Admin List Product
 Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');

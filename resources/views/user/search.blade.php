@@ -227,8 +227,12 @@
     <script src="{{ 'frontend/js/jquery-3.7.1.min.js' }}"></script>
     <script src="{{ 'frontend/js/bootstrap.bundle.js' }}"></script>
     <script src="{{ 'frontend/js/productList.js' }}"></script>
-    {{-- <script>
-        console.log({!! json_encode($search_product) !!});
-    </script> --}}
+    <script>
+        var searchProduct = {!! json_encode($search_product) !!};
+        var names = searchProduct.map(function(item) {
+            return item.name;
+        });
+        localStorage.setItem('search_product_names', JSON.stringify(names));
+    </script>
     <!-- END FOOTER -->
 </x-app-layout>

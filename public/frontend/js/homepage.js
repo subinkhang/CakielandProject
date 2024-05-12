@@ -22,7 +22,11 @@ searchInput.addEventListener('keyup', function() {
     const suggestions = [];
 
     // Lấy dữ liệu gợi ý (ví dụ: từ một API hoặc mảng dữ liệu)
-    const data = ['Sản phẩm 1', 'Sản phẩm 2', 'Sản phẩm 3', 'Từ khóa liên quan'];
+    // const data = ['Sản phẩm 1', 'Sản phẩm 2', 'Sản phẩm 3', 'Từ khóa liên quan'];
+
+    // Lọc dữ liệu gợi ý
+    const data = JSON.parse(localStorage.getItem('productNames'))
+    console.log(data);
 
     for (let i = 0; i < data.length; i++) {
         if (data[i].toLowerCase().includes(searchTerm)) {

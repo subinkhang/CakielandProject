@@ -45,6 +45,7 @@ new class extends Component {
                             <div class="col-8">
                                 <input type="text" class="w-100 text_p1" placeholder="Search products..."
                                     id="searchInput" name="keywords_submit">
+                                <div class="suggestions text_p1" style="display: none;" id="suggestions"></div>
                             </div>
                             <div class="col-4">
                                 <button type="submit" class="btn_search" name="search_item">Search</button>
@@ -96,5 +97,6 @@ new class extends Component {
                 </div>
             </div>
         </div>
+        <script src="{{ asset('frontend/js/homepage.js') }}"></script>
     </body>
 </div>

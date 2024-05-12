@@ -24,9 +24,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Redirect to the dashboard if the user is already authenticated.
         $request->authenticate();
-
         $request->session()->regenerate();
+
+        // Search autocomplete
+        // $search_product = DB::table('product')->get();
 
         return redirect()->intended(route('dashboard', absolute: false));
     }
