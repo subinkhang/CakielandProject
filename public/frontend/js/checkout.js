@@ -69,4 +69,38 @@ addressInput.addEventListener("input", updatePaymentButtonState);
 
 updatePaymentButtonState();
 
+/*--------------------Fill info of product----------------------*/
+document.addEventListener('DOMContentLoaded', (event) => {
+  const cartData = JSON.parse(localStorage.getItem('cartData'));
+  var table = document.getElementById('list');
+  let total = 0;
+  for (let i = 0; i < cartData.products.length; i++) {
+      var newRow = document.createElement("tr");
+      newRow.id = `item${i}`;
+      newRow.innerHTML = `
+          
+          <tr>
+            <td style="height: 150px; width: 170px;">
+                <img src="{{ asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg') }}"
+                    class="img-fluid" style="height: 150px; width: 150px;">
+            </td>
+            <td>
+                <h5><b>${cartData.products[i].name}</b></h5>
+                <p>Quantity: <span>${cartData.products[i].quantity}</span></p>
+                <p class="price"><b>$${cartData.products[i].price}</b></p>
+            </td>
+            </tr>
+      `;
+      table.appendChild(newRow);
+  }
+  const subtt = document.getElementById('subtotal')
+  const shipping = document.getElementById('shipping')
+  const discount = document.getElementById('discount')
+  const tt = document.getElementById('total')
+  subtt.innerHTML = `<span><p1><b>$${cartData.rightsub.toFixed(2)}</p1></b></span>`
+  shipping.innerHTML = `<span><p1><b>${cartData.shippingPrice.toFixed(2)}</p1></b></span>`
+  discount.innerHTML = `<span><p1><b>${cartData.discountPrice.toFixed(2)}</p1></b></span>`
+  tt.innerHTML = `<span><b>$${cartData.total.toFixed(2)}</b></span>`
+});
+
 

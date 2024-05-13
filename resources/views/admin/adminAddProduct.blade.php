@@ -128,7 +128,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                 <input type="checkbox" style="text-align: center" id="op3">
                                                 <div style="background-color: white" class="color"></div>
                                             </div>
-
                                         </div>
                                         <h4 class="right-text"><b>Menu</b></h4>
                                         <select id="cate"
@@ -157,6 +156,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <option value="cup">Measuring Cup</option>
                                             <option value="tea">Tea</option>
                                             <option value="syrup">Syrup</option>
+                                        </select>
                                     </div>
 
                                 </section>
