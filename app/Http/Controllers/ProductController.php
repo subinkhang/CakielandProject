@@ -29,10 +29,7 @@ class ProductController extends Controller
         return view('admin/adminListProduct');
     }
     public function save_product(Request $request)
-    {   $arrdata = DB::table('product')
-    ->join('sub_category', 'sub_category.id', 'product.sub_category_id')
-    ->get();
-
+    {
         $data = array();
         // $data['id'] = $request->id;
         $data['name'] = $request->name;
