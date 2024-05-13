@@ -12,41 +12,23 @@ session_start();
 
 class AdminEditProductController extends Controller
 {
-    public function save_product(Request $request)
+    public function edit_product($product_id)
     {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'fake_price' => 'required|numeric',
-            'price' => 'required|numeric',
-            'description' => 'nullable|string',
-            'description_detail' => 'nullable|string',
-            'description_technique' => 'nullable|string',
-            'brand' => 'nullable|string|max:255',
-            'category_id' => 'required|integer',
-            'tag' => 'required|string|max:255',
-        ]);
-
-        // Prepare the data to be inserted into the database
-        $data = [
-            'name' => $request->name,
-            'fake_price' => $request->fake_price,
-            'price' => $request->price,
-            'description' => $request->description,
-            'description_detail' => $request->description_detail,
-            'description_technique' => $request->description_technique,
-            'brand' => $request->brand,
-            'category_id' => $request->category_id,
-            'tag' => $request->tag,
-        ];
-
-        // Insert the data into the 'product' table
-        DB::table('product')->insert($data);
-
-        // Set a success message in the session
-        Session::flash('message', 'Product added successfully');
-
-        // Redirect back to the form page
-        return Redirect::to('/admin-add-product');
+        $edit_product = DB::table('product')->where('id',$product_id)->get();
+        return view('admin/adminEditProduct', ['edit_product' => $edit_product]);
+    }
+    public function update_product($product_id, Request $request){
+        $data = array();
+        $data['id'] = $request->id;
+        $data['name'] = $request->name;
+        $data['fake_price'] = $request->fake_price;
+        $data['price'] = $request->price;
+        $data['description'] = $request->description;
+        $data['description_detail'] = $request->description_detail;
+        $data['description_technique'] = $request->description_technique;
+        $data['brand'] = $request->brand;
+        DB::table('product')->where('id',$product_id)->update($data);
+        Session::put('message', 'Product updated successfully');
+        return Redirect::to('/admin-list-product');
     }
 }
