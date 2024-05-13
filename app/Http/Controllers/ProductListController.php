@@ -13,10 +13,17 @@ session_start();
 
 class ProductListController extends Controller
 {
-    public function getAllProducts(Request $request)
-    {
+    public function showCategory(Request $request,$category_id){
         $sort = $request->input('sort', 'none');
-        $query = DB::table('product');
+
+        $cate=DB::table('category')->orderby('id','desc')->get();
+        $sub_cate=DB::table('sub_category')->orderby('id','desc')->get();
+
+        $query = Product::query();
+        $query->select('product.name', 'product.fake_price', 'product.price','product.thumbnail','product.color', 'product.description','product.description_detail','product.description_technique','product.brand','product.created_at','product.updated_at','product.category_id','product.deleted','product.sub_category_id')
+        ->join('category','category.id', '=', 'product.category_id')
+        ->where('product.category_id',$category_id)->get();
+
 
         switch ($sort) {
             case 'tang_dan':
@@ -33,14 +40,69 @@ class ProductListController extends Controller
                 break;
         }
 
-        $all_product = $query->get();
-        return view('user/productList', ['all_product' => $all_product]);
+        $new_query = Product::query();
+        $new_query->select('brand');
+        $new_query->join('category','category.id', '=', 'product.category_id')
+        ->where('product.category_id',$category_id);
+        $brands = $new_query->distinct()->pluck('brand');
+
+        // Truyền dữ liệu thương hiệu vào view
+        $data['brands'] = $brands;
+
+        $data['list_product'] = $query->paginate(9);
+        $all_product = DB::table('product')->get();  // Consider optimizing this if only used for display.
+        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product, 
+        'category'=>$cate, 'sub_category'=>$sub_cate, 'brands' => $data['brands']]);
+    }
+
+    public function showSubCategory(Request $request,$sub_category_id){
+        $sort = $request->input('sort', 'none');
+        $cate=DB::table('category')->orderby('id','desc')->get();
+        $sub_cate=DB::table('sub_category')->orderby('id','desc')->get();
+
+        $query = Product::query();
+        $query->select('product.name', 'product.fake_price', 'product.price','product.thumbnail','product.color', 'product.description','product.description_detail','product.description_technique','product.brand','product.created_at','product.updated_at','product.category_id','product.deleted','product.sub_category_id')
+        ->join('sub_category','sub_category.id', '=', 'product.sub_category_id')
+        ->where('product.sub_category_id',$sub_category_id)->get();
+
+
+        switch ($sort) {
+            case 'tang_dan':
+                $query->orderBy('price');
+                break;
+            case 'giam_dan':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'az':
+                $query->orderBy('name');
+                break;
+            case 'za':
+                $query->orderBy('name', 'desc');
+                break;
+        }
+
+        $new_query = Product::query();
+        $new_query->select('brand');
+        $new_query->join('sub_category','sub_category.id', '=', 'product.sub_category_id')
+        ->where('product.sub_category_id',$sub_category_id);
+        $brands = $new_query->distinct()->pluck('brand');
+        // Truyền dữ liệu thương hiệu vào view
+        $data['brands'] = $brands;
+
+        $data['list_product'] = $query->paginate(9);
+        $all_product = DB::table('product')->get();  // Consider optimizing this if only used for display.
+        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product, 'category'=>$cate,
+        'sub_category'=>$sub_cate, 'brands' => $data['brands']]);
     }
 
     public function getPagedProducts(Request $request)
     {
+        $cate=DB::table('category')->orderby('id','desc')->get();
+        $sub_cate=DB::table('sub_category')->orderby('id','desc')->get();
+
         $sort = $request->input('sort', 'none');
         $query = Product::query();
+
 
         switch ($sort) {
             case 'tang_dan':
@@ -57,8 +119,15 @@ class ProductListController extends Controller
                 break;
         }
 
+        $new_query = Product::query();
+        $new_query->select('brand');
+        $brands = $new_query->distinct()->pluck('brand');
+        // Truyền dữ liệu thương hiệu vào view
+        $data['brands'] = $brands;
+
         $data['list_product'] = $query->paginate(9);
         $all_product = DB::table('product')->get();  // Consider optimizing this if only used for display.
-        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product]);
+        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product,
+        'category'=>$cate, 'sub_category'=>$sub_cate, 'brands' => $data['brands']]);
     }
 }

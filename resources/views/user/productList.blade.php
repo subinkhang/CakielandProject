@@ -5,7 +5,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
     <script>
         $(document).ready(function() {
             $('#sort').select2({
@@ -29,48 +33,18 @@
                             <h3>Categories</h3>
                             <div class="line"></div>
                             <ul class="mainmenu">
-                                <li class="mainmenu_title"><a href="#"><span>Wet ingredients</span><i
-                                            class="fa-solid fa-sort-down icon_arrow"></i></a>
+                                @foreach($category as $key => $cate)
+                                <li class="mainmenu_title"><a href="{{URL::to('/category'.$cate->id)}}"><span>{{$cate->name}} </span>
+                                    <i class="fa-solid fa-sort-down icon_arrow"></i></a>
                                     <ul class="menucon">
-                                        <li class="menu_title"><a href="">Milk</a></li>
-                                        <li class="menu_title"><a href="">Butter</a></li>
-                                    </ul>
+                                        @foreach($sub_category as $sub_cate)
+                                            @if($sub_cate->category_id == $cate->id)
+                                                <li class="menu_title"><a href="{{URL::to('/sub-category'.$sub_cate->id)}}">{{$sub_cate->name}}</a></li>
+                                            @endif
+                                        @endforeach
+                                    </ul>                                    
                                 </li>
-                                <li class="mainmenu_title"><a href="#"><span>Dry ingredients</span><i
-                                            class="fa-solid fa-sort-down icon_arrow"></i></a>
-                                    <ul class="menucon">
-                                        <li class="menu_title"><a href="">Flour</a></li>
-                                        <li class="menu_title"><a href="">Baking soda</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mainmenu_title"><a href="#"><span>Baking tools</span><i
-                                            class="fa-solid fa-sort-down icon_arrow"></i></a>
-                                    <ul class="menucon">
-                                        <li class="menu_title"><a href="">Egg beater</a></li>
-                                        <li class="menu_title"><a href="">Mold</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mainmenu_title"><a href="#"><span>Cooking utensils</span><i
-                                            class="fa-solid fa-sort-down icon_arrow"></i></a>
-                                    <ul class="menucon">
-                                        <li class="menu_title"><a href="">Stainless steel pot set</a></li>
-                                        <li class="menu_title"><a href="">Kitchen knife set</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mainmenu_title"><a href="#"><span>Bar tool</span><i
-                                            class="fa-solid fa-sort-down icon_arrow"></i></a>
-                                    <ul class="menucon">
-                                        <li class="menu_title"><a href="">Coffee foam maker</a></li>
-                                        <li class="menu_title"><a href="">Measuring cup</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mainmenu_title"><a href="#"><span>Bar ingredients</span><i
-                                            class="fa-solid fa-sort-down icon_arrow"></i></a>
-                                    <ul class="menucon">
-                                        <li class="menu_title"><a href="">Tea</a></li>
-                                        <li class="menu_title"><a href="">Syrup</a></li>
-                                    </ul>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -79,29 +53,28 @@
                             <h3>Filter by brand</h3>
                             <div class="line"></div>
                             <div class="row">
-                                <div class="col-6 filter-box">
-                                    <input type="checkbox" class="filter-checkbox" id="checkbox-oppo" value="oppo">
-                                    <label for="checkbox-oppo">Oppo</label> <br>
-                                    <input type="checkbox" class="filter-checkbox" id="checkbox-xiaomi" value="xiaomi">
-                                    <label for="checkbox-xiaomi">Xiaomi</label> <br>
-                                </div>
-                                <div class="col-6 filter-box">
-                                    <input type="checkbox" class="filter-checkbox" id="checkbox-apple" value="apple"
-                                        checked>
-                                    <label for="checkbox-apple">Apple</label> <br>
-                                    <input type="checkbox" class="filter-checkbox" id="checkbox-samsung" value="samsung">
-                                    <label for="checkbox-samsung">Samsung</label> <br>
-                                    <input type="checkbox" class="filter-checkbox" id="checkbox-sony" value="sony">
-                                    <label for="checkbox-samsung">Sony</label> <br>
-                                </div>
+                                <form id="brandFilterForm">
+                                    <div class="row">
+                                        @php $count = 0; @endphp
+                                        @foreach ($brands as $brand)
+                                            <div class="col-6 filter-box">
+                                                <input type="checkbox" class="filter-checkbox" id="checkbox-{{$brand}}" name="brand" value="{{$brand}}">
+                                                <label for="checkbox-{{$brand}}">{{$brand}}</label> <br>
+                                            </div>
+                                            @php $count++; @endphp
+                                            @if ($count == ceil($brands->count() / 2))
+                                                </div><div class="row">
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <!--  -->
-                    @php
+                    {{-- @php
                         $small_list_product = $all_product->toArray();
-                    @endphp
-                    <div class="pr-list-sidebar">
+                    @endphp --}}
+                    {{-- <div class="pr-list-sidebar">
                         <div class="pr-list-sidebar-title">
                             <h3>Products</h3>
                             <div class="line"></div>
@@ -133,8 +106,13 @@
                                 @endfor
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
+                {{-- @foreach($products as $product)
+                    <div class="product">
+                        <h4>{{ $product->name }}</h4>
+                    </div>
+                @endforeach --}}
                 <!--  -->
 
                 {{-- </div> --}}
@@ -161,9 +139,9 @@
                     </div>
                     <div class="row">
                         <!-- ĐỔI THÀNH PRODUCT KHI CÓ DATA -->
-                        @foreach ($list_product as $key => $list_product_user)
-                            <div class="col-4">
-                                <div class="pr-i3">
+                        @foreach ($list_product as $key => $list_product_user )
+                            <div class="col-4  product-item {{$list_product_user->brand}}">
+                                <div class="pr-i3" data-brand="{{ $list_product_user->brand }}">
                                     <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
                                         <img src="{{ asset('frontend/images/product.png') }}" alt=""
                                             class="w-100 productList_image">
@@ -184,7 +162,7 @@
                                         </div>
                                         <div class="row productList_price">
                                             <div class="col-6">
-                                                <p class="old-price">{{ $list_product_user->fake_price }}</p>
+                                                <p class="old-price">{{$list_product_user->fake_price}}</p>
                                             </div>
                                             <div class="col-6 text-end">
                                                 <p class="new-price">{{ $list_product_user->price }}</p>
@@ -194,10 +172,7 @@
                                 </div>
                             </div>
                         @endforeach
-
-                        <!-- <nav aria-label="Pages"> -->
-                        <!-- {!! $list_product->links() !!} -->
-                        <!-- </nav> -->
+                        {{-- <!-- {!! $list_product->links() !!} --> --}}
                     </div>
                 </div>
                 <div class="container">
@@ -206,7 +181,7 @@
                         <div class="col-6">
                             <div class="cartegory_page_number">
                                 <!-- ĐỔI THÀNH PRODUCT KHI CÓ -->
-                                {!! $list_product->links('components/paginationButton') !!}
+                                {{-- {!! $list_product->links('components/paginationButton') !!} --}}
                             </div>
                         </div>
                         <div class="col-3"></div>
@@ -248,20 +223,32 @@
         </div>
     </div>
     </div>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#sort').on('change', function() {
-                var sortBy = $(this).val();
-                if (sortBy) {
-                    window.location = '{{ Request::url() }}?sort_by=' + sortBy;
-                }
-                return false;
-            });
-        });
-    </script>
     <script src="{{ 'frontend/js/jquery-3.7.1.min.js' }}"></script>
     <script src="{{ 'frontend/js/bootstrap.bundle.js' }}"></script>
     <script src="{{ 'frontend/js/productList.js' }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.filter-checkbox').change(function() {
+                var selectedBrands = [];
+                $('.filter-checkbox:checked').each(function() {
+                    selectedBrands.push($(this).val());
+                });
+
+                // Nếu không có checkbox nào được chọn, hiển thị lại tất cả sản phẩm
+                if (selectedBrands.length === 0) {
+                    $('.product-item').removeClass('hidden');
+                } else {
+                    // Ẩn tất cả sản phẩm trước khi hiển thị lại sản phẩm của các thương hiệu đã chọn
+                    $('.product-item').addClass('hidden');
+
+                    // Hiển thị sản phẩm của các thương hiệu đã chọn
+                    selectedBrands.forEach(function(brand) {
+                        $('.' + brand).removeClass('hidden');
+                    });
+                }
+            });
+        });
+    </script>
     <!-- END FOOTER -->
 @endsection
