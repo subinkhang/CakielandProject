@@ -76,19 +76,35 @@ new class extends Component {
                                     </x-slot>
 
                                     <x-slot name="content">
-                                        <button class="w-full text-start"
-                                            onclick="window.location='{{ url('/account') }}'">
-                                            <x-dropdown-link>
-                                                {{ __('Account') }}
-                                            </x-dropdown-link>
-                                        </button>
+                                        @if (auth()->check())
+                                            <button class="w-full text-start"
+                                                onclick="window.location='{{ url('/account') }}'">
+                                                <x-dropdown-link>
+                                                    {{ __('Account') }}
+                                                </x-dropdown-link>
+                                            </button>
 
-                                        <!-- Authentication -->
-                                        <button wire:click="logout" class="w-full text-start">
-                                            <x-dropdown-link>
-                                                {{ __('Log Out') }}
-                                            </x-dropdown-link>
-                                        </button>
+                                            <!-- Authentication -->
+                                            <button wire:click="logout" class="w-full text-start">
+                                                <x-dropdown-link>
+                                                    {{ __('Log Out') }}
+                                                </x-dropdown-link>
+                                            </button>
+                                        @else
+                                            <button class="w-full text-start"
+                                                onclick="window.location='{{ url('/login') }}'">
+                                                <x-dropdown-link>
+                                                    {{ __('Log In') }}
+                                                </x-dropdown-link>
+                                            </button>
+
+                                            <button class="w-full text-start"
+                                                onclick="window.location='{{ url('/register') }}'">
+                                                <x-dropdown-link>
+                                                    {{ __('Sign Up') }}
+                                                </x-dropdown-link>
+                                            </button>
+                                        @endif
                                     </x-slot>
                                 </x-dropdown>
                             </li>
