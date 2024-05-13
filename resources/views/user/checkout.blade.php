@@ -14,10 +14,10 @@
                     </div>
                     <div class="col-6">
                         <div class="container">
-                            
+
                             <div class="row pr-list-co">
                                 <table id="list">
-                                    
+
                                 </table>
                             </div>
                         </div>
@@ -44,7 +44,8 @@
                             <tr>
                                 <th scope="row"></th>
                                 <td class="col-8">
-                                    <p1>Discount</p1></td>
+                                    <p1>Discount</p1>
+                                </td>
                                 <td class="col-4 text-end">
                                     <p1 id="discount"><b></b></p1>
                                 </td>
@@ -75,13 +76,60 @@
                         <form required>
                             <div class="row">
                                 <h6><b>E-mail</b></h6>
-                                <input type="email" placeholder="Nguyenvana@gmail.com" class="deli" id="email">
+                                <div class="col-12 boxac w-full d-flex align-items-center">
+                                    <div class="font-medium text-base text-gray-800">
+                                        <div>{{ auth()->user()->email }}</div>
+                                    </div>
+                                </div>
                                 <h6 class="ip"><b>Name</b></h6>
-                                <input type="text" placeholder="Nguyen Van A" class="deli" id="name">
+                                <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ name: '{{ auth()->user()->name }}', editing: false }"
+                                    @click.away="editing = false" @click="editing = true">
+                                    @if (auth()->user()->name)
+                                        <div class="font-medium text-base text-gray-800 w-full">
+                                            <span x-show="!editing" x-text="name"></span>
+                                            <input x-show="editing" id="name" x-model="name"
+                                                placeholder="Nguyen Van A" @keydown.enter="editing = false"
+                                                @change="if (name == '') editing = false"
+                                                class="deli border-0 outline-none bg-transparent w-full"
+                                                style="width: 100%">
+                                        </div>
+                                    @else
+                                        <input type="text" placeholder="Nguyen Van A" class="deli" id="name">
+                                    @endif
+                                </div>
                                 <h6 class="ip"><b>Phone Number</b></h6>
-                                <input type="tel" placeholder="0123456789" class="deli" id="phone">
+                                <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ phone: '{{ auth()->user()->phone_number }}', editing: false }"
+                                    @click.away="editing = false" @click="editing = true">
+                                    @if (auth()->user()->phone_number)
+                                        <div class="font-medium text-base text-gray-800 w-full">
+                                            <span x-show="!editing" x-text="phone"></span>
+                                            <input x-show="editing" id="phone" x-model="phone"
+                                                @keydown.enter="editing = false"
+                                                @change="if (phone == '') editing = false"
+                                                class="border-0 outline-none bg-transparent w-full" style="width: 100%">
+                                        </div>
+                                    @else
+                                        <input type="tel" placeholder="0123456789" class="deli" id="phone">
+                                    @endif
+                                </div>
                                 <h6 class="ip"><b>Address</b></h6>
-                                <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli" id="address">
+                                <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ address: '{{ auth()->user()->address }}', editing: false }"
+                                    @click.away="editing = false" @click="editing = true">
+                                    @if (auth()->user()->address)
+                                        <div
+                                            class="font-medium text-base text-gray-800 w-full d-flex align-items-center">
+                                            <span x-show="!editing" x-text="address"></span>
+                                            <input x-show="editing" id="address" x-model="address"
+                                                @keydown.enter="editing = false"
+                                                @change="if (address == '') editing = false"
+                                                class="border-0 outline-none bg-transparent w-full flex-grow-1"
+                                                x-bind:style="editing ? 'width: 100%' : ''">
+                                        </div>
+                                    @else
+                                        <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli"
+                                            id="address">
+                                    @endif
+                                </div>
                                 <h6 class="pmmt"><b>Payment Methods</b></h6>
                                 <select class="form-select form-select-pm pmbox">
                                     <option selected>COD</option>

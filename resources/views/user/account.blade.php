@@ -38,14 +38,18 @@
                             </div>
                         </div>
                         <div class="col-8"></div>
-                        <div class="col-12 boxac">
-                            {{-- <input id="Name" type="text" placeholder="Nguyen Van A" class="inside"> <br> --}}
-                            <div class="font-medium text-base text-gray-800" x-data="{ name: '{{ auth()->user()->name }}', editing: false }"
-                                @click.away="editing = false">
-                                <span x-show="!editing" @click="editing = true" x-text="name"></span>
-                                <input x-show="editing" x-model="name" @keydown.enter="editing = false"
-                                    class="border-0 outline-none bg-transparent">
-                            </div>
+                        <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ name: '{{ auth()->user()->name }}', editing: false }" @click.away="editing = false"
+                            @click="editing = true">
+                            @if (auth()->user()->name)
+                                <div class="font-medium text-base text-gray-800 w-full">
+                                    <span x-show="!editing" x-text="name"></span>
+                                    <input x-show="editing" id="Name" x-model="name"
+                                        @keydown.enter="editing = false" @change="if (name == '') editing = false"
+                                        class="border-0 outline-none bg-transparent w-full" style="width: 100%">
+                                </div>
+                            @else
+                                <input id="Name" type="text" placeholder="Name" class="inside w-full">
+                            @endif
                         </div>
                         <div class="col-4">
                             <div class="title">
@@ -53,17 +57,37 @@
                             </div>
                         </div>
                         <div class="col-8"></div>
-                        <div class="col-12 boxac">
-                            <input id="Birthday" type="datetime" placeholder="01/01/2000" class="inside">
+                        <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ dob: '{{ \Carbon\Carbon::parse(auth()->user()->date_of_birth)->format('d/m/Y') }}', editing: false }"
+                            @click.away="editing = false" @click="editing = true">
+                            @if (auth()->user()->date_of_birth)
+                                <div class="font-medium text-base text-gray-800 w-full" >
+                                    <span x-show="!editing" x-text="dob"></span>
+                                    <input type="date" x-show="editing" id="Birth" x-model="dob" @keydown.enter="editing = false" @change="if (dob == '') editing = false"
+                                        class="border-0 outline-none bg-transparent w-full" style="width: 100%">
+                                </div>
+                            @else
+                                <input type="date" id="Birth" placeholder="Birth" class="inside w-full">
+                            @endif
                         </div>
                         <div class="col-4">
                             <div class="title">
-                                <p> </p>
+                                <p>Phone number</p>
                             </div>
                         </div>
                         <div class="col-8"></div>
-                        <div class="col-12 boxac">
-                            <input id="Phone_number" type="text" placeholder="0123456789" class="inside">
+                        <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ phone: '{{ auth()->user()->phone_number }}', editing: false }" @click.away="editing = false"
+                            @click="editing = true">
+                            @if (auth()->user()->phone_number)
+                                <div class="font-medium text-base text-gray-800 w-full">
+                                    <span x-show="!editing" x-text="phone"></span>
+                                    <input x-show="editing" id="Phone_number" x-model="phone"
+                                        @keydown.enter="editing = false" @change="if (phone == '') editing = false"
+                                        class="border-0 outline-none bg-transparent w-full" style="width: 100%">
+                                </div>
+                            @else
+                                <input id="Phone_number" type="text" placeholder="Phone Number"
+                                    class="inside w-full">
+                            @endif
                         </div>
                         <div class="col-4">
                             <div class="title">
@@ -71,7 +95,7 @@
                             </div>
                         </div>
                         <div class="col-8"></div>
-                        <div class="col-12 boxac">
+                        <div class="col-12 boxac w-full d-flex align-items-center">
                             <div class="font-medium text-base text-gray-800">
                                 <div>{{ auth()->user()->email }}</div>
                             </div>
@@ -82,8 +106,18 @@
                             </div>
                         </div>
                         <div class="col-8"></div>
-                        <div class="col-12 boxac">
-                            <input id="Address" type="text" placeholder="22/11/33 HCM city" class="inside">
+                        <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ address: '{{ auth()->user()->address }}', editing: false }" @click.away="editing = false"
+                            @click="editing = true">
+                            @if (auth()->user()->address)
+                                <div class="font-medium text-base text-gray-800 w-full d-flex align-items-center">
+                                    <span x-show="!editing" x-text="address"></span>
+                                    <input x-show="editing" id="Address" x-model="address"
+                                        @keydown.enter="editing = false" @change="if (address == '') editing = false"
+                                        class="border-0 outline-none bg-transparent w-full flex-grow-1" x-bind:style="editing ? 'width: 100%' : ''">
+                                </div>
+                            @else
+                                <input id="Address" type="text" placeholder="Address" class="inside w-full flex-grow-1">
+                            @endif
                         </div>
                     </div>
                     <div class="row">

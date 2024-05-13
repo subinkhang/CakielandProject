@@ -37,7 +37,7 @@ overlay.addEventListener("click", () => {
 });
 
 //---------------------CHECK------------
-const emailInput = document.getElementById("email");
+// const emailInput = document.getElementById("email");
 const nameInput = document.getElementById("name");
 const phoneInput = document.getElementById("phone");
 const addressInput = document.getElementById("address");
@@ -45,7 +45,7 @@ const paymentButton = document.getElementById("btn-p");
 const errorMessage = document.getElementById("checkinfo");
 
 function allInputsFilledAndEmailValid() {
-  const email = emailInput.value;
+  // const email = emailInput.value;
   const phone = phoneInput.value;
   const isValidEmail = email !== "" && email.includes("@");
   const isValidPhone = phone !== "" && phone.length > 0 && !isNaN(phone);
@@ -62,7 +62,7 @@ function updatePaymentButtonState() {
   }
 }
 
-emailInput.addEventListener("input", updatePaymentButtonState);
+// emailInput.addEventListener("input", updatePaymentButtonState);
 nameInput.addEventListener("input", updatePaymentButtonState);
 phoneInput.addEventListener("input", updatePaymentButtonState);
 addressInput.addEventListener("input", updatePaymentButtonState);
