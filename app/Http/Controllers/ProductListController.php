@@ -97,9 +97,11 @@ class ProductListController extends Controller
 
     public function getPagedProducts(Request $request)
     {
+        $cate=DB::table('category')->orderby('id','desc')->get();
+        $sub_cate=DB::table('sub_category')->orderby('id','desc')->get();
+
         $sort = $request->input('sort', 'none');
         $query = Product::query();
-
 
         switch ($sort) {
             case 'tang_dan': 
@@ -124,7 +126,8 @@ class ProductListController extends Controller
 
         $data['list_product'] = $query->paginate(9);
         $all_product = DB::table('product')->get(); 
-        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product]);
+        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product,
+        'category'=>$cate, 'sub_category'=>$sub_cate, 'brands' => $data['brands']]);
     }
 
     
