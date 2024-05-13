@@ -9,17 +9,15 @@
     <div class="container mt-5 carousel_product">
         <div class="row detail">
             <div class="col-lg-6 pr-slide carousel" data-bs-ride="carousel" id="pr-slide">
-                {{-- <div class="carousel-indicators">
+                <div class="carousel-indicators">
                     <div class="row">
                         <div class="col-4">
                             <img data-bs-target="#pr-slide" data-bs-slide-to="0" class="active carousel-btn1"
-                                src="{{ $product->thumbnail }}" />
+                            src="data:image/png;base64,{{ base64_encode($thumbnails[$key]) }}"/>
                         </div>
-                    </div>
-                    <div class="carousel-inner parent">
-                        <div class="carousel-item active">
-                            <img src="{{ asset('frontend/images/pr-detail/máy đánh trứng 1.webp') }}" alt=""
-                                class="w-100 img-fluid">
+                        <div class="col-4">
+                            <img data-bs-target="#pr-slide" data-bs-slide-to="1" class="carousel-btn2"
+                                src="data:image/png;base64,{{ base64_encode($thumbnails[$key]) }}" />
                         </div>
                         <div class="carousel-item">
                             <img src="{{ asset('frontend/images/pr-detail/máy dánh trứng 2.webp') }}" alt=""
@@ -33,7 +31,7 @@
                 </div>
                 <div class="carousel-inner parent">
                     <div class="carousel-item active">
-                        <img src="{{ $product->thumbnail }}" alt=""
+                        <img src="data:image/png;base64,{{ base64_encode($thumbnails[$key]) }}" alt=""
                             class="w-100 img-fluid">
                     </div>
                     <div class="carousel-item">
@@ -44,7 +42,7 @@
                         <img src="{{ asset('frontend/images/pr-detail/máy đánh trứng 3.webp') }}" alt=""
                             class="img-fluid w-100">
                     </div>
-                </div> --}}
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="col-12">
@@ -69,15 +67,17 @@
                     <p class="pr-detail-content">{{$product->description}}</p>
                     
                     <h4 class="pr-property">Color</h4>
-                    @foreach($product_color as $key => $product_color)
                     <ul class="pr-color d-flex ps-0 mt-3" id="colorList">
-                        <p>{{$product_color->color}}</p>
-                        {{-- <li onclick="selectColor(this)"></li>
-                        <li onclick="selectColor(this)"></li>
-                        <li onclick="selectColor(this)"></li>
-                        <li onclick="selectColor(this)"></li> --}}
+                        @foreach($colors as $color)
+                        {{-- <li>{{$color}}</li> --}}
+                        <li style="background-color: {{ $color }};"></li>
+                        @endforeach
                     </ul>
-                    @endforeach
+                    {{-- <ul class="pr-color d-flex ps-0 mt-3" id="colorList">
+                        @foreach($product_colors as $color)
+                            <li style="background-color: {{ $color }};"></li>
+                        @endforeach
+                    </ul> --}}
                     <div class="d-flex">
                         <button id="btn-minus"><i class="fa-solid fa-minus"></i></button>
                         <input type="number" value="1" id="pr-number">
