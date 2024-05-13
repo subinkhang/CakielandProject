@@ -97,10 +97,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const shipping = document.getElementById('shipping')
   const discount = document.getElementById('discount')
   const tt = document.getElementById('total')
-  subtt.innerHTML = `<span><p1><b>${cartData.rightsub.toFixed(2)}</p1></b></span>`
+  subtt.innerHTML = `<span><p1><b>$${cartData.rightsub.toFixed(2)}</p1></b></span>`
   shipping.innerHTML = `<span><p1><b>${cartData.shippingPrice.toFixed(2)}</p1></b></span>`
   discount.innerHTML = `<span><p1><b>${cartData.discountPrice.toFixed(2)}</p1></b></span>`
-  tt.innerHTML = `<span><b>${cartData.total.toFixed(2)}</b></span>`
+  tt.innerHTML = `<span><b>$${cartData.total.toFixed(2)}</b></span>`
 });
 
 

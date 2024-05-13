@@ -60,7 +60,10 @@ function deleteItem(index) {
     const itemId = `item${index}`;
     const rmitem = document.getElementById(itemId);
     rmitem.remove();
-        localStorage.removeItem(itemId);
+    let products = JSON.parse(localStorage.getItem('products'));
+    products.splice(index, 1); // Remove the item from the array
+    localStorage.setItem('products', JSON.stringify(products));
+        updateTotal()
 }
 
 
@@ -74,6 +77,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         var newRow = document.createElement("tr");
         newRow.id = `item${i}`;
         const subtotal = products[i].price * products[i].quantity;
+        const price = parseFloat(products[i].price);
+        console.log(price)
         newRow.innerHTML = `
             <th scope="row"></th>
             <td class="col-2 text-center">${i + 1}</td>
@@ -93,13 +98,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
                             onclick="increaseQuantity(${i})">+</button>
                         </div>
                         
-                        <h6 class="price" name="price[${i}]">${products[i].price}</h6>
+                        <h6 class="price" name="price[${i}]" id="sub${i}">${price.toFixed(2)}</h6>
+
 
                     </div>
                 </div>
             </td>
             <td class="col-2 text-end">
-                <b class="subprice" id="subprice_${i}">$${subtotal}.00</b>
+                <b class="subprice" id="subprice_${i}">$${subtotal.toFixed(2)}</b>
                 <p></p>
                 <p></p>
                 <button class="removeitem" onclick="deleteItem(${i})">
@@ -107,6 +113,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 </button>
             </td>
         `;
+    
         total += products[i].price * products[i].quantity
         table.appendChild(newRow);
     }
