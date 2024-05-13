@@ -129,6 +129,7 @@ Route::get('/delivery-order-status/{id}', 'App\Http\Controllers\AdminListBillCon
 Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
 // Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts');
 Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts');
+Route::get('/', 'App\Http\Controllers\HomePageController@getAllProducts');
 
 //Admin List Product
 Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');
