@@ -158,7 +158,7 @@
             <i class="fa-solid fa-circle-check"></i>
             <h3>PAYMENT COMPLETE</h3>
             <div class="btnback">
-                <a class="btn" href="http://localhost:8000"> Back to HomePage </a>
+                <a class="btn" href="{{ url('/dashboard') }}"> Back to home </a>
             </div>
         </div>
     </div>

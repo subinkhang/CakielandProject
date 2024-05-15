@@ -86,7 +86,7 @@ new class extends Component {
                     <div class="col-4 pages">
                         <ul class="d-flex justify-content-end page_ul_li">
                             <li class="page_item ">
-                                <div><a href="#">Home</a></div>
+                                <div><a href="{{ url('/dashboard') }}">Home</a></div>
                             </li>
                             <li class="page_item ">
                                 <div><a href="{{ url('/product-list') }}">Product</a></div>

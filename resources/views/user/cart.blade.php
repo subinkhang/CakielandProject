@@ -23,11 +23,11 @@
                                         <td class="col-8">NAME</td>
                                         <td class="col-2 text-end">SUBTOTAL</td>
                                     </tr>
-<table id="prod">
-                                    
-</table>
-                                    
-                                </table> 
+                                    <table id="prod">
+
+                                    </table>
+
+                                </table>
                             </form>
                         </div>
                     </div>
@@ -87,9 +87,25 @@
                             </table>
                         </div>
                         <div class="col-8 bt-pay pm">
-                            <a class="btn" href="http://localhost:8000/checkout" id="btn-p">
-                                <p1>Payment</p1>
-                            </a>
+                            @if (auth()->check())
+                                <a class="btn" id="btn-p" href="/checkout">
+                                    <p1>Payment</p1>
+                                </a>
+                            @else
+                                <a class="btn" id="btn-p" href="/checkout">
+                                    <p1>Payment</p1>
+                                </a>
+                                <div class="overlay"></div>
+                                <div class="popup">
+                                    <div class="modalbox center">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <h3>Login first!</h3>
+                                        <div class="btnback">
+                                            <a class="btn" href="{{ url('/dashboard') }}"> Back to HomePage </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -103,4 +119,3 @@
     <script src="../header-footer/js/bootstrap.bundle.js"></script>
     <script src="{{ asset('frontend/js/cart.js') }}"></script>
 </x-app-layout>
-
