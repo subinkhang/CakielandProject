@@ -50,7 +50,7 @@ textarea{
     margin-left: 2%;
 }
 .right-text{
-    padding-top: 30px;
+    padding-top: 100px;
 }
 .image{
     padding-top: 5px;
@@ -61,10 +61,14 @@ textarea{
     gap: 20px;
     padding: 20px;
 }
-.gal{
-    background-color: #666666;
-    width: 50px;
-    height: 50px;
+#gal{
+    justify-content: space-evenly;
+    width: 200px;
+    height: 300px;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
+    display: flex;
 }
 .color{
     width: 40px; 
@@ -72,11 +76,9 @@ textarea{
     border-radius: 10px;
     border: 1px solid black;
 }
-#main-img{
-    width: 200px;
-    height: 200px;
-    border-radius: 15px;
-    border: 2px dashed #282828;
-    background-color: #f3f3f3;
-    margin-top: 10px;
+figure{
+    width: 40%;
+    height: 10%;
 }
+
+
