@@ -81,6 +81,7 @@
                                         <div>{{ auth()->user()->email }}</div>
                                     </div>
                                 </div>
+                                @foreach($edit_user as $key => $user)
                                 <h6 class="ip"><b>Name</b></h6>
                                 <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ name: '{{ auth()->user()->name }}', editing: false }"
                                     @click.away="editing = false" @click="editing = true">
@@ -103,13 +104,13 @@
                                     @if (auth()->user()->phone_number)
                                         <div class="font-medium text-base text-gray-800 w-full">
                                             <span x-show="!editing" x-text="phone"></span>
-                                            <input x-show="editing" id="phone" x-model="phone"
+                                            <input x-show="editing" id="phone" x-model="phone" name="phone"
                                                 @keydown.enter="editing = false"
                                                 @change="if (phone == '') editing = false"
                                                 class="border-0 outline-none bg-transparent w-full" style="width: 100%">
                                         </div>
                                     @else
-                                        <input type="tel" placeholder="0123456789" class="deli" id="phone">
+                                        <input type="tel" placeholder="0123456789" class="deli" id="phone" name="phone">
                                     @endif
                                 </div>
                                 <h6 class="ip"><b>Address</b></h6>
@@ -119,7 +120,7 @@
                                         <div
                                             class="font-medium text-base text-gray-800 w-full d-flex align-items-center">
                                             <span x-show="!editing" x-text="address"></span>
-                                            <input x-show="editing" id="address" x-model="address"
+                                            <input x-show="editing" id="address" x-model="address" name="address"
                                                 @keydown.enter="editing = false"
                                                 @change="if (address == '') editing = false"
                                                 class="border-0 outline-none bg-transparent w-full flex-grow-1"
@@ -127,9 +128,10 @@
                                         </div>
                                     @else
                                         <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli"
-                                            id="address">
+                                            id="address" name="address">
                                     @endif
                                 </div>
+                                @endforeach
                                 <h6 class="pmmt"><b>Payment Methods</b></h6>
                                 <select class="form-select form-select-pm pmbox">
                                     <option selected>COD</option>
@@ -158,7 +160,7 @@
             <i class="fa-solid fa-circle-check"></i>
             <h3>PAYMENT COMPLETE</h3>
             <div class="btnback">
-                <a class="btn" href="{{ url('/dashboard') }}"> Back to home </a>
+                <a class="btn" href="http://localhost:8000"> Back to HomePage </a>
             </div>
         </div>
     </div>
