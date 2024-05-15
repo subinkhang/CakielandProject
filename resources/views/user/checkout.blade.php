@@ -87,14 +87,14 @@
                                     @if (auth()->user()->name)
                                         <div class="font-medium text-base text-gray-800 w-full">
                                             <span x-show="!editing" x-text="name"></span>
-                                            <input x-show="editing" id="name" x-model="name"
+                                            <input x-show="editing" id="name" x-model="name" class="deli" name="name"
                                                 placeholder="Nguyen Van A" @keydown.enter="editing = false"
                                                 @change="if (name == '') editing = false"
                                                 class="deli border-0 outline-none bg-transparent w-full"
-                                                style="width: 100%">
+                                                style="width: 550px">
                                         </div>
                                     @else
-                                        <input type="text" placeholder="Nguyen Van A" class="deli" id="name">
+                                        <input type="text" placeholder="Nguyen Van A" class="deli" id="name" name="name">
                                     @endif
                                 </div>
                                 <h6 class="ip"><b>Phone Number</b></h6>
