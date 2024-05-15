@@ -26,37 +26,6 @@ new class extends Component {
         <link rel="stylesheet" href="{{ asset('frontend/css/homepage.css') }}">
         <link rel="stylesheet" href="{{ 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css' }}">
 
-        {{-- New css --}}
-        {{-- <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <!-- bootstrap-css -->
-        <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.min.css') }}">
-        <!-- //bootstrap-css -->
-        <!-- Custom CSS -->
-        <link href="{{ asset('backend/css/style.css') }}" rel='stylesheet' type='text/css' />
-        <link href="{{ asset('backend/css/style-responsive.css') }}" rel="stylesheet" />
-        <!-- font CSS -->
-        <link
-            href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
-            rel='stylesheet' type='text/css'>
-        <!-- font-awesome icons -->
-        <link rel="stylesheet" href="{{ asset('backend/css/font.css') }}" type="text/css" />
-        <link href="{{ asset('backend/css/font-awesome.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('backend/css/morris.css') }}" type="text/css" />
-        <!-- calendar -->
-        <link rel="stylesheet" href="{{ asset('backend/css/monthly.css') }}">
-        <link rel="stylesheet" href="{{ asset('backend/css/adminDashboard.css') }}">
-        <link rel="stylesheet"
-            href="{{ 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css' }}">
-        <!-- //calendar -->
-        <!-- //font-awesome icons -->
-        <script src="{{ asset('backend/js/jquery2.0.3.min.js') }}"></script>
-        <script src="{{ asset('backend/js/raphael-min.js') }}"></script>
-        <script src="{{ asset('backend/js/morris.js') }}"></script> --}}
-        {{-- <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.min.css') }}"> --}}
-
-
-        {{-- ==================================================================================================== --}}
-
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 

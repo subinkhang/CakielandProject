@@ -164,7 +164,40 @@
     <div class="container">
         <div class="text_h1 feature_pr_title">Featured Products</div>
         <div class="row">
-
+            <!-- ĐỔI THÀNH PRODUCT KHI CÓ DATA -->
+            @foreach ($all_product as $key => $list_product_user)
+                <div class="col-3">
+                    <div class="pr-i3">
+                        <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
+                            <img src="{{ asset('frontend/images/product.png') }}" alt=""
+                                class="w-100 productList_image">
+                        </a>
+                        <span class="btn_add"><i class="fa-solid fa-circle-plus"
+                                onclick="addToCart(this)"></i></span>
+                        <div class="container_information">
+                            <a href="#" class="pr-i2-name">{{ $list_product_user->name }}</a>
+                            <ul class="pr-i2-rating d-flex">
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                            </ul>
+                            <div class="text_product">
+                                {{ $list_product_user->description }}
+                            </div>
+                            <div class="row productList_price">
+                                <div class="col-6">
+                                    <p class="old-price">{{ $list_product_user->fake_price }}</p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p class="new-price">{{ $list_product_user->price }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 
@@ -229,20 +262,19 @@
                     <div class="row ">
                         <div class="col-2"></div>
                         <div class="col-8">
-                            <form role="form" class="row getintouch_search" action="{{ URL::to('/save-email') }}"
-                                method="post">
+                            <form role="form" class="row getintouch_search" id="email-form"
+                                action="{{ URL::to('/save-email') }}" method="post">
                                 {{ csrf_field() }}
-                                <div class="col-8 ">
+                                <div class="col-8">
                                     <input type="text" id="email" name="email" class="w-100 text_p1"
                                         placeholder="Your email address...">
                                 </div>
-                                <div class="col-4 ">
-                                    <button type="submit" class="btn_submit"
-                                        onclick="validateEmail()">Submit</button>
+                                <div class="col-4">
+                                    <button type="button" class="btn_submit"
+                                        onclick="validateAndSubmit()">Submit</button>
                                 </div>
                                 <p id="email-error" class="text_p1" style="color: red; display: none;">Email is not
-                                    valid
-                                </p>
+                                    valid</p>
                                 <p id="success-message" class="text_p1" style="color: green; display: none;">Success!
                                     Your email has been submitted.</p>
                             </form>
