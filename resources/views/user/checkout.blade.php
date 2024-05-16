@@ -1,7 +1,7 @@
 <x-app-layout>
     <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/checkout.css') }}">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <livewire:breadcrumb-banner />
     <!-----------------LEFT---------------------------->
     <div class="container" id="all">
@@ -73,7 +73,7 @@
                     <!----------------------right----------------------------->
 
                     <div class="col-5 cont">
-                        <form required>
+                        <form action="{{ url('/checkout-update/' . auth()->user()->id) }}" method="POST" role="form">
                             <div class="row">
                                 <h6><b>E-mail</b></h6>
                                 <div class="col-12 boxac w-full d-flex align-items-center">
@@ -81,7 +81,8 @@
                                         <div>{{ auth()->user()->email }}</div>
                                     </div>
                                 </div>
-                                @foreach($edit_user as $key => $user)
+
+                                
                                 <h6 class="ip"><b>Name</b></h6>
                                 <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ name: '{{ auth()->user()->name }}', editing: false }"
                                     @click.away="editing = false" @click="editing = true">
@@ -94,9 +95,9 @@
                                                 class="deli border-0 outline-none bg-transparent w-full"
                                                 style="width: 550px">
                                         </div>
-                                    @else
+                                    <!-- @else
                                         <input type="text" placeholder="Nguyen Van A" class="deli" id="name" name="name">
-                                    @endif
+                                    @endif -->
                                 </div>
                                 <h6 class="ip"><b>Phone Number</b></h6>
                                 <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ phone: '{{ auth()->user()->phone_number }}', editing: false }"
@@ -109,9 +110,9 @@
                                                 @change="if (phone == '') editing = false"
                                                 class="border-0 outline-none bg-transparent w-full" style="width: 100%">
                                         </div>
-                                    @else
+                                    <!-- @else
                                         <input type="tel" placeholder="0123456789" class="deli" id="phone" name="phone">
-                                    @endif
+                                    @endif -->
                                 </div>
                                 <h6 class="ip"><b>Address</b></h6>
                                 <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ address: '{{ auth()->user()->address }}', editing: false }"
@@ -126,12 +127,12 @@
                                                 class="border-0 outline-none bg-transparent w-full flex-grow-1"
                                                 x-bind:style="editing ? 'width: 100%' : ''">
                                         </div>
-                                    @else
+                                    <!-- @else
                                         <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli"
                                             id="address" name="address">
-                                    @endif
+                                    @endif -->
                                 </div>
-                                @endforeach
+                                
                                 <h6 class="pmmt"><b>Payment Methods</b></h6>
                                 <select class="form-select form-select-pm pmbox">
                                     <option selected>COD</option>
@@ -139,12 +140,14 @@
                                 </select>
                                 <h6 id="checkinfo">Please check information</h6>
                                 <div class="col-8 bt-pay pm">
-                                    <button class="btn" id="btn-p">
+                                    <button class="btn" id="btn-p" type="submit">
                                         <p1>Payment</p1>
                                     </button>
                                 </div>
                             </div>
                         </form>
+                        
+
 
                     </div>
                 </div>

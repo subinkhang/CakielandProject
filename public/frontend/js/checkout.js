@@ -102,3 +102,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
     </span>`;
     tt.innerHTML = `<span><b>$${cartData.total.toFixed(2)}</b></span>`;
 });
+
+$(document).ready(function(){
+    $('#updateForm').on('submit', function(event){
+        event.preventDefault(); // Prevent the default form submission
+
+        $.ajax({
+            url: "{{ url('/checkout-update/' . auth()->user()->id) }}",
+            method: "POST",
+            data: $(this).serialize(), // Serialize the form data
+            success: function(response) {
+                // Handle success - display a message, update the UI, etc.
+                alert('Your details have been successfully updated.');
+            },
+            error: function(xhr, status, error) {
+                // Handle error - display an error message, etc.
+                alert('There was an error updating your details. Please try again.');
+            }
+        });
+    });
+});

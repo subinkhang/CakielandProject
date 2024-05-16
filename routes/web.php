@@ -26,8 +26,8 @@ Route::get('/account', 'App\Http\Controllers\AccountController@index');
 Route::get('/cart', 'App\Http\Controllers\CartController@index');
 
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
-Route::get('/checkout-edit/{user_id}', 'App\Http\Controllers\CheckoutController@edit');
-Route::get('/checkout-update/{user_id}', 'App\Http\Controllers\CheckoutController@update');
+// Route::get('/checkout', 'App\Http\Controllers\CheckoutController@edit');
+Route::post('/checkout-update/{user_id}', 'App\Http\Controllers\CheckoutController@update');
 
 Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
 
