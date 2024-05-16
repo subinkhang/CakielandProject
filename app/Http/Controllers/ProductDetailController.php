@@ -46,14 +46,29 @@ class ProductDetailController extends Controller
                             return redirect()->route('home')->with('error', 'Product not found');
                         }
                         //kết hai bảng gallery và product
-                        // $thumbnails = DB::table('gallery')
+                        // $gallery_image = DB::table('gallery')
                         // ->where('product_id', $product_id)
-                        // ->pluck('image_product')
+                        // ->pluck('image_product');
+                        // // ->get();
+                        $gallery_images = DB::table('gallery')
+                        ->select('image_product')
+                        ->where('gallery.product_id', $product_id)
+                        ->groupBy('gallery.id', 'gallery.product_id', 'gallery.image_product') // Nhóm theo image_product để loại bỏ các hình ảnh trùng lặp
+                        ->pluck('image_product'); // Sử dụng pluck() để trả về một mảng của các giá trị
+                        //
+                    // ->where('gallery.product_id', $product_id)
+                    // ->groupBy('gallery.id', 'gallery.product_id')
+                    // ->get();
+                    // ->pluck('image_product');
+                        //
+                    // Chuyển đổi dữ liệu BLOB sang dạng base64
+                        // $image_product = $gallery_images->map(function ($image) {
+                        //     return base64_encode($image);
                         // ->toArray();
-                        // $image_product=[];
-                        // foreach ($product_detail as $product){
-                        //     $image_product[] = $product->image_product;
-                        // }
+                        $image_product=[];
+                        foreach ($gallery_images as $image){
+                            $image_product[] = $image;
+                        }
                         //
 
                         $thumbnails = [];
@@ -96,7 +111,8 @@ class ProductDetailController extends Controller
             'related_products' => $related_products,
             'colors' => $colors,
             'thumbnails' => $thumbnails,
-            // 'image_product' => $image_product,
+            'image_product' => $image_product,
+            // 'gallery_image' => $gallery_image
         ]);
 
 

@@ -3,8 +3,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/productDetail.css') }}">
 
     <livewire:breadcrumb-banner />
-
-
 @foreach($product_detail as $key => $product)
     <div class="container mt-5 carousel_product">
         <div class="row detail">
@@ -17,11 +15,12 @@
                         </div>
                         <div class="col-4">
                             <img data-bs-target="#pr-slide" data-bs-slide-to="1" class="carousel-btn2"
-                                src="data:image/png;base64,{{ base64_encode($thumbnails[$key]) }}" />
+                                src="data:image/png;base64,{{ base64_encode($image_product[$key])}}" />
                         </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('frontend/images/pr-detail/máy dánh trứng 2.webp') }}" alt=""
-                                class="img-fluid w-100">
+                        <div class="col-4">
+                            <img data-bs-target="#pr-slide" data-bs-slide-to="2" class="carousel-btn3"
+                            src="data:image/png;base64,{{ base64_encode(array_slice($image_product, 1)[0]) }}" />
+                                
                         </div>
                         <div class="carousel-item">
                             <img src="{{ asset('frontend/images/pr-detail/máy đánh trứng 3.webp') }}" alt=""
@@ -35,11 +34,11 @@
                             class="w-100 img-fluid">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('frontend/images/pr-detail/máy dánh trứng 2.webp') }}" alt=""
+                        <img src="data:image/png;base64,{{ base64_encode($image_product[$key]) }}" alt=""
                             class="img-fluid w-100">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('frontend/images/pr-detail/máy đánh trứng 3.webp') }}" alt=""
+                        <img src="data:image/png;base64,{{ base64_encode(array_slice($image_product, 1)[0]) }}" alt=""
                             class="img-fluid w-100">
                     </div>
                 </div>
