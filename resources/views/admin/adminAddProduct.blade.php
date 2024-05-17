@@ -140,12 +140,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <select id="cate" name="cate"
                                                 style="margin-top: 10px, width: 195px; border-radius: 15px;">
                                                 <option value="" name="cate" disabled selected>Categories</option>
-                                                <option value="CT01" name="cate">Wet Indredients</option>
-                                                <option value="CT02" name="cate">Dry Indredients</option>
-                                                <option value="CT03" name="cate">Baking Tools</option>
-                                                <option value="CT04" name="cate">Utensiles</option>
-                                                <option value="CT05" name="cate">Bar Tool</option>
-                                                <option value="CT06" name="cate">Bar Ingredients</option>
+                                                <option value="1" name="cate">Wet Indredients</option>
+                                                <option value="2" name="cate">Dry Indredients</option>
+                                                <option value="3" name="cate">Baking Tools</option>
+                                                <option value="4" name="cate">Utensiles</option>
+                                                <option value="5" name="cate">Bar Tool</option>
+                                                <option value="6" name="cate">Bar Ingredients</option>
                                             </select>
                                             <h4 class="right-text"><b>Tag</b></h4>
                                             <select id="tag" name="tag"
@@ -256,27 +256,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         const tagSelect = document.getElementById('tag');
 
         const tagOptions = {
-            CT01: [
+            1: [
                 { value: 'SC01', text: 'Milk' },
                 { value: 'SC02', text: 'Butter' }
             ],
-            CT02: [
+            2: [
                 { value: 'SC03', text: 'Flour' },
                 { value: 'SC04', text: 'Baking Soda' }
             ],
-            CT03: [
+            3: [
                 { value: 'SC05', text: 'Eggs Beater' },
                 { value: 'SC06', text: 'Mold' }
             ],
-            CT04: [
+            4: [
                 { value: 'SC07', text: 'Stainless Steel Pot Set' },
                 { value: 'SC08', text: 'Kitchen Knife Set' }
             ],
-            CT05: [
+            5: [
                 { value: 'SC09', text: 'Coffee Foam Maker' },
                 { value: 'SC10', text: 'Measuring Cup' }
             ],
-            CT06: [
+            6: [
                 { value: 'SC11', text: 'Tea' },
                 { value: 'SC12', text: 'Syrup' }
             ]

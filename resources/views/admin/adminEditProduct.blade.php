@@ -30,6 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="{{ asset('backend/css/font-awesome.css') }}" rel="stylesheet">
     <!-- //font-awesome icons -->
     <script src="{{ asset('backend/js/jquery2.0.3.min.js') }}"></script>
+    <link href="{{ asset('backend/css/admineditproduct.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -126,8 +127,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     @endif
 
                                     <section class="panel">
-                                        <h4 class="menu"id="text-name"><b>ID</b></h4>
-                                        <textarea name="id" type="text" id="name" class="text-title">{{ $edit_value->id }}</textarea>
 
                                         <h4 class="menu"id="text-name"><b>Name</b></h4>
                                         <textarea name="name" type="text" id="name" class="text-title">{{ $edit_value->name }}</textarea>
@@ -164,49 +163,55 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <section class="panel">
                                         <div class="right">
                                             <h4 class="right-text"><b>Image</b></h4>
-                                            <input type="file" class="image" accept="image/png, image/jpeg"
-                                                multiple>
+                                            <input type="file" class="image" name="img"
+                                                accept="image/png, image/jpeg" multiple id="mainimg">
                                             <div id="main-img"></div>
                                             <h4 class="right-text"><b>Galary</b></h4>
-                                            <input type="file" class="image" accept="image/png, image/jpeg"
-                                                multiple>
-                                            <div class="cont">
-                                                <div class="gal"></div>
-                                                <div class="gal"></div>
-                                                <div class="gal"></div>
-                                                <div class="gal"></div>
-                                                <div class="gal"></div>
-                                                <div class="gal"></div>
-                                            </div>
-                                            <h4 class="right-text"><b>Color</b></h4>
-                                            <div class="cont">
-                                                <div class="grey">
-                                                    <input type="checkbox" style="text-align: center" id="op1">
-                                                    <div style="background-color: grey" class="color"></div>
-                                                </div>
-                                                <div class="black">
-                                                    <input type="checkbox" style="text-align: center" id="op2">
-                                                    <div style="background-color: black" class="color"></div>
-                                                </div>
-                                                <div class="white">
-                                                    <input type="checkbox" style="text-align: center" id="op3">
-                                                    <div style="background-color: white" class="color"></div>
-                                                </div>
+                                            <input type="file" class="image" name="gal[]"
+                                                accept="image/png, image/jpeg" multiple id="gallery"
+                                                onchange="gallarypreview()">
 
-                                            </div>
-                                            <h4 class="right-text"><b>Menu</b></h4>
-                                            <select id="cate"
-                                                style="margin-top: 10px, width: 195px; border-radius: 15px;">
-                                                <option value="">Categories</option>
-                                                <option value="wet">Wet Indredients</option>
-                                                <option value="dry">Dry Indredients</option>
-                                                <option value="baking">Baking Tools</option>
-                                                <option value="cooking">Utensiles</option>
-                                                <option value="bartool">Bar Tool</option>
-                                                <option value="bar">Bar Ingredients</option>
-                                            </select>
-                                            <h4 class="right-text"><b>Tag</b></h4>
-                                            <select id="tag"
+                                            <div>
+                                                <div id="gal"></div>
+                                                <h4 class="right-text"><b>Color</b></h4>
+                                                <div class="cont">
+                                                    <div class="grey">
+                                                        <input type="checkbox" style="text-align: center"
+                                                            id="op1" value="1" name="color[]">
+                                                        <div style="background-color: grey" class="color"></div>
+                                                    </div>
+                                                    <div class="black">
+                                                        <input type="checkbox" style="text-align: center"
+                                                            id="op2" value="2" name="color[]">
+                                                        <div style="background-color: black" class="color"></div>
+                                                    </div>
+                                                    <div class="white">
+                                                        <input type="checkbox" style="text-align: center"
+                                                            id="op3" value="3" name="color[]">
+                                                        <div style="background-color: white" class="color"></div>
+                                                    </div>
+
+                                                </div>
+                                                <h4 class="right-text"><b>Menu</b></h4>
+                                                <select id="cate" name="cate"
+                                                    style="margin-top: 10px, width: 195px; border-radius: 15px;">
+                                                    <option value="" name="cate" disabled selected>Categories
+                                                    </option>
+                                                    <option value="1" name="cate">Wet Indredients</option>
+                                                    <option value="2" name="cate">Dry Indredients</option>
+                                                    <option value="3" name="cate">Baking Tools</option>
+                                                    <option value="4" name="cate">Utensiles</option>
+                                                    <option value="5" name="cate">Bar Tool</option>
+                                                    <option value="6" name="cate">Bar Ingredients</option>
+                                                </select>
+                                                <h4 class="right-text"><b>Tag</b></h4>
+                                                <select id="tag" name="tag"
+                                                    style="margin-top: 10px; width: 195px; border-radius: 15px; margin-bottom: 30px;">
+                                                    <option value="" name="tag" disabled selected>Tag
+                                                    </option>
+                                                </select>
+                                                <h4 class="right-text"><b>Tag</b></h4>
+                                                {{-- <select id="tag"
                                                 style="margin-top: 10px, width: 195px; border-radius: 15px; margin-bottom: 30px;">
                                                 <option value="">Tag</option>
                                                 <option value="milk">Milk</option>
@@ -221,7 +226,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <option value="cup">Measuring Cup</option>
                                                 <option value="tea">Tea</option>
                                                 <option value="syrup">Syrup</option>
-                                        </div>
+                                            </select> --}}
+                                            </div>
 
                                     </section>
                                 </div>
@@ -248,5 +254,118 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{ asset('backend/js/jquery.scrollTo.js') }}"></script>
     <script src="{{ asset('backend/js/adminaddproduct.js') }}"></script>
 </body>
+<script>
+    document.getElementById("mainimg").addEventListener("change", function() {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var preview = document.getElementById("main-img");
+            preview.innerHTML = '<img src="' + e.target.result +
+                '" style="width: 200px; margin-top:20px; height: 200px; border-radius: 15px; border: 1px dashed #282828;">';
+        };
+        reader.readAsDataURL(this.files[0]);
+    });
+    // document.getElementById("gallery").addEventListener("change", function() {
+    //     var reader = new FileReader();
+    //     reader.onload = function(e) {
+    //         var newitem = document.createElement("div");
+    //         var preview = document.getElementById("gal");
+    //         preview.innerHTML = '<img src="'+ e.target.result +'" style="width: 50px; height: 50px; border-radius: 5px; border: 2px dashed #282828;">';
+    //         preview.appendChild(newitem);
+    //     };
+    //     reader.readAsDataURL(this.files[0]);
+    // });
+    function gallarypreview() {
+        let fileinput = document.getElementById('gallery');
+        let display = document.getElementById('gal');
+        display.innerHTML = ''; // Clear previous content
+
+        for (let i of fileinput.files) {
+            let reader = new FileReader();
+            reader.onload = () => {
+                let figure = document.createElement("figure");
+                let gallery = document.createElement("img");
+                gallery.style.width = "100px";
+                gallery.style.height = "100px";
+                gallery.setAttribute("src", reader.result); // Corrected syntax
+                figure.appendChild(gallery);
+                display.appendChild(figure);
+            };
+            reader.readAsDataURL(i);
+        }
+    }
+    const cateSelect = document.getElementById('cate');
+    const tagSelect = document.getElementById('tag');
+
+    const tagOptions = {
+        1: [{
+                value: '13',
+                text: 'Milk'
+            },
+            {
+                value: 'SC02',
+                text: 'Butter'
+            }
+        ],
+        CT02: [{
+                value: 'SC03',
+                text: 'Flour'
+            },
+            {
+                value: 'SC04',
+                text: 'Baking Soda'
+            }
+        ],
+        CT03: [{
+                value: 'SC05',
+                text: 'Eggs Beater'
+            },
+            {
+                value: 'SC06',
+                text: 'Mold'
+            }
+        ],
+        CT04: [{
+                value: 'SC07',
+                text: 'Stainless Steel Pot Set'
+            },
+            {
+                value: 'SC08',
+                text: 'Kitchen Knife Set'
+            }
+        ],
+        CT05: [{
+                value: 'SC09',
+                text: 'Coffee Foam Maker'
+            },
+            {
+                value: 'SC10',
+                text: 'Measuring Cup'
+            }
+        ],
+        CT06: [{
+                value: 'SC11',
+                text: 'Tea'
+            },
+            {
+                value: 'SC12',
+                text: 'Syrup'
+            }
+        ]
+    };
+
+    cateSelect.addEventListener('change', function() {
+        const selectedCate = cateSelect.value;
+
+        if (tagOptions[selectedCate]) {
+            // Populate new tag options
+            tagOptions[selectedCate].forEach(option => {
+                const newOption = document.createElement('option');
+                newOption.value = option.value;
+                newOption.text = option.text;
+                tagSelect.add(newOption);
+            });
+        }
+    });
+</script>
 
 </html>
