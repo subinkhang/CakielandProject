@@ -73,7 +73,7 @@
                     <!----------------------right----------------------------->
 
                     <div class="col-5 cont">
-                        <form action="{{ url('/update/'.auth()->user()->id) }}" method="POST" role="form">
+                        <form id="updateForm" role="form">
                             {{ csrf_field() }}
                             <div class="row">
                                 <h6><b>E-mail</b></h6>
@@ -144,7 +144,7 @@
                                 </select>
                                 <h6 id="checkinfo">Please check information</h6>
                                 <div class="col-8 bt-pay pm">
-                                    <button class="btn" id="btn-p" type="submit">
+                                    <button type="submit" class="btn" id="btn-p">
                                         <p1>Payment</p1>
                                     </button>
                                 </div>
@@ -177,8 +177,51 @@
         <img src="{{ asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg') }}"
             class="qr">
     </div>
-
-
+    <script>
+        document.getElementById('updateForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+    
+            var formData = new FormData(this);
+    
+            axios.post('{{ url("/update/".auth()->user()->id) }}', formData)
+                .then(function (response) {
+                    console.log('Success:', response);
+                })
+                .catch(function (error) {
+                    console.log('Error:', error);
+                });
+        });
+    
+        const btn = document.getElementById("btn-p");
+        const popup = document.querySelector(".popup");
+        const qr = document.querySelector(".qr");
+        const bankmethod = document.querySelector(".bankmethod");
+        const overlay = document.querySelector(".overlay");
+    
+        overlay.addEventListener("click", () => {
+            popup.classList.remove("active");
+            overlay.classList.remove("active");
+            bankmethod.classList.remove("active");
+        });
+    
+        btn.addEventListener("click", (e) => {
+            // e.preventDefault();
+            const select = document.querySelector(".form-select-pm");
+            const bankoption = document.querySelector(".bankmethod");
+            const selectoption = select.value;
+            if (selectoption === "COD") {
+                popup.classList.add("active");
+                overlay.classList.add("active");
+            }
+    
+            if (selectoption === "Bank") {
+                console.log("bank");
+                bankoption.classList.add("active");
+                overlay.classList.add("active");
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/checkout.js') }}"></script>
