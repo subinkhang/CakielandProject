@@ -22,12 +22,12 @@ Route::get('/sub-category{sub_category_id}', 'App\Http\Controllers\ProductListCo
 Route::get('/product-detail', 'App\Http\Controllers\ProductDetailController@index');
 
 Route::get('/account', 'App\Http\Controllers\AccountController@index');
+Route::post('/update-account/{user_id}', 'App\Http\Controllers\AccountController@update_account');
 
 Route::get('/cart', 'App\Http\Controllers\CartController@index');
 
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
-// Route::get('/checkout', 'App\Http\Controllers\CheckoutController@edit');
-Route::post('/checkout-update/{user_id}', 'App\Http\Controllers\CheckoutController@update');
+Route::post('/update/{user_id}', 'App\Http\Controllers\CheckoutController@update');
 
 Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
 
