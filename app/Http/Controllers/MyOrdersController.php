@@ -102,41 +102,91 @@ class MyOrdersController extends Controller
     //     return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product, 
     //     'category'=>$cate, 'sub_category'=>$sub_cate, 'brands' => $data['brands']]);
     // }
+    // public function myorders_detail()
+    // {
+    //     $data = DB::table('order_detail')
+    //         ->select('order_detail.product_id', 'order_detail.price', 'order_detail.quantity', 'order_detail.total_money', 'order.status', 'product.name', 'product.thumbnail')
+    //         ->join('product', 'order_detail.product_id', '=', 'product.id')
+    //         ->join('order', 'order_detail.order_id', '=', 'order.id')
+    //         ->get();
+
+    //     $product_list = DB::table('product')
+    //         ->get();
+
+    //     $order_detail = [];
+    //     $statuses = [
+    //         0 => 'CANCELLED',
+    //         1 => 'COMPLETED',
+    //         2 => 'DELIVERING',
+    //     ];
+
+    //     foreach ($data as $order) {
+    //         $order_detail[] = [
+    //             'product_id' => $order->product_id,
+    //             'price' => $order->price,
+    //             'quantity' => $order->quantity,
+    //             'total_money' => $order->total_money,
+    //             'status' => $statuses[$order->status] ?? 'Unknown', // Handle unknown statuses gracefully
+    //             'product_name' => $order->name,
+    //             'product_thumbnail' => $order->thumbnail,
+    //         ];
+    //     }
+
+    //     return view('user/myOrders', [
+    //         'data' => $order_detail, // Pass the enhanced order_detail array
+    //         'product_list' => $product_list,
+    //     ]);
+    // }
+
     public function myorders_detail()
-    {
-        $data = DB::table('order_detail')
-            ->select('order_detail.product_id', 'order_detail.price', 'order_detail.quantity', 'order_detail.total_money', 'order.status', 'product.name', 'product.thumbnail')
-            ->join('product', 'order_detail.product_id', '=', 'product.id')
-            ->join('order', 'order_detail.order_id', '=', 'order.id')
-            ->get();
+{
+    $data = DB::table('order_detail')
+        ->select('order_detail.order_id', 'order_detail.product_id', 'order_detail.price', 'order_detail.quantity', 'order_detail.total_money', 'order.status', 'product.name', 'product.thumbnail')
+        ->join('product', 'order_detail.product_id', '=', 'product.id')
+        ->join('order', 'order_detail.order_id', '=', 'order.id')
+        ->get();
 
-        $product_list = DB::table('product')
-            ->get();
+    $product_list = DB::table('product')
+        ->get();
 
-        $order_detail = [];
-        $statuses = [
-            0 => 'CANCELLED',
-            1 => 'COMPLETED',
-            2 => 'DELIVERING',
+    $order_detail = [];
+    $statuses = [
+        0 => 'CANCELLED',
+        1 => 'COMPLETED',
+        2 => 'DELIVERING',
+    ];
+
+    // Group order details by order_id
+    $groupedOrders = $data->groupBy('order_id');
+
+    foreach ($groupedOrders as $orderId => $orderItems) {
+        $orderDetail = [
+            'order_id' => $orderId,
+            'status' => $statuses[$orderItems->first()->status] ?? 'Unknown',
+            'total_price' => $orderItems->sum('total_money'),
+            'items' => [],
         ];
 
-        foreach ($data as $order) {
-            $order_detail[] = [
-                'product_id' => $order->product_id,
-                'price' => $order->price,
-                'quantity' => $order->quantity,
-                'total_money' => $order->total_money,
-                'status' => $statuses[$order->status] ?? 'Unknown', // Handle unknown statuses gracefully
-                'product_name' => $order->name,
-                'product_thumbnail' => $order->thumbnail,
+        foreach ($orderItems as $item) {
+            $orderDetail['items'][] = [
+                'product_id' => $item->product_id,
+                'price' => $item->price,
+                'quantity' => $item->quantity,
+                'total_money' => $item->total_money,
+                'status' => $statuses[$item->status] ?? 'Unknown',
+                'product_name' => $item->name,
+                'product_thumbnail' => $item->thumbnail,
             ];
         }
 
-        return view('user/myOrders', [
-            'data' => $order_detail, // Pass the enhanced order_detail array
-            'product_list' => $product_list,
-        ]);
+        $order_detail[] = $orderDetail;
     }
+
+    return view('user/myOrders', [
+        'data' => $order_detail,
+        'product_list' => $product_list,
+    ]);
+}
 
 }
 
