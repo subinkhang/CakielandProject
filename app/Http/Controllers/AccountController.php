@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Session;
+use App\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
+session_start();
 
 class AccountController extends Controller
 {
@@ -11,16 +16,16 @@ class AccountController extends Controller
         $user = auth()->user();
         return view('user/account', compact('user'));
     }
-    public function update_account($user_id, Request $request)
+    public function update_account(Request $request)
     {
+        // if($request->action == 'homepage'){
         $data = [];
         $data['name'] = $request->name;
         $data['phone_number'] = $request->phone;
         $data['date_of_birth'] = $request->dob;
-        $data['address'] = $request->description;
-        $data['description_detail'] = $request->address;
-        DB::table('users')->where('id', $user_id)->update($data);
-        Session::put('message', 'Product updated successfully');
-        return Redirect::to('/admin-list-product');
+        $data['address'] = $request->address;
+        DB::table('users')->update($data);
+        return Redirect::to('/account');
+        // }
     }
 }

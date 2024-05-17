@@ -20,7 +20,7 @@ function validateDateOfBirth() {
     const phoneInput = document.getElementById("Phone_number");
     // const emailInput = document.getElementById("Email"); 
     // const addressInput = document.getElementById("Address");
-    event.preventDefault();
+    // event.preventDefault();
     clearValidationMessages();
     let isValid = true;
     const birthday = validateDate(birthdayInput.value);

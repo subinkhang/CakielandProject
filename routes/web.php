@@ -22,7 +22,7 @@ Route::get('/sub-category{sub_category_id}', 'App\Http\Controllers\ProductListCo
 Route::get('/product-detail', 'App\Http\Controllers\ProductDetailController@index');
 
 Route::get('/account', 'App\Http\Controllers\AccountController@index');
-Route::post('/update-account/{user_id}', 'App\Http\Controllers\AccountController@update_account');
+Route::post('/update-account', 'App\Http\Controllers\AccountController@update_account');
 
 Route::get('/cart', 'App\Http\Controllers\CartController@index');
 

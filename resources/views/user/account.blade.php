@@ -24,7 +24,7 @@
             </div>
             <div class="col-1"></div>
             <div class="col-6">
-                <form action="{{ url('/update-account/'.auth()->user()->id) }}" method="POST" role="form" onsubmit="return validateDateOfBirth()">
+                <form action="{{ url('/update-account/') }}" method="POST" role="form" onsubmit="return validateDateOfBirth()">
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col-6 box_account">
@@ -113,14 +113,14 @@
                             @if (auth()->user()->address)
                                 <div class="font-medium text-base text-gray-800 w-full d-flex align-items-center">
                                     <span x-show="!editing" x-text="address"></span>
-                                    <input x-show="editing" id="Address" x-model="address"
+                                    <input x-show="editing" id="Address" x-model="address" name = "address"
                                         @keydown.enter="editing = false" @change="if (address == '') editing = false"
                                         class="border-0 outline-none bg-transparent w-full flex-grow-1"
                                         x-bind:style="editing ? 'width: 100%' : ''">
                                 </div>
                             @else
                                 <input id="Address" type="text" placeholder="Address"
-                                    class="inside w-full flex-grow-1">
+                                    class="inside w-full flex-grow-1" name="address">
                             @endif
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                             <button class="button_ac1" type="reset">Cancel</button>
                         </div>
                         <div class="col-4">
-                            <button class="button_ac2" type="submit">Save</button>
+                            <button class="button_ac2" type="submit" name="submit" value="save" formaction="/update-account">Save</button>
                         </div>
                         <div class="col-2"></div>
                     </div>

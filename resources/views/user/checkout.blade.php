@@ -144,7 +144,7 @@
                                 </select>
                                 <h6 id="checkinfo">Please check information</h6>
                                 <div class="col-8 bt-pay pm">
-                                    <button class="btn" id="btn-p">
+                                    <button class="btn" id="btn-p" type="submit">
                                         <p1>Payment</p1>
                                     </button>
                                 </div>
