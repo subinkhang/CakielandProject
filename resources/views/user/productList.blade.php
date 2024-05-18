@@ -124,12 +124,11 @@
                             <div class="col-4 product-item {{$escapedBrand}}">
                                 <div class="pr-i3" data-brand="{{ $list_product_user->brand }}">
                                     <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
-                                        <img src="{{ asset('public/backend/upload/' . $list_product_user->thumbnail) }}" alt=""
-                                            class="w-100 productList_image">
+                                        <img src="{{ asset('public/backend/upload/' . $list_product_user->thumbnail) }}" alt="" class="w-100 productList_image">
                                     </a>
                                     <span class="btn_add"><i class="fa-solid fa-circle-plus" onclick="addToCart(this)"></i></span>
                                     <div class="container_information">
-                                        <a href="#" class="pr-i2-name">{{ $list_product_user->name }}</a>
+                                        <a href="#" class="pr-i2-name">{{ strlen($list_product_user->name) > 30 ? substr($list_product_user->name, 0, 30).'...' : $list_product_user->name }}</a>
                                         <ul class="pr-i2-rating d-flex">
                                             <li><i class="fa-solid fa-star"></i></li>
                                             <li><i class="fa-solid fa-star"></i></li>
@@ -138,7 +137,7 @@
                                             <li><i class="fa-solid fa-star"></i></li>
                                         </ul>
                                         <div class="text_product">
-                                            {{ $list_product_user->description }}
+                                            {{ strlen($list_product_user->description) > 115 ? substr($list_product_user->description, 0, 115).'...' : $list_product_user->description }}
                                         </div>
                                         <div class="pr-i2-id" style="display: none;">
                                             {{ $list_product_user->id }}
