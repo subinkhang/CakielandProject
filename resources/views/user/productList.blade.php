@@ -142,7 +142,7 @@
                             <div class="col-4  product-item {{$list_product_user->brand}}">
                                 <div class="pr-i3" data-brand="{{ $list_product_user->brand }}">
                                     <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
-                                        <img src="{{ asset('frontend/images/product.png') }}" alt=""
+                                        <img src="{{ asset('public/backend/upload/' . $list_product_user->thumbnail) }}" alt=""
                                             class="w-100 productList_image">
                                     </a>
                                     <span class="btn_add"><i class="fa-solid fa-circle-plus"

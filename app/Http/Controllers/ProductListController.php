@@ -20,17 +20,17 @@ class ProductListController extends Controller
         $sub_cate=DB::table('sub_category')->orderby('id','desc')->get();
 
         $query = Product::query();
-        $query->select('product.name', 'product.fake_price', 'product.price','product.thumbnail','product.color', 'product.description','product.description_detail','product.description_technique','product.brand','product.created_at','product.updated_at','product.category_id','product.deleted','product.sub_category_id')
+        $query->select('product.name', 'product.fake_price', 'product.price','product.thumbnail', 'product.description','product.description_detail','product.description_technique','product.brand','product.created_at','product.updated_at','product.category_id','product.deleted','product.sub_category_id')
         ->join('category','category.id', '=', 'product.category_id')
         ->where('product.category_id',$category_id)->get();
 
 
         switch ($sort) {
             case 'tang_dan':
-                $query->orderBy('price');
+                $query->orderByRaw('CAST(price AS DECIMAL(10,2))');
                 break;
             case 'giam_dan':
-                $query->orderBy('price', 'desc');
+                $query->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
                 break;
             case 'az':
                 $query->orderBy('name');
@@ -61,17 +61,17 @@ class ProductListController extends Controller
         $sub_cate=DB::table('sub_category')->orderby('id','desc')->get();
 
         $query = Product::query();
-        $query->select('product.name', 'product.fake_price', 'product.price','product.thumbnail','product.color', 'product.description','product.description_detail','product.description_technique','product.brand','product.created_at','product.updated_at','product.category_id','product.deleted','product.sub_category_id')
+        $query->select('product.name', 'product.fake_price', 'product.price','product.thumbnail', 'product.description','product.description_detail','product.description_technique','product.brand','product.created_at','product.updated_at','product.category_id','product.deleted','product.sub_category_id')
         ->join('sub_category','sub_category.id', '=', 'product.sub_category_id')
         ->where('product.sub_category_id',$sub_category_id)->get();
 
 
         switch ($sort) {
             case 'tang_dan':
-                $query->orderBy('price');
+                $query->orderByRaw('CAST(price AS DECIMAL(10,2))');
                 break;
             case 'giam_dan':
-                $query->orderBy('price', 'desc');
+                $query->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
                 break;
             case 'az':
                 $query->orderBy('name');
@@ -104,11 +104,11 @@ class ProductListController extends Controller
         $query = Product::query();
 
         switch ($sort) {
-            case 'tang_dan': 
-                $query->orderBy('price');
+            case 'tang_dan':
+                $query->orderByRaw('CAST(price AS DECIMAL(10,2))');
                 break;
             case 'giam_dan':
-                $query->orderBy('price', 'desc');
+                $query->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
                 break;
             case 'az':
                 $query->orderBy('name');
@@ -140,10 +140,10 @@ class ProductListController extends Controller
 
         switch ($sort) {
             case 'tang_dan':
-                $query->orderBy('price');
+                $query->orderByRaw('CAST(price AS DECIMAL(10,2))');
                 break;
             case 'giam_dan':
-                $query->orderBy('price', 'desc');
+                $query->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
                 break;
             case 'az':
                 $query->orderBy('name');
@@ -171,10 +171,10 @@ class ProductListController extends Controller
 
         switch ($sort) {
             case 'tang_dan':
-                $query->orderBy('price');
+                $query->orderByRaw('CAST(price AS DECIMAL(10,2))');
                 break;
             case 'giam_dan':
-                $query->orderBy('price', 'desc');
+                $query->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
                 break;
             case 'az':
                 $query->orderBy('name');
