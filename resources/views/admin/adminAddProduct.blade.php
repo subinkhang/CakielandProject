@@ -106,12 +106,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <div class="right">
 
                                             <h4 class="right-text"><b>Image</b></h4>
-                                            @if ($edit_value->thumbnail)
-                                                <div>
-                                                    <img src="{{ URL::to($edit_value->thumbnail) }}" alt="Main Image"
-                                                        style="width:100%; height:auto;">
-                                                </div>
-                                            @endif
                                             <input type="file" class="image" name="img"
                                                 accept="image/png, image/jpeg" id="mainimg">
                                             <div id="main-img"></div>
