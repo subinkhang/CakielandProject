@@ -42,36 +42,43 @@ $statuses = [
 ];
 
 // Group order details by order_id
-$groupedOrders = $data->groupBy('order_id');
+$orders = [];
 
-foreach ($groupedOrders as $orderId => $orderItems) {
-    $orderDetail = [
-        'order_id' => $orderId,
-        'status' => $statuses[$orderItems->first()->status] ?? 'Unknown',
-        'total_price' => $orderItems->sum('total_money'),
-        'items' => [],
-    ];
+    foreach ($data as $item) {
+        $orderId = $item->order_id;
+        $productId = $item->product_id;
+        $price = $item->price;
+        $quantity = $item->quantity;
+        $totalMoney = $item->total_money;
+        $status = $statuses[$item->status] ?? 'Unknown';
+        $productName = $item->name;
+        $productThumbnail = $item->thumbnail;
 
-    foreach ($orderItems as $item) {
-        $orderDetail['items'][] = [
-            'product_id' => $item->product_id,
-            'price' => $item->price,
-            'quantity' => $item->quantity,
-            'total_money' => $item->total_money,
-            'status' => $statuses[$item->status] ?? 'Unknown',
-            'product_name' => $item->name,
-            'product_thumbnail' => $item->thumbnail,
+        if (!isset($orders[$orderId])) {
+            $orders[$orderId] = [
+                'order_id' => $orderId,
+                'status' => $status,
+                'total_price' => $totalMoney,
+                'items' => [],
+            ];
+        }
+
+        $orders[$orderId]['items'][] = [
+            'product_id' => $productId,
+            'price' => $price,
+            'quantity' => $quantity,
+            'total_money' => $totalMoney,
+            'status' => $status,
+            'product_name' => $productName,
+            'product_thumbnail' => $productThumbnail,
         ];
     }
 
-    $order_detail[] = $orderDetail;
-}
-
-return view('user/myOrders', [
-    'data' => $order_detail,
-    'product_list' => $product_list,
-    'userId' => $userId,
-]);
+    return view('user/myOrders', [
+        'data' => array_values($orders),
+        'product_list' => $product_list,
+        'userId' => $userId,
+    ]);
 }
 
 }

@@ -25,7 +25,7 @@
                 <div class="row">
                     @if($userId)
                     @foreach ($data as $order)
-                    @if ($order['order_id'] == $userId)
+                    {{-- @if ($order['order_id'] == $userId) --}}
                         <div class="col-12 product_detail_3">
                             <div class="col-12 order_title" >
                                 <h5>{{ $order['status'] }}</h5>
@@ -58,7 +58,6 @@
                                     </div>
                                 </div>
                         </div>
-                    @endif
                     @endforeach
                 @else
                 <p>Bạn cần đăng nhập để xem đơn hàng.</p>
