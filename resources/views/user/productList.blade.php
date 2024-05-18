@@ -124,13 +124,12 @@
                         <div class="col-2">
                             {{-- <label for="amount">Sort by</label> --}}
                             <form id="sortForm">
-                                <select name="sort" id="sort" class="form-control select-custom"
-                                    onchange="this.form.submit()">
-                                    <option value="none">Sort by</option>
-                                    <option value="tang_dan">Increase</option>
-                                    <option value="giam_dan">Decrease</option>
-                                    <option value="az">A - Z</option>
-                                    <option value="za">Z - A</option>
+                                <select name="sort" id="sort" class="form-control select-custom" onchange="this.form.submit()">
+                                    <option value="none" {{ request('sort') == 'none' ? 'selected' : '' }}>{{ request('sort') == 'none' ? 'Sort by' : 'No sort' }}</option>
+                                    <option value="tang_dan" {{ request('sort') == 'tang_dan' ? 'selected' : '' }}>Increase</option>
+                                    <option value="giam_dan" {{ request('sort') == 'giam_dan' ? 'selected' : '' }}>Decrease</option>
+                                    <option value="az" {{ request('sort') == 'az' ? 'selected' : '' }}>A - Z</option>
+                                    <option value="za" {{ request('sort') == 'za' ? 'selected' : '' }}>Z - A</option>
                                 </select>
                             </form>
                         </div>
