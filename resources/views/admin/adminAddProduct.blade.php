@@ -104,18 +104,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <div class="col-sm-3 mail-w3agile">
                                     <section class="panel">
                                         <div class="right">
+
                                             <h4 class="right-text"><b>Image</b></h4>
+                                            @if ($edit_value->thumbnail)
+                                                <div>
+                                                    <img src="{{ URL::to($edit_value->thumbnail) }}" alt="Main Image"
+                                                        style="width:100%; height:auto;">
+                                                </div>
+                                            @endif
                                             <input type="file" class="image" name="img"
-                                                accept="image/png, image/jpeg" multiple id="mainimg">
+                                                accept="image/png, image/jpeg" id="mainimg">
                                             <div id="main-img"></div>
+
                                             <h4 class="right-text"><b>Galary</b></h4>
                                             <input type="file" class="image" name="gal[]"
                                                 accept="image/png, image/jpeg" multiple id="gallery"
                                                 onchange="gallarypreview()">
-
                                             <div>
                                                 <div id="gal"></div>
-
                                             </div>
                                             <h4 class="right-text"><b>Color</b></h4>
                                             <div class="cont">
@@ -139,9 +145,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <h4 class="right-text"><b>Menu</b></h4>
                                             <select id="cate" name="cate"
                                                 style="margin-top: 10px, width: 195px; border-radius: 15px;">
-                                                <option value="" name="cate" disabled selected>Categories</option>
-                                                <option value="1" name="cate">Wet Indredients</option>
-                                                <option value="2" name="cate">Dry Indredients</option>
+                                                <option value="" name="cate" disabled selected>Categories
+                                                </option>
+                                                <option value="1" name="cate">Dry Indredients</option>
+                                                <option value="2" name="cate">Wet Indredients</option>
                                                 <option value="3" name="cate">Baking Tools</option>
                                                 <option value="4" name="cate">Utensiles</option>
                                                 <option value="5" name="cate">Bar Tool</option>
@@ -150,22 +157,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <h4 class="right-text"><b>Tag</b></h4>
                                             <select id="tag" name="tag"
                                                 style="margin-top: 10px; width: 195px; border-radius: 15px; margin-bottom: 30px;">
-                                                <option value="" name="tag" disabled selected>Tag</option>
+                                                <option value="" name="tag" disabled selected>Tag
+                                                </option>
                                             </select>
-                                            {{-- <option value="" name="tag" disabled selected>Tag</option> --}}
-                                            {{-- <option value="SC01" name="tag">Milk</option>
-                                            <option value="SC02" name="tag">Butter</option>
-                                            <option value="SC03" name="tag">Flour</option>
-                                            <option value="SC04" name="tag">Baking Soda</option>
-                                            <option value="SC05" name="tag">Eggs Beater</option>
-                                            <option value="SC06" name="tag">Mold</option>
-                                            <option value="SC07" name="tag">Stainless Steel Pot Set</option>
-                                            <option value="SC08" name="tag">Kitchen Knife Set</option>
-                                            <option value="SC09" name="tag">Coffee Foam Maker</option>
-                                            <option value="SC10" name="tag">Measuring Cup</option>
-                                            <option value="SC11" name="tag">Tea</option>
-                                            <option value="SC12" name="tag">Syrup</option>  --}}
-                                            </select>
+
                                         </div>
 
                                     </section>
@@ -252,46 +247,74 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         //     }
         // });
 
-        const cateSelect = document.getElementById('cate');
-        const tagSelect = document.getElementById('tag');
-
         const tagOptions = {
-            1: [
-                { value: 'SC01', text: 'Milk' },
-                { value: 'SC02', text: 'Butter' }
+            "1": [{
+                    value: "1",
+                    text: "Flour"
+                },
+                {
+                    value: "2",
+                    text: "Baking Soda"
+                }
             ],
-            2: [
-                { value: 'SC03', text: 'Flour' },
-                { value: 'SC04', text: 'Baking Soda' }
+            "2": [{
+                    value: "3",
+                    text: "Milk"
+                },
+                {
+                    value: "4",
+                    text: "Butter"
+                }
             ],
-            3: [
-                { value: 'SC05', text: 'Eggs Beater' },
-                { value: 'SC06', text: 'Mold' }
+            "3": [{
+                    value: "5",
+                    text: "Eggs Beater"
+                },
+                {
+                    value: "6",
+                    text: "Mold"
+                }
             ],
-            4: [
-                { value: 'SC07', text: 'Stainless Steel Pot Set' },
-                { value: 'SC08', text: 'Kitchen Knife Set' }
+            "4": [{
+                    value: "7",
+                    text: "Stainless Steel Pot Set"
+                },
+                {
+                    value: "8",
+                    text: "Kitchen Knife Set"
+                }
             ],
-            5: [
-                { value: 'SC09', text: 'Coffee Foam Maker' },
-                { value: 'SC10', text: 'Measuring Cup' }
+            "5": [{
+                    value: "9",
+                    text: "Coffee Foam Maker"
+                },
+                {
+                    value: "10",
+                    text: "Measuring Cup"
+                }
             ],
-            6: [
-                { value: 'SC11', text: 'Tea' },
-                { value: 'SC12', text: 'Syrup' }
+            "6": [{
+                    value: "11",
+                    text: "Tea"
+                },
+                {
+                    value: "12",
+                    text: "Syrup"
+                }
             ]
         };
 
-        cateSelect.addEventListener('change', function() {
-            const selectedCate = cateSelect.value;
+        document.getElementById('cate').addEventListener('change', function() {
+            const selectedCategory = this.value;
+            const tagSelect = document.getElementById('tag');
+            tagSelect.innerHTML = '<option value="" name="tag" disabled selected>Tag</option>'; // Reset options
 
-            if (tagOptions[selectedCate]) {
-                // Populate new tag options
-                tagOptions[selectedCate].forEach(option => {
+            if (tagOptions[selectedCategory]) {
+                tagOptions[selectedCategory].forEach(option => {
                     const newOption = document.createElement('option');
                     newOption.value = option.value;
                     newOption.text = option.text;
-                    tagSelect.add(newOption);
+                    tagSelect.appendChild(newOption);
                 });
             }
         });

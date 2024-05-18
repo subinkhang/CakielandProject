@@ -164,15 +164,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="right">
                                             <h4 class="right-text"><b>Image</b></h4>
                                             <input type="file" class="image" name="img"
-                                                accept="image/png, image/jpeg" multiple id="mainimg">
+                                                accept="image/png, image/jpeg" id="mainimg">
                                             <div id="main-img"></div>
+
                                             <h4 class="right-text"><b>Galary</b></h4>
                                             <input type="file" class="image" name="gal[]"
                                                 accept="image/png, image/jpeg" multiple id="gallery"
                                                 onchange="gallarypreview()">
-
                                             <div>
                                                 <div id="gal"></div>
+                                            </div>
+
+                                            <div>
                                                 <h4 class="right-text"><b>Color</b></h4>
                                                 <div class="cont">
                                                     <div class="grey">
@@ -197,12 +200,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     style="margin-top: 10px, width: 195px; border-radius: 15px;">
                                                     <option value="" name="cate" disabled selected>Categories
                                                     </option>
-                                                    <option value="1" name="cate">Wet Indredients</option>
-                                                    <option value="2" name="cate">Dry Indredients</option>
-                                                    <option value="3" name="cate">Baking Tools</option>
-                                                    <option value="4" name="cate">Utensiles</option>
-                                                    <option value="5" name="cate">Bar Tool</option>
-                                                    <option value="6" name="cate">Bar Ingredients</option>
+                                                    <option value="1" name="cate"
+                                                        {{ $edit_value->category_id == 1 ? 'selected' : '' }}>Dry
+                                                        Indredients
+                                                    </option>
+                                                    <option value="2" name="cate"
+                                                        {{ $edit_value->category_id == 2 ? 'selected' : '' }}>Wet
+                                                        Indredients
+                                                    </option>
+                                                    <option value="3" name="cate"
+                                                        {{ $edit_value->category_id == 3 ? 'selected' : '' }}>Baking
+                                                        Tools
+                                                    </option>
+                                                    <option value="4" name="cate"
+                                                        {{ $edit_value->category_id == 4 ? 'selected' : '' }}>Cooking
+                                                        Utensiles
+                                                    </option>
+                                                    <option value="5" name="cate"
+                                                        {{ $edit_value->category_id == 5 ? 'selected' : '' }}>Bar Tool
+                                                    </option>
+                                                    <option value="6" name="cate"
+                                                        {{ $edit_value->category_id == 6 ? 'selected' : '' }}>Bar
+                                                        Ingredients
+                                                    </option>
                                                 </select>
                                                 <h4 class="right-text"><b>Tag</b></h4>
                                                 <select id="tag" name="tag"
@@ -210,23 +230,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <option value="" name="tag" disabled selected>Tag
                                                     </option>
                                                 </select>
-                                                <h4 class="right-text"><b>Tag</b></h4>
-                                                {{-- <select id="tag"
-                                                style="margin-top: 10px, width: 195px; border-radius: 15px; margin-bottom: 30px;">
-                                                <option value="">Tag</option>
-                                                <option value="milk">Milk</option>
-                                                <option value="butter">Butter</option>
-                                                <option value="flour">Flour</option>
-                                                <option value="bakingsoda">Baking Soda</option>
-                                                <option value="egg">Eggs Beater</option>
-                                                <option value="mold">Mold</option>
-                                                <option value="potset">Stainless Steel Pot Set</option>
-                                                <option value="knifeset">Kitchen Knife Set</option>
-                                                <option value="foammaker">Coffee Foam Maker</option>
-                                                <option value="cup">Measuring Cup</option>
-                                                <option value="tea">Tea</option>
-                                                <option value="syrup">Syrup</option>
-                                            </select> --}}
+
                                             </div>
 
                                     </section>
@@ -293,79 +297,102 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             reader.readAsDataURL(i);
         }
     }
-    const cateSelect = document.getElementById('cate');
-    const tagSelect = document.getElementById('tag');
-
     const tagOptions = {
-        1: [{
-                value: '13',
-                text: 'Milk'
+        "1": [{
+                value: "1",
+                text: "Flour"
             },
             {
-                value: 'SC02',
-                text: 'Butter'
+                value: "2",
+                text: "Baking Soda"
             }
         ],
-        CT02: [{
-                value: 'SC03',
-                text: 'Flour'
+        "2": [{
+                value: "3",
+                text: "Milk"
             },
             {
-                value: 'SC04',
-                text: 'Baking Soda'
+                value: "4",
+                text: "Butter"
             }
         ],
-        CT03: [{
-                value: 'SC05',
-                text: 'Eggs Beater'
+        "3": [{
+                value: "5",
+                text: "Eggs Beater"
             },
             {
-                value: 'SC06',
-                text: 'Mold'
+                value: "6",
+                text: "Mold"
             }
         ],
-        CT04: [{
-                value: 'SC07',
-                text: 'Stainless Steel Pot Set'
+        "4": [{
+                value: "7",
+                text: "Stainless Steel Pot Set"
             },
             {
-                value: 'SC08',
-                text: 'Kitchen Knife Set'
+                value: "8",
+                text: "Kitchen Knife Set"
             }
         ],
-        CT05: [{
-                value: 'SC09',
-                text: 'Coffee Foam Maker'
+        "5": [{
+                value: "9",
+                text: "Coffee Foam Maker"
             },
             {
-                value: 'SC10',
-                text: 'Measuring Cup'
+                value: "10",
+                text: "Measuring Cup"
             }
         ],
-        CT06: [{
-                value: 'SC11',
-                text: 'Tea'
+        "6": [{
+                value: "11",
+                text: "Tea"
             },
             {
-                value: 'SC12',
-                text: 'Syrup'
+                value: "12",
+                text: "Syrup"
             }
         ]
     };
 
-    cateSelect.addEventListener('change', function() {
-        const selectedCate = cateSelect.value;
 
-        if (tagOptions[selectedCate]) {
-            // Populate new tag options
-            tagOptions[selectedCate].forEach(option => {
+    document.getElementById('cate').addEventListener('change', function() {
+        const selectedCategory = this.value;
+        const tagSelect = document.getElementById('tag');
+        tagSelect.innerHTML = '<option value="" name="tag" disabled selected>Tag</option>'; // Reset options
+
+        if (tagOptions[selectedCategory]) {
+            tagOptions[selectedCategory].forEach(option => {
                 const newOption = document.createElement('option');
                 newOption.value = option.value;
                 newOption.text = option.text;
-                tagSelect.add(newOption);
+                tagSelect.appendChild(newOption);
             });
         }
     });
+    document.getElementById('cate').addEventListener('change', function() {
+        const selectedCategory = this.value;
+        updateTagOptions(selectedCategory);
+    });
+
+    function setInitialTags() {
+        const cateSelect = document.getElementById('cate');
+        const selectedCategory = cateSelect.value;
+        const tagSelect = document.getElementById('tag');
+        const currentTag = "{{ $edit_value->sub_category_id }}";
+
+        if (tagOptions[selectedCategory]) {
+            tagOptions[selectedCategory].forEach(option => {
+                const newOption = document.createElement('option');
+                newOption.value = option.value;
+                newOption.text = option.text;
+                if (option.value == currentTag) {
+                    newOption.selected = true;
+                }
+                tagSelect.appendChild(newOption);
+            });
+        }
+    }
+    window.onload = setInitialTags;
 </script>
 
 </html>

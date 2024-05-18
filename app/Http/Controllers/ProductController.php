@@ -65,9 +65,9 @@ class ProductController extends Controller
         $get_image = $request->file('img');
         $data['category_id'] = $request->cate;
         $data['sub_category_id'] = $request->tag;
-        if ($request->has('color')) {
-            $data['color'] = implode(',', $request->color);
-        }
+        // if ($request->has('color')) {
+        //     $data['color'] = implode(',', $request->color);
+        // }
 
         if ($get_image) {
             $get_image = $request->file('img');
