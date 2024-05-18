@@ -131,7 +131,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                     </div>
                 </div>
-                <div class="agil-info-calendar">
+                {{-- <div class="agil-info-calendar">
                     <!-- calendar -->
                     <div class="col-md-6 agile-calendar">
                         <div class="calendar-widget">
@@ -518,7 +518,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="clearfix"> </div>
                 </div>
             </section>
@@ -574,7 +574,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             });
         });
     </script>
-    <!-- calendar -->
+    {{-- <!-- calendar -->
     <script type="text/javascript" src="{{ asset('backend/js/monthly.js') }}"></script>
     <script type="text/javascript">
         $(window).load(function() {
@@ -604,7 +604,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             }
         });
     </script>
-    <!-- //calendar -->
+    <!-- //calendar --> --}}
 </body>
 
 </html>
