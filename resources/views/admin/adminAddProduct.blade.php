@@ -113,26 +113,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <h4 class="right-text"><b>Galary</b></h4>
                                             <input type="file" class="image" name="gal[]"
                                                 accept="image/png, image/jpeg" multiple id="gallery"
-                                                onchange="gallarypreview()">
+                                                onchange="gallarypreview()" max="10">
                                             <div>
                                                 <div id="gal"></div>
                                             </div>
                                             <h4 class="right-text"><b>Color</b></h4>
                                             <div class="cont">
-                                                <div class="grey">
+                                                <div class="black">
                                                     <input type="checkbox" style="text-align: center" id="op1"
                                                         value="1" name="color[]">
-                                                    <div style="background-color: grey" class="color"></div>
-                                                </div>
-                                                <div class="black">
-                                                    <input type="checkbox" style="text-align: center" id="op2"
-                                                        value="2" name="color[]">
                                                     <div style="background-color: black" class="color"></div>
                                                 </div>
-                                                <div class="white">
+                                                <div class="yellow">
+                                                    <input type="checkbox" style="text-align: center" id="op2"
+                                                        value="2" name="color[]">
+                                                    <div style="background-color: yellow" class="color"></div>
+                                                </div>
+                                                <div class="pink">
                                                     <input type="checkbox" style="text-align: center" id="op3"
                                                         value="3" name="color[]">
-                                                    <div style="background-color: white" class="color"></div>
+                                                    <div style="background-color: pink" class="color"></div>
+                                                </div>
+                                                <div class="grey">
+                                                    <input type="checkbox" style="text-align: center" id="op1"
+                                                        value="4" name="color[]">
+                                                    <div style="background-color: grey" class="color"></div>
+                                                </div>
+                                                <div class="blue">
+                                                    <input type="checkbox" style="text-align: center" id="op2"
+                                                        value="5" name="color[]">
+                                                    <div style="background-color: blue" class="color"></div>
+                                                </div>
+                                                <div class="green">
+                                                    <input type="checkbox" style="text-align: center" id="op3"
+                                                        value="6" name="color[]">
+                                                    <div style="background-color: green" class="color"></div>
                                                 </div>
 
                                             </div>
