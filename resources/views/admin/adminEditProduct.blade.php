@@ -180,18 +180,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 
                                             <div class="cont">
                                                 <div class="black">
-                                                @foreach($edit_product as $black)
+                                                
                                                     <input type="checkbox" style="text-align: center" id="op1"
-                                                        value="" name="color[]" {{ $black->color == 1 ? 'checked' : '' }}>
-                                                        @endforeach
+                                                        value="" name="color[]" {{ $edit_value->color == 1 ? 'checked' : '' }}>
 
                                                     <div style="background-color: black" class="color"></div>
                                                 </div>
                                                 <div class="yellow">
-                                                @foreach($edit_product as $yellow)
+
                                                     <input type="checkbox" style="text-align: center" id="op2"
-                                                        value="" name="color[]" {{ $yellow->color == 2 ? 'checked' : '' }}>
-                                                        @endforeach
+                                                        value="" name="color[]" {{ $edit_value->color == 2 ? 'checked' : '' }}>
+                                                    
                                                     <div style="background-color: yellow" class="color"></div>
                                                 </div>
                                                 <div class="pink">
@@ -214,7 +213,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         value="6" name="color[]" {{ $edit_value->color == 6 ? 'checked' : '' }}>
                                                     <div style="background-color: green" class="color"></div>
                                                 </div>
-                                                
+                                            
 
                                             </div>
                                                 <h4 class="right-text"><b>Menu</b></h4>
