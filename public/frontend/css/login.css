@@ -27,7 +27,7 @@ div .formsignin{
     color: #666;
 }
 .box1signin{
-    margin-top: 30px;
+    /* margin-top: 30px; */
     height: 50px;
     background-color: #f3f3f3;
     border-radius: 100px;
@@ -36,7 +36,7 @@ div .formsignin{
     width: 400px;
 }
 .box2signin{
-    margin-top: 30px;
+    /* margin-top: 30px; */
     height: 50px;
     width: 400px;
     background-color: #f3f3f3;
@@ -59,11 +59,11 @@ div .linepw{
 .checksignin p{
     color: #666;
 }
-.getpw p{
+.getpw a{
     color: #666;
     text-decoration: underline;
 }
-.linksu2 p{
+.linksu2 a{
     color: #666;
 }
 div .linksu{
@@ -79,14 +79,25 @@ p{
     background-color: #080808;
     color: #FBC31C;
 }
-.p2:hover{
+.a:hover{
     font-weight: bold;
     font-style: italic;
 }
-.getpw p:hover{
+.getpw a:hover{
     font-weight: bold;
     font-style: italic;
 }
-.box_eye{
+.linksu2 a:hover{
+    font-weight: bold;
+    font-style: italic;
+}
+.box_eye i{
    padding-top: 45px;
+}
+.error {
+    padding-top: 10px;
+    width: 400px;
+    color: red;
+    text-align: center;
+    padding-right: 10px;
 }

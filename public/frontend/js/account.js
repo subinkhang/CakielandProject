@@ -15,12 +15,12 @@ avatarInput.addEventListener('change', function() {
 let isValid = false; // Khởi tạo isValid thành false
 function validateDateOfBirth() {
 
-    const nameInput = document.getElementById("Name");
+    // const nameInput = document.getElementById("Name");
     const birthdayInput = document.getElementById("Birthday");
     const phoneInput = document.getElementById("Phone_number");
-    const emailInput = document.getElementById("Email"); 
-    const addressInput = document.getElementById("Address");
-    event.preventDefault();
+    // const emailInput = document.getElementById("Email"); 
+    // const addressInput = document.getElementById("Address");
+    // event.preventDefault();
     clearValidationMessages();
     let isValid = true;
     const birthday = validateDate(birthdayInput.value);
@@ -33,10 +33,10 @@ function validateDateOfBirth() {
       isValid = false;
       showMessage(phoneInput, "Phone must start with 0 and be 10 digits");
     }
-    if (emailInput.value !== "") {
-      isValid = false;
-      showMessage(emailInput, "Email cannot be entered (disabled field)");
-    }
+    // if (emailInput.value !== "") {
+    //   isValid = false;
+    //   showMessage(emailInput, "Email cannot be entered (disabled field)");
+    // }
     // if (!isValid) {
     //   alert("Please fix the following errors:"); 
     // } else {

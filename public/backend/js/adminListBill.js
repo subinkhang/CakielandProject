@@ -62,3 +62,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 });
+
+
+$(document).ready(function() {
+    $('.order_column').change(function() {
+        var status = $(this).val();
+        var id = $(this).data('id');
+        var url = '';
+
+        switch (status) {
+            case '0':
+                url = '/cancel-order-status/' + id;
+                break;
+            case '1':
+                url = '/complete-order-status/' + id;
+                break;
+            case '2':
+                url = '/delivery-order-status/' + id;
+                break;
+        }
+
+        if (url) {
+            $.get(url, function(data, status) {
+                // Handle the response here
+                console.log(data);
+            });
+        }
+    });
+});

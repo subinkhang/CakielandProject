@@ -5,25 +5,25 @@
             <ul class="sidebar-menu" id="nav-accordion">
                 <h1>ADMIN</h1>
                 <li>
-                    <a class="active" href="{{ url('/admin-dashboard') }}">
+                    <a class="{{ request()->is('admin-dashboard') ? 'active' : '' }}" href="{{ url('/admin-dashboard') }}">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin-list-product') }}">
+                    <a  class="{{ request()->is('admin-list-product') ? 'active' : '' }}" href="{{ url('/admin-list-product') }}">
                         <i class="fa-solid fa-utensils"></i>
                         <span>Products</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin-list-bill') }}">
+                    <a class="{{ request()->is('admin-list-bill') ? 'active' : '' }}" href="{{ url('/admin-list-bill') }}">
                         <i class="fa-solid fa-truck-fast"></i>
                         <span>Orders</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a class="{{ request()->is('admin-user') ? 'active' : '' }}" href="{{ url('/admin-user') }}">
                         <i class="fa fa-user"></i>
                         <span>User</span>
                     </a>
