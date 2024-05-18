@@ -14,11 +14,17 @@ class AdminEditProductController extends Controller
 {
     public function edit_product($product_id)
     {
-        $edit_product = DB::table('product')->where('id', $product_id)->get();
+        $edit_product = DB::table('product')
+        ->join('product_detail', 'product.id', '=', 'product_detail.product_id')
+        ->where('product.id', $product_id)
+        ->select('product.*', 'product_detail.color as color')
+        ->get();
         return view('admin/adminEditProduct', ['edit_product' => $edit_product]);
     }
     public function update_product($product_id, Request $request)
-    {
+    {   $data = DB::table('product')
+        ->join('color', 'product.id', '=', 'color.id')
+        ->get();
         $data = [];
         $data['name'] = $request->name;
         $data['fake_price'] = $request->fake_price;
@@ -30,8 +36,12 @@ class AdminEditProductController extends Controller
         $get_image = $request->file('img');
         $data['category_id'] = $request->cate;
         $data['sub_category_id'] = $request->tag;
-        if ($request->has('color')) {
-            $data['color'] = implode(',', $request->color);
+        $colors = $request->input('color');
+        foreach ($colors as $color) {
+            DB::table('product_detail')->where('id', $product_id)->update([
+                'color' => $color,
+                'product_id' => $product_id,
+            ]);
         }
         // if ($get_image) {
         //     $get_image = $request->file('img');
