@@ -138,6 +138,9 @@
                                         <div class="text_product">
                                             {{ $list_product_user->description }}
                                         </div>
+                                        <div class="pr-i2-id" style="display: none;">
+                                            {{ $list_product_user->id }}
+                                        </div>
                                         <div class="row productList_price">
                                             <div class="col-6">
                                                 <p class="old-price">{{$list_product_user->fake_price}}</p>

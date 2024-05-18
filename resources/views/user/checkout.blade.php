@@ -177,49 +177,38 @@
         <img src="{{ asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg') }}"
             class="qr">
     </div>
+
     <script>
         document.getElementById('updateForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
+    e.preventDefault();
+
+    var formData = new FormData(this);
+
     
-            var formData = new FormData(this);
+    var products = JSON.parse(localStorage.getItem('products'));
+    var total = products.reduce(function(sum, item) {
+        return sum + (item.price * item.quantity);
+    }, 0);
+
+    var cartData = JSON.parse(localStorage.getItem('cartData'));
+    shipping = cartData.shippingPrice;
+    discount = cartData.discountPrice;
+
+    total += shipping;
+    total -= discount;
+    // console.log(total);
+    // var total = localStorage.getItem('total');
     
-            axios.post('{{ url("/update/".auth()->user()->id) }}', formData)
-                .then(function (response) {
-                    console.log('Success:', response);
-                })
-                .catch(function (error) {
-                    console.log('Error:', error);
-                });
+    formData.append('total', total);
+
+    axios.post('{{ url('/update/' . auth()->user()->id) }}', formData)
+        .then(function(response) {
+            console.log('Success:', response);
+        })
+        .catch(function(error) {
+            console.log('Error:', error);
         });
-    
-        const btn = document.getElementById("btn-p");
-        const popup = document.querySelector(".popup");
-        const qr = document.querySelector(".qr");
-        const bankmethod = document.querySelector(".bankmethod");
-        const overlay = document.querySelector(".overlay");
-    
-        overlay.addEventListener("click", () => {
-            popup.classList.remove("active");
-            overlay.classList.remove("active");
-            bankmethod.classList.remove("active");
-        });
-    
-        btn.addEventListener("click", (e) => {
-            // e.preventDefault();
-            const select = document.querySelector(".form-select-pm");
-            const bankoption = document.querySelector(".bankmethod");
-            const selectoption = select.value;
-            if (selectoption === "COD") {
-                popup.classList.add("active");
-                overlay.classList.add("active");
-            }
-    
-            if (selectoption === "Bank") {
-                console.log("bank");
-                bankoption.classList.add("active");
-                overlay.classList.add("active");
-            }
-        });
+});
     </script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
