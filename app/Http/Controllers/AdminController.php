@@ -18,7 +18,7 @@ class AdminController extends Controller
     }
     public function count_data()
     {
-        $userCount = DB::table('user')->count();
+        $userCount = DB::table('users')->count();
         $orderCount = DB::table('order')->count();
         $emailCount = DB::table('email_customer')->count();
         $totalMoney = DB::table('order')->where('status', 2)->sum('total_money');
