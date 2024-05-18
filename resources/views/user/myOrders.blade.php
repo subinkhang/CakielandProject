@@ -22,51 +22,65 @@
                 </div>
             </div>
             <div class="col-9">
+                <div class="col-8"></div>
+                <div class="col-4">
+                    <form id="sortForm">
+                        <select name="sort" id="status" class="form-control select-custom">
+                            <option value="none">SORT STATUS</option>
+                            <option value="all">ALL</option>
+                            <option value="0">CANCELLED</option>
+                            <option value="1">COMPLETED</option>
+                            <option value="2">DELIVERING</option>
+                        </select>
+                    </form>
+                </div>
+                
                 <div class="row">
                     @if($userId)
-                    @foreach ($data as $order)
-                    {{-- @if ($order['order_id'] == $userId) --}}
-                        <div class="col-12 product_detail_3">
-                            <div class="col-12 order_title" >
-                                <h5>{{ $order['status'] }}</h5>
-                            </div>
-                            @foreach ($order['items'] as $item)
-                                <div class="row">
-                                    <div class="col-3" class="img_order">
-                                        <img src="{{ asset('frontend/images/My-order/71012Ro-efL.jpg') }}" alt=""
-                                        class="w-100">
+                        @foreach ($statuses as $key => $status)
+                            @if (isset($data[$key]))
+                                <div class="col-12 product_detail_3" data-status="{{ $key }}">
+                                    <div class="col-12 order_title">
+                                        <h5>{{ $status }}</h5>
                                     </div>
-                                    <div class="col-5 order_name">
-                                        <h5>{{ $item['product_name'] }}</h5>
-                                        <p>Quantity: {{ $item['quantity'] }}</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <p class="price">{{ $item['price'] }}</p>
-                                    </div>
+                                    @foreach ($data[$key] as $order)
+                                        @foreach ($order['items'] as $item)
+                                            <div class="row">
+                                                <div class="col-3 img_order">
+                                                    <img src="{{ asset('frontend/images/My-order/71012Ro-efL.jpg') }}" alt="" class="w-100">
+                                                </div>
+                                                <div class="col-5 order_name">
+                                                    <h5>{{ $item['product_name'] }}</h5>
+                                                    <p>Quantity: {{ $item['quantity'] }}</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="price">{{ $item['price'] }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <div class="row">
+                                            <div class="col-3 status">
+                                                <h5>Order status:</h5>
+                                            </div>
+                                            <div class="col-5 order_deli">
+                                                <h5>{{ $status }}</h5>
+                                            </div>
+                                            <div class="col-4 total_price">
+                                                <h6>Total: {{ $order['total_price'] }}</h6>
+                                                <button type="submit" class="button_order">Buy Again</button>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                            @endforeach                       
-                                <div class="row">
-                                    <div class="col-3 status">
-                                        <h5>Order status:</h5>
-                                    </div>
-                                    <div class="col-5 order_deli">
-                                        <h5>{{ $order['status'] }}</h5>
-                                    </div>
-                                    <div class="col-4 total_price">
-                                        <h6>Total: {{ $order['total_price'] }}</h6>
-                                        <button type="submit" class="button_order">Buy Again</button>
-                                    </div>
-                                </div>
-                        </div>
-                    @endforeach
-                @else
-                <p>Bạn cần đăng nhập để xem đơn hàng.</p>
-                @endif
+                            @endif
+                        @endforeach
+                    @else
+                        <p>Bạn cần đăng nhập để xem đơn hàng.</p>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('frontend/js/myorder.js') }}"></script>
