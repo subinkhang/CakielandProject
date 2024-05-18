@@ -1,46 +1,43 @@
 <x-app-layout>
     <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/productDetail.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <livewire:breadcrumb-banner />
 @foreach($product_detail as $key => $product)
     <div class="container mt-5 carousel_product">
         <div class="row detail">
             <div class="col-lg-6 pr-slide carousel" data-bs-ride="carousel" id="pr-slide">
-                <div class="carousel-indicators">
+                <div class="carousel-indicators active">
                     <div class="row">
                         <div class="col-4">
                             <img data-bs-target="#pr-slide" data-bs-slide-to="0" class="active carousel-btn1"
-                            src="data:image/png;base64,{{ base64_encode($thumbnails[$key]) }}"/>
+                                src="{{ asset('public/backend/upload/' . $product->thumbnail) }}"/>
                         </div>
-                        <div class="col-4">
-                            <img data-bs-target="#pr-slide" data-bs-slide-to="1" class="carousel-btn2"
-                                src="data:image/png;base64,{{ base64_encode($image_product[$key])}}" />
-                        </div>
-                        <div class="col-4">
-                            <img data-bs-target="#pr-slide" data-bs-slide-to="2" class="carousel-btn3"
-                            src="data:image/png;base64,{{ base64_encode(array_slice($image_product, 1)[0]) }}" />
-                                
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('frontend/images/pr-detail/máy đánh trứng 3.webp') }}" alt=""
-                                class="img-fluid w-100">
-                        </div>
+                        @php $slide_index = 1; @endphp <!-- Khởi tạo biến đếm -->
+                        @foreach($gallery_images as $image)
+                            <div class="col-4">
+                                <img data-bs-target="#pr-slide" data-bs-slide-to="{{ $slide_index }}" class="carousel-btn{{ $slide_index + 1 }}"
+                                    src="{{ asset('backend/upload/' . $image->image_product) }}" />
+                            </div>
+                            @php $slide_index++; @endphp <!-- Tăng giá trị biến đếm sau mỗi lần lặp -->
+                        @endforeach
                     </div>
+                    
                 </div>
                 <div class="carousel-inner parent">
                     <div class="carousel-item active">
-                        <img src="data:image/png;base64,{{ base64_encode($thumbnails[$key]) }}" alt=""
+                        <img src="{{ asset('public/backend/upload/' . $product->thumbnail) }}" alt=""
                             class="w-100 img-fluid">
                     </div>
-                    <div class="carousel-item">
-                        <img src="data:image/png;base64,{{ base64_encode($image_product[$key]) }}" alt=""
-                            class="img-fluid w-100">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="data:image/png;base64,{{ base64_encode(array_slice($image_product, 1)[0]) }}" alt=""
-                            class="img-fluid w-100">
-                    </div>
+                    @php $slide_index = 1; @endphp <!-- Đặt lại giá trị biến đếm -->
+                    @foreach($gallery_images as $image)
+                        <div class="carousel-item">
+                            <img src="{{ asset('backend/upload/' . $image->image_product) }}" alt=""
+                                class="img-fluid w-100">
+                        </div>
+                        @php $slide_index++; @endphp <!-- Tăng giá trị biến đếm sau mỗi lần lặp -->
+                    @endforeach
                 </div>
             </div>
             <div class="col-lg-6">
@@ -60,8 +57,8 @@
                         <div class="col-md-2 col-3">
                             <p class="new-price"> {{$product->price}} </p>
                         </div>
-                        <button class="btn-shopnow bg-vang my-3" onclick="addToCart(this)" onclick="AddCart(4)">Add to
-                            cart</button>
+                        {{-- <button class="btn-shopnow bg-vang my-3" onclick="addToCart(this)" onclick="AddCart(4)">Add to
+                            cart</button> --}}
                     </div>
                     <p class="pr-detail-content">{{$product->description}}</p>
                     
@@ -189,7 +186,7 @@
             @foreach($related_products as $key => $related_products)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="pr-i3">
-                        <img src="{{ asset('frontend/images/product.png') }}" alt=""
+                        <img src="{{ asset('public/backend/upload/' . $related_products->thumbnail) }}" alt=""
                             class="w-100 productList_image">
                         <span class="btn_add" onclick="addToCart(this)"><i class="fa-solid fa-circle-plus"></i></span>
                         <div class="container_information">

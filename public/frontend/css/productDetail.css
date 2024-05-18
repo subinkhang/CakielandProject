@@ -238,7 +238,11 @@ body, button, input{
     {
         border-bottom: 3px solid #FBC31C;
     }
-
+/* #pr-slide .carousel-indicators img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+} */
 .btn-shopnow{
     width: 120px;
     height: 35px;
@@ -617,3 +621,4 @@ margin: 16px 6px 0px 6px;
   .suggestions li:hover {
     background-color: #f0f0f0; /* Nền khi rê chuột lên */
   }
+  

@@ -30,56 +30,120 @@ session_start();
 
 
 // }
+// Chạy được
+// class ProductDetailController extends Controller
+// {
+//     public function product_detail($product_id)
+//     {
+//         // Lấy thông tin sản phẩm từ bảng product và product_detail
+//         $product_detail = DB::table('product')
+//                          ->where('product.id', $product_id)
+                         
+//                         ->get();
+//                         // 
+//                         if($product_detail->isEmpty()) {
+//                             // Xử lý khi không tìm thấy sản phẩm
+//                             // Ví dụ: redirect hoặc hiển thị thông báo lỗi
+//                             return redirect()->route('home')->with('error', 'Product not found');
+//                         }
+//                         //kết hai bảng gallery và product
+//                         // $gallery_image = DB::table('gallery')
+//                         // ->where('product_id', $product_id)
+//                         // ->pluck('image_product');
+//                         // // ->get();
+//                         $gallery_images = DB::table('gallery')
+//                         ->select('image_product')
+//                         ->where('gallery.product_id', $product_id)
+//                         ->groupBy('gallery.id', 'gallery.product_id', 'gallery.image_product') // Nhóm theo image_product để loại bỏ các hình ảnh trùng lặp
+//                         ->get();
+//                         //
+//                     // ->where('gallery.product_id', $product_id)
+//                     // ->groupBy('gallery.id', 'gallery.product_id')
+//                     // ->get();
+//                     // ->pluck('image_product');
+//                         //
+//                     // Chuyển đổi dữ liệu BLOB sang dạng base64
+//                         // $image_product = $gallery_images->map(function ($image) {
+//                         //     return base64_encode($image);
+//                         // ->toArray();
+//                         $image_product=[];
+//                         foreach ($gallery_images as $image){
+//                             $image_product[] = $image;
+//                         }
+//                         //
+
+//                         $thumbnails = [];
+                        
+//                         foreach ($product_detail as $product) {
+//                             // Lấy hình ảnh thumbnail từ cột BLOB và thêm vào mảng thumbnails
+//                             $thumbnails[] = $product->thumbnail;
+//                         }
+                        
+//                         // Set header cho hình ảnh
+//         //Lấy màu tương ứng với số nhập vào từ cột color
+//         $color_mapping = [
+//             1 => 'Black',
+//             2 => 'Yellow',
+//             3 => 'Pink',
+//             4 => 'Gray',
+//             5 => 'Blue',
+//             6 => 'Green'
+//         ];
+        
+//         $product_color = DB::table('product')
+//                             ->join('product_detail', 'product_detail.product_id', '=', 'product.id')
+//                             ->where('product.id', $product_id)
+//                             ->get();
+//         // Chuyển đổi số color thành tên màu tương ứng
+//         $colors = $product_color->map(function ($item) use ($color_mapping) {
+//             return $color_mapping[$item->color];
+//     });
+
+//         //Lấy sản phẩm cùng category_id
+//         $related_products = DB::table('product')
+//                                     ->where('category_id', $product_detail->first()->category_id)
+//                                     ->where('id', '!=', $product_id) // Loại bỏ sản phẩm hiện tại
+//                                     ->take(4) // Lấy tối đa 4 sản phẩm
+//                                     ->get();
+
+//         return view('user/productDetail', [ 
+//             'product_detail' => $product_detail,
+//             'product_color' => $product_color,
+//             'related_products' => $related_products,
+//             'colors' => $colors,
+//             'thumbnails' => $thumbnails,
+//             'image_product' => $image_product,
+//             // 'gallery_image' => $gallery_image
+//         ]);
+
+
+//         // ////////////////////////////////
+        
+//     }
+// }
+//end
+
+//Mới
 class ProductDetailController extends Controller
 {
     public function product_detail($product_id)
     {
-        // Lấy thông tin sản phẩm từ bảng product và product_detail
+        // Get product details from product table
         $product_detail = DB::table('product')
-                         ->where('product.id', $product_id)
-                         
-                        ->get();
-                        // 
-                        if($product_detail->isEmpty()) {
-                            // Xử lý khi không tìm thấy sản phẩm
-                            // Ví dụ: redirect hoặc hiển thị thông báo lỗi
-                            return redirect()->route('home')->with('error', 'Product not found');
-                        }
-                        //kết hai bảng gallery và product
-                        // $gallery_image = DB::table('gallery')
-                        // ->where('product_id', $product_id)
-                        // ->pluck('image_product');
-                        // // ->get();
-                        $gallery_images = DB::table('gallery')
-                        ->select('image_product')
-                        ->where('gallery.product_id', $product_id)
-                        ->groupBy('gallery.id', 'gallery.product_id', 'gallery.image_product') // Nhóm theo image_product để loại bỏ các hình ảnh trùng lặp
-                        ->pluck('image_product'); // Sử dụng pluck() để trả về một mảng của các giá trị
-                        //
-                    // ->where('gallery.product_id', $product_id)
-                    // ->groupBy('gallery.id', 'gallery.product_id')
-                    // ->get();
-                    // ->pluck('image_product');
-                        //
-                    // Chuyển đổi dữ liệu BLOB sang dạng base64
-                        // $image_product = $gallery_images->map(function ($image) {
-                        //     return base64_encode($image);
-                        // ->toArray();
-                        $image_product=[];
-                        foreach ($gallery_images as $image){
-                            $image_product[] = $image;
-                        }
-                        //
+                            ->where('product.id', $product_id)
+                            ->get();
 
-                        $thumbnails = [];
-                        
-                        foreach ($product_detail as $product) {
-                            // Lấy hình ảnh thumbnail từ cột BLOB và thêm vào mảng thumbnails
-                            $thumbnails[] = $product->thumbnail;
-                        }
-                        
-                        // Set header cho hình ảnh
-        //Lấy màu tương ứng với số nhập vào từ cột color
+        if ($product_detail->isEmpty()) {
+            return redirect()->route('home')->with('error', 'Product not found');
+        }
+
+        // Get images from gallery table
+        $gallery_images = DB::table('gallery')
+                            ->where('gallery.product_id', $product_id)
+                            ->orderBy('id')
+                            ->get();
+
+        // Map colors
         $color_mapping = [
             1 => 'Black',
             2 => 'Yellow',
@@ -88,35 +152,31 @@ class ProductDetailController extends Controller
             5 => 'Blue',
             6 => 'Green'
         ];
-        
+
         $product_color = DB::table('product')
                             ->join('product_detail', 'product_detail.product_id', '=', 'product.id')
                             ->where('product.id', $product_id)
                             ->get();
-        // Chuyển đổi số color thành tên màu tương ứng
+
         $colors = $product_color->map(function ($item) use ($color_mapping) {
-            return $color_mapping[$item->color];
-    });
+            return $color_mapping[$item->color] ?? 'Unknown';
+        });
 
-        //Lấy sản phẩm cùng category_id
+        // Get related products
         $related_products = DB::table('product')
-                                    ->where('category_id', $product_detail->first()->category_id)
-                                    ->where('id', '!=', $product_id) // Loại bỏ sản phẩm hiện tại
-                                    ->take(4) // Lấy tối đa 4 sản phẩm
-                                    ->get();
+                              ->where('category_id', $product_detail->first()->category_id)
+                              ->where('id', '!=', $product_id)
+                              ->take(4)
+                              ->get();
 
-        return view('user/productDetail', [ 
+        return view('user/productDetail', [
             'product_detail' => $product_detail,
             'product_color' => $product_color,
             'related_products' => $related_products,
             'colors' => $colors,
-            'thumbnails' => $thumbnails,
-            'image_product' => $image_product,
-            // 'gallery_image' => $gallery_image
+            'gallery_images' => $gallery_images,
         ]);
-
-
-        // ////////////////////////////////
-        
     }
 }
+
+//end
