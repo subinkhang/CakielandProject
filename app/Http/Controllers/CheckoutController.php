@@ -25,7 +25,6 @@ class CheckoutController extends Controller
         $data['phone_number'] = $request->phone;
         DB::table('users')->where('id', $user_id)->update($data);
         Session::put('message', 'Account updated successfully');
-        return Redirect::to('view/checkout');
+        return Redirect::to('/checkout');
     }
 }
-?>
