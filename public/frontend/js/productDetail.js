@@ -163,6 +163,17 @@ function selectColor(element) {
     element.classList.add('selected');
 }
 
-function AddCart(number) {
-    number 
+function addToCart(element) {
+    // Hiển thị toast message
+    var toast = document.getElementById("toast");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast";
+        toast.className = "toast";
+        document.body.appendChild(toast);
+    }
+    toast.innerText = "Add to cart successfully!";
+    toast.className = "toast show";
+    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
 }
+//slider

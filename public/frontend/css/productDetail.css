@@ -238,7 +238,11 @@ body, button, input{
     {
         border-bottom: 3px solid #FBC31C;
     }
-
+/* #pr-slide .carousel-indicators img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+} */
 .btn-shopnow{
     width: 120px;
     height: 35px;
@@ -289,19 +293,27 @@ body, button, input{
 }
 .pr-color li:nth-child(1)
 {
-	background-color: #666;
+	background-color: #000;
 }
 .pr-color li:nth-child(2)
 {
-	background-color: #ef77b1;
+	background-color: #f0db40;
 }
 .pr-color li:nth-child(3)
 {
-	background-color: #5bcbe4;
+	background-color: #dd44a0;
 }
 .pr-color li:nth-child(4)
 {
-	background-color: #2b4398;
+	background-color: #666;
+}
+.pr-color li:nth-child(5)
+{
+	background-color: #2920d4;
+}
+.pr-color li:nth-child(6)
+{
+	background-color: #7fe946;
 }
 .pr-color li:nth-child(1),
 .pr-color li:nth-child(2),
@@ -609,3 +621,4 @@ margin: 16px 6px 0px 6px;
   .suggestions li:hover {
     background-color: #f0f0f0; /* Nền khi rê chuột lên */
   }
+  
