@@ -107,7 +107,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                             <h4 class="right-text"><b>Image</b></h4>
                                             <input type="file" class="image" name="img"
-                                                accept="image/png, image/jpeg" id="mainimg">
+                                                accept="image/png, image/jpeg, image/jpg" id="mainimg">
                                             <div id="main-img"></div>
 
                                             <h4 class="right-text"><b>Galary</b></h4>
@@ -135,17 +135,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                     <div style="background-color: pink" class="color"></div>
                                                 </div>
                                                 <div class="grey">
-                                                    <input type="checkbox" style="text-align: center" id="op1"
+                                                    <input type="checkbox" style="text-align: center" id="op4"
                                                         value="4" name="color[]">
                                                     <div style="background-color: grey" class="color"></div>
                                                 </div>
                                                 <div class="blue">
-                                                    <input type="checkbox" style="text-align: center" id="op2"
+                                                    <input type="checkbox" style="text-align: center" id="op5"
                                                         value="5" name="color[]">
                                                     <div style="background-color: blue" class="color"></div>
                                                 </div>
                                                 <div class="green">
-                                                    <input type="checkbox" style="text-align: center" id="op3"
+                                                    <input type="checkbox" style="text-align: center" id="op6"
                                                         value="6" name="color[]">
                                                     <div style="background-color: green" class="color"></div>
                                                 </div>
