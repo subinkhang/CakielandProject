@@ -99,22 +99,6 @@ class ProductController extends Controller
                 ]);
             }
         }
-        if ($files = $request->file('gal')) {
-            $images = [];
-            $productId = $request->input('product_id');
-            foreach ($files as $file) {
-                $newimg = time() . '-' . rand(0, 999) . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('backend/upload'), $newimg);
-                $images[] = $newimg;
-            }
-
-            foreach ($images as $image) {
-                DB::table('gallery')->insert([
-                    'image_product' => $image,
-                    'product_id' => $product_id,
-                ]);
-            }
-        }
         $colors = $request->input('color');
         foreach ($colors as $color) {
             DB::table('product_detail')->insert([
