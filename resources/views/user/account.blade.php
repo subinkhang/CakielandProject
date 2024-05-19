@@ -1,7 +1,8 @@
 <x-app-layout>
     <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
     <link rel="stylesheet" href="{{ asset('/frontend/css/account.css') }}">
-
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script> --}}
     <livewire:breadcrumb-banner />
     <!-- ACCOUNT -->
     <div class="container">
@@ -15,7 +16,7 @@
                     <div class="col-8 list_ac">
                         <ul>
                             <li><a href="#">My Proflie</a></li>
-                            <li><a href="../Cart/cart.html">My Carts</a></li>
+                            <li><a href="{{ asset('views/user/cart.blabe.php') }}">My Carts</a></li>
                             <li><a href="../MyOrder/myorder.html">My Orders</a></li>
                             <li><a href="#">Help</a></li>
                         </ul>
@@ -126,10 +127,10 @@
                     </div>
                     <div class="row">
                         <div class="col-2"></div>
-                        <div class="col-4">
+                        {{-- <div class="col-4">
                             <button class="button_ac1" type="reset">Cancel</button>
-                        </div>
-                        <div class="col-4">
+                        </div> --}}
+                        <div class="col-8">
                             <button class="button_ac2" type="submit" name="submit" value="save" formaction="/update-account">Save</button>
                         </div>
                         <div class="col-2"></div>
@@ -138,13 +139,13 @@
             </div>
             <div class="col-2 avatar">
                 <label for="avatarUpload">
-                    <div class="circle"></div>
+                    <div class="circle"><img id="avatarPreview" src="#" alt="Avatar Preview"></div>
                 </label>
-                <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                {{-- <input type="file" id="avatarUpload" accept="image/*" style="display: none;"> --}}
+                <input type="file" id="avatarUpload" accept="image/*" name="avatar" style="display: none;">
             </div>
         </div>
     </div>
-
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('frontend/js/account.js') }}"></script>

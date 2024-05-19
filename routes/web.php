@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\AccountController;
+
+// Route::post('/upload-avatar', [AccountController::class, 'uploadAvatar'])->name('upload.avatar');
 
 // User routes
 // Route::get('/', 'App\Http\Controllers\HomepageController@index');

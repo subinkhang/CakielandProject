@@ -27,5 +27,35 @@ class AccountController extends Controller
         DB::table('users')->update($data);
         return Redirect::to('/account');
         // }
+
+  $validatedData = $request->validate([
+        'avatar' => 'nullable|image|max:2048',
+    ]);
+
+    if ($request->hasFile('avatar')) {
+        $avatar = $request->file('avatar');
+        $avatarPath = $avatar->store('public/avatars');
+
+        $data = [
+            'name' => $request->name,
+            'phone_number' => $request->phone,
+            'date_of_birth' => $request->dob,
+            'address' => $request->address,
+            'avatar' => $avatarPath,
+        ];
+    } else {
+        $data = [
+            'name' => $request->name,
+            'phone_number' => $request->phone,
+            'date_of_birth' => $request->dob,
+            'address' => $request->address,
+        ];
     }
+
+    $user = auth()->user();
+    $user->update($data);
+
+    return redirect('/account')->with('success', 'Thông tin tài khoản đã được cập nhật thành công.');
+    
+}
 }

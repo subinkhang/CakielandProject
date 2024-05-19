@@ -100,6 +100,7 @@
 
 /* ACCOUNT */
 
+
 form.boxac{
     text-align: center;
     width: 570px;
@@ -132,7 +133,7 @@ form.boxac{
     font-weight: bold;
 }
 .button_ac1{
-    width: 130px;
+    width: 300px;
     height: 35px;
     background-color: #f3f3f3;
     border: #f3f3f3;
@@ -157,6 +158,18 @@ form.boxac{
     border-radius: 50%;
     height: 200px;
     width: 200px;
+}
+.circle {
+    width: 200px; /* Đặt kích thước mong muốn */
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
 }
 .button_ac1:hover{
     background-color: #080808;
