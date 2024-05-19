@@ -5,6 +5,9 @@
     <livewire:breadcrumb-banner />
     <!-----------------LEFT---------------------------->
     <div class="container" id="all">
+        <pre>
+            {{ var_dump(session('productData')) }}
+        </pre>
         <div class="row">
             <div class="container">
                 <div class="row">
@@ -180,36 +183,54 @@
 
     <script>
         document.getElementById('updateForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+            e.preventDefault();
 
-    var formData = new FormData(this);
+            var formData = new FormData(this);
 
-    
-    var products = JSON.parse(localStorage.getItem('products'));
-    var total = products.reduce(function(sum, item) {
-        return sum + (item.price * item.quantity);
-    }, 0);
+            // Lấy sản phẩm từ localStorage và tính tổng
+            var products = JSON.parse(localStorage.getItem('products'));
+            var total = products.reduce(function(sum, item) {
+                return sum + (item.price * item.quantity);
+            }, 0);
 
-    var cartData = JSON.parse(localStorage.getItem('cartData'));
-    shipping = cartData.shippingPrice;
-    discount = cartData.discountPrice;
+            // Lấy thông tin giỏ hàng từ localStorage
+            var cartData = JSON.parse(localStorage.getItem('cartData'));
+            var shipping = cartData.shippingPrice;
+            var discount = cartData.discountPrice;
 
-    total += shipping;
-    total -= discount;
-    // console.log(total);
-    // var total = localStorage.getItem('total');
-    
-    formData.append('total', total);
+            // Tính tổng cuối cùng
+            total += shipping;
+            total -= discount;
+            // Thêm tổng vào FormData
+            formData.append('total', total);
+            stringProductData = JSON.stringify(cartData.products)
+            console.log('stringProductData:', stringProductData);
+            // Thêm cartData vào FormData dưới dạng JSON string
+            formData.append('productData', stringProductData);
+            // console.log('cartData:', JSON.stringify(cartData));
+            // for (var pair of formData.entries()) {
+            //     console.log(pair[0] + ', ' + pair[1]);
+            // }
 
-    axios.post('{{ url('/update/' . auth()->user()->id) }}', formData)
-        .then(function(response) {
-            console.log('Success:', response);
-        })
-        .catch(function(error) {
-            console.log('Error:', error);
+            var data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                total: total,
+                cartData: cartData
+            };
+
+            // Gửi dữ liệu qua axios
+            axios.post('{{ url('/update/' . auth()->user()->id) }}', data)
+                .then(function(response) {
+                    console.log('Success:', response);
+                })
+                .catch(function(error) {
+                    console.log('Error:', error);
+                });
         });
-});
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>

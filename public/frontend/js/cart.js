@@ -140,30 +140,34 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const paymentButton = document.getElementById("btn-p");
     paymentButton.addEventListener("click", function () {
         // Gọi hàm để lưu thông tin lên local storage
+        console.log(1);
         saveCartDataToLocalStorage();
     });
 });
 
 function saveCartDataToLocalStorage() {
-    const updatedProducts = [];
-    const tableRows = document.querySelectorAll("#prod tr");
-    tableRows.forEach((row, index) => {
-        const quantityInput = row.querySelector(`input[name="quan[${index}]"]`);
-        const quantity = parseInt(quantityInput.value);
-        const priceElement = row.querySelector(`h6[name="price[${index}]"]`);
-        const price = parseFloat(priceElement.textContent);
-        const subtotalElement = row.querySelector(`#subprice_${index}`);
-        const subtotal = parseFloat(
-            subtotalElement.textContent.replace("$", "")
-        );
-        const productName = row.querySelector("h6").textContent;
-        updatedProducts.push({
-            name: productName,
-            quantity: quantity,
-            price: price,
-            subtotal: subtotal,
-        });
-    });
+    console.log(2);
+    // const updatedProducts = [];
+    // const tableRows = document.querySelectorAll("#prod tr");
+    // tableRows.forEach((row, index) => {
+        // const quantityInput = row.querySelector(`input[name="quan[${index}]"]`);
+        // const quantity = parseInt(quantityInput.value);
+        // const priceElement = row.querySelector(`h6[name="price[${index}]"]`);
+        // const price = parseFloat(priceElement.textContent);
+        // const subtotalElement = row.querySelector(`#subprice_${index}`);
+        // const subtotal = parseFloat(
+        //     subtotalElement.textContent.replace("$", "")
+        // );
+        // const productName = row.querySelector("h6").textContent;
+        // const idProduct = row.querySelector(".pr-i2-id").textContent;
+        // updatedProducts.push({
+        //     id: idProduct,
+        //     name: productName,
+        //     quantity: quantity,
+        //     price: price,
+        //     subtotal: subtotal,
+        // });
+    // });
     const shippingPrice = parseFloat(
         document.getElementById("shipping-price").textContent.replace("$", "")
     );
@@ -176,8 +180,10 @@ function saveCartDataToLocalStorage() {
     const rightsubtotal = parseFloat(
         document.getElementById("rightsub").textContent.replace("$", "")
     );
+    const product_localStorage = JSON.parse(localStorage.getItem("products"));
+    console.log(product_localStorage);
     const dataToStore = {
-        products: updatedProducts,
+        products: product_localStorage,
         shippingPrice: shippingPrice,
         discountPrice: discountPrice,
         total: total,

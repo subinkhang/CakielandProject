@@ -24,9 +24,7 @@
                                         <td class="col-2 text-end">SUBTOTAL</td>
                                     </tr>
                                     <table id="prod">
-
                                     </table>
-
                                 </table>
                             </form>
                         </div>
