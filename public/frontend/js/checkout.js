@@ -59,11 +59,11 @@ function updatePaymentButtonState() {
 }
 
 // emailInput.addEventListener("input", updatePaymentButtonState);
-nameInput.addEventListener("input", updatePaymentButtonState);
-phoneInput.addEventListener("input", updatePaymentButtonState);
-addressInput.addEventListener("input", updatePaymentButtonState);
+// nameInput.addEventListener("input", updatePaymentButtonState);
+// phoneInput.addEventListener("input", updatePaymentButtonState);
+// addressInput.addEventListener("input", updatePaymentButtonState);
 
-updatePaymentButtonState();
+// updatePaymentButtonState();
 
 /*--------------------Fill info of product----------------------*/
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -121,4 +121,42 @@ document.addEventListener("DOMContentLoaded", (event) => {
 //             }
 //         });
 //     });
+// });
+
+
+//Code mới
+// document.addEventListener("DOMContentLoaded", (event) => {
+//     const cartData = JSON.parse(localStorage.getItem("cartData"));
+//     if (!cartData || !cartData.products) {
+//         console.error("No cart data found or cart data is invalid.");
+//         return;
+//     }
+
+//     const table = document.getElementById("list");
+
+//     cartData.products.forEach((product, i) => {
+//         const newRow = document.createElement("tr");
+//         newRow.id = `item${i}`;
+//         newRow.innerHTML = `
+//             <td style="height: 150px; width: 170px;">
+//                 <img src="${product.imageURL}" class="img-fluid" style="height: 150px; width: 150px;">
+//             </td>
+//             <td>
+//                 <h5><b>${product.name}</b></h5>
+//                 <p>Quantity: <span>${product.quantity}</span></p>
+//                 <p class="price"><b>$${product.price.toFixed(2)}</b></p>
+//             </td>
+//         `;
+//         table.appendChild(newRow);
+//     });
+
+//     const subtt = document.getElementById("subtotal");
+//     const shipping = document.getElementById("shipping");
+//     const discount = document.getElementById("discount");
+//     const tt = document.getElementById("total");
+
+//     subtt.innerHTML = `<span><p1><b>$${cartData.rightsub.toFixed(2)}</p1></b></span>`;
+//     shipping.innerHTML = `<span><p1><b>$${cartData.shippingPrice.toFixed(2)}</p1></b></span>`;
+//     discount.innerHTML = `<span><p1><b>-$${cartData.discountPrice.toFixed(2)}</p1></b></span>`;
+//     tt.innerHTML = `<span><b>$${cartData.total.toFixed(2)}</b></span>`;
 // });

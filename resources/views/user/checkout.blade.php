@@ -73,7 +73,7 @@
                     <!----------------------right----------------------------->
 
                     <div class="col-5 cont">
-                        <form id="updateForm" role="form">
+                        <form required id="updateForm" role="form">
                             {{ csrf_field() }}
                             <div class="row">
                                 <h6><b>E-mail</b></h6>
