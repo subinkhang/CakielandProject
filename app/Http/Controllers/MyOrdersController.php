@@ -39,36 +39,97 @@ class MyOrdersController extends Controller
     $orders = [];
     foreach ($data->groupBy('status') as $status => $orderItems) {
         $orders[$status] = [];
-        foreach ($orderItems as $item) {
-            $orderId = $item->order_id;
-            $productId = $item->product_id;
-            $price = $item->price;
-            $quantity = $item->quantity;
-            $totalMoney = $item->total_money;
-            $productName = $item->name;
-            $productThumbnail = $item->thumbnail;
+        // foreach ($orderItems as $item) {
+        // $orderId = $item->order_id;
+        // $productId = $item->product_id;
+        // $price = $item->price;
+        // $quantity = $item->quantity;
+        // $totalMoney = $item->total_money;
+        // $productName = $item->name;
+        // $productThumbnail = $item->thumbnail; // Lấy đường dẫn ảnh từ cơ sở dữ liệu
 
-            if (!isset($orders[$status][$orderId])) {
-                $orders[$status][$orderId] = [
-                    'order_id' => $orderId,
-                    'total_price' => $totalMoney,
-                    'items' => [],
-                ];
-            }
+        // if (!isset($orders[$status][$orderId])) {
+        //     $orders[$status][$orderId] = [
+        //         'order_id' => $orderId,
+        //         'total_price' => $totalMoney,
+        //         'items' => [],
+        //     ];
+        // }
 
-            $orders[$status][$orderId]['items'][] = [
-                'product_id' => $productId,
-                'price' => $price,
-                'quantity' => $quantity,
-                'total_money' => $totalMoney,
-                'product_name' => $productName,
-                'product_thumbnail' => $productThumbnail,
-            ];
-        }
+        // $orders[$status][$orderId]['items'][] = [
+        //     'product_id' => $productId,
+        //     'price' => $price,
+        //     'quantity' => $quantity,
+        //     'total_money' => $totalMoney,
+        //     'product_name' => $productName,
+        //     'product_thumbnail' => $productThumbnail, // Thêm đường dẫn ảnh vào mảng items
+        // ];
+        // }
+
+        // foreach ($orderItems as $item) {
+        //     $orderId = $item->order_id;
+        //     $productId = $item->product_id;
+        //     $price = $item->price;
+        //     $quantity = $item->quantity;
+        //     $totalMoney = $item->total_money;
+        //     $productName = $item->name;
+        //     $productThumbnail = $item->thumbnail; // Lấy đường dẫn ảnh từ cơ sở dữ liệu
+        
+        //     if (!isset($orders[$status][$orderId])) {
+        //         $orders[$status][$orderId] = [
+        //             'order_id' => $orderId,
+        //             'total_price' => $totalMoney,
+        //             'items' => [],
+        //         ];
+        //     }
+        
+        //     $orders[$status][$orderId]['items'][] = [
+        //         'product_id' => $productId,
+        //         'price' => $price,
+        //         'quantity' => $quantity,
+        //         'total_money' => $totalMoney,
+        //         'product_name' => $productName,
+        //         'product_thumbnail' => $productThumbnail, // Thêm đường dẫn ảnh vào mảng items
+        //     ];
+        // }
+
+        $orders = [];
+
+foreach ($data as $item) {
+    $orderId = $item->order_id;
+    $productId = $item->product_id;
+    $price = $item->price;
+    $quantity = $item->quantity;
+    $totalMoney = $item->total_money;
+    $productName = $item->name;
+    $productThumbnail = $item->thumbnail;
+    $status = $item->status;
+
+    if (!isset($orders[$orderId])) {
+        $orders[$orderId] = [
+            'order_id' => $orderId,
+            'total_price' => $totalMoney,
+            'status' => $status,
+            'items' => [],
+        ];
+    }
+
+    $orders[$orderId]['items'][] = [
+        'product_id' => $productId,
+        'price' => $price,
+        'quantity' => $quantity,
+        'total_money' => $totalMoney,
+        'product_name' => $productName,
+        'product_thumbnail' => $productThumbnail,
+    ];
+}
+
+
+        
     }
 
     return view('user/myOrders', [
-        'data' => $orders,
+        'orders' => $orders,
         'product_list' => $product_list,
         'userId' => $userId,
         'statuses' => $statuses,
