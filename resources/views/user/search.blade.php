@@ -114,8 +114,8 @@
                                 <select name="sort" id="sort" class="form-control select-custom"
                                     onchange="this.form.submit()">
                                     <option value="none">Sort by</option>
-                                    <option value="tang_dan">Increase</option>
-                                    <option value="giam_dan">Decrease</option>
+                                    <option value="increase">Increase</option>
+                                    <option value="decrease">Decrease</option>
                                     <option value="az">A - Z</option>
                                     <option value="za">Z - A</option>
                                 </select>

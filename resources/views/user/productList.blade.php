@@ -85,8 +85,8 @@
                             <form id="sortForm">
                                 <select name="sort" id="sort" class="form-control select-custom" onchange="this.form.submit()">
                                     <option value="none" {{ request('sort') == 'none' ? 'selected' : '' }}>{{ request('sort') == 'none' ? 'Sort by' : 'No sort' }}</option>
-                                    <option value="tang_dan" {{ request('sort') == 'tang_dan' ? 'selected' : '' }}>Increase</option>
-                                    <option value="giam_dan" {{ request('sort') == 'giam_dan' ? 'selected' : '' }}>Decrease</option>
+                                    <option value="increase" {{ request('sort') == 'increase' ? 'selected' : '' }}>Increase</option>
+                                    <option value="decrease" {{ request('sort') == 'decrease' ? 'selected' : '' }}>Decrease</option>
                                     <option value="az" {{ request('sort') == 'az' ? 'selected' : '' }}>A - Z</option>
                                     <option value="za" {{ request('sort') == 'za' ? 'selected' : '' }}>Z - A</option>
                                 </select>
