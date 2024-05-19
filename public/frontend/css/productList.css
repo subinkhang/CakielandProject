@@ -364,74 +364,66 @@ border: 1px solid #666666;
 border-radius: 22px;
 height: 44px;
 }
+
+/* ------------------------------------------------- */
+
 .mainmenu a {
-display: block;
-text-decoration: none;
-padding: 10px;
+    display: block;
+    text-decoration: none;
+    padding: 10px;
 }
-.mainmenu li a{
-color: #000;
+.mainmenu li a {
+    color: #666;
 }
-.mainmenu li ul li a{
-color: #666;
+.mainmenu li ul li a {
+    color: #666;
 }
 .mainmenu a:hover {
-background-color: #C5C5C5;
+    background-color: #C5C5C5;
 }
-.mainmenu li:hover .menucon
-{
-display: block;
-max-height: 200px;
+.mainmenu li:hover .menucon {
+    display: block;
+    max-height: 200px;
 }
 .submenu a:hover {
-background-color: #666;
+    background-color: #666;
 }
 .menucon {
-overflow: hidden;
-max-height: 0;
-list-style: none;
+    overflow: hidden;
+    max-height: 0;
+    list-style: none;
 }
 .menucon li:hover {
-display: block;
-max-height: 200px;
+    display: block;
+    max-height: 200px;
 }
-.icon_arrow{
-margin-right: 20px;
+.menu_title {
+    padding-left: 35px;
 }
-.menu_title{
-padding-left: 35px;
+.mainmenu {
+    cursor: pointer;
 }
-.mainmenu{
-cursor: pointer;
+.menucon {
+    color: #666;
 }
-.pr-i3{
-cursor: pointer;
+.mainmenu a.active,
+.mainmenu_title.active > a {
+    color: #FBC31C;
+    font-weight: bold;
 }
-.cartegory_page_number{
-text-align: center;
-letter-spacing: 10px;
-color: #282828;
-margin-top: 30px;
+.menucon li a.active {
+    color: #FBC31C;
+    font-weight: bold;
 }
-.mainmenu_title{
-color: #000;
-}
-.menucon{
-color: #666;
-}
-.icon_arrow{
-padding-top: 20px;
-}
-.icon_add{
-left: 100%;
-}
+
+/* ---------------------------------------------------- */
 
 .pagination {
 display: inline-block;
 }
 
 .pagination a {
-color: black;
+color: #080808;
 float: left;
 padding: 8px 16px;
 text-decoration: none;
@@ -440,7 +432,7 @@ border: 1px solid #ddd;
 
 .pagination a.active {
 background-color: #FBC31C;
-color: white;
+color: #fdfdfd;
 border: 1px solid #FBC31C;
 }
 
@@ -629,3 +621,55 @@ label {
     display: block;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pr-i3{
+    cursor: pointer;
+    }
+    .cartegory_page_number{
+    text-align: center;
+    letter-spacing: 10px;
+    color: #282828;
+    margin-top: 30px;
+    }

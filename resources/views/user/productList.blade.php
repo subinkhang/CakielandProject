@@ -33,16 +33,34 @@
                             <div class="line"></div>
                             <ul class="mainmenu">
                                 @foreach($category as $key => $cate)
-                                <li class="mainmenu_title"><a href="{{URL::to('/category'.$cate->id)}}"><span>{{$cate->name}} </span>
-                                    <i class="fa-solid fa-sort-down icon_arrow"></i></a>
-                                    <ul class="menucon">
-                                        @foreach($sub_category as $sub_cate)
-                                            @if($sub_cate->category_id == $cate->id)
-                                                <li class="menu_title"><a href="{{URL::to('/sub-category'.$sub_cate->id)}}">{{$sub_cate->name}}</a></li>
-                                            @endif
-                                        @endforeach
-                                    </ul>                                    
-                                </li>
+                                    @php
+                                        $isParentActive = false;
+                                    @endphp
+                                    @foreach($sub_category as $sub_cate)
+                                        @if($sub_cate->category_id == $cate->id && Request::is('sub-category'.$sub_cate->id))
+                                            @php
+                                                $isParentActive = true;
+                                                break;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                            
+                                    <li class="mainmenu_title {{ Request::is('category'.$cate->id) || $isParentActive ? 'active' : '' }}">
+                                        <a href="{{ URL::to('/category'.$cate->id) }}">
+                                            <span>{{ $cate->name }}</span>
+                                        </a>
+                                        <ul class="menucon">
+                                            @foreach($sub_category as $sub_cate)
+                                                @if($sub_cate->category_id == $cate->id)
+                                                    <li class="menu_title">
+                                                        <a href="{{ URL::to('/sub-category'.$sub_cate->id) }}" class="{{ Request::is('sub-category'.$sub_cate->id) ? 'active' : '' }}">
+                                                            {{ $sub_cate->name }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
