@@ -26,15 +26,13 @@ class HomepageController extends Controller
         // Kiểm tra xem địa chỉ email có hợp lệ không
         $emailPattern = '/^[^\s@]+@[^\s@]+\.[^\s@]+$/';
         if (!preg_match($emailPattern, $data['email'])) {
-            // Nếu không hợp lệ, bạn có thể trả về một thông báo lỗi hoặc làm bất cứ điều gì phù hợp với ứng dụng của bạn.
-            // Ví dụ: return Redirect::back()->withErrors(['email' => 'Email is not valid']);
-            // Hoặc: return response()->json(['error' => 'Email is not valid'], 400);
+            return response()->json(['error' => 'Email is not valid'], 400);
         } else {
             // Nếu hợp lệ, lưu vào cơ sở dữ liệu
             DB::table('email_customer')->insert($data);
         }
 
-        return Redirect::to('/dashboard');
+        return response()->json(['success' => 'Email has been submitted'], 200);
     }
     public function getAllProducts()
     {

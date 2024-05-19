@@ -64,18 +64,51 @@ document.addEventListener('click', function(event) {
 });
 
 function validateAndSubmit() {
-    var emailInput = document.getElementById('email');
-    var emailError = document.getElementById('email-error');
-    var successMessage = document.getElementById('success-message');
-    var email = emailInput.value;
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+    const successMessage = document.getElementById('success-message');
+    const email = emailInput.value;
 
-    if (!emailPattern.test(email)) {
+    // Basic email validation
+    if (!validateEmail(email)) {
         emailError.style.display = 'block';
         successMessage.style.display = 'none';
+        return;
     } else {
         emailError.style.display = 'none';
-        successMessage.style.display = 'block';
-        document.getElementById('email-form').submit();
     }
+
+    // Prepare data
+    const data = {
+        email: email,
+        _token: document.querySelector('input[name="_token"]').value,
+    };
+
+    fetch('/save-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': data._token,
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Assuming your server returns a JSON response
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+        // Clear the input field
+        emailInput.value = '';
+        successMessage.style.display = 'block';
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+}
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
 }
