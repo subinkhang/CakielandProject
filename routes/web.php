@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountController;
 // use App\Http\Controllers\AccountController;
 
 // Route::post('/upload-avatar', [AccountController::class, 'uploadAvatar'])->name('upload.avatar');
@@ -26,7 +27,7 @@ Route::get('/product-detail', 'App\Http\Controllers\ProductDetailController@inde
 
 Route::get('/account', 'App\Http\Controllers\AccountController@index');
 Route::post('/update-account', 'App\Http\Controllers\AccountController@update_account');
-
+Route::post('/update-avatar', [AccountController::class, 'update_avatar'])->name('update-avatar');
 Route::get('/cart', 'App\Http\Controllers\CartController@index');
 
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');

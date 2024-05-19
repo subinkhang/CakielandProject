@@ -48,15 +48,6 @@ function validateDateOfBirth() {
       isValid = false;
       showMessage(phoneInput, "Phone must start with 0 and be 10 digits");
     }
-    // if (emailInput.value !== "") {
-    //   isValid = false;
-    //   showMessage(emailInput, "Email cannot be entered (disabled field)");
-    // }
-    // if (!isValid) {
-    //   alert("Please fix the following errors:"); 
-    // } else {
-    //   alert("Successfully saved!");
-    // }
   }
     
   function validateDate(dateString) {
@@ -108,64 +99,24 @@ function validateDateOfBirth() {
   if (form) {
     form.addEventListener("submit", validateDateOfBirth);
   }
+  document.getElementById('avatarUpload').addEventListener('change', function(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const avatarPreview = document.getElementById('avatarPreview');
+        avatarPreview.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+});
 
-//   // document.addEventListener('DOMContentLoaded', function () {
-//   //   const avatarUpload = document.getElementById('avatarUpload');
-//   //   const avatarPreview = document.getElementById('avatarPreview');
-//   //   const cropperImage = document.getElementById('cropperImage');
-//   //   const cropButton = document.getElementById('cropButton');
-//   //   let cropper;
-//   //   const cropperModal = new bootstrap.Modal(document.getElementById('cropperModal'));
-
-//   //   avatarUpload.addEventListener('change', function (e) {
-//   //       const files = e.target.files;
-//   //       if (files && files.length > 0) {
-//   //           const file = files[0];
-//   //           const reader = new FileReader();
-//   //           reader.onload = function (e) {
-//   //               cropperImage.src = e.target.result;
-//   //               cropperModal.show();
-//   //               if (cropper) {
-//   //                   cropper.destroy();
-//   //               }
-//   //               cropper = new Cropper(cropperImage, {
-//   //                   aspectRatio: 1,
-//   //                   viewMode: 1,
-//   //                   autoCropArea: 1,
-//   //               });
-//   //           };
-//   //           reader.readAsDataURL(file);
-//   //       }
-//   //   });
-
-//   //   cropButton.addEventListener('click', function () {
-//   //       const canvas = cropper.getCroppedCanvas({
-//   //           width: 300,
-//   //           height: 300,
-//   //       });
-//   //       avatarPreview.src = canvas.toDataURL();
-//   //       avatarPreview.style.display = 'block';
-//   //       cropperModal.hide();
-
-//   //       // Here you can handle the cropped image data, e.g., upload it to the server
-//   //       canvas.toBlob(function (blob) {
-//   //           const formData = new FormData();
-//   //           formData.append('avatar', blob);
-
-//   //           fetch('/upload-avatar', {
-//   //               method: 'POST',
-//   //               headers: {
-//   //                   'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-//   //               },
-//   //               body: formData,
-//   //           })
-//   //           .then(response => response.json())
-//   //           .then(data => {
-//   //               console.log('Success:', data);
-//   //           })
-//   //           .catch((error) => {
-//   //               console.error('Error:', error);
-//   //           });
-//   //       }, 'image/jpeg');
-//     });
-// });
+function previewAvatar() {
+  var file = document.getElementById('avatarUpload').files[0];
+  var reader = new FileReader();
+  reader.onloadend = function () {
+      document.getElementById('avatarPreview').src = reader.result;
+  }
+  if (file) {
+      reader.readAsDataURL(file);
+  } else {
+      document.getElementById('avatarPreview').src = "";
+  }
+}

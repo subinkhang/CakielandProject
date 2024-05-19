@@ -133,13 +133,14 @@ form.boxac{
     font-weight: bold;
 }
 .button_ac1{
-    width: 300px;
+    width: 130px;
     height: 35px;
-    background-color: #f3f3f3;
-    border: #f3f3f3;
+    background-color: #080808;
+    border: #080808;
     border-radius: 30px;
     margin-top: 30px;
-    color: #080808;
+    color: #FBC31C;
+    margin-bottom: 150px;
 }
 .button_ac2{
     width: 130px;
@@ -172,8 +173,8 @@ form.boxac{
     object-fit: cover; /* Đảm bảo ảnh không bị méo */
 }
 .button_ac1:hover{
-    background-color: #080808;
-    color: #f3f3f3;
+    background-color: #FBC31C;
+    color: ;
 }
 .button_ac2:hover{
     background-color: #080808;
@@ -266,4 +267,15 @@ form.boxac{
 .bg-breadcrub .active
 {
 	color: #666666;
+}
+.ava_upload{
+    width: 130px;
+    height: 35px;
+    background-color: #FBC31C;
+    border: #FBC31C;
+    border-radius: 30px;
+    margin-top: 30px;
+    color: #080808;
+    /* margin-bottom: 150px; */
+    margin-left: 35px;
 }
