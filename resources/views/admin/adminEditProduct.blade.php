@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- page start-->
 
                 @php
-                    $colorCounts = []; // Mảng lưu số lượng màu khác nhau
+                    $colorCounts = [];
                 @endphp
 
                 @foreach ($edit_product as $key => $edit_value)
@@ -130,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     @if (!$counted)
                         <form role="form" action="{{ URL::to('/update-product/' . $edit_value->id) }}"
-                            method="POST">
+                            enctype="multipart/form-data" method="POST">
                             {{ csrf_field() }}
 
                             <div class="mail-w3agile">
@@ -186,22 +186,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     accept="image/png, image/jpeg" id="mainimg">
                                                 <div id="main-img">
                                                     <img src="{{ asset('public/backend/upload/' . $edit_value->thumbnail) }}"
-                                                        alt="Image"
+                                                        alt="Image" name="img_thumbnail"
                                                         style="width: 200px; margin-top:20px; height: 200px; border-radius: 15px; border: 1px dashed #282828;">
                                                 </div>
 
                                                 <h4 class="right-text"><b>Gallery</b>
                                                 </h4>
-                                                <input type="file" class="image" name="gal[]"
+                                                <input type="file" class="image" name="gall[]"
                                                     accept="image/png, image/jpeg" multiple id="gallery"
                                                     onchange="gallerypreview()">
-                                                <div>
+                                                <div class="cont">
+
                                                     <div id="gal">
-                                                        @foreach ($edit_value->gallery as $image)
-                                                            <img src="{{ asset('backend/upload/' . $image->image_product) }}"
-                                                                alt="Image">
+                                                        @foreach ($gallery_images as $image)
+                                                            <figure>
+                                                                <img src="{{ asset('backend/upload/' . $image) }}"
+                                                                    alt="Image"
+                                                                    style="width: 100px; height: 100px">
+                                                            </figure>
                                                         @endforeach
                                                     </div>
+
                                                 </div>
 
                                                 <div>
@@ -211,6 +216,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         <div class="black">
                                                             <input type="checkbox" style="text-align: center"
                                                                 id="op1" value="1" name="color[]"
+                                                                class="color-check"
                                                                 {{ in_array('1', $selected_colors) ? 'checked' : '' }}>
                                                             <div style="background-color: black" class="color">
                                                             </div>
@@ -218,6 +224,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         <div class="yellow">
                                                             <input type="checkbox" style="text-align: center"
                                                                 id="op2" value="2" name="color[]"
+                                                                class="color-check"
                                                                 {{ in_array('2', $selected_colors) ? 'checked' : '' }}>
                                                             <div style="background-color: yellow" class="color">
                                                             </div>
@@ -225,6 +232,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         <div class="pink">
                                                             <input type="checkbox" style="text-align: center"
                                                                 id="op3" value="3" name="color[]"
+                                                                class="color-check"
                                                                 {{ in_array('3', $selected_colors) ? 'checked' : '' }}>
                                                             <div style="background-color: pink" class="color">
                                                             </div>
@@ -232,6 +240,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         <div class="grey">
                                                             <input type="checkbox" style="text-align: center"
                                                                 id="op4" value="4" name="color[]"
+                                                                class="color-check"
                                                                 {{ in_array('4', $selected_colors) ? 'checked' : '' }}>
                                                             <div style="background-color: grey" class="color">
                                                             </div>
@@ -239,6 +248,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         <div class="blue">
                                                             <input type="checkbox" style="text-align: center"
                                                                 id="op5" value="5" name="color[]"
+                                                                class="color-check"
                                                                 {{ in_array('5', $selected_colors) ? 'checked' : '' }}>
                                                             <div style="background-color: blue" class="color">
                                                             </div>
@@ -246,6 +256,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         <div class="green">
                                                             <input type="checkbox" style="text-align: center"
                                                                 id="op6" value="6" name="color[]"
+                                                                class="color-check"
                                                                 {{ in_array('6', $selected_colors) ? 'checked' : '' }}>
                                                             <div style="background-color: green" class="color">
                                                             </div>
@@ -364,6 +375,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             reader.readAsDataURL(i);
         }
     }
+    document.querySelectorAll('.color-check').forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            var form = this.closest('form');
+            var formData = new FormData(form);
+
+            // Send AJAX request to update the database
+            fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle response if needed
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    });
     const tagOptions = {
         "1": [{
                 value: "1",
@@ -460,8 +491,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
     }
     window.onload = setInitialTags;
-
-
 
     // // Gọi hàm kiểm tra khi tài liệu đã được tải
     // window.onload = checkColor;

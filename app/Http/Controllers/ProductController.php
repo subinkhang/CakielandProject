@@ -68,9 +68,7 @@ class ProductController extends Controller
         // if ($request->has('color')) {
         //     $data['color'] = implode(',', $request->color);
         // }
-
         if ($get_image) {
-            $get_image = $request->file('img');
             $new_img = time() . '-' . rand(0, 999) . '.' . $get_image->getClientOriginalExtension();
             $get_image->move('public/backend/upload/', $new_img);
             $data['thumbnail'] = $new_img;

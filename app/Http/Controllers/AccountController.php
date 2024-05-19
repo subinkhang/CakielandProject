@@ -24,6 +24,13 @@ class AccountController extends Controller
         $data['phone_number'] = $request->phone;
         $data['date_of_birth'] = $request->dob;
         $data['address'] = $request->address;
+        $get_image = $request->file('img');
+        if ($get_image) {
+            $new_img = time() . '-' . rand(0, 999) . '.' . $get_image->getClientOriginalExtension();
+            $get_image->move('public/assets/avatar/', $new_img);
+            $data['avatar'] = $new_img;
+        }
+        dd($data);
         DB::table('users')->update($data);
         return Redirect::to('/account');
         // }
