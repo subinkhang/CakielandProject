@@ -56,9 +56,13 @@
                                     <div class="row">
                                         @php $count = 0; @endphp
                                         @foreach ($brands as $brand)
+                                            @php 
+                                                // Escape các ký tự đặc biệt để sử dụng làm class và id
+                                                $escapedBrand = preg_replace('/[^A-Za-z0-9]/', '-', $brand); 
+                                            @endphp
                                             <div class="col-6 filter-box">
-                                                <input type="checkbox" class="filter-checkbox" id="checkbox-{{$brand}}" name="brand" value="{{$brand}}">
-                                                <label for="checkbox-{{$brand}}">{{$brand}}</label> <br>
+                                                <input type="checkbox" class="filter-checkbox" id="checkbox-{{$escapedBrand}}" name="brand" value="{{$escapedBrand}}">
+                                                <label for="checkbox-{{$escapedBrand}}">{{$brand}}</label> <br>
                                             </div>
                                             @php $count++; @endphp
                                             @if ($count == ceil($brands->count() / 2))
@@ -67,56 +71,11 @@
                                         @endforeach
                                     </div>
                                 </form>
+                                
                             </div>
                         </div>
                     </div>
-                    {{-- @php
-                        $small_list_product = $all_product->toArray();
-                    @endphp --}}
-                    {{-- <div class="pr-list-sidebar">
-                        <div class="pr-list-sidebar-title">
-                            <h3>Products</h3>
-                            <div class="line"></div>
-                            <div class="row pr-sidebar my-3">
-                                @for ($i = 0; $i < min(3, count($all_product)); $i++)
-                                    <div class="col-3 pt-3">
-                                        <img src="{{ asset('frontend/images/product.png') }}" alt=""
-                                            class="w-100 img-fluid">
-                                    </div>
-                                    <div class="col-9">
-                                        <h4 class="pr-i1-cat">{{ $all_product[$i]->name }}</h4>
-                                        <a href="#" class="text-product">{{ $all_product[$i]->description }}</a>
-                                        <ul class="pr-i3-rating d-flex star">
-                                            <li><i class="fa-solid fa-star"></i></li>
-                                            <li><i class="fa-solid fa-star"></i></li>
-                                            <li><i class="fa-solid fa-star"></i></li>
-                                            <li><i class="fa-solid fa-star"></i></li>
-                                            <li><i class="fa-solid fa-star"></i></li>
-                                        </ul>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <p class="old-price">{{ $all_product[$i]->fake_price }}</p>
-                                            </div>
-                                            <div class="col-6 text-end">
-                                                <p class="new-price">{{ $all_product[$i]->price }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endfor
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
-                {{-- @foreach($products as $product)
-                    <div class="product">
-                        <h4>{{ $product->name }}</h4>
-                    </div>
-                @endforeach --}}
-                <!--  -->
-
-                {{-- </div> --}}
-                <!--  -->
-                {{-- <div class="col-1"></div> --}}
                 <div class="col-lg-9">
                     <div class="row">
                         <div class="col-10"></div>
@@ -137,15 +96,18 @@
                     </div>
                     <div class="row">
                         <!-- ĐỔI THÀNH PRODUCT KHI CÓ DATA -->
-                        @foreach ($list_product as $key => $list_product_user )
-                            <div class="col-4  product-item {{$list_product_user->brand}}">
+                        @foreach ($list_product as $key => $list_product_user)
+                            @php 
+                                // Escape các ký tự đặc biệt để sử dụng làm class
+                                $escapedBrand = preg_replace('/[^A-Za-z0-9]/', '-', $list_product_user->brand); 
+                            @endphp
+                            <div class="col-4 product-item {{$escapedBrand}}">
                                 <div class="pr-i3" data-brand="{{ $list_product_user->brand }}">
                                     <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
                                         <img src="{{ asset('public/backend/upload/' . $list_product_user->thumbnail) }}" alt=""
                                             class="w-100 productList_image">
                                     </a>
-                                    <span class="btn_add"><i class="fa-solid fa-circle-plus"
-                                            onclick="addToCart(this)"></i></span>
+                                    <span class="btn_add"><i class="fa-solid fa-circle-plus" onclick="addToCart(this)"></i></span>
                                     <div class="container_information">
                                         <a href="#" class="pr-i2-name">{{ $list_product_user->name }}</a>
                                         <ul class="pr-i2-rating d-flex">
@@ -232,15 +194,11 @@
                 $('.filter-checkbox:checked').each(function() {
                     selectedBrands.push($(this).val());
                 });
-
-                // Nếu không có checkbox nào được chọn, hiển thị lại tất cả sản phẩm
+    
                 if (selectedBrands.length === 0) {
                     $('.product-item').removeClass('hidden');
                 } else {
-                    // Ẩn tất cả sản phẩm trước khi hiển thị lại sản phẩm của các thương hiệu đã chọn
                     $('.product-item').addClass('hidden');
-
-                    // Hiển thị sản phẩm của các thương hiệu đã chọn
                     selectedBrands.forEach(function(brand) {
                         $('.' + brand).removeClass('hidden');
                     });
