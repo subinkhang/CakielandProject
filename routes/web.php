@@ -53,9 +53,9 @@ Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts
 // Other Routes
 Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
 Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
-Route::get('/', function () {
-    return redirect('/dashboard');
-});
+Route::get('/', function () { return redirect('/dashboard'); });
+//VNPAY
+Route::post('/vnpay', 'App\Http\Controllers\CheckoutController@vnpay');
 
 
 
@@ -71,6 +71,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // AdminListProduct Routes
     Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');
     Route::get('/admin-list-product', 'App\Http\Controllers\AdminListProductController@get_list_product');
+    Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');
+        // Route::post('/update-order-status/{id}', 'AdminListBillController@updateOrderStatus');
 
     // Product Routes
     Route::get('/admin-add-product', 'App\Http\Controllers\ProductController@add_product');
