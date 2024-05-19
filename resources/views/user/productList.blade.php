@@ -4,11 +4,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
     <script>
         $(document).ready(function() {
             $('#sort').select2({
@@ -73,12 +68,12 @@
                                 <form id="brandFilterForm">
                                     <div class="row">
                                         @php $count = 0; @endphp
-                                        @foreach ($brands as $brand)
+                                        @foreach ($brands as $index => $brand)
                                             @php 
-                                                // Escape các ký tự đặc biệt để sử dụng làm class và id
                                                 $escapedBrand = preg_replace('/[^A-Za-z0-9]/', '-', $brand); 
+                                                $isHidden = $index >= 6 ? 'hidden-brand' : '';
                                             @endphp
-                                            <div class="col-6 filter-box">
+                                            <div class="col-6 filter-box {{ $isHidden }}">
                                                 <input type="checkbox" class="filter-checkbox" id="checkbox-{{$escapedBrand}}" name="brand" value="{{$escapedBrand}}">
                                                 <label for="checkbox-{{$escapedBrand}}">{{$brand}}</label> <br>
                                             </div>
@@ -88,6 +83,13 @@
                                             @endif
                                         @endforeach
                                     </div>
+                                    @if ($brands->count() > 6)
+                                        <div class="row">
+                                            <div class="col-12 text-more-less">
+                                                <button type="button" id="toggleBrands" class="btn btn-link">More</button>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </form>
                                 
                             </div>
@@ -223,6 +225,20 @@
                     selectedBrands.forEach(function(brand) {
                         $('.' + brand).removeClass('hidden');
                     });
+                }
+            });
+    
+            $('#toggleBrands').click(function() {
+                if ($('.hidden-brand').length) {
+                    $('.hidden-brand').removeClass('hidden-brand');
+                    $(this).text('Less');
+                } else {
+                    $('.filter-box').each(function(index) {
+                        if (index >= 6) {
+                            $(this).addClass('hidden-brand');
+                        }
+                    });
+                    $(this).text('More');
                 }
             });
         });
