@@ -88,10 +88,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <div class="order_column">Order ID</div>
                                         </th>
                                         <th>
-                                            <div class="all_column">User ID</div>
+                                            <div class="all_column">Username</div>
                                         </th>
                                         <th>
-                                            <div class="all_column">Products ID</div>
+                                            <div class="all_column">Products</div>
                                         </th>
                                         <th>
                                             <div class="all_column">Total Money</div>
@@ -105,29 +105,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($all_orders as $key => $cate_pro)
+                                    @foreach ($grouped_orders as $order_id => $order_group)
                                         <tr>
-                                            <td><span class="order_column">{{ $cate_pro->id }}</span></td>
-                                            <td><span class="all_column">{{ $cate_pro->user_id }}</span></td>
-                                            <td><span class="all_column">{{ $cate_pro->user_id }}</span></td>
-                                            <td><span class="all_column">{{ $cate_pro->total_money }}</span></td>
-                                            <td><span class="all_column">{{ $cate_pro->order_date }}</span></td>
+                                            <td><span class="order_column">{{ $order_id }}</span></td>
+                                            <td><span class="all_column">{{ auth()->user()->name }}</span>
+                                            </td>
+                                            <td>
+                                                <span class="all_column">
+                                                    @foreach ($order_group as $order)
+                                                        {{ $order->product_name }}@if (!$loop->last)
+                                                            ,
+                                                        @endif
+                                                    @endforeach
+                                                </span>
+                                            </td>
+                                            <td><span
+                                                    class="all_column">{{ $order_group->first()->total_money }}</span>
+                                            </td>
+                                            <td><span class="all_column">{{ $order_group->first()->order_date }}</span>
+                                            </td>
                                             <td>
                                                 <select name="option" class="order_column btn-shopnow bg-vang my-3 oho"
-                                                    onchange="addToCart(this)" data-id="{{ $cate_pro->id }}">
+                                                    onchange="addToCart(this)" data-id="{{ $order_id }}">
                                                     <option value="0" class="option_status"
-                                                        {{ $cate_pro->status == 0 ? 'selected' : '' }}
+                                                        {{ $order_group->first()->status == 0 ? 'selected' : '' }}
                                                         style="background-color: rgb(231, 29, 29)">
                                                         Canceled
                                                     </option>
                                                     <option value="1" class="option_status"
                                                         style="background-color: rgb(66, 151, 66)"
-                                                        {{ $cate_pro->status == 1 ? 'selected' : '' }}>
+                                                        {{ $order_group->first()->status == 1 ? 'selected' : '' }}>
                                                         Completed
                                                     </option>
                                                     <option value="2" class="option_status"
                                                         style="background-color: #FBC31C"
-                                                        {{ $cate_pro->status == 2 ? 'selected' : '' }}>
+                                                        {{ $order_group->first()->status == 2 ? 'selected' : '' }}>
                                                         Delivering
                                                     </option>
                                                 </select>
@@ -161,7 +173,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         <!--main content end-->
     </section>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
     <script src="{{ asset('backend/js/jquery.dcjqaccordion.2.7.js') }}"></script>

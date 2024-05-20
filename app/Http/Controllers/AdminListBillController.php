@@ -14,8 +14,13 @@ class AdminListBillController extends Controller
 {
     public function get_list_orders()
     {
-        $all_orders = DB::table('order')->get();
-        return view('admin/adminListBill', ['all_orders' => $all_orders]);
+        // Lấy tất cả đơn hàng cùng với chi tiết đơn hàng và tên sản phẩm
+        $all_orders = DB::table('order')->join('order_detail', 'order.id', '=', 'order_detail.order_id')->join('product', 'order_detail.product_id', '=', 'product.id')->select('order.id as order_id', 'order.user_id', 'order.total_money', 'order.order_date', 'order.status', 'product.name as product_name')->get();
+
+        // Nhóm các sản phẩm theo đơn hàng
+        $grouped_orders = $all_orders->groupBy('order_id');
+
+        return view('admin/adminListBill', ['grouped_orders' => $grouped_orders]);
     }
     // public function updateOrderStatus($orderId, $status)
     // {

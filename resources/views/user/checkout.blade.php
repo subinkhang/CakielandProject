@@ -5,6 +5,9 @@
     <livewire:breadcrumb-banner />
     <!-----------------LEFT---------------------------->
     <div class="container" id="all">
+        <pre>
+            {{ var_dump(session('productData')) }}
+        </pre>
         <div class="row">
             <div class="container">
                 <div class="row">
@@ -177,50 +180,57 @@
         <img src="{{ asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg') }}"
             class="qr">
     </div>
+
     <script>
         document.getElementById('updateForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-    
+            e.preventDefault();
+
             var formData = new FormData(this);
-    
-            axios.post('{{ url("/update/".auth()->user()->id) }}', formData)
-                .then(function (response) {
+
+            // Lấy sản phẩm từ localStorage và tính tổng
+            var products = JSON.parse(localStorage.getItem('products'));
+            var total = products.reduce(function(sum, item) {
+                return sum + (item.price * item.quantity);
+            }, 0);
+
+            // Lấy thông tin giỏ hàng từ localStorage
+            var cartData = JSON.parse(localStorage.getItem('cartData'));
+            var shipping = cartData.shippingPrice;
+            var discount = cartData.discountPrice;
+
+            // Tính tổng cuối cùng
+            total += shipping;
+            total -= discount;
+            // Thêm tổng vào FormData
+            formData.append('total', total);
+            stringProductData = JSON.stringify(cartData.products)
+            console.log('stringProductData:', stringProductData);
+            // Thêm cartData vào FormData dưới dạng JSON string
+            formData.append('productData', stringProductData);
+            // console.log('cartData:', JSON.stringify(cartData));
+            // for (var pair of formData.entries()) {
+            //     console.log(pair[0] + ', ' + pair[1]);
+            // }
+
+            var data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                total: total,
+                cartData: cartData
+            };
+
+            // Gửi dữ liệu qua axios
+            axios.post('{{ url('/update/' . auth()->user()->id) }}', data)
+                .then(function(response) {
                     console.log('Success:', response);
                 })
-                .catch(function (error) {
+                .catch(function(error) {
                     console.log('Error:', error);
                 });
         });
-    
-        const btn = document.getElementById("btn-p");
-        const popup = document.querySelector(".popup");
-        const qr = document.querySelector(".qr");
-        const bankmethod = document.querySelector(".bankmethod");
-        const overlay = document.querySelector(".overlay");
-    
-        overlay.addEventListener("click", () => {
-            popup.classList.remove("active");
-            overlay.classList.remove("active");
-            bankmethod.classList.remove("active");
-        });
-    
-        btn.addEventListener("click", (e) => {
-            // e.preventDefault();
-            const select = document.querySelector(".form-select-pm");
-            const bankoption = document.querySelector(".bankmethod");
-            const selectoption = select.value;
-            if (selectoption === "COD") {
-                popup.classList.add("active");
-                overlay.classList.add("active");
-            }
-    
-            if (selectoption === "Bank") {
-                console.log("bank");
-                bankoption.classList.add("active");
-                overlay.classList.add("active");
-            }
-        });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>

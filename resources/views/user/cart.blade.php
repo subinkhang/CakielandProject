@@ -24,9 +24,7 @@
                                         <td class="col-2 text-end">SUBTOTAL</td>
                                     </tr>
                                     <table id="prod">
-
                                     </table>
-
                                 </table>
                             </form>
                         </div>
@@ -62,7 +60,7 @@
                                         <p1>Shipping</p1>
                                     </td>
                                     <td class="col-4 text-end"id="shipping-price">
-                                        <p1>2.00</p1>
+                                        <p1>14.00</p1>
                                     </td>
                                 </tr>
                                 <tr>
