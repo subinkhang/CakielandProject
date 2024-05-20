@@ -621,12 +621,23 @@ label {
     display: block;
 }
 
-.pr-i3{
-    cursor: pointer;
-    }
-    .cartegory_page_number{
-    text-align: center;
-    letter-spacing: 10px;
-    color: #282828;
-    margin-top: 30px;
-    }
+/* --------------FilterbyBrand---------------- */
+.hidden {
+    display: none;
+}
+.hidden-brand {
+    display: none;
+}
+.text-more-less{
+    text-align: right;
+    text-decoration: none;
+    padding-bottom: 20px;
+}
+.btn-link {
+    text-decoration: none;
+    color: #666; 
+    font-size: 14px;
+}
+.btn-link:hover {
+    color: #FBC31C;
+}
