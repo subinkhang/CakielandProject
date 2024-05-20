@@ -26,10 +26,10 @@ class ProductListController extends Controller
 
 
         switch ($sort) {
-            case 'tang_dan':
+            case 'increase':
                 $query->orderByRaw('CAST(price AS DECIMAL(10,2))');
                 break;
-            case 'giam_dan':
+            case 'decrease':
                 $query->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
                 break;
             case 'az':
@@ -67,10 +67,10 @@ class ProductListController extends Controller
 
 
         switch ($sort) {
-            case 'tang_dan':
+            case 'increase':
                 $query->orderByRaw('CAST(price AS DECIMAL(10,2))');
                 break;
-            case 'giam_dan':
+            case 'decrease':
                 $query->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
                 break;
             case 'az':
@@ -104,10 +104,10 @@ class ProductListController extends Controller
         $query = Product::query();
 
         switch ($sort) {
-            case 'tang_dan':
+            case 'increase':
                 $query->orderByRaw('CAST(price AS DECIMAL(10,2))');
                 break;
-            case 'giam_dan':
+            case 'decrease':
                 $query->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
                 break;
             case 'az':
@@ -139,10 +139,10 @@ class ProductListController extends Controller
         $query = Product::query();
 
         switch ($sort) {
-            case 'tang_dan':
+            case 'increase':
                 $query->orderByRaw('CAST(price AS DECIMAL(10,2))');
                 break;
-            case 'giam_dan':
+            case 'decrease':
                 $query->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
                 break;
             case 'az':
@@ -170,10 +170,10 @@ class ProductListController extends Controller
         $query = Product::query();
 
         switch ($sort) {
-            case 'tang_dan':
+            case 'increase':
                 $query->orderByRaw('CAST(price AS DECIMAL(10,2))');
                 break;
-            case 'giam_dan':
+            case 'decrease':
                 $query->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
                 break;
             case 'az':

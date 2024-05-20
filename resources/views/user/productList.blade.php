@@ -33,16 +33,34 @@
                             <div class="line"></div>
                             <ul class="mainmenu">
                                 @foreach($category as $key => $cate)
-                                <li class="mainmenu_title"><a href="{{URL::to('/category'.$cate->id)}}"><span>{{$cate->name}} </span>
-                                    <i class="fa-solid fa-sort-down icon_arrow"></i></a>
-                                    <ul class="menucon">
-                                        @foreach($sub_category as $sub_cate)
-                                            @if($sub_cate->category_id == $cate->id)
-                                                <li class="menu_title"><a href="{{URL::to('/sub-category'.$sub_cate->id)}}">{{$sub_cate->name}}</a></li>
-                                            @endif
-                                        @endforeach
-                                    </ul>                                    
-                                </li>
+                                    @php
+                                        $isParentActive = false;
+                                    @endphp
+                                    @foreach($sub_category as $sub_cate)
+                                        @if($sub_cate->category_id == $cate->id && Request::is('sub-category'.$sub_cate->id))
+                                            @php
+                                                $isParentActive = true;
+                                                break;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                            
+                                    <li class="mainmenu_title {{ Request::is('category'.$cate->id) || $isParentActive ? 'active' : '' }}">
+                                        <a href="{{ URL::to('/category'.$cate->id) }}">
+                                            <span>{{ $cate->name }}</span>
+                                        </a>
+                                        <ul class="menucon">
+                                            @foreach($sub_category as $sub_cate)
+                                                @if($sub_cate->category_id == $cate->id)
+                                                    <li class="menu_title">
+                                                        <a href="{{ URL::to('/sub-category'.$sub_cate->id) }}" class="{{ Request::is('sub-category'.$sub_cate->id) ? 'active' : '' }}">
+                                                            {{ $sub_cate->name }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -85,8 +103,8 @@
                             <form id="sortForm">
                                 <select name="sort" id="sort" class="form-control select-custom" onchange="this.form.submit()">
                                     <option value="none" {{ request('sort') == 'none' ? 'selected' : '' }}>{{ request('sort') == 'none' ? 'Sort by' : 'No sort' }}</option>
-                                    <option value="tang_dan" {{ request('sort') == 'tang_dan' ? 'selected' : '' }}>Increase</option>
-                                    <option value="giam_dan" {{ request('sort') == 'giam_dan' ? 'selected' : '' }}>Decrease</option>
+                                    <option value="increase" {{ request('sort') == 'increase' ? 'selected' : '' }}>Increase</option>
+                                    <option value="decrease" {{ request('sort') == 'decrease' ? 'selected' : '' }}>Decrease</option>
                                     <option value="az" {{ request('sort') == 'az' ? 'selected' : '' }}>A - Z</option>
                                     <option value="za" {{ request('sort') == 'za' ? 'selected' : '' }}>Z - A</option>
                                 </select>
