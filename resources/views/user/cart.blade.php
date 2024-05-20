@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-1"></div>
                     <!----------------------RIGHT------------------------------------->
-                    <div class="col-4">
+                    <div class="col-4 col">
                         <h3 id="voucher-text"><b>VOUCHER</b></h3>
                         <div class="search">
                             <div class="row">
@@ -84,7 +84,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="col-8 bt-pay pm">
+                        <div class="bt-pay pm">
                             @if (auth()->check())
                                 <a class="btn" id="btn-p" href="/checkout">
                                     <p1>Payment</p1>

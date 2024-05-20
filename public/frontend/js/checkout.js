@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const discount = document.getElementById("discount");
     const tt = document.getElementById("total");
     subtt.innerHTML = `<span>
-        <p1><b>$${cartData.rightsub.toFixed(2)}</p1></b>
+        <p1><b>${cartData.rightsub.toFixed(2)}</p1></b>
     </span>`;
     shipping.innerHTML = `<span>
         <p1><b>${cartData.shippingPrice.toFixed(2)}</p1></b>
