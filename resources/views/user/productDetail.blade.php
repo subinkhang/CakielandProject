@@ -200,7 +200,7 @@
             <div class="col-12 justify-content-start mb-3">
                 <h3>Related Product</h3>
             </div>
-            {{-- @foreach ($related_products as $key => $related_products)
+            @foreach ($related_products as $key => $related_products)
                 <div class="col-3">
                     <div class="pr-i3" data-brand="{{ $related_products->brand }}">
                         <a href="{{ URL::to('product-detail/' . $related_products->id) }}">
@@ -232,9 +232,9 @@
                         </div>
                     </div>
                 </div>
-            @endforeach --}}
+            @endforeach
 
-            <div class="col-3">
+            {{-- <div class="col-3">
                 <div class="pr-i3">
                     <img src="{{ asset('frontend/images/product.png') }}" alt="" class="productList_image">
                     <span class="btn_add" onclick="addToCart(this)"><i class="fa-solid fa-circle-plus"></i></span>
@@ -289,7 +289,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
