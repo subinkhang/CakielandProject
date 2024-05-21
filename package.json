@@ -17,6 +17,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "cropperjs": "^1.6.2",
         "jquery-autocomplete": "^1.2.8"
     }
 }

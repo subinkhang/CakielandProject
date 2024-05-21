@@ -1,16 +1,31 @@
 const avatarInput = document.getElementById('avatarUpload');
-const avatarCircle = document.querySelector('.circle');
+const avatarPreview = document.getElementById('avatarPreview');
+avatarPreview.src = 'path/to/default-avatar.jpg';
 
-avatarInput.addEventListener('change', function() {
-  const file = this.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      avatarCircle.style.backgroundImage = `url(${event.target.result})`;
-    };
-    reader.readAsDataURL(file);
-  }
+avatarInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            avatarPreview.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+    }
 });
+// const avatarInput = document.getElementById('avatarUpload');
+// const avatarCircle = document.querySelector('.circle');
+
+// avatarInput.addEventListener('change', function() {
+//   const file = this.files[0];
+//   if (file) {
+//     const reader = new FileReader();
+//     reader.onload = function(event) {
+//       avatarCircle.style.backgroundImage = `url(${event.target.result})`;
+//     };
+//     reader.readAsDataURL(file);
+//   }
+// });
+
 
 let isValid = false; // Khởi tạo isValid thành false
 function validateDateOfBirth() {
@@ -33,15 +48,6 @@ function validateDateOfBirth() {
       isValid = false;
       showMessage(phoneInput, "Phone must start with 0 and be 10 digits");
     }
-    // if (emailInput.value !== "") {
-    //   isValid = false;
-    //   showMessage(emailInput, "Email cannot be entered (disabled field)");
-    // }
-    // if (!isValid) {
-    //   alert("Please fix the following errors:"); 
-    // } else {
-    //   alert("Successfully saved!");
-    // }
   }
     
   function validateDate(dateString) {
@@ -93,4 +99,24 @@ function validateDateOfBirth() {
   if (form) {
     form.addEventListener("submit", validateDateOfBirth);
   }
+  document.getElementById('avatarUpload').addEventListener('change', function(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const avatarPreview = document.getElementById('avatarPreview');
+        avatarPreview.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+});
 
+function previewAvatar() {
+  var file = document.getElementById('avatarUpload').files[0];
+  var reader = new FileReader();
+  reader.onloadend = function () {
+      document.getElementById('avatarPreview').src = reader.result;
+  }
+  if (file) {
+      reader.readAsDataURL(file);
+  } else {
+      document.getElementById('avatarPreview').src = "";
+  }
+}
