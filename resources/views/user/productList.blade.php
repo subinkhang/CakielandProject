@@ -39,8 +39,8 @@
                                             @endphp
                                         @endif
                                     @endforeach
-                            
-                                    <li class="mainmenu_title {{ Request::is('category'.$cate->id) || $isParentActive ? 'active' : '' }}">
+                                    
+                                    <li class="{{ Request::is('category'.$cate->id) || $isParentActive ? 'active' : '' }}">
                                         <a href="{{ URL::to('/category'.$cate->id) }}" class="category-link">
                                             <span>{{ $cate->name }}</span>
                                             <span class="arrow"></span>
@@ -59,6 +59,8 @@
                                     </li>
                                 @endforeach
                             </ul>
+                            
+                            
                         </div>
                     </div>
                     <div class="pr-list-sidebar">
@@ -180,21 +182,27 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-8 getintouch_info">
-                    <h1 class="text_h1">GET IN TOUCH WITH US</h1>
+                    <h1 class="text_h1">GET IN TOUCH WITH SUBIN</h1>
                     <p class="text_p1">With the cake baked to perfection, the canvas is set for creativity to flourish.
                         From simple frosting and sprinkles to elaborate designs and piped decorations, the
                         possibilities are endless.</p>
                     <div class="row ">
                         <div class="col-2"></div>
                         <div class="col-8">
-                            <div class="row getintouch_search">
+                            <form role="form" class="row getintouch_search" id="email-form"
+                                action="{{ URL::to('/save-email') }}" method="post">
+                                {{ csrf_field() }}
                                 <div class="col-8 ">
-                                    <input type="text" class="w-100 text_p1" placeholder="Your email address...">
+                                    <input type="text" class="w-100 text_p1" id="email" name="email" placeholder="Your email address...">
                                 </div>
                                 <div class="col-4 ">
-                                    <button class="btn_submit">Submit</button>
+                                    <button class="btn_submit" type="button" onclick="validateAndSubmit()">Submit</button>
                                 </div>
-                            </div>
+                                <p id="email-error" class="text_p1" style="color: red; display: none;">Email is not
+                                    valid</p>
+                                <p id="success-message" class="text_p1" style="color: green; display: none;">Success!
+                                    Your email has been submitted.</p>
+                            </form>
                         </div>
                         <div class="col-2"></div>
                     </div>

@@ -100,21 +100,75 @@ document.addEventListener('DOMContentLoaded', function() {
 //         });
 //     });
 // });
-document.addEventListener('DOMContentLoaded', function() {
-    const mainMenuTitles = document.querySelectorAll('.mainmenu_title');
 
-    mainMenuTitles.forEach(title => {
-        title.addEventListener('click', function() {
-            const menuCon = this.querySelector('.menucon');
-            const arrow = this.querySelector('.arrow');
+function validateAndSubmit() {
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+    const successMessage = document.getElementById('success-message');
+    const email = emailInput.value;
 
-            if (menuCon.style.maxHeight) {
-                menuCon.style.maxHeight = null;
-                arrow.style.transform = 'rotate(45deg)';
-            } else {
-                menuCon.style.maxHeight = menuCon.scrollHeight + 'px';
-                arrow.style.transform = 'rotate(-45deg)';
-            }
-        });
+    // Basic email validation
+    if (!validateEmail(email)) {
+        emailError.style.display = 'block';
+        successMessage.style.display = 'none';
+        return;
+    } else {
+        emailError.style.display = 'none';
+    }
+
+    // Prepare data
+    const data = {
+        email: email,
+        _token: document.querySelector('input[name="_token"]').value,
+    };
+
+    fetch('/save-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': data._token,
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Assuming your server returns a JSON response
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+        // Clear the input field
+        emailInput.value = '';
+        successMessage.style.display = 'block';
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+}
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
+
+$(document).ready(function() {
+    // Sự kiện click trên category-link
+    $('.mainmenu a.category-link').on('click', function(e) {
+        e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
+        
+        // Lấy đối tượng li chứa category-link được click
+        var $li = $(this).parent('li');
+        
+        // Ẩn tất cả các menucon khác
+        $('.mainmenu li').not($li).removeClass('active').find('.menucon').slideUp();
+        
+        // Hiển thị hoặc ẩn menucon của mục được click
+        $li.toggleClass('active').find('.menucon').slideToggle();
+    });
+
+    // Ngăn chặn sự kiện click trên các mục con để không đóng menu chính
+    $('.mainmenu .menucon a').on('click', function(e) {
+        e.stopPropagation();
     });
 });
+
