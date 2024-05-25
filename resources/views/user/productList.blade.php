@@ -41,8 +41,9 @@
                                     @endforeach
                             
                                     <li class="mainmenu_title {{ Request::is('category'.$cate->id) || $isParentActive ? 'active' : '' }}">
-                                        <a href="{{ URL::to('/category'.$cate->id) }}">
+                                        <a href="{{ URL::to('/category'.$cate->id) }}" class="category-link">
                                             <span>{{ $cate->name }}</span>
+                                            <span class="arrow"></span>
                                         </a>
                                         <ul class="menucon">
                                             @foreach($sub_category as $sub_cate)
@@ -126,7 +127,6 @@
                                     <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
                                         <img src="{{ asset('public/backend/upload/' . $list_product_user->thumbnail) }}" alt="" class="w-100 productList_image">
                                     </a>
-                                    
                                     <span class="btn_add"><i class="fa-solid fa-circle-plus" onclick="addToCart(this)"></i></span>
                                     <div class="container_information">
                                         <a href="#" class="pr-i2-name">{{ strlen($list_product_user->name) > 30 ? substr($list_product_user->name, 0, 30).'...' : $list_product_user->name }}</a>
@@ -155,19 +155,17 @@
                                 </div>
                             </div>
                         @endforeach
-                        {{-- <!-- {!! $list_product->links() !!} --> --}}
                     </div>
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-3"></div>
+                        <div class="col-6"></div>   
                         <div class="col-6">
                             <div class="cartegory_page_number">
-                                <!-- ĐỔI THÀNH PRODUCT KHI CÓ -->
-                                {{-- {!! $list_product->links('components/paginationButton') !!} --}}
+                                {!! $list_product->links('components/paginationButton') !!}
                             </div>
                         </div>
-                        <div class="col-3"></div>
+                        {{-- <div class="col-3"></div> --}}
                     </div>
                 </div>
             </div>

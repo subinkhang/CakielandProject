@@ -14,9 +14,7 @@ new class extends Component {
         $this->redirect('/', navigate: true);
     }
 }; ?>
-
 <div>
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,102 +23,80 @@ new class extends Component {
         <link rel="stylesheet" href="{{ asset('frontend/css/homepage.css') }}">
         <link rel="stylesheet" href="{{ 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css' }}">
         <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
-
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
     <body>
-        <div class="container-fluid  nav_top">
+        <div class="container-fluid nav_top-header">
             <div class="container">
-                <div class="row">
-                    <div class="col-2 logo">
-                        <a href="{{ url('/dashboard') }}"><img src="{{ asset('frontend/images/logo - temp.png') }}"
-                                alt=""class="w-100"></a>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="logo-header">
+                        <a href="{{ url('/dashboard') }}">
+                            <img src="{{ asset('frontend/images/logo - temp.png') }}" alt="Logo" class="w-100">
+                        </a>
                     </div>
-                    <div class="col-2"></div>
-                    {{-- @if (!request()->is('*admin*')) --}}
-                    <div class="col-4 search">
-                        <form action="{{ URL::to('search-product-list') }}" method="POST" class="row">
+                    <div class="col-1"></div>
+                    <div class="search-header flex-grow-1 mx-3">
+                        <form action="{{ URL::to('search-product-list') }}" method="POST" class="d-flex">
                             {{ csrf_field() }}
-                            <div class="col-8">
-                                <input type="text" class="w-100 text_p1" placeholder="Search products..."
-                                    id="searchInput" name="keywords_submit">
-                                <div class="suggestions text_p1" style="display: none;" id="suggestions"></div>
-                            </div>
-                            <div class="col-4">
-                                <button type="submit" class="btn_search" name="search_item">Search</button>
-                            </div>
+                            <input type="text" class="form-control search-input-header" placeholder="Search products..." id="searchInput" name="keywords_submit">
+                            <button type="submit" class="btn_search-header" name="search_item">Search</button>
                         </form>
                     </div>
-                    <div class="col-4 pages">
-                        <ul class="d-flex justify-content-end page_ul_li">
-                            <li class="page_item ">
-                                <div><a href="{{ url('/dashboard') }}">Home</a></div>
+                    <div class="d-flex align-items-center">
+                        <ul class="d-flex align-items-center mb-0 page_ul_li-header">
+                            <li class="page_item-header">
+                                <a href="{{ url('/dashboard') }}" class="nav-link-header">Home</a>
                             </li>
-                            <li class="page_item ">
-                                <div><a href="{{ url('/product-list') }}">Product</a></div>
+                            <div class="col-2"></div>
+                            <li class="page_item-header">
+                                <a href="{{ url('/product-list') }}" class="nav-link-header">Product</a>
                             </li>
-                            <li class="page_item ">
-                                <div><a href="https://www.cheftalk.com/forums/">Forum</a></div>
+                            <div class="col-2"></div>
+                            <li class="page_item-header">
+                                <a href="https://www.cheftalk.com/forums/" class="nav-link-header">Forum</a>
                             </li>
-                            <li class="cart_item">
-                                <a href="{{ url('/cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
-                                <div>
-                                    <p>2</p>
-                                </div>
+                            <div class="col-2"></div>
+                            <li class="cart_item-header position-relative">
+                                <a href="{{ url('/cart') }}" class="nav-link-header">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <div class="cart-count-header">2</div>
+                                </a>
                             </li>
-                            <li class="user_item">
+                            <div class="col-1"></div>
+                            <li class="user_item-header position-relative">
                                 <x-dropdown>
                                     <x-slot name="trigger">
-                                        @if (auth()->check())
-                                            <i alt="User Avatar" class="fa-solid fa-user"></i>
-                                        @else
-                                            <i alt="User Avatar" class="fa-solid fa-user"></i>
-                                        @endif
+                                        <i alt="User Avatar" class="fa-solid fa-user cursor-pointer"></i>
                                     </x-slot>
                                     <x-slot name="content">
                                         @if (auth()->check())
-                                            <div class="haha">
-                                            <!-- Sử dụng button thay vì link để giữ nguyên style và hành vi nhất quán -->
-                                            <button onclick="window.location='{{ url('/account') }}'"
-                                                class="dropdown-item">
-                                                {{ __('Account') }}
-                                            </button>
-
-                                            <!-- Authentication -->
-                                            <button wire:click="logout" class="dropdown-item">
-                                                {{ __('Log Out') }}
-                                            </button>
+                                            <div class="dropdown-menu-right-header">
+                                                <button onclick="window.location='{{ url('/account') }}'" class="dropdown-item-header">
+                                                    {{ __('Account') }}
+                                                </button>
+                                                <button wire:click="logout" class="dropdown-item-header">
+                                                    {{ __('Log Out') }}
+                                                </button>
                                             </div>
                                         @else
-                                            <button onclick="window.location='{{ url('/login') }}'"
-                                                class="dropdown-item">
-                                                {{ __('Log In') }}
-                                            </button>
-
-                                            <button onclick="window.location='{{ url('/register') }}'"
-                                                class="dropdown-item">
-                                                {{ __('Sign Up') }}
-                                            </button>
+                                            <div class="dropdown-menu-right-header">
+                                                <button onclick="window.location='{{ url('/login') }}'" class="dropdown-item-header">
+                                                    {{ __('Log In') }}
+                                                </button>
+                                                <button onclick="window.location='{{ url('/register') }}'" class="dropdown-item-header">
+                                                    {{ __('Sign Up') }}
+                                                </button>
+                                            </div>
                                         @endif
                                     </x-slot>
                                 </x-dropdown>
                             </li>
-
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <script src="{{ asset('frontend/js/homepage.js') }}"></script>
-
-        {{-- New js --}}
-        {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
-        <script src="{{ asset('backend/js/jquery.dcjqaccordion.2.7.js') }}"></script>
-        <script src="{{ asset('backend/js/scripts.js') }}"></script>
-        <script src="{{ asset('backend/js/jquery.slimscroll.js') }}"></script>
-        <script src="{{ asset('backend/js/jquery.nicescroll.js') }}"></script>
-        <script src="{{ asset('backend/js/jquery.scrollTo.js') }}"></script> --}}
     </body>
 </div>

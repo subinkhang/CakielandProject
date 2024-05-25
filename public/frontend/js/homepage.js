@@ -112,3 +112,18 @@ function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const userIcon = document.querySelector('.user_item-header .fa-user');
+    const dropdown = document.querySelector('.user_item-header .dropdown-menu-right-header');
+
+    userIcon.addEventListener('click', function () {
+        dropdown.classList.toggle('show');
+    });
+
+    window.addEventListener('click', function (e) {
+        if (!userIcon.contains(e.target) && !dropdown.contains(e.target)) {
+            // dropdown.classList.remove('show');
+        }
+    });
+});

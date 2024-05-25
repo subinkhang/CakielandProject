@@ -76,7 +76,7 @@ body, button, input{
     height: 38px;
     padding: 0;
     border-radius: 20px;
-    width: 100%;
+    width: 50%;
     border: none;
     margin: 2px;
 }
@@ -85,7 +85,7 @@ body, button, input{
     padding-right: 5px;
 }
 .search{
-    margin-top: 10px;
+    margin-top: 40px;
     border: 1px solid #666666;
     border-radius: 22px;
     height: 44px;
@@ -206,7 +206,133 @@ body, button, input{
 	line-height: 35px;
 	text-transform: capitalize;
 }
+/* General styles */
+body, button, input {
+    font-family: VN;
+    background-color: #fdfdfd;
+}
 
-/* --------------------------- */
+/* Header styles */
+.nav_top-header {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
+.logo-header img {
+    max-height: 60px;
+}
 
+.search-header {
+    flex-grow: 1;
+}
+
+.search-input-header {
+    border: 1px solid #666666;
+    border-radius: 22px 0 0 22px;
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.btn_search-header {
+    background-color: #FBC31C;
+    color: #fdfdfd;
+    border-radius: 0 22px 22px 0;
+    padding: 10px 20px;
+    border: none;
+    margin-left: -5px; /* Adjust the margin to avoid overlapping */
+    display: flex;
+    align-items: center;
+}
+
+.pages .page_ul_li-header {
+    margin: 0;
+    padding: 0;
+}
+
+.pages .page_item-header {
+    margin-left: 20px;
+}
+
+.pages .nav-link-header {
+    color: #080808;
+    font-size: 16px;
+    padding-right: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link-header {
+    color: #080808;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.cart_item-header {
+    position: relative;
+    margin-left: 20px;
+}
+
+.cart_item-header .fa-cart-shopping {
+    font-size: 22px;
+    color: #080808;
+    vertical-align: middle; /* Align icon to middle */
+}
+
+.cart_item-header .cart-count-header {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #FBC31C;
+    color: #fdfdfd;
+    font-size: 12px;
+    text-align: center;
+    line-height: 18px;
+    position: absolute;
+    top: -6px;
+    right: -8px;
+}
+
+.user_item-header .fa-user {
+    font-size: 22px;
+    color: #080808;
+    cursor: pointer;
+    margin-left: 20px;
+    vertical-align: middle; /* Align icon to middle */
+}
+
+/* Dropdown styles */
+.dropdown-menu-right-header {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 5px;
+    z-index: 1000;
+    display: none;
+}
+
+.user_item-header .dropdown-menu-right-header {
+    display: block;
+}
+
+.dropdown-item-header {
+    padding: 10px 20px;
+    color: #333;
+    text-align: left;
+    background: none;
+    border: none;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dropdown-item-header:hover {
+    background-color: #f8f9fa;
+    color: #FBC31C;
+}
