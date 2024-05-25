@@ -107,7 +107,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                             <h4 class="right-text"><b>Image</b></h4>
                                             <input type="file" class="image" name="img"
-                                                accept="image/png, image/jpeg" id="mainimg">
+                                                accept="image/png, image/jpeg, image/jpg" id="mainimg">
                                             <div id="main-img"></div>
 
                                             <h4 class="right-text"><b>Galary</b></h4>
@@ -135,17 +135,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                     <div style="background-color: pink" class="color"></div>
                                                 </div>
                                                 <div class="grey">
-                                                    <input type="checkbox" style="text-align: center" id="op1"
+                                                    <input type="checkbox" style="text-align: center" id="op4"
                                                         value="4" name="color[]">
                                                     <div style="background-color: grey" class="color"></div>
                                                 </div>
                                                 <div class="blue">
-                                                    <input type="checkbox" style="text-align: center" id="op2"
+                                                    <input type="checkbox" style="text-align: center" id="op5"
                                                         value="5" name="color[]">
                                                     <div style="background-color: blue" class="color"></div>
                                                 </div>
                                                 <div class="green">
-                                                    <input type="checkbox" style="text-align: center" id="op3"
+                                                    <input type="checkbox" style="text-align: center" id="op6"
                                                         value="6" name="color[]">
                                                     <div style="background-color: green" class="color"></div>
                                                 </div>
@@ -258,56 +258,56 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         const tagOptions = {
             "1": [{
-                    value: "1",
+                    value: "7",
                     text: "Flour"
                 },
                 {
-                    value: "2",
-                    text: "Baking Soda"
+                    value: "8",
+                    text: "Yeast"
                 }
             ],
             "2": [{
-                    value: "3",
+                    value: "9",
                     text: "Milk"
                 },
                 {
-                    value: "4",
-                    text: "Butter"
+                    value: "10",
+                    text: "Whipping cream"
                 }
             ],
             "3": [{
-                    value: "5",
-                    text: "Eggs Beater"
+                    value: "11",
+                    text: "Cake mold"
                 },
                 {
-                    value: "6",
-                    text: "Mold"
+                    value: "12",
+                    text: "Electric mixer"
                 }
             ],
             "4": [{
-                    value: "7",
-                    text: "Stainless Steel Pot Set"
+                    value: "1",
+                    text: "Stainless steel tool"
                 },
                 {
-                    value: "8",
-                    text: "Kitchen Knife Set"
+                    value: "2",
+                    text: "Kitchen knife set"
                 }
             ],
             "5": [{
-                    value: "9",
+                    value: "3",
                     text: "Coffee Foam Maker"
                 },
                 {
-                    value: "10",
+                    value: "4",
                     text: "Measuring Cup"
                 }
             ],
             "6": [{
-                    value: "11",
+                    value: "5",
                     text: "Tea"
                 },
                 {
-                    value: "12",
+                    value: "6",
                     text: "Syrup"
                 }
             ]

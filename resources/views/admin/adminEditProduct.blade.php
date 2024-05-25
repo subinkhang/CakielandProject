@@ -110,140 +110,218 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <section class="wrapper">
                 <!-- page start-->
 
+                @php
+                    $colorCounts = [];
+                @endphp
+
                 @foreach ($edit_product as $key => $edit_value)
-                    <form role="form" action="{{ URL::to('/update-product/' . $edit_value->id) }}" method="POST">
-                        {{ csrf_field() }}
+                    @php
+                        $selected_colors = $edit_product->pluck('color')->toArray(); // Lấy tất cả các giá trị màu từ dữ liệu sản phẩm
+                        $color_count = count($selected_colors); // Đếm số lượng màu
 
-                        <div class="mail-w3agile">
-                            <div class="row">
-                                <div class="col-sm-8 com-w3ls">
-                                    @php
-                                        $message = Session::get('message');
-                                    @endphp
+                        // Kiểm tra xem số lượng màu đã xuất hiện trước đó chưa
+                        $counted = in_array($color_count, $colorCounts);
 
-                                    @if ($message)
-                                        <h3 style="white-space: nowrap; color: red">{{ $message }}</h3>
-                                        {{ Session::put('message', null) }}
-                                    @endif
+                        // Nếu số lượng màu chưa được đếm trước đó, thêm vào mảng colorCounts
+                        if (!$counted) {
+                            $colorCounts[] = $color_count;
+                        }
+                    @endphp
 
-                                    <section class="panel">
+                    @if (!$counted)
+                        <form role="form" action="{{ URL::to('/update-product/' . $edit_value->id) }}"
+                            enctype="multipart/form-data" method="POST">
+                            {{ csrf_field() }}
 
-                                        <h4 class="menu"id="text-name"><b>Name</b></h4>
-                                        <textarea name="name" type="text" id="name" class="text-title">{{ $edit_value->name }}</textarea>
+                            <div class="mail-w3agile">
+                                <div class="row">
+                                    <div class="col-sm-8 com-w3ls">
+                                        @php
+                                            $message = Session::get('message');
+                                        @endphp
 
-                                        <h4 class="menu"><b>Fake Price</b></h4>
-                                        <textarea name="fake_price" type="text" id="curp" class="text-title">{{ $edit_value->fake_price }}</textarea>
+                                        @if ($message)
+                                            <h3 style="white-space: nowrap; color: red">{{ $message }}</h3>
+                                            {{ Session::put('message', null) }}
+                                        @endif
 
-                                        <h4 class="menu"><b>New Price</b></h4>
-                                        <textarea name="price" type="text" id="newp" class="text-title">{{ $edit_value->price }}</textarea>
+                                        <section class="panel">
 
-                                        <h4 class="menu"><b>Brand</b></h4>
-                                        <textarea name="brand" type="text" id="brand" class="text-title">{{ $edit_value->brand }}</textarea>
+                                            <h4 class="menu"id="text-name"><b>Name</b></h4>
+                                            <textarea name="name" type="text" id="name" class="text-title">{{ $edit_value->name }}</textarea>
 
-                                        <h4 class="menu"><b>Description</b></h4>
-                                        <textarea name="description" type="text" id="desc" class="text-title">{{ $edit_value->description }}</textarea>
+                                            <h4 class="menu"><b>Fake Price</b></h4>
+                                            <textarea name="fake_price" type="text" id="curp" class="text-title">{{ $edit_value->fake_price }}</textarea>
 
-                                        <h4 class="menu"><b>Detail</b></h4>
-                                        <textarea name="description_detail" type="text" id="detail" class="text-title">{{ $edit_value->description_detail }}</textarea>
+                                            <h4 class="menu"><b>New Price</b></h4>
+                                            <textarea name="price" type="text" id="newp" class="text-title">{{ $edit_value->price }}</textarea>
 
-                                        <h4 class="menu"><b>Technical</b></h4>
-                                        <textarea name="description_technique" type="text" id="tech" class="text-title">{{ $edit_value->description_technique }}</textarea>
+                                            <h4 class="menu"><b>Brand</b></h4>
+                                            <textarea name="brand" type="text" id="brand" class="text-title">{{ $edit_value->brand }}</textarea>
 
-                                        <div class="col-8 bt-pay pm">
+                                            <h4 class="menu"><b>Description</b></h4>
+                                            <textarea name="description" type="text" id="desc" class="text-title">{{ $edit_value->description }}</textarea>
 
-                                            <button class="btn" id="btn-p" type="submit">
-                                                <p1>Update product</p1>
-                                            </button>
-                                        </div>
-                                    </section>
+                                            <h4 class="menu"><b>Detail</b></h4>
+                                            <textarea name="description_detail" type="text" id="detail" class="text-title">{{ $edit_value->description_detail }}</textarea>
 
-                                    <!-----------------------------------------------RIGHT---------------------------------------------------------------------------->
-                                </div>
-                                <div class="col-sm-3 mail-w3agile">
-                                    <section class="panel">
-                                        <div class="right">
-                                            <h4 class="right-text"><b>Image</b></h4>
-                                            <input type="file" class="image" name="img"
-                                                accept="image/png, image/jpeg" id="mainimg">
-                                            <div id="main-img"></div>
+                                            <h4 class="menu"><b>Technical</b></h4>
+                                            <textarea name="description_technique" type="text" id="tech" class="text-title">{{ $edit_value->description_technique }}</textarea>
 
-                                            <h4 class="right-text"><b>Galary</b></h4>
-                                            <input type="file" class="image" name="gal[]"
-                                                accept="image/png, image/jpeg" multiple id="gallery"
-                                                onchange="gallarypreview()">
-                                            <div>
-                                                <div id="gal"></div>
+                                            <div class="col-8 bt-pay pm">
+
+                                                <button class="btn" id="btn-p" type="submit">
+                                                    <p1>Update product</p1>
+                                                </button>
                                             </div>
+                                        </section>
 
-                                            <div>
-                                                <h4 class="right-text"><b>Color</b></h4>
+                                        <!-----------------------------------------------RIGHT---------------------------------------------------------------------------->
+                                    </div>
+                                    <div class="col-sm-3 mail-w3agile">
+                                        <section class="panel">
+                                            <div class="right">
+                                                <h4 class="right-text"><b>Image</b></h4>
+                                                <input type="file" class="image" name="img"
+                                                    accept="image/png, image/jpeg" id="mainimg">
+                                                <div id="main-img">
+                                                    <img src="{{ asset('public/backend/upload/' . $edit_value->thumbnail) }}"
+                                                        alt="Image" name="img_thumbnail"
+                                                        style="width: 200px; margin-top:20px; height: 200px; border-radius: 15px; border: 1px dashed #282828;">
+                                                </div>
+
+                                                <h4 class="right-text"><b>Gallery</b>
+                                                </h4>
+                                                <input type="file" class="image" name="gall[]"
+                                                    accept="image/png, image/jpeg" multiple id="gallery"
+                                                    onchange="gallerypreview()">
                                                 <div class="cont">
-                                                    <div class="grey">
-                                                        <input type="checkbox" style="text-align: center"
-                                                            id="op1" value="1" name="color[]">
-                                                        <div style="background-color: grey" class="color"></div>
-                                                    </div>
-                                                    <div class="black">
-                                                        <input type="checkbox" style="text-align: center"
-                                                            id="op2" value="2" name="color[]">
-                                                        <div style="background-color: black" class="color"></div>
-                                                    </div>
-                                                    <div class="white">
-                                                        <input type="checkbox" style="text-align: center"
-                                                            id="op3" value="3" name="color[]">
-                                                        <div style="background-color: white" class="color"></div>
+
+                                                    <div id="gal">
+                                                        @foreach ($gallery_images as $image)
+                                                            <figure>
+                                                                <img src="{{ asset('backend/upload/' . $image) }}"
+                                                                    alt="Image"
+                                                                    style="width: 100px; height: 100px">
+                                                            </figure>
+                                                        @endforeach
                                                     </div>
 
                                                 </div>
-                                                <h4 class="right-text"><b>Menu</b></h4>
-                                                <select id="cate" name="cate"
-                                                    style="margin-top: 10px, width: 195px; border-radius: 15px;">
-                                                    <option value="" name="cate" disabled selected>Categories
-                                                    </option>
-                                                    <option value="1" name="cate"
-                                                        {{ $edit_value->category_id == 1 ? 'selected' : '' }}>Dry
-                                                        Indredients
-                                                    </option>
-                                                    <option value="2" name="cate"
-                                                        {{ $edit_value->category_id == 2 ? 'selected' : '' }}>Wet
-                                                        Indredients
-                                                    </option>
-                                                    <option value="3" name="cate"
-                                                        {{ $edit_value->category_id == 3 ? 'selected' : '' }}>Baking
-                                                        Tools
-                                                    </option>
-                                                    <option value="4" name="cate"
-                                                        {{ $edit_value->category_id == 4 ? 'selected' : '' }}>Cooking
-                                                        Utensiles
-                                                    </option>
-                                                    <option value="5" name="cate"
-                                                        {{ $edit_value->category_id == 5 ? 'selected' : '' }}>Bar Tool
-                                                    </option>
-                                                    <option value="6" name="cate"
-                                                        {{ $edit_value->category_id == 6 ? 'selected' : '' }}>Bar
-                                                        Ingredients
-                                                    </option>
-                                                </select>
-                                                <h4 class="right-text"><b>Tag</b></h4>
-                                                <select id="tag" name="tag"
-                                                    style="margin-top: 10px; width: 195px; border-radius: 15px; margin-bottom: 30px;">
-                                                    <option value="" name="tag" disabled selected>Tag
-                                                    </option>
-                                                </select>
 
-                                            </div>
+                                                <div>
+                                                    <h4 class="right-text"><b>Color</b></h4>
 
-                                    </section>
+                                                    <div class="cont">
+                                                        <div class="black">
+                                                            <input type="checkbox" style="text-align: center"
+                                                                id="op1" value="1" name="color[]"
+                                                                class="color-check"
+                                                                {{ in_array('1', $selected_colors) ? 'checked' : '' }}>
+                                                            <div style="background-color: black" class="color">
+                                                            </div>
+                                                        </div>
+                                                        <div class="yellow">
+                                                            <input type="checkbox" style="text-align: center"
+                                                                id="op2" value="2" name="color[]"
+                                                                class="color-check"
+                                                                {{ in_array('2', $selected_colors) ? 'checked' : '' }}>
+                                                            <div style="background-color: yellow" class="color">
+                                                            </div>
+                                                        </div>
+                                                        <div class="pink">
+                                                            <input type="checkbox" style="text-align: center"
+                                                                id="op3" value="3" name="color[]"
+                                                                class="color-check"
+                                                                {{ in_array('3', $selected_colors) ? 'checked' : '' }}>
+                                                            <div style="background-color: pink" class="color">
+                                                            </div>
+                                                        </div>
+                                                        <div class="grey">
+                                                            <input type="checkbox" style="text-align: center"
+                                                                id="op4" value="4" name="color[]"
+                                                                class="color-check"
+                                                                {{ in_array('4', $selected_colors) ? 'checked' : '' }}>
+                                                            <div style="background-color: grey" class="color">
+                                                            </div>
+                                                        </div>
+                                                        <div class="blue">
+                                                            <input type="checkbox" style="text-align: center"
+                                                                id="op5" value="5" name="color[]"
+                                                                class="color-check"
+                                                                {{ in_array('5', $selected_colors) ? 'checked' : '' }}>
+                                                            <div style="background-color: blue" class="color">
+                                                            </div>
+                                                        </div>
+                                                        <div class="green">
+                                                            <input type="checkbox" style="text-align: center"
+                                                                id="op6" value="6" name="color[]"
+                                                                class="color-check"
+                                                                {{ in_array('6', $selected_colors) ? 'checked' : '' }}>
+                                                            <div style="background-color: green" class="color">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h4 class="right-text"><b>Menu</b></h4>
+                                                    <select id="cate" name="cate"
+                                                        style="margin-top: 10px, width: 195px; border-radius: 15px;">
+                                                        <option value="" name="cate" disabled selected>
+                                                            Categories
+                                                        </option>
+                                                        <option value="1" name="cate"
+                                                            {{ $edit_value->category_id == 1 ? 'selected' : '' }}>
+                                                            Dry
+                                                            Indredients
+                                                        </option>
+                                                        <option value="2" name="cate"
+                                                            {{ $edit_value->category_id == 2 ? 'selected' : '' }}>
+                                                            Wet
+                                                            Indredients
+                                                        </option>
+                                                        <option value="3" name="cate"
+                                                            {{ $edit_value->category_id == 3 ? 'selected' : '' }}>
+                                                            Baking
+                                                            Tools
+                                                        </option>
+                                                        <option value="4" name="cate"
+                                                            {{ $edit_value->category_id == 4 ? 'selected' : '' }}>
+                                                            Cooking
+                                                            Utensiles
+                                                        </option>
+                                                        <option value="5" name="cate"
+                                                            {{ $edit_value->category_id == 5 ? 'selected' : '' }}>
+                                                            Bar
+                                                            Tool
+                                                        </option>
+                                                        <option value="6" name="cate"
+                                                            {{ $edit_value->category_id == 6 ? 'selected' : '' }}>
+                                                            Bar
+                                                            Ingredients
+                                                        </option>
+                                                    </select>
+                                                    <h4 class="right-text"><b>Tag</b></h4>
+                                                    <select id="tag" name="tag"
+                                                        style="margin-top: 10px; width: 195px; border-radius: 15px; margin-bottom: 30px;">
+                                                        <option value="" name="tag" disabled selected>
+                                                            Tag
+                                                        </option>
+                                                    </select>
+
+                                                </div>
+
+                                        </section>
+                                    </div>
                                 </div>
+
+
+                                <!-- page end-->
                             </div>
-
-
-                            <!-- page end-->
-                        </div>
-
-                    </form>
+                            @php
+                                $counted = true;
+                            @endphp
+                        </form>
+                    @endif
                 @endforeach
-
             </section>
         </section>
 
@@ -264,7 +342,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         reader.onload = function(e) {
             var preview = document.getElementById("main-img");
             preview.innerHTML = '<img src="' + e.target.result +
-                '" style="width: 200px; margin-top:20px; height: 200px; border-radius: 15px; border: 1px dashed #282828;">';
+                '"style="width: 200px; margin-top:20px; height: 200px; border-radius: 15px; border: 1px dashed #282828;">';
         };
         reader.readAsDataURL(this.files[0]);
     });
@@ -278,7 +356,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     //     };
     //     reader.readAsDataURL(this.files[0]);
     // });
-    function gallarypreview() {
+    function gallerypreview() {
         let fileinput = document.getElementById('gallery');
         let display = document.getElementById('gal');
         display.innerHTML = ''; // Clear previous content
@@ -297,58 +375,78 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             reader.readAsDataURL(i);
         }
     }
+    document.querySelectorAll('.color-check').forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            var form = this.closest('form');
+            var formData = new FormData(form);
+
+            // Send AJAX request to update the database
+            fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle response if needed
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    });
     const tagOptions = {
         "1": [{
-                value: "1",
+                value: "7",
                 text: "Flour"
             },
             {
-                value: "2",
-                text: "Baking Soda"
+                value: "8",
+                text: "Yeast"
             }
         ],
         "2": [{
-                value: "3",
+                value: "9",
                 text: "Milk"
             },
             {
-                value: "4",
-                text: "Butter"
+                value: "10",
+                text: "Whipping cream"
             }
         ],
         "3": [{
-                value: "5",
-                text: "Eggs Beater"
+                value: "11",
+                text: "Cake mold"
             },
             {
-                value: "6",
-                text: "Mold"
+                value: "12",
+                text: "Electric mixer"
             }
         ],
         "4": [{
-                value: "7",
-                text: "Stainless Steel Pot Set"
+                value: "1",
+                text: "Stainless steel tool"
             },
             {
-                value: "8",
-                text: "Kitchen Knife Set"
+                value: "2",
+                text: "Kitchen knife set"
             }
         ],
         "5": [{
-                value: "9",
+                value: "3",
                 text: "Coffee Foam Maker"
             },
             {
-                value: "10",
+                value: "4",
                 text: "Measuring Cup"
             }
         ],
         "6": [{
-                value: "11",
+                value: "5",
                 text: "Tea"
             },
             {
-                value: "12",
+                value: "6",
                 text: "Syrup"
             }
         ]
@@ -393,6 +491,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
     }
     window.onload = setInitialTags;
+
+    // // Gọi hàm kiểm tra khi tài liệu đã được tải
+    // window.onload = checkColor;
 </script>
 
 </html>
