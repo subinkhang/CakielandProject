@@ -81,13 +81,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
         const subtotal = products[i].price * products[i].quantity;
         const price = parseFloat(products[i].price);
         console.log(price);
+        // let a = `public/public/backend/upload/${products[i].image}`;
+        // public\public\backend\upload
         newRow.innerHTML = ` <th scope="row">
     </th>
     <td class="col-2 text-center">${i + 1}</td>
     <td class="col-8">
         <div class="row pr-list-co">
             <div class="col-3">
-                <img src="${products[i].image}" class="img-fluid">
+            <img src="public/backend/upload/${products[i].image}" class="img-fluid">
             </div>
             <div class="col-9 row">
                 <h6>${products[i].name}</h6>
@@ -97,7 +99,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
                             value="${products[i].quantity}"></span>
                     <button id="btn-plus" class="btn-pluss" type="button" onclick="increaseQuantity(${i})">+</button>
                 </div>
-
                 <h6 class="price" name="price[${i}]" id="sub${i}">${price.toFixed(
             2
         )}</h6>

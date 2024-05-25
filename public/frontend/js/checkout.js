@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         newRow.id = `item${i}`;
         newRow.innerHTML = ` <tr>
     <td style="height: 150px; width: 170px;">
-        <img src="{{ asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg') }}"
+        <img src="public/backend/upload/${cartData.products[i].image}"
             class="img-fluid" style="height: 150px; width: 150px;">
     </td>
     <td>

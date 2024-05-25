@@ -5,9 +5,6 @@
     <livewire:breadcrumb-banner />
     <!-----------------LEFT---------------------------->
     <div class="container" id="all">
-        <pre>
-            {{ var_dump(session('productData')) }}
-        </pre>
         <div class="row">
             <div class="container">
                 <div class="row">
@@ -153,9 +150,6 @@
                                 </div>
                             </div>
                         </form>
-
-
-
                     </div>
                 </div>
             </div>

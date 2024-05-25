@@ -709,3 +709,6 @@ to {bottom: 0; opacity: 0;}
 .btn-link:hover {
     color: #FBC31C;
 }
+.text-hidden{
+    display: none;
+}
