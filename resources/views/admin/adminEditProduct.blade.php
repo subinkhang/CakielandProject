@@ -397,56 +397,56 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
     const tagOptions = {
         "1": [{
-                value: "1",
+                value: "7",
                 text: "Flour"
             },
             {
-                value: "2",
-                text: "Baking Soda"
+                value: "8",
+                text: "Yeast"
             }
         ],
         "2": [{
-                value: "3",
+                value: "9",
                 text: "Milk"
             },
             {
-                value: "4",
-                text: "Butter"
+                value: "10",
+                text: "Whipping cream"
             }
         ],
         "3": [{
-                value: "5",
-                text: "Eggs Beater"
+                value: "11",
+                text: "Cake mold"
             },
             {
-                value: "6",
-                text: "Mold"
+                value: "12",
+                text: "Electric mixer"
             }
         ],
         "4": [{
-                value: "7",
-                text: "Stainless Steel Pot Set"
+                value: "1",
+                text: "Stainless steel tool"
             },
             {
-                value: "8",
-                text: "Kitchen Knife Set"
+                value: "2",
+                text: "Kitchen knife set"
             }
         ],
         "5": [{
-                value: "9",
+                value: "3",
                 text: "Coffee Foam Maker"
             },
             {
-                value: "10",
+                value: "4",
                 text: "Measuring Cup"
             }
         ],
         "6": [{
-                value: "11",
+                value: "5",
                 text: "Tea"
             },
             {
-                value: "12",
+                value: "6",
                 text: "Syrup"
             }
         ]
