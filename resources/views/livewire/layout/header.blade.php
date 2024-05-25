@@ -27,7 +27,7 @@ new class extends Component {
     </head>
 
     <body>
-        <div class="container-fluid nav_top-header">
+        <div class="container-fluid nav_top nav_top-header">
             <div class="container">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="logo-header">
@@ -40,6 +40,7 @@ new class extends Component {
                         <form action="{{ URL::to('search-product-list') }}" method="POST" class="d-flex">
                             {{ csrf_field() }}
                             <input type="text" class="form-control search-input-header" placeholder="Search products..." id="searchInput" name="keywords_submit">
+                            <div class="suggestions text_p1" style="display: none;" id="suggestions"></div>
                             <button type="submit" class="btn_search-header" name="search_item">Search</button>
                         </form>
                     </div>
