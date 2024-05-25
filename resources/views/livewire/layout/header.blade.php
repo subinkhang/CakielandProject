@@ -22,9 +22,9 @@ new class extends Component {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="{{ asset('frontend/images/Logo Title.png') }}">
         <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('frontend/css/homepage.css') }}">
         <link rel="stylesheet" href="{{ 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css' }}">
+        <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -61,7 +61,7 @@ new class extends Component {
                                 <div><a href="{{ url('/product-list') }}">Product</a></div>
                             </li>
                             <li class="page_item ">
-                                <div><a href="#">Forum</a></div>
+                                <div><a href="https://www.cheftalk.com/forums/">Forum</a></div>
                             </li>
                             <li class="cart_item">
                                 <a href="{{ url('/cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -69,31 +69,18 @@ new class extends Component {
                                     <p>2</p>
                                 </div>
                             </li>
-
                             <li class="user_item">
-                                <x-dropdown width="48">
+                                <x-dropdown>
                                     <x-slot name="trigger">
                                         @if (auth()->check())
-                                            <div class="user-trigger">
-                                                <img src="{{ asset('frontend/images/homepage/image 25 (2).png') }}"
-                                                    alt="User Avatar" class="avatar">
-                                                <span class="username">
-                                                    {{ auth()->user()->name }}
-                                                </span>
-                                            </div>
+                                            <i alt="User Avatar" class="fa-solid fa-user"></i>
                                         @else
-                                            <div class="user-trigger">
-                                                <img src="{{ asset('frontend/images/homepage/image 25 (2).png') }}"
-                                                    alt="User Avatar" class="avatar">
-                                                <span class="username">
-                                                    Guest
-                                                </span>
-                                            </div>
+                                            <i alt="User Avatar" class="fa-solid fa-user"></i>
                                         @endif
                                     </x-slot>
-
                                     <x-slot name="content">
                                         @if (auth()->check())
+                                            <div class="haha">
                                             <!-- Sử dụng button thay vì link để giữ nguyên style và hành vi nhất quán -->
                                             <button onclick="window.location='{{ url('/account') }}'"
                                                 class="dropdown-item">
@@ -104,6 +91,7 @@ new class extends Component {
                                             <button wire:click="logout" class="dropdown-item">
                                                 {{ __('Log Out') }}
                                             </button>
+                                            </div>
                                         @else
                                             <button onclick="window.location='{{ url('/login') }}'"
                                                 class="dropdown-item">
