@@ -37,8 +37,7 @@ new #[Layout('layouts.guest')] class extends Component
         <link rel="stylesheet" href="{{ asset('frontend/css/login.css') }}">
     </head>
 
-    <form wire:submit="login">
-        
+    <form wire:submit="resetPassword">
         <body>
             <div class="container">
                 <div class="row">
@@ -52,80 +51,50 @@ new #[Layout('layouts.guest')] class extends Component
                                 <div class="col-2"></div>
                                 <div class="col-2"></div>
                                 <div class="col-8 parasignin">
-                                    <p>Please sign in to continue!</p>
+                                    <p>Create new password!</p>
                                 </div>
+                                <p></p>
                                 <div class="col-2"></div>
                             </div>
                             <div class="row">
                                 <div class="col-2"></div>
                                 <div class="col-6" class="email_box">
-                                    {{-- <input id="Email" type="text" placeholder="Email/Phone number" class="box1signin">
-                                    <br> --}}
-                                    {{-- <div> --}}
-                                        <x-input-label for="email" :value="__()" />
-                                        <x-text-input wire:model="form.email" id="email" class="box1signin" type="email" name="email" placeholder="Email" required autofocus autocomplete="username" />
-                                        {{-- <x-input-error :messages="$errors->get('form.email')" class="mt-2" /> --}}
-                                    {{-- </div> --}}
+                                    <x-text-input wire:model="email" id="email" class="box1signin" type="email" placeholder="Email" name="email" required autofocus autocomplete="username" />
+                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-2"></div>
                                 <div class="col-2"></div>
                                 <div class="col-6">
-                                    {{-- <input id="Password" type="password" placeholder="Password" class="box2signin"> --}}
-                                    {{-- <div class="mt-4"> --}}
-                                        <x-input-label for="password" :value="__()" />
-                            
-                                        <x-text-input wire:model="form.password" id="password" class="box2signin" type="password" placeholder="Password" name="password" required autocomplete="current-password" />
-                            
-                                        <x-input-error :messages="$errors->get('form.password')" class="error" />
-                                        <x-input-error :messages="$errors->get('form.email')" class="error" />
-                                    {{-- </div> --}}
-                            
+                                    <x-input-label for="password" :value="__('')" />
+                                    <x-text-input wire:model="password" id="password" class="box2signin" type="password" name="password" placeholder="Password" required autocomplete="new-password" />
+                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                 </div>
                                 <div class="col-2 box_eye">
-                                    <i class="fa-regular fa-eye"onclick="togglePasswordVisibility(this)"></i></div>
+                                    <i class="fa-regular fa-eye"onclick="togglePasswordVisibility(this)"></i>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-2"></div>
+                                <div class="col-6">
+                                    <x-input-label for="password_confirmation" :value="__('')" />
+                                    <x-text-input wire:model="password_confirmation" id="password_confirmation" class="box2signin" placeholder="Confirm Password" 
+                                    type="password"
+                                    name="password_confirmation" required autocomplete="new-password" />
+                                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                </div>
+                                <div class="col-2 box_eye">
+                                    <i class="fa-regular fa-eye"onclick="togglePasswordVisibility(this)"></i>
+                                </div>
                                 <div class="col-2"></div>
                             </div>
                             <div class="row">
                                 <div class="col-4"></div>
                                 <div class="col-4">
-                                    <button class="buttonsignin">Login</button>
+                                    <button class="buttonsignin">
+                                        {{ __('Login') }}
+                                    </button>
                                 </div>
                                 <div class="col-4"></div>
-                            </div>
-                            <div class="row linepw">
-                                <div class="col-2"></div>
-                                <div class="col-4 checksignin">
-                                    {{-- <p><input type="checkbox" name="Save" id="saveLogin" onchange="saveLogin(this)"> Save
-                                        Login</p> --}}
-                                        
-                                            <label for="remember" class="inline-flex items-center">
-                                                <input wire:model="form.remember" id="remember" type="checkbox"
-                                                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember" >
-                                                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                                            </label>
-                                </div>
-                                <div class="col-4 getpw">
-                                    {{-- <p>Forget Password</p> --}}
-                                    @if (Route::has('password.request'))
-                                        <a
-                                            href="{{ route('password.request') }}" wire:navigate>
-                                            {{ __('Forgot your password?') }}
-                                        </a>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="row linksu">
-                                <div class="col-2"></div>
-                                <div class="col-8 linksu2">
-                                    {{-- <p>No account yet?</p>
-                                    <a href="../Signup/signup.html" class="p2">Sign up now!</a> --}}
-                                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                        href="{{ route('register') }}">
-                                        {{ __('Register!') }}
-                                    </a>
-                                </div>
-                                <div class="col-2"></div>
                             </div>
                         </form>
                     </div>
