@@ -82,3 +82,39 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// document.addEventListener('DOMContentLoaded', function() {
+//     const mainMenuTitles = document.querySelectorAll('.mainmenu_title');
+
+//     mainMenuTitles.forEach(title => {
+//         title.addEventListener('click', function() {
+//             const menuCon = this.querySelector('.menucon');
+//             const arrow = this.querySelector('.arrow');
+
+//             if (menuCon.style.maxHeight) {
+//                 menuCon.style.maxHeight = null;
+//                 arrow.style.transform = 'rotate(45deg)';
+//             } else {
+//                 menuCon.style.maxHeight = menuCon.scrollHeight + 'px';
+//                 arrow.style.transform = 'rotate(-45deg)';
+//             }
+//         });
+//     });
+// });
+document.addEventListener('DOMContentLoaded', function() {
+    const mainMenuTitles = document.querySelectorAll('.mainmenu_title');
+
+    mainMenuTitles.forEach(title => {
+        title.addEventListener('click', function() {
+            const menuCon = this.querySelector('.menucon');
+            const arrow = this.querySelector('.arrow');
+
+            if (menuCon.style.maxHeight) {
+                menuCon.style.maxHeight = null;
+                arrow.style.transform = 'rotate(45deg)';
+            } else {
+                menuCon.style.maxHeight = menuCon.scrollHeight + 'px';
+                arrow.style.transform = 'rotate(-45deg)';
+            }
+        });
+    });
+});
