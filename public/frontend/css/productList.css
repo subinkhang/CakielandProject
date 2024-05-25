@@ -313,107 +313,177 @@ color: #FBC31C;
 .text-product{
 color: #080808;
 }
-.getintouch {
-/* background-size: 100%;
-margin-top: 50px;
-margin-bottom: 50px; */
+
+.getintouch{
+    background-position: center;
+    background-size:100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.getintouch_info{
+    padding: 70px;
+    text-align: center;
+}
+.getintouch_search{
+    width: 100%;
+    height: 43px;
+    color: #666666;
+    height: 45px;
+    border: none;
+    padding: 0;
+    background-color: #fdfdfd;
+    border-radius: 20px;
+}
+.getintouch_search input{
+    color: #666666;
+    height: 45px;
+    border: none;
+    padding: 0;
+    background: none;
+}
+.btn_submit{
+    background-color: #080808;
+    color: #FBC31C;
+    height: 38px;
+    padding: 0;
+    border-radius: 20px;
+    width: 100%;
+    border: none;
+    margin: 2px;
+}
+.getintouch_search .col-4
+{
+    padding-right: 5px;
+}
+.getintouch_search{
+    margin-top: 10px;
+    border: 1px solid #666666;
+    border-radius: 22px;
+    height: 44px;
 }
 
-.getintouch_info {
-padding: 70px;
-text-align: center;
+  .image_getintouch {
+    width: 2000px;
+    height: 370px;
+    margin-bottom: 160px;
+    margin-top: 100px;
 }
 
-.getintouch_search {
-width: 100%;
-height: 43px;
-color: #666666;
-height: 45px;
-border: none;
-padding: 0;
-background-color: #fdfdfd;
-border-radius: 20px;
-}
-
-.getintouch_search input {
-color: #666666;
-height: 45px;
-border: none;
-padding: 0;
-background: none;
-}
-
-.btn_submit {
-background-color: #FBC31C;
-color: #fdfdfd;
-height: 38px;
-padding: 0;
-border-radius: 20px;
-width: 100%;
-border: none;
-margin: 2px;
-}
-
-.getintouch_search .col-4 {
-padding-right: 5px;
-}
-
-.getintouch_search {
-margin-top: 10px;
-border: 1px solid #666666;
-border-radius: 22px;
-height: 44px;
+.the_image {
+    width: 100%;
+    height: 360px;
+    /* object-fit: cover; */
 }
 
 /* ------------------------------------------------- */
-
-.mainmenu a {
-    display: block;
+.mainmenu a.category-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     text-decoration: none;
     padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 10px; /* Increase border-radius for main menu items */
 }
+
 .mainmenu li a {
     color: #666;
+    transition: color 0.3s ease;
 }
+
 .mainmenu li ul li a {
     color: #666;
+    transition: color 0.3s ease;
+    border-radius: 8px; /* Increase border-radius for sub-category items */
 }
+
+/* Hover effects */
 .mainmenu a:hover {
-    background-color: #C5C5C5;
+    background-color: #fbd848; /* Soft yellow background */
+    color: #333; /* Darker text for better contrast */
+    border-radius: 10px; /* Ensure border-radius is applied on hover */
 }
-.mainmenu li:hover .menucon {
-    display: block;
-    max-height: 200px;
-}
+
 .submenu a:hover {
-    background-color: #666;
+    background-color: #fbd848; /* Soft yellow background */
+    border-radius: 8px; /* Ensure border-radius is applied on hover */
 }
+
+/* Submenu styles */
 .menucon {
-    overflow: hidden;
-    max-height: 0;
+    display: none;
     list-style: none;
+    transition: max-height 0.5s ease, background-color 0.3s ease; /* Smooth transition */
 }
-.menucon li:hover {
+
+.mainmenu li.active .menucon {
     display: block;
-    max-height: 200px;
 }
+
+/* Arrow styles */
+.arrow {
+    transition: transform 0.3s ease; /* Smooth transition for rotation */
+}
+
+/* Menu item padding */
 .menu_title {
     padding-left: 35px;
 }
+
+/* Main menu cursor */
 .mainmenu {
     cursor: pointer;
 }
+
+/* Submenu text color */
 .menucon {
     color: #666;
 }
+
+/* Active state styles */
 .mainmenu a.active,
 .mainmenu_title.active > a {
     color: #FBC31C;
     font-weight: bold;
+    border-radius: 10px; /* Ensure border-radius is applied on active state */
 }
+
 .menucon li a.active {
     color: #FBC31C;
     font-weight: bold;
+    border-radius: 8px; /* Ensure border-radius is applied on active state */
+}
+
+/* Arrow styles */
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #666;
+    border-bottom: 2px solid #666;
+    transform: rotate(45deg);
+    margin-left: auto; /* Push arrow to the far right */
+}
+.mainmenu li.active .arrow {
+    transform: rotate(-45deg); /* Rotate 90 degrees when active */
+}
+/* Sub-category background width */
+.menucon li a {
+    padding: 10px;
+    background-color: #f9f9f9; /* Lighter background for sub-category */
+    /* border-left: 4px solid #fbd848; Highlight border to indicate sub-category */
+    margin-left: 20px; /* Indentation for sub-category */
+    border-radius: 8px; /* Ensure border-radius is applied */
+}
+
+.menucon li a:hover {
+    background-color: #f2f2f2; /* Slightly darker on hover for sub-category */
+    border-radius: 8px; /* Ensure border-radius is applied on hover */
+}
+
+.menucon li {
+    margin-bottom: 5px; /* Add margin between sub-category items */
 }
 
 /* ---------------------------------------------------- */
@@ -528,7 +598,7 @@ color: #666666;
 }
 
 .image_getintouch {
-width: 1185px;
+width: 1300px;
 }
 
 /* --------------filter brand------- */
@@ -583,9 +653,8 @@ to {bottom: 0; opacity: 0;}
     display: block;
     width: 100%;
     padding: 8px 16px;
-    border: 2px solid #f3e0d2; /* Soft border color */
+    border: 2px solid #FBC31C;
     border-radius: 20px; /* Rounded corners */
-    background-image: linear-gradient(to right, #f9f0e3, #f0c8a0); /* Gradient background */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
     cursor: pointer;
     font-size: 16px;
@@ -595,7 +664,6 @@ to {bottom: 0; opacity: 0;}
 
 .select-custom:hover, .select-custom:focus {
     box-shadow: 0 8px 16px rgba(178, 150, 99, 0.5); /* Enhanced shadow on hover/focus */
-    background-image: linear-gradient(to right, #f0c8a0, #f9f0e3); /* Reverse gradient for visual effect */
 }
 
 /* Style adjustments for options */
@@ -614,12 +682,12 @@ to {bottom: 0; opacity: 0;}
 }
 
 /* Style for the label */
-label {
+/* label {
     font-weight: bold;
     color: #836953;
     margin-bottom: 8px;
     display: block;
-}
+} */
 
 /* --------------FilterbyBrand---------------- */
 .hidden {
@@ -635,7 +703,7 @@ label {
 }
 .btn-link {
     text-decoration: none;
-    color: #666; 
+    /* color: #666;  */
     font-size: 14px;
 }
 .btn-link:hover {

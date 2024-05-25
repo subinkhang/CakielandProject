@@ -272,8 +272,7 @@
                                 action="{{ URL::to('/save-email') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="col-8">
-                                    <input type="text" id="email" name="email" class="w-100 text_p1"
-                                        placeholder="Your email address...">
+                                    <input type="text" id="email" name="email" class="w-100 text_p1" placeholder="Your email address...">
                                 </div>
                                 <div class="col-4">
                                     <button type="button" class="btn_submit"
