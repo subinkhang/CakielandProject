@@ -15,8 +15,8 @@
                                     techniques
                                     of
                                     the journey to creating a perfect cake is filled with delightful steps.</p>
-                                <button class="text_overlay_btn text_p1">Buy now</button>
-                                <button class="text_overlay_btn text_p1">Contact us</button>
+                                <button class="text_overlay_btn text_p1" onclick="window.location.href='{{ url('/product-list') }}';">Buy now</button>
+                                <button class="text_overlay_btn text_p1" onclick="window.location.href='{{ url('/about-us') }}';">Contact us</button>
                             </div>
                             <div class="col-6"></div>
                         </div>
@@ -36,8 +36,8 @@
                                     dry
                                     and
                                     wet ingredients, ensuring proper aeration and avoiding overmixing.</p>
-                                <button class="text_overlay_btn text_p1">Buy now</button>
-                                <button class="text_overlay_btn text_p1">Contact us</button>
+                                <button class="text_overlay_btn text_p1" onclick="window.location.href='{{ url('/product-list') }}';">Buy now</button>
+                                <button class="text_overlay_btn text_p1" onclick="window.location.href='{{ url('/about-us') }}';">Contact us</button>
                             </div>
                             <div class="col-7"></div>
                         </div>
@@ -112,52 +112,59 @@
         <p class="text_h1 categories_title">CATEGORIES</p>
         <div class="row">
             <div class="col-2">
-                <div class="categories_item">
-                    <img src="{{ asset('frontend/images/homepage/image 25.png') }}" alt="" class="img-fluid">
-                    <p class="h6">DRY INGREDIENTS</p>
-                </div>
+                <a href="{{ url('/category1') }}" class="categories_link">
+                    <div class="categories_item">
+                        <img src="{{ asset('frontend/images/homepage/image 25.png') }}" alt="" class="img-fluid">
+                        <p class="h6">DRY INGREDIENTS</p>
+                    </div>
+                </a>
             </div>
             <div class="col-2">
-                <div class="categories_item">
-                    <img src="{{ asset('frontend/images/homepage/image 25 (1).png') }}" alt=""
-                        class="img-fluid">
-                    <p class="h6">wet ingredients</p>
-                </div>
+                <a href="{{ url('/category2') }}" class="categories_link">
+                    <div class="categories_item">
+                        <img src="{{ asset('frontend/images/homepage/image 25 (1).png') }}" alt="" class="img-fluid">
+                        <p class="h6">wet ingredients</p>
+                    </div>
+                </a>
             </div>
             <div class="col-2">
-                <div class="categories_item">
-                    <img src="{{ asset('frontend/images/homepage/image 25 (2).png') }}" alt=""
-                        class="img-fluid">
-                    <p class="h6">baking tools</p>
-                </div>
+                <a href="{{ url('/category3') }}" class="categories_link">
+                    <div class="categories_item">
+                        <img src="{{ asset('frontend/images/homepage/image 25 (2).png') }}" alt="" class="img-fluid">
+                        <p class="h6">baking tools</p>
+                    </div>
+                </a>
             </div>
             <div class="col-2">
-                <div class="categories_item">
-                    <img src="{{ asset('frontend/images/homepage/image 25 (3).png') }}" alt=""
-                        class="img-fluid">
-                    <p class="h6">Cooking Utensils</p>
-                </div>
+                <a href="{{ url('/category4') }}" class="categories_link">
+                    <div class="categories_item">
+                        <img src="{{ asset('frontend/images/homepage/image 25 (3).png') }}" alt="" class="img-fluid">
+                        <p class="h6">Cooking Utensils</p>
+                    </div>
+                </a>
             </div>
             <div class="col-2">
-                <div class="categories_item">
-                    <img src="{{ asset('frontend/images/homepage/image 25 (4).pn') }}g" alt=""
-                        class="img-fluid">
-                    <p class="h6">Bar Tools</p>
-                </div>
+                <a href="{{ url('/category5') }}" class="categories_link">
+                    <div class="categories_item">
+                        <img src="{{ asset('frontend/images/homepage/image 25 (4).png') }}" alt="" class="img-fluid">
+                        <p class="h6">Bar Tools</p>
+                    </div>
+                </a>
             </div>
             <div class="col-2">
-                <div class="categories_item">
-                    <img src="{{ asset('frontend/images/homepage/image 25 (5).png') }}" alt=""
-                        class="img-fluid">
-                    <p class="h6">Bar Ingredients</p>
-                </div>
+                <a href="{{ url('/category6') }}" class="categories_link">
+                    <div class="categories_item">
+                        <img src="{{ asset('frontend/images/homepage/image 25 (5).png') }}" alt="" class="img-fluid">
+                        <p class="h6">Bar Ingredients</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 
     <div class="marquee">
-        <marquee direction="right">Download our new app today! Dont miss our mobile-only offers and shop with Android
-            Play.
+        <marquee direction="right">Here, we are passionate about the art of baking and believe
+             that the right tools can elevate your culinary creations.
         </marquee>
     </div>
 
@@ -169,13 +176,12 @@
                 <div class="col-3">
                     <div class="pr-i3">
                         <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
-                            <img src="{{ asset('frontend/images/product.png') }}" alt=""
-                                class="w-100 productList_image">
+                            <img src="{{ asset('public/backend/upload/' . $list_product_user->thumbnail) }}" alt="" class="w-100 productList_image">
                         </a>
                         <span class="btn_add"><i class="fa-solid fa-circle-plus"
                                 onclick="addToCart(this)"></i></span>
                         <div class="container_information">
-                            <a href="#" class="pr-i2-name">{{ $list_product_user->name }}</a>
+                            <a href="#" class="pr-i2-name">{{ strlen($list_product_user->name) > 30 ? substr($list_product_user->name, 0, 30).'...' : $list_product_user->name }}</a>
                             <ul class="pr-i2-rating d-flex">
                                 <li><i class="fa-solid fa-star"></i></li>
                                 <li><i class="fa-solid fa-star"></i></li>
@@ -184,14 +190,14 @@
                                 <li><i class="fa-solid fa-star"></i></li>
                             </ul>
                             <div class="text_product">
-                                {{ $list_product_user->description }}
+                                {{ strlen($list_product_user->description) > 115 ? substr($list_product_user->description, 0, 115).'...' : $list_product_user->description }}
                             </div>
                             <div class="row productList_price">
                                 <div class="col-6">
-                                    <p class="old-price">{{ $list_product_user->fake_price }}</p>
+                                    <p class="old-price">${{ $list_product_user->fake_price }}</p>
                                 </div>
                                 <div class="col-6 text-end">
-                                    <p class="new-price">{{ $list_product_user->price }}</p>
+                                    <p class="new-price">${{ $list_product_user->price }}</p>
                                 </div>
                             </div>
                         </div>
@@ -210,11 +216,11 @@
                         to flourish. From simple frosting and sprinkles to elaborate designs and piped
                         decorations, the possibilities are endless. The joy of decorating lies in expressing
                         one's artistic flair and transforming a simple cake into a masterpiece.</p>
-                    <button class="banner_btn">Discuss now</button>
+                    <button class="banner_btn" onclick="window.location.href='https://www.cheftalk.com/forums/';">Discuss now</button>
                 </div>
                 <div class="col-6">
                     <img src="{{ asset('frontend/images/homepage/Rectangle 167.png') }}" alt=""
-                        class="img-fluid">
+                        class="img-fluid banner_img">
                 </div>
             </div>
         </div>
@@ -228,7 +234,7 @@
                     style="background-image: url('{{ '/frontend/images/homepage/Untitled_design.png' }}');">
                     <p>BAKING TIPS</p>
                     <h3>Make Baking Powder</h3>
-                    <button class="btn-shopnow bg-xanh text-white">Discuss Now</button>
+                    <button class="btn-shopnow" onclick="window.location.href='https://www.cheftalk.com/forums/';">Discuss now</button>
                 </div>
             </div>
             <div class="col-4">
@@ -236,7 +242,7 @@
                     style="background-image: url('{{ '/frontend/images/homepage/Untitled_design.png' }}');">
                     <p>COOKING TIPS</p>
                     <h3>Make Baking Powder</h3>
-                    <button class="btn-shopnow bg-xanh text-white">Discuss Now</button>
+                    <button class="btn-shopnow" onclick="window.location.href='https://www.cheftalk.com/forums/';">Discuss now</button>
                 </div>
             </div>
             <div class="col-4">
@@ -244,7 +250,7 @@
                     style="background-image: url('{{ '/frontend/images/homepage/Untitled_design.png' }}');">
                     <p>RECOMMEND TIPS</p>
                     <h3>Make Baking Powder</h3>
-                    <button class="btn-shopnow bg-xanh text-white">Discuss Now</button>
+                    <button class="btn-shopnow" onclick="window.location.href='https://www.cheftalk.com/forums/';">Discuss now</button>
                 </div>
             </div>
         </div>

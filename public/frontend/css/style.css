@@ -117,6 +117,56 @@ body, button, input{
     color: #080808;
     line-height: 70px;
 }
+.user_item{
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+}
+.user_item i{
+    font-size: 22px;
+    color: #080808;
+    line-height: 70px;
+    margin-top: 0px;
+}
+
+/* Hiển thị dropdown content khi hover */
+.user_item .dropdown:hover .dropdown-content {
+    display: block;
+    text-align: right;
+}
+/* Thêm một chút hiệu ứng cho button */
+.user_item button {
+    border: none;
+    color: #282828;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+/* Hiệu ứng khi hover vào button */
+.user_item button:hover {
+    color: #FBC31C;
+}
+/* Hiệu ứng khi hover vào dropdown link */
+.user_item .dropdown-content a:hover {
+    background-color: black;
+    color: #333;
+}
+
+.dropdown-item {
+    color: #080808;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    width: 120px;
+    top: -100px;
+    color: red;
+    margin-top: -100px;
+}
+
 .page_item a{
     color: #080808;
     line-height: 70px;
@@ -158,4 +208,5 @@ body, button, input{
 }
 
 /* --------------------------- */
+
 
