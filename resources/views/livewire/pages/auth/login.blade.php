@@ -110,7 +110,7 @@ new #[Layout('layouts.guest')] class extends Component
                                     @if (Route::has('password.request'))
                                         <a
                                             href="{{ route('password.request') }}" wire:navigate>
-                                            {{ __('Forgot your password?') }}
+                                            {{ __('Forgot password?') }}
                                         </a>
                                     @endif
                                 </div>
@@ -122,7 +122,7 @@ new #[Layout('layouts.guest')] class extends Component
                                     <a href="../Signup/signup.html" class="p2">Sign up now!</a> --}}
                                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                         href="{{ route('register') }}">
-                                        {{ __('Register!') }}
+                                        {{ __('Sign up now!') }}
                                     </a>
                                 </div>
                                 <div class="col-2"></div>

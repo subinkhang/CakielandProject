@@ -22,7 +22,7 @@ div .formsignup{
 .headingsignup h2{
     color: #080808;
     text-align: center;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 .parasignup{
     color: #666;
@@ -75,12 +75,12 @@ div .linksi{
     margin-top: 20px;
 }
 .linksi2 a{
-    text-decoration: underline;
+
     color: #666;
 }
 .linksi2 a:hover{
     font-weight: bold;
-    font-style: italic;
+    color: #FBC31C;
 }
 .buttonsignup:hover{
     background-color: #080808;
@@ -88,11 +88,9 @@ div .linksi{
 }
 .box_eye i{
     padding-top: 45px;
-    width: auto;
-    height: auto;
+    /* width: auto;
+    height: auto; */
  }
-
-
 
 .error{
     color: red;

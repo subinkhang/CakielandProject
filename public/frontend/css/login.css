@@ -61,7 +61,6 @@ div .linepw{
 }
 .getpw a{
     color: #666;
-    text-decoration: underline;
 }
 .linksu2 a{
     color: #666;
@@ -81,15 +80,15 @@ p{
 }
 .a:hover{
     font-weight: bold;
-    font-style: italic;
+    color: #FBC31C;
 }
 .getpw a:hover{
     font-weight: bold;
-    font-style: italic;
+    color: #FBC31C;
 }
 .linksu2 a:hover{
     font-weight: bold;
-    font-style: italic;
+    color: #FBC31C;
 }
 .box_eye i{
    padding-top: 45px;

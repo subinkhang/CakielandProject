@@ -1,6 +1,6 @@
 const avatarInput = document.getElementById('avatarUpload');
 const avatarPreview = document.getElementById('avatarPreview');
-avatarPreview.src = 'path/to/default-avatar.jpg';
+// avatarPreview.src = 'path/to/default-avatar.jpg';
 
 avatarInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
@@ -99,24 +99,24 @@ function validateDateOfBirth() {
   if (form) {
     form.addEventListener("submit", validateDateOfBirth);
   }
-  document.getElementById('avatarUpload').addEventListener('change', function(event) {
-    const reader = new FileReader();
-    reader.onload = function() {
-        const avatarPreview = document.getElementById('avatarPreview');
-        avatarPreview.src = reader.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-});
+//   document.getElementById('avatarUpload').addEventListener('change', function(event) {
+//     const reader = new FileReader();
+//     reader.onload = function() {
+//         const avatarPreview = document.getElementById('avatarPreview');
+//         avatarPreview.src = reader.result;
+//     };
+//     reader.readAsDataURL(event.target.files[0]);
+// });
 
-function previewAvatar() {
-  var file = document.getElementById('avatarUpload').files[0];
-  var reader = new FileReader();
-  reader.onloadend = function () {
-      document.getElementById('avatarPreview').src = reader.result;
-  }
-  if (file) {
-      reader.readAsDataURL(file);
-  } else {
-      document.getElementById('avatarPreview').src = "";
-  }
-}
+
+// document.getElementById('avatarUpload').addEventListener('change', function(event) {
+//   event.preventDefault()
+//   const file = event.target.files[0];
+//   if (file) {
+//       const reader = new FileReader();
+//       reader.onload = function(e) {
+//           document.getElementById('avatarPreview').src = e.target.result;
+//       }
+//       reader.readAsDataURL(file);
+//   }
+// });
