@@ -336,3 +336,7 @@ body, button, input {
     background-color: #f8f9fa;
     color: #FBC31C;
 }
+
+.no-wrap {
+    white-space: nowrap;
+}

@@ -82,10 +82,10 @@ new class extends Component {
                                             </div>
                                         @else
                                             <div class="dropdown-menu-right-header">
-                                                <button onclick="window.location='{{ url('/login') }}'" class="dropdown-item-header">
+                                                <button onclick="window.location='{{ url('/login') }}'" class="dropdown-item-header no-wrap">
                                                     {{ __('Log In') }}
                                                 </button>
-                                                <button onclick="window.location='{{ url('/register') }}'" class="dropdown-item-header">
+                                                <button onclick="window.location='{{ url('/register') }}'" class="dropdown-item-header no-wrap">
                                                     {{ __('Sign Up') }}
                                                 </button>
                                             </div>
