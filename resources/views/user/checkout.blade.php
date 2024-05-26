@@ -150,6 +150,14 @@
                                 </div>
                             </div>
                         </form>
+                        
+                        <form action="{{ URL::to('/vnpay') }}" method="POST">
+                             @csrf
+                            <button type="submit" name="redirect">VNPAY</button>
+                        </form>
+                        
+
+
                     </div>
                 </div>
             </div>
