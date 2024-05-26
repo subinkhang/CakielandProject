@@ -87,7 +87,7 @@ new #[Layout('layouts.guest')] class extends Component
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-2"></div>
-                                <div class="col-8">
+                                <div class="col-6">
                                     {{-- <input type="text" placeholder="Password" class="box3signup"> --}}
                                     {{-- <div class="mt-4"> --}}
                                         <x-input-label for="password" :value="__()" />
@@ -101,9 +101,11 @@ new #[Layout('layouts.guest')] class extends Component
                                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                     {{-- </div> --}}
                                 </div>
+                                <div class="col-2 box_eye">
+                                    <i class="fa-regular fa-eye" onclick="togglePasswordVisibility(this, 'passwordInput')"></i></div>
                                 <div class="col-2"></div>
                                 <div class="col-2"></div>
-                                <div class="col-8">
+                                <div class="col-6">
                                     {{-- <input type="text" placeholder="Password" class="box3signup"> --}}
                                     {{-- <div class="mt-4"> --}}
                                         <x-input-label for="password_confirmation" :value="__()" />
@@ -115,6 +117,9 @@ new #[Layout('layouts.guest')] class extends Component
                                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                                     {{-- </div> --}}
                                 </div>
+                                <div class="col-2 box_eye">
+                                    <i class="fa-regular fa-eye" onclick="togglePasswordVisibility(this, 'confirmPasswordInput')"></i></div>
+                                <div class="col-2"></div>
                                 <div class="col-2"></div>
                             </div>
                             <div class="row">
@@ -130,7 +135,7 @@ new #[Layout('layouts.guest')] class extends Component
                                     {{-- <p>Have account?</p>
                                     <p class="p1">Sign in now!</p> --}}
                                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}" wire:navigate>
-                                        {{ __('Already registered?') }}
+                                        {{ __('Have an account? Sign in now!') }}
                                     </a>
                                 </div>
                                 <div class="col-2"></div>
@@ -144,5 +149,6 @@ new #[Layout('layouts.guest')] class extends Component
                 </div>
             </div>
         </body>
+        <script src="{{asset('frontend/js/signup.js')}}"></script>
     </form>
 </div>
