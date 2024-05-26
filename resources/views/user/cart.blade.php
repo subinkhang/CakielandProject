@@ -11,20 +11,23 @@
             </div>
             <div class="col-9"></div>
             <!-------------------------LEFT------------------------------>
-            <div class="container">
+            <div class="cont">
                 <div class="row">
                     <div class="col-7">
-                        <div class="container">
+                        <div class="cont">
                             <form>
                                 <table class="table">
-                                    <tr class="text-center">
-                                        <th scope="row"></th>
-                                        <td class="col-2">No.</td>
-                                        <td class="col-8">NAME</td>
-                                        <td class="col-2 text-end">SUBTOTAL</td>
-                                    </tr>
-                                    <table id="prod">
-                                    </table>
+                                    <thead style="position: sticky; top: 0">
+                                        <tr class="text-center">
+                                            <td class="col-2">No.</td>
+                                            <th class="col-8">NAME</th>
+                                            <th class="col-2 text-end">SUBTOTAL</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </form>
+                            <form>
+                                <table id="prod">
                                 </table>
                             </form>
                         </div>
@@ -39,7 +42,7 @@
                                     <input type="text" class="w-100 text_p1 boxvoucher" placeholder="Voucher">
                                 </div>
                                 <div class="col-4">
-                                    <button class="btn_search1">SUBMIT</button>
+                                    <button class="btn_search1">Submit</button>
                                 </div>
                             </div>
                         </div>
