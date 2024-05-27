@@ -99,7 +99,7 @@
                                 <div class="overlay"></div>
                                 <div class="popup">
                                     <div class="modalbox center">
-                                        <i class="fa-solid fa-circle-check"></i>
+                                        <i class="fa-solid fa-circle-xmark"></i>
                                         <h3>Login first!</h3>
                                         <div class="btnback">
                                             <a class="btn" href="{{ url('/dashboard') }}"> Back to HomePage </a>

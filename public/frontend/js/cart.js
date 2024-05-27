@@ -276,6 +276,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         btn.addEventListener("click", (e) => {
         e.preventDefault();
         popup.classList.add("active");
+        overlay.classList.add("active");
         });
 
         function updatePaymentButtonState() {
