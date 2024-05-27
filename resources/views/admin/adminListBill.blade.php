@@ -40,6 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     {{-- ADD CSS SUBIN --}}
     <link href="{{ asset('backend/css/adminListBill.css') }}" rel="stylesheet">
     <title>List Bill</title>
+    <link rel="icon" href="{{ asset('frontend/images/Logo Title.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>

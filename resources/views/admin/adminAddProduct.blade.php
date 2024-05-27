@@ -40,6 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         <link href="{{ asset('backend/css/adminaddproduct.css') }}" rel="stylesheet" />
         <title>Add Product</title>
+        <link rel="icon" href="{{ asset('frontend/images/Logo Title.png') }}">
     </head>
 
     <body>
