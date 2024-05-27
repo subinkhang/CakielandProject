@@ -1,44 +1,88 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountController;
+// use App\Http\Controllers\AccountController;
 
-
+// Auth Routes
+Route::view('/', 'auth/login');
+Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('profile', 'profile')->middleware(['auth'])->name('profile');
+require __DIR__ . '/auth.php';
 
 // User routes
-Route::get('/', 'App\Http\Controllers\HomepageController@index');
+Route::get('/account', 'App\Http\Controllers\AccountController@index');
+Route::post('/update-account', 'App\Http\Controllers\AccountController@update_account');
 
-Route::get('/product-list', 'App\Http\Controllers\ProductListController@index');
+// Product Routes
+Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
+Route::post('/search-product-list', 'App\Http\Controllers\ProductListController@search');
+Route::get('/search-product-list', 'App\Http\Controllers\ProductListController@searchSort');
+Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
+Route::get('/product-detail', function () {
+    return redirect('/product-list');
+});
 
+// Category & sub-category Routes
+Route::get('/category{category_id}', 'App\Http\Controllers\ProductListController@showCategory');
+Route::get('/sub-category{sub_category_id}', 'App\Http\Controllers\ProductListController@showSubCategory');
+
+// Product Detail Routes
 Route::get('/product-detail', 'App\Http\Controllers\ProductDetailController@index');
 
+// Account Routes
 Route::get('/account', 'App\Http\Controllers\AccountController@index');
+Route::post('/update-account', [AccountController::class, 'updateAccount'])->name('update.account');
+Route::post('/update/{user_id}', 'App\Http\Controllers\CheckoutController@update');
 
+// Cart & Checkout Routes
 Route::get('/cart', 'App\Http\Controllers\CartController@index');
-
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
 
-Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
+// My Orders Routes
+Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@myorders');
+Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@myorders_detail');
 
-Route::get('/signup', 'App\Http\Controllers\SignupController@index');
-
-Route::get('/login', 'App\Http\Controllers\LoginController@index');
-
+// About Us Routes
 Route::get('/about-us', 'App\Http\Controllers\AboutUsController@index');
 
-Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@index');
+// User Dashboard Routes
+Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
+Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts')->name('dashboard');
 
+// Other Routes
+Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
 Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
+Route::get('/', function () { return redirect('/dashboard'); });
+//VNPAY
+Route::post('/vnpay', 'App\Http\Controllers\CheckoutController@vnpay');
 
-Route::fallback(function () {
-    return redirect()->action('App\Http\Controllers\ErrorPageController@index');
-});
 
 
 // Admin routes
-Route::get('/admin-login', 'App\Http\Controllers\AdminController@index');
-Route::get('/admin-dashboard', 'App\Http\Controllers\AdminController@show_dashboard');
+Route::middleware(['auth', 'admin'])->group(function () {
 
-// Product Routes
-Route::get('/admin-add-product', 'App\Http\Controllers\AdminController@add_product');
-Route::get('/admin-list-product', 'App\Http\Controllers\AdminController@list_product');
-Route::get('/admin-list-bill', 'App\Http\Controllers\AdminController@list_bill');
+    // AdminListBill Routes
+    Route::get('/admin-list-bill', 'App\Http\Controllers\AdminListBillController@get_list_orders');
+    Route::get('/cancel-order-status/{id}', 'App\Http\Controllers\AdminListBillController@cancelOrderStatus');
+    Route::get('/complete-order-status/{id}', 'App\Http\Controllers\AdminListBillController@completeOrderStatus');
+    Route::get('/delivery-order-status/{id}', 'App\Http\Controllers\AdminListBillController@deliveryOrderStatus');
+
+    // AdminListProduct Routes
+    Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');
+    Route::get('/admin-list-product', 'App\Http\Controllers\AdminListProductController@get_list_product');
+    Route::get('/delete-list-product/{id}', 'App\Http\Controllers\AdminListProductController@delete_list_product');
+        // Route::post('/update-order-status/{id}', 'AdminListBillController@updateOrderStatus');
+
+    // Product Routes
+    Route::get('/admin-add-product', 'App\Http\Controllers\ProductController@add_product');
+    Route::post('/save-product', 'App\Http\Controllers\ProductController@save_product');
+
+    // AdminEditProduct Routes
+    Route::get('/admin-edit-product/{product_id}', 'App\Http\Controllers\AdminEditProductController@edit_product');
+    Route::post('/update-product/{product_id}', 'App\Http\Controllers\AdminEditProductController@update_product');
+
+    // Admin Routes
+    Route::get('/admin-dashboard', 'App\Http\Controllers\AdminController@show_dashboard');
+    Route::get('/admin-dashboard', 'App\Http\Controllers\AdminController@count_data');
+});

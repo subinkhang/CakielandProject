@@ -1,10 +1,7 @@
-@extends('components.layout')
-@section('myOrders')
-
-<title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
-<link rel="stylesheet" href="{{asset('/frontend/css/myorder.css')}}">
-
-<livewire:breadcrumb-banner />
+<x-app-layout>
+    <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
+    <link rel="stylesheet" href="{{ asset('/frontend/css/myorder.css') }}">
+    <livewire:breadcrumb-banner />
     <!-- ACCOUNT -->
     <div class="container my_orders_container">
         <div class="row">
@@ -25,105 +22,67 @@
                 </div>
             </div>
             <div class="col-9">
+                <div class="col-8"></div>
+                <div class="col-4">
+                    <form id="sortForm">
+                        <select name="sort" id="status" class="form-control select-custom">
+                            <option value="none">SORT STATUS</option>
+                            <option value="all">ALL</option>
+                            <option value="0">CANCELLED</option>
+                            <option value="1">COMPLETED</option>
+                            <option value="2">DELIVERING</option>
+                        </select>
+                    </form>
+                </div>
+                
                 <div class="row">
-                    <div class="col-12 product_detail">
-                        <div class="col-12 order_title">
-                            <h5>DELIVERING</h5>
-                        </div>
-                        <div class="row">
-                            <div class="col-3" class="img_order">
-                                <img src="{{asset('frontend/images/My-order/71012Ro-efL.jpg')}}" alt="" class="w-100">
-                            </div>
-                            <div class="col-5 order_name">
-                                <h5>Cook Classic Wood Rolling Pin</h5>
-                                <p>Quantity: 1</p>
-                            </div>
-                            <div class="col-4">
-                                <p class="price">$112.00</p>
-                            </div>
-                            <div class="col-3 status">
-                                <h5>Order status: </h5>
-                            </div>
-                            <div class="col-5 order_deli">
-                                <h5>DELIVERING</h5>
-                            </div>
-                            <div class="col-4 total_price">
-                                <h6>Total: $112.00</h6>
-                                <button type="submit" class="button_order">Buy Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <div class="row">
-                    <div class="col-12 product_detail_2">
-                        <div class="col-12 order_title">
-                            <h5>DELIVERED</h5>
-                        </div>
-                        <div class="row">
-                            <div class="col-3" class="img_order">
-                                <img src="{{asset('frontend/images/My-order/71012Ro-efL.jpg')}}" alt="" class="w-100">
-                            </div>
-                            <div class="col-5 order_name">
-                                <h5>Cook Classic Wood Rolling Pin</h5>
-                                <p>Quantity: 1</p>
-                            </div>
-                            <div class="col-4">
-                                <p class="price">$112.00</p>
-                            </div>
-                            <div class="col-3 status"></div>
-                            <div class="col-5 order_deli"></div>
-                            <div class="col-4 total_price">
-                                <h6>Total: $112.00</h6>
-                                <button type="submit" class="button_order">Buy Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-12 product_detail_3">
-                        <div class="col-12 order_title">
-                            <h5>DELIVERING</h5>
-                        </div>
-                        <div class="row">
-                            <div class="col-3" class="img_order">
-                                <img src="{{asset('frontend/images/My-order/71012Ro-efL.jpg')}}" alt="" class="w-100">
-                            </div>
-                            <div class="col-5 order_name">
-                                <h5>Cook Classic Wood Rolling Pin</h5>
-                                <p>Quantity: 1</p>
-                            </div>
-                            <div class="col-4">
-                                <p class="price">$112.00</p>
-                            </div>
-                            <div class="col-3 img_order_2" >
-                                <img src="{{asset('frontend/images/My-order/71012Ro-efL.jpg')}}" alt="" class="w-100">
-                            </div>
-                            <div class="col-5 order_name_2">
-                                <h5>Cook Classic Wood Rolling Pin</h5>
-                                <p>Quantity: 1</p>
-                            </div>
-                            <div class="col-4 price_order">
-                                <p class="price_2">$112.00</p>
-                            </div>
-                            <div class="col-3 status">
-                                <h5>Order status: </h5>
-                            </div>
-                            <div class="col-5 order_deli">
-                                <h5>ORDER RECEIVED</h5>
-                            </div>
-                            <div class="col-4 total_price">
-                                <h6>Total: $112.00</h6>
-                                <button type="submit" class="button_order">Buy Now</button>
-                            </div>
-                        </div>
-                    </div>
+                    @if($userId)
+                        {{-- @foreach ($statuses as $key => $status) --}}
+                            {{-- @if (isset($data[$key])) --}}
+                            @foreach ($orders as $order)
+                                <div class="col-12 product_detail_3 " data-order-id="{{ $order['order_id'] }}" data-status="{{ $order['status'] }}">
+                                    <div class="col-12 order_title">
+                                        <h5>({{ $statuses[$order['status']] }})</h5>
+                                    </div>
+                                    {{-- @foreach ($data[$key] as $order) --}}
+                                        @foreach ($order['items'] as $item)
+                                            <div class="row">
+                                                <div class="col-3 img_order">
+                                                    <img src="{{ asset('public/backend/upload/'. $item['product_thumbnail']) }}" alt="" class="w-100">
+                                                </div>
+                                                <div class="col-5 order_name">
+                                                    <h5>{{ $item['product_name'] }}</h5>
+                                                    <p>Quantity: {{ $item['quantity'] }}</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="price">{{ $item['price'] }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <div class="row">
+                                            <div class="col-3 status">
+                                                <h5>Order status:</h5>
+                                            </div>
+                                            <div class="col-5 order_deli">
+                                                <h5>{{ $statuses[$order['status']] }}</h5>
+                                            </div>
+                                            <div class="col-4 total_price">
+                                                <h6>Total: {{ $order['total_price'] }}</h6>
+                                                <button type="submit" class="button_order">Buy Again</button>
+                                            </div>
+                                        </div>
+                                    {{-- @endforeach --}}
+                                </div>
+                            {{-- @endif --}}
+                        @endforeach
+                    @else
+                        <p>Bạn cần đăng nhập để xem đơn hàng.</p>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-    
-<script src="{{asset('frontend/js/jquery-3.7.1.min.js')}}"></script>
-<script src="{{asset('frontend/js/bootstrap.bundle.js')}}"></script>
-<script src="{{asset('frontend/js/myorder.js')}}"></script>
-
-@endsection
+    <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
+    <script src="{{ asset('frontend/js/myorder.js') }}"></script>
+</x-app-layout>

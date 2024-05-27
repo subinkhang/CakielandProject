@@ -1,130 +1,259 @@
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+-webkit-appearance: none;
+margin: 0;
+}
+thead th {
+position: sticky;
+top: 0;
 }
 .search
 {
-    padding-left: 10px;
-    margin-bottom: 30px;
+padding-left: 10px;
+margin-bottom: 30px;
 }
 
 .btn_search{
-    background-color: #FBC31C;
-    height: 38px;
-    padding: 0;
-    border-radius: 20px;
-    width: 90%;
-    border: none;
-    margin: 2px;
+background-color: #FBC31C;
+height: 38px;
+padding: 0;
+border-radius: 20px;
+width: 100%;
+border: none;
+margin: 2px;
+}
+.btn_search1{
+background-color: #FBC31C;
+height: 38px;
+padding: 0;
+border-radius: 20px;
+width: 90%;
+border: none;
+margin: 2px;
+color: #fdfdfd;
 }
 #title{
-    color:#FBC31C;
-    margin-bottom: 40px;
-    margin-top: 80px;
+color:#FBC31C;
+margin-bottom: 40px;
+margin-top: 80px;
 }
 
 #voucher-text{
-    color:#FBC31C;
-    margin-bottom: 15px;
+color:#FBC31C;
+margin-bottom: 15px;
 }
 
 .pr-list-co{
-    margin-bottom: 5px;
+margin-bottom: 5px;
 }
 
 .price{
-    color:#FBC31C
+color:#FBC31C
 }
-
+.ellipsis {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
 .bt-pay{
-    margin-bottom: 50px;
-    margin-top: 50px;
-    text-align: center;
-    border: none;
-    border-radius:20px;
-    background-color: #FBC31C;
-    width: 150px;
+margin-left: 290px;
+margin-bottom: 250px;
+margin-top: 40px;
+text-align: center;
+border: none;
+border-radius:20px;
+background-color: #FBC31C;
+width: 113px;
+color: #fdfdfd
 }
-
+.btn{
+color: #fdfdfd
+}
+.text-center th {
+position: sticky;
+top: 0;
+background-color: #ffffff; /* Đảm bảo nền của tiêu đề là màu trắng để nó không bị che bởi nền của container */
+z-index: 999; /* Đảm bảo tiêu đề hiển thị trên tất cả các phần tử khác */
+}
 .boxvoucher{
-    color: #666666
+color: #666666
 }
+.newrow{
+margin-bottom: 100px;
+}
+#prod tr {
+margin-top: 120px;
+margin-bottom: 20px; /* Tạo khoảng cách giữa các hàng */
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+border-radius: 10px; /* Bo tròn góc của hàng */
+transition: opacity 0.3s ease;
+}
+.fade-out {
+opacity: 0.5; /* Thiết lập opacity để làm mờ */
+}
+/* tr{
+margin-top: 20px;
+} */
 /*---------------------header----------------*/
 .bg-breadcrub {
-    background-size: cover;
-    padding: 120px 0;
+background-size: cover;
+padding: 120px 0;
 }
 
 .my-3 {
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
+margin-top: 1rem !important;
+margin-bottom: 1rem !important;
 }
 
 .bg-breadcrub h2
 {
-	color: #282828;
-	font-size: 55px;
-	font-weight: 700;
+color: #282828;
+font-size: 55px;
+font-weight: 700;
 }
 .breadcrumb
 {
-	justify-content: center;
+justify-content: center;
 }
 .breadcrumb-item a
 {
-	font-size: 18px;
-	color: #282828 !important;
-	font-weight: bold;
+font-size: 18px;
+color: #282828 !important;
+font-weight: bold;
 }
 .bg-breadcrub .active
 {
-	color: #666666;
+color: #666666;
 }
 /*=============================*/
 #btn-minus
-{   text-align: right;
-	height: 20px;
-	border: none;
-	width: 20px;
-	margin-right: 5px;
-    margin-bottom: 10px;
-	/*background-color: #666;*/
-	color: #080808;
-    border-radius: 8px;
-    font-weight: 700;
+{ text-align: right;
+height: 20px;
+border: none;
+width: 20px;
+margin-right: 5px;
+margin-bottom: 10px;
+/*background-color: #666;*/
+color: #080808;
+border-radius: 8px;
+font-weight: 700;
 }
 
 #btn-plus{
-    text-align: left;
-	height: 20px;
-	border: none;
-	width: 20px;
-	margin-right: 10px;
-    margin-bottom: 15px;
-	/*background-color: #666;*/
-	color: #080808;
-    border-radius: 8px;
-    font-weight: 700;
+text-align: left;
+height: 20px;
+border: none;
+width: 20px;
+margin-right: 10px;
+margin-bottom: 15px;
+/*background-color: #666;*/
+color: #080808;
+border-radius: 8px;
+font-weight: 700;
 }
 #pr-number
-{   
-    text-align: center;
-	width: 50px;
-	height: 22px;
-	border: 1px solid #666;
-    margin-top: 2px;
-	margin-right: 5px;
-	/* padding-left: 10px; */
-    border-radius: 8px;
+{
+text-align: center;
+width: 50px;
+height: 22px;
+border: 1px solid #666;
+margin-top: 2px;
+margin-right: 5px;
+/* padding-left: 10px; */
+border-radius: 8px;
 }
 
 #numb{
-    -ms-flex-item-align: center;
-    text-align:center
+-ms-flex-item-align: center;
+text-align:center
 }
 .removeitem{
-    border: none;
-    color: red;
-    
+border: none;
+color: red;
+
+}
+.popup {
+display: none; /* Initially hidden */
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%); /* Center the popup */
+background-color: #f3f3f3;
+padding: 20px;
+border-radius: 25px;
+z-index: 10; /* Ensure the popup is on top of other content */
+}
+
+
+.modalbox {
+text-align: center;
+width: 500px;
+}
+
+.modalbox.btnback{
+text-align: center;
+}
+
+.btnback {
+margin-top: 50px;
+margin-left: 150px;
+text-align: center;
+border: none;
+border-radius:20px;
+background-color: #FBC31C;
+width: 200px;
+height: 40px;
+}
+.popup.active { /* Show the popup when active class is added */
+display: block;
+}
+.modalbox i{
+font-size: 60px;
+color: red;
+}
+.modalbox h3{
+margin-top: 20px;
+color: #080808;
+}
+.overlay{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.75);
+display: none;
+z-index: 9;
+}
+.overlay.active{
+display: block;
+}
+.toast {
+visibility: hidden;
+min-width: 250px;
+margin-left: -125px;
+background-color: #FBC31C;
+color: #fdfdfd;
+text-align: center;
+border-radius: 2px;
+padding: 16px;
+position: fixed;
+z-index: 3;
+left: 50%;
+bottom: 30px;
+font-size: 17px;
+}
+
+.toast.show {
+visibility: visible;
+animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@keyframes fadein {
+from {bottom: 0; opacity: 0;}
+to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+from {bottom: 30px; opacity: 1;}
+to {bottom: 0; opacity: 0;}
 }

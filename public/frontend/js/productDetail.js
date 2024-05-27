@@ -162,3 +162,36 @@ function selectColor(element) {
     // Thêm class 'selected' vào ô màu được chọn
     element.classList.add('selected');
 }
+
+// function addToCart(element) {
+//     // Hiển thị toast message
+//     var toast = document.getElementById("toast");
+//     if (!toast) {
+//         toast = document.createElement("div");
+//         toast.id = "toast";
+//         toast.className = "toast";
+//         document.body.appendChild(toast);
+//     }
+//     toast.innerText = "Add to cart successfully!";
+//     toast.className = "toast show";
+//     setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+// }
+
+//dấu tích cho color
+document.addEventListener('DOMContentLoaded', function () {
+    const colorItems = document.querySelectorAll('.color-item');
+
+    colorItems.forEach(item => {
+        item.addEventListener('click', function () {
+            // Remove 'selected' class from all items
+            colorItems.forEach(i => i.classList.remove('selected'));
+            // Add 'selected' class to the clicked item
+            this.classList.add('selected');
+        });
+    });
+});
+
+
+
+
+//Image

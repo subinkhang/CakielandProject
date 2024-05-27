@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>error</title>
-    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/errorpage.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/errorpage.css') }}">
 </head>
+
 <body>
     <div class="container">
         <div class="row">
             <div class="col-4"></div>
-            <div class="col-4 margin text-center"><h1><b>Oops!</b></h1></div>
+            <div class="col-4 margin text-center">
+                <h1><b>Oops!</b></h1>
+            </div>
             <div class="col-4"></div>
             <div class="col-4"></div>
             <div class="col-4 error text-center">
-                <img src="{{('')}}" class="img-fluid imageerror">
+                <img src="{{ '' }}" class="img-fluid imageerror">
             </div>
             <div class="col-4"></div>
             <div class="col-4"></div>
@@ -33,7 +37,8 @@
                 </div>
             </div>
             <div class="col-5"></div>
-    </div>
-    
+        </div>
+
 </body>
+
 </html>

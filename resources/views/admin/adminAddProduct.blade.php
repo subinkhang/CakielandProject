@@ -4,474 +4,331 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-<!DOCTYPE html>
-<head>
-<title>Visitors an Admin Panel Category Bootstrap Responsive Website Template | Mail_compose :: w3layouts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- bootstrap-css -->
-<link rel="stylesheet" href="{{asset('backend/css/bootstrap.min.css')}}" >
-<!-- //bootstrap-css -->
-<!-- Custom CSS -->
-<link href="{{asset('backend/css/style.css')}}" rel='stylesheet' type='text/css' />
-<link href="{{asset('backend/css/style-responsive.css')}}" rel="stylesheet"/>
-<link href="{{asset('backend/css/adminaddproduct.css')}}" rel="stylesheet"/>
-<!-- font CSS -->
-<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<!-- font-awesome icons -->
-<link rel="stylesheet" href="{{asset('backend/css/font.css')}}" type="text/css"/>
-<link href="{{asset('backend/css/font-awesome.css')}}" rel="stylesheet"> 
-<!-- //font-awesome icons -->
-<script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
-</head>
-<body>
-<section id="container">
-<!--header start-->
-<header class="header fixed-top clearfix">
-<!--logo start-->
-<div class="brand">
+{{-- <!DOCTYPE html> --}}
+<x-app-layout>
 
-    <a href="index.html" class="logo">
-        VISITORS
-    </a>
-    <div class="sidebar-toggle-box">
-        <div class="fa fa-bars"></div>
-    </div>
-</div>
-<!--logo end-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords"
+            content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!-- bootstrap-css -->
+        <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.min.css') }}">
+        <!-- //bootstrap-css -->
+        <!-- Custom CSS -->
+        <link href="{{ asset('backend/css/style.css') }}" rel='stylesheet' type='text/css' />
+        <link href="{{ asset('backend/css/style-responsive.css') }}" rel="stylesheet" />
+        <!-- font CSS -->
+        <link
+            href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+            rel='stylesheet' type='text/css'>
+        <!-- font-awesome icons -->
+        <link rel="stylesheet" href="{{ asset('backend/css/font.css') }}" type="text/css" />
+        <link href="{{ asset('backend/css/font-awesome.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('backend/css/morris.css') }}" type="text/css" />
+        <!-- calendar -->
+        <link rel="stylesheet" href="{{ asset('backend/css/monthly.css') }}">
+        <link rel="stylesheet" href="{{ asset('backend/css/adminDashboard.css') }}">
+        <link rel="stylesheet" href="{{ 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css' }}">
+        <!-- //calendar -->
+        <!-- //font-awesome icons -->
+        <script src="{{ asset('backend/js/jquery2.0.3.min.js') }}"></script>
+        <script src="{{ asset('backend/js/raphael-min.js') }}"></script>
+        <script src="{{ asset('backend/js/morris.js') }}"></script>
 
-<div class="nav notify-row" id="top_menu">
-    <!--  notification start -->
-    <ul class="nav top-menu">
-        <!-- settings start -->
-        <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <i class="fa fa-tasks"></i>
-                <span class="badge bg-success">8</span>
-            </a>
-            <ul class="dropdown-menu extended tasks-bar">
-                <li>
-                    <p class="">You have 8 pending tasks</p>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="task-info clearfix">
-                            <div class="desc pull-left">
-                                <h5>Target Sell</h5>
-                                <p>25% , Deadline  12 June’13</p>
+        <link href="{{ asset('backend/css/adminaddproduct.css') }}" rel="stylesheet" />
+        <title>Add Product</title>
+        <link rel="icon" href="{{ asset('frontend/images/Logo Title.png') }}">
+    </head>
+
+    <body>
+        <section id="container">
+
+            {{-- <livewire:adminHeader /> --}}
+
+            <livewire:adminSidebar />
+
+            <section id="main-content">
+                <section class="wrapper">
+                    <!-- page start-->
+                    <form role="form" action="{{ URL::to('/save-product') }}" method="POST"
+                        enctype="multipart/form-data">
+                        {{ csrf_field() }}
+
+                        <div class="mail-w3agile">
+                            <div class="row">
+                                <div class="col-sm-8 com-w3ls">
+                                    @php
+                                        $message = Session::get('message');
+                                    @endphp
+
+                                    @if ($message)
+                                        <h3 style="white-space: nowrap; color: red">{{ $message }}</h3>
+                                        {{ Session::put('message', null) }}
+                                    @endif
+
+                                    <section class="panel">
+                                        <h4 class="menu"id="text-name"><b>Name</b></h4>
+                                        <textarea name="name" type="text" id="name" class="text-title"></textarea>
+
+                                        <h4 class="menu"><b>Fake Price</b></h4>
+                                        <textarea name="fake_price" type="text" id="curp" class="text-title"></textarea>
+
+                                        <h4 class="menu"><b>New Price</b></h4>
+                                        <textarea name="price" type="text" id="newp" class="text-title"></textarea>
+
+                                        <h4 class="menu"><b>Brand</b></h4>
+                                        <textarea name="brand" type="text" id="brand" class="text-title"></textarea>
+
+                                        <h4 class="menu"><b>Description</b></h4>
+                                        <textarea name="description" type="text" id="desc" class="text-title"></textarea>
+
+                                        <h4 class="menu"><b>Detail</b></h4>
+                                        <textarea name="description_detail" type="text" id="detail" class="text-title"></textarea>
+
+                                        <h4 class="menu"><b>Technical</b></h4>
+                                        <textarea name="description_technique" type="text" id="tech" class="text-title"></textarea>
+
+                                        <div class="col-8 bt-pay pm">
+
+                                            <button class="btn" id="btn-p" type="submit"
+                                                name="admin-add-product">
+                                                <p1>Add product</p1>
+                                            </button>
+                                        </div>
+                                    </section>
+
+                                    <!-----------------------------------------------RIGHT---------------------------------------------------------------------------->
+                                </div>
+                                <div class="col-sm-3 mail-w3agile">
+                                    <section class="panel">
+                                        <div class="right">
+
+                                            <h4 class="right-text"><b>Image</b></h4>
+                                            <input type="file" class="image" name="img"
+                                                accept="image/png, image/jpeg, image/jpg" id="mainimg">
+                                            <div id="main-img"></div>
+
+                                            <h4 class="right-text"><b>Galary</b></h4>
+                                            <input type="file" class="image" name="gal[]"
+                                                accept="image/png, image/jpeg" multiple id="gallery"
+                                                onchange="gallarypreview()" max="10">
+                                            <div>
+                                                <div id="gal"></div>
+                                            </div>
+                                            <h4 class="right-text"><b>Color</b></h4>
+                                            <div class="cont">
+                                                <div class="black">
+                                                    <input type="checkbox" style="text-align: center" id="op1"
+                                                        value="1" name="color[]">
+                                                    <div style="background-color: black" class="color"></div>
+                                                </div>
+                                                <div class="yellow">
+                                                    <input type="checkbox" style="text-align: center" id="op2"
+                                                        value="2" name="color[]">
+                                                    <div style="background-color: yellow" class="color"></div>
+                                                </div>
+                                                <div class="pink">
+                                                    <input type="checkbox" style="text-align: center" id="op3"
+                                                        value="3" name="color[]">
+                                                    <div style="background-color: pink" class="color"></div>
+                                                </div>
+                                                <div class="grey">
+                                                    <input type="checkbox" style="text-align: center" id="op4"
+                                                        value="4" name="color[]">
+                                                    <div style="background-color: grey" class="color"></div>
+                                                </div>
+                                                <div class="blue">
+                                                    <input type="checkbox" style="text-align: center" id="op5"
+                                                        value="5" name="color[]">
+                                                    <div style="background-color: blue" class="color"></div>
+                                                </div>
+                                                <div class="green">
+                                                    <input type="checkbox" style="text-align: center" id="op6"
+                                                        value="6" name="color[]">
+                                                    <div style="background-color: green" class="color"></div>
+                                                </div>
+
+                                            </div>
+                                            <h4 class="right-text"><b>Menu</b></h4>
+                                            <select id="cate" name="cate"
+                                                style="margin-top: 10px, width: 195px; border-radius: 15px;">
+                                                <option value="" name="cate" disabled selected>Categories
+                                                </option>
+                                                <option value="1" name="cate">Dry Indredients</option>
+                                                <option value="2" name="cate">Wet Indredients</option>
+                                                <option value="3" name="cate">Baking Tools</option>
+                                                <option value="4" name="cate">Utensiles</option>
+                                                <option value="5" name="cate">Bar Tool</option>
+                                                <option value="6" name="cate">Bar Ingredients</option>
+                                            </select>
+                                            <h4 class="right-text"><b>Tag</b></h4>
+                                            <select id="tag" name="tag"
+                                                style="margin-top: 10px; width: 195px; border-radius: 15px; margin-bottom: 30px;">
+                                                <option value="" name="tag" disabled selected>Tag
+                                                </option>
+                                            </select>
+
+                                        </div>
+
+                                    </section>
+                                </div>
                             </div>
-                                    <span class="notification-pie-chart pull-right" data-percent="45">
-                            <span class="percent"></span>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="task-info clearfix">
-                            <div class="desc pull-left">
-                                <h5>Product Delivery</h5>
-                                <p>45% , Deadline  12 June’13</p>
-                            </div>
-                                    <span class="notification-pie-chart pull-right" data-percent="78">
-                            <span class="percent"></span>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="task-info clearfix">
-                            <div class="desc pull-left">
-                                <h5>Payment collection</h5>
-                                <p>87% , Deadline  12 June’13</p>
-                            </div>
-                                    <span class="notification-pie-chart pull-right" data-percent="60">
-                            <span class="percent"></span>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="task-info clearfix">
-                            <div class="desc pull-left">
-                                <h5>Target Sell</h5>
-                                <p>33% , Deadline  12 June’13</p>
-                            </div>
-                                    <span class="notification-pie-chart pull-right" data-percent="90">
-                            <span class="percent"></span>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-
-                <li class="external">
-                    <a href="#">See All Tasks</a>
-                </li>
-            </ul>
-        </li>
-        <!-- settings end -->
-        <!-- inbox dropdown start-->
-        <li id="header_inbox_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <i class="fa fa-envelope-o"></i>
-                <span class="badge bg-important">4</span>
-            </a>
-            <ul class="dropdown-menu extended inbox">
-                <li>
-                    <p class="red">You have 4 Mails</p>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="photo"><img alt="avatar" src="{{asset('backend/images/3.png')}}"></span>
-                                <span class="subject">
-                                <span class="from">Jonathan Smith</span>
-                                <span class="time">Just now</span>
-                                </span>
-                                <span class="message">
-                                    Hello, this is an example msg.
-                                </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="photo"><img alt="avatar" src="{{asset('backend/images/1.png')}}"></span>
-                                <span class="subject">
-                                <span class="from">Jane Doe</span>
-                                <span class="time">2 min ago</span>
-                                </span>
-                                <span class="message">
-                                    Nice admin template
-                                </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="photo"><img alt="avatar" src="{{asset('backend/images/3.png')}}"></span>
-                                <span class="subject">
-                                <span class="from">Tasi sam</span>
-                                <span class="time">2 days ago</span>
-                                </span>
-                                <span class="message">
-                                    This is an example msg.
-                                </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="photo"><img alt="avatar" src="{{asset('backend/images/2.png')}}"></span>
-                                <span class="subject">
-                                <span class="from">Mr. Perfect</span>
-                                <span class="time">2 hour ago</span>
-                                </span>
-                                <span class="message">
-                                    Hi there, its a test
-                                </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">See all messages</a>
-                </li>
-            </ul>
-        </li>
-        <!-- inbox dropdown end -->
-        <!-- notification dropdown start-->
-        <li id="header_notification_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-
-                <i class="fa fa-bell-o"></i>
-                <span class="badge bg-warning">3</span>
-            </a>
-            <ul class="dropdown-menu extended notification">
-                <li>
-                    <p>Notifications</p>
-                </li>
-                <li>
-                    <div class="alert alert-info clearfix">
-                        <span class="alert-icon"><i class="fa fa-bolt"></i></span>
-                        <div class="noti-info">
-                            <a href="#"> Server #1 overloaded.</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="alert alert-danger clearfix">
-                        <span class="alert-icon"><i class="fa fa-bolt"></i></span>
-                        <div class="noti-info">
-                            <a href="#"> Server #2 overloaded.</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="alert alert-success clearfix">
-                        <span class="alert-icon"><i class="fa fa-bolt"></i></span>
-                        <div class="noti-info">
-                            <a href="#"> Server #3 overloaded.</a>
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
-        </li>
-        <!-- notification dropdown end -->
-    </ul>
-    <!--  notification end -->
-</div>
-<div class="top-nav clearfix">
-    <!--search & user info start-->
-    <ul class="nav pull-right top-menu">
-        <li>
-            <input type="text" class="form-control search" placeholder=" Search">
-        </li>
-        <!-- user login dropdown start-->
-        <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="{{asset('backend/images/2.png')}}">
-                <span class="username">John Doe</span>
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu extended logout">
-                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
-            </ul>
-        </li>
-        <!-- user login dropdown end -->
-       
-    </ul>
-    <!--search & user info end-->
-</div>
-</header>
-<!--header end-->
-<!--sidebar start-->
-<aside>
-    <div id="sidebar" class="nav-collapse">
-        <!-- sidebar menu start-->
-        <div class="leftside-navigation">
-            <ul class="sidebar-menu" id="nav-accordion">
-                <li>
-                    <a href="index.html">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>UI Elements</span>
-                    </a>
-                    <ul class="sub">
-
-						<li><a href="typography.html">Typography</a></li>
-						<li><a href="glyphicon.html">glyphicon</a></li>
-                        <li><a href="grids.html">Grids</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="fontawesome.html">
-                        <i class="fa fa-bullhorn"></i>
-                        <span>Font awesome </span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-th"></i>
-                        <span>Data Tables</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="basic_table.html">Basic Table</a></li>
-                        <li><a href="responsive_table.html">Responsive Table</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-tasks"></i>
-                        <span>Form Components</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="form_component.html">Form Elements</a></li>
-                        <li><a href="form_validation.html">Form Validation</a></li>
-						<li><a href="dropzone.html">Dropzone</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a class="active" href="javascript:;">
-                        <i class="fa fa-envelope"></i>
-                        <span>Mail </span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="mail.html">Inbox</a></li>
-                        <li><a class="active" href="mail_compose.html">Compose Mail</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>Charts</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="chartjs.html">Chart js</a></li>
-                        <li><a href="flot_chart.html">Flot Charts</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>Maps</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="google_map.html">Google Map</a></li>
-                        <li><a href="vector_map.html">Vector Map</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-glass"></i>
-                        <span>Extra</span>
-                    </a>
-                   <ul class="sub">
-                        <li><a href="gallery.html">Gallery</a></li>
-						<li><a href="404.html">404 Error</a></li>
-                        <li><a href="registration.html">Registration</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="login.html">
-                        <i class="fa fa-user"></i>
-                        <span>Login Page</span>
-                    </a>
-                </li>
-            </ul>            </div>
-        <!-- sidebar menu end-->
-    </div>
-</aside>
-<!--sidebar end-->
-<!--main content start-->
 
 
-<!------------------------ALTER----------------------------->
-<!--------------------LEFT--------------------------------->
-<section id="main-content">
-	<section class="wrapper">
-		<!-- page start-->
-		<div class="mail-w3agile">
-        <div class="row">
-            <div class="col-sm-8 com-w3ls">
-                <section class="panel">
-                    <h4 class="menu"id="text-name"><b>Name</b></h4>
-                    <textarea type="text" id="name" class="text-title"></textarea>
-                    <h4 class="menu"><b>Current Price</b></h4>
-                    <textarea type="text" id="curp" class="text-title"></textarea>
-                    <h4 class="menu"><b>New Price</b></h4>
-                    <textarea type="text" id="newp" class="text-title"></textarea>
-                    <h4 class="menu"><b>Brand</b></h4>
-                    <textarea type="text" id="brand" class="text-title"></textarea>
-                    <h4 class="menu"><b>Description</b></h4>
-                    <textarea type="text" id="desc" class="text-title"></textarea>
-                    <h4 class="menu"><b>Detail</b></h4>
-                    <textarea type="text" id="detail"  class="text-title"></textarea>
-                    <h4 class="menu"><b>Technical</b></h4>
-                    <textarea type="text" id="tech" class="text-title"></textarea>
-                    <div class="col-8 bt-pay pm">
-                    <button class="btn" id="btn-p">
-                        <p1>Update</p1>
-                    </button>
-                </div>
+                            <!-- page end-->
+                        </div>
+
+                    </form>
+
                 </section>
+            </section>
 
-<!-----------------------------------------------RIGHT---------------------------------------------------------------------------->
-            </div>
-            <div class="col-sm-3 mail-w3agile">
-                <section class="panel">
-                    <div class="right">
-                    <h4 class="right-text"><b>Image</b></h4>
-                    <input type="file" class="image" accept="image/png, image/jpeg" multiple>
-                    <div id="main-img"></div>
-                    <h4  class="right-text"><b>Galary</b></h4>
-                    <input type="file" class="image" accept="image/png, image/jpeg" multiple>
-                    <div class="cont">
-                    <div class="gal"></div>
-                    <div class="gal"></div>
-                    <div class="gal"></div>
-                    <div class="gal"></div>
-                    <div class="gal"></div>
-                    <div class="gal"></div>
-                    </div>
-                    <h4 class="right-text"><b>Color</b></h4>
-                    <div class="cont">
-                    <div class="grey">
-                    <input type="checkbox" style="text-align: center" id="op1">
-                    <div style="background-color: grey" class="color"></div>
-                    </div>
-                    <div class="black">
-                    <input type="checkbox" style="text-align: center" id="op2">
-                    <div style="background-color: black" class="color"></div>
-                    </div>
-                    <div class="white">
-                    <input type="checkbox" style="text-align: center" id="op3">
-                    <div style="background-color: white" class="color"></div>
-                    </div>
-                    
-                    </div>
-                    <h4 class="right-text"><b>Menu</b></h4>
-                    <select id="cate" style="margin-top: 10px, width: 195px; border-radius: 15px;">
-                        <option value="">Categories</option>
-                        <option value="wet">Wet Indredients</option>
-                        <option value="dry">Dry Indredients</option>
-                        <option value="baking">Baking Tools</option>
-                        <option value="cooking">Utensiles</option>
-                        <option value="bartool">Bar Tool</option>
-                        <option value="bar">Bar Ingredients</option>
-                    </select>
-                    <h4 class="right-text"><b>Tag</b></h4>
-                    <select id="tag" style="margin-top: 10px, width: 195px; border-radius: 15px; margin-bottom: 30px;">
-                    <option value="">Tag</option>
-                        <option value="milk">Milk</option>
-                        <option value="butter">Butter</option>
-                        <option value="flour">Flour</option>
-                        <option value="bakingsoda">Baking Soda</option>
-                        <option value="egg">Eggs Beater</option>
-                        <option value="mold">Mold</option>
-                        <option value="potset">Stainless Steel Pot Set</option>
-                        <option value="knifeset">Kitchen Knife Set</option>
-                        <option value="foammaker">Coffee Foam Maker</option>
-                        <option value="cup">Measuring Cup</option>
-                        <option value="tea">Tea</option>
-                        <option value="syrup">Syrup</option>
-                    </div>
-                    
-                </section>
-            </div>
-        </div>
-        
+            <!--main content end-->
+        </section>
+        <script src="{{ asset('backend/js/bootstrap.js') }}"></script>
+        <script src="{{ asset('backend/js/jquery.dcjqaccordion.2.7.js') }}"></script>
+        <script src="{{ asset('backend/js/scripts.js') }}"></script>
+        <script src="{{ asset('backend/js/jquery.slimscroll.js') }}"></script>
+        <script src="{{ asset('backend/js/jquery.nicescroll.js') }}"></script>
+        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+        <script src="{{ asset('backend/js/jquery.scrollTo.js') }}"></script>
+        <script src="{{ asset('backend/js/adminaddproduct.js') }}"></script>
+    </body>
+    <script>
+        document.getElementById("mainimg").addEventListener("change", function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var preview = document.getElementById("main-img");
+                preview.innerHTML = '<img src="' + e.target.result +
+                    '" style="width: 200px; margin-top:20px; height: 200px; border-radius: 15px; border: 1px dashed #282828;">';
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+        // document.getElementById("gallery").addEventListener("change", function() {
+        //     var reader = new FileReader();
+        //     reader.onload = function(e) {
+        //         var newitem = document.createElement("div");
+        //         var preview = document.getElementById("gal");
+        //         preview.innerHTML = '<img src="'+ e.target.result +'" style="width: 50px; height: 50px; border-radius: 5px; border: 2px dashed #282828;">';
+        //         preview.appendChild(newitem);
+        //     };
+        //     reader.readAsDataURL(this.files[0]);
+        // });
+        function gallarypreview() {
+            let fileinput = document.getElementById('gallery');
+            let display = document.getElementById('gal');
+            display.innerHTML = ''; // Clear previous content
 
-        <!-- page end-->
-		 </div>
-         
-</section>
- <!-- footer -->
-		  <div class="footer">
-			<div class="wthree-copyright">
-			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
-			</div>
-		  </div>
-  <!-- / footer -->
-</section>
+            for (let i of fileinput.files) {
+                let reader = new FileReader();
+                reader.onload = () => {
+                    let figure = document.createElement("figure");
+                    let gallery = document.createElement("img");
+                    gallery.style.width = "100px";
+                    gallery.style.height = "100px";
+                    gallery.setAttribute("src", reader.result); // Corrected syntax
+                    figure.appendChild(gallery);
+                    display.appendChild(figure);
+                };
+                reader.readAsDataURL(i);
+            }
+        }
 
-<!--main content end-->
-</section>
-<script src="{{asset('backend/js/bootstrap.js')}}"></script>
-<script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
-<script src="{{asset('backend/js/scripts.js')}}"></script>
-<script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
-<script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-<script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script>
-<script src="{{asset('backend/js/adminaddproduct.js')}}"></script>
-</body>
-</html>
+        // document.getElementById("gallery").addEventListener("change", function() {
+        //     var previewContainer = document.getElementById("preview-container");
+        //     // Clear previous previews
+        //     previewContainer.innerHTML = '';
+
+        //     for (var i = 0; i < this.files.length; i++) {
+        //         var reader = new FileReader();
+        //         reader.onload = function(e) {
+        //             var img = document.createElement("img");
+        //             preview.innerHTML = '<img src="'+ e.target.result +'">';
+        //             img.style.width = "50px";
+        //             img.style.height = "50px";
+        //             img.style.borderRadius = "15px";
+        //             img.style.border = "2px dashed #282828";
+        //             previewContainer.appendChild(img);
+        //         };
+        //         reader.readAsDataURL(this.files[i]);
+        //     }
+        // });
+
+        const tagOptions = {
+            "1": [{
+                    value: "7",
+                    text: "Flour"
+                },
+                {
+                    value: "8",
+                    text: "Yeast"
+                }
+            ],
+            "2": [{
+                    value: "9",
+                    text: "Milk"
+                },
+                {
+                    value: "10",
+                    text: "Whipping cream"
+                }
+            ],
+            "3": [{
+                    value: "11",
+                    text: "Cake mold"
+                },
+                {
+                    value: "12",
+                    text: "Electric mixer"
+                }
+            ],
+            "4": [{
+                    value: "1",
+                    text: "Stainless steel tool"
+                },
+                {
+                    value: "2",
+                    text: "Kitchen knife set"
+                }
+            ],
+            "5": [{
+                    value: "3",
+                    text: "Coffee Foam Maker"
+                },
+                {
+                    value: "4",
+                    text: "Measuring Cup"
+                }
+            ],
+            "6": [{
+                    value: "5",
+                    text: "Tea"
+                },
+                {
+                    value: "6",
+                    text: "Syrup"
+                }
+            ]
+        };
+
+        document.getElementById('cate').addEventListener('change', function() {
+            const selectedCategory = this.value;
+            const tagSelect = document.getElementById('tag');
+            tagSelect.innerHTML = '<option value="" name="tag" disabled selected>Tag</option>'; // Reset options
+
+            if (tagOptions[selectedCategory]) {
+                tagOptions[selectedCategory].forEach(option => {
+                    const newOption = document.createElement('option');
+                    newOption.value = option.value;
+                    newOption.text = option.text;
+                    tagSelect.appendChild(newOption);
+                });
+            }
+        });
+    </script>
+
+    </html>
+</x-app-layout>

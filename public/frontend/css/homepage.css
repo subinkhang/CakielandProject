@@ -49,20 +49,29 @@
 
 /* --------------------- */
 
-.categories_item{
+.categories_item {
     box-shadow: 5px 5px 10px #f3f3f3;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.categories_item img{
+
+.categories_item img {
     padding: 45px;
 }
-.categories_item p{
+
+.categories_item p {
     color: #080808;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     padding-bottom: 20px;
 }
-.categories_title{
+
+.categories_item:hover {
+    transform: translateY(-10px);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.categories_title {
     color: #080808;
     margin-top: 80px;
     margin-bottom: 30px;
@@ -91,24 +100,33 @@
 
 /* --------------------- */
 
-.banner_btn{
+.banner_btn {
     background-color: #080808;
     color: #FBC31C;
     height: 35px;
     width: 120px;
-    margin-top:35px;
+    margin-top: 35px;
     border: none;
     border-radius: 12px;
     margin-right: 55px;
+    transition: background-color 0.3s, color 0.3s; /* Thêm transition cho hiệu ứng mềm mại */
 }
-.bg_banner{
+
+.banner_btn:hover {
+    background-color: #fdfdfd; /* Màu nền khi hover */
+    color: #FBC31C; /* Màu chữ khi hover */
+}
+
+.bg_banner {
     background-color: #FBC31C;
 }
-.banner_title{
+
+.banner_title {
     color: #080808;
     padding-top: 25%;
 }
-.banner_para{
+
+.banner_para {
     color: #282828;
     margin-top: 20px;
 }
@@ -139,6 +157,17 @@
 .sub_banner button{
     background-color: #FBC31C;
     color: #fdfdfd;
+    height: 35px;
+    width: 120px;
+    margin-top:35px;
+    border: none;
+    border-radius: 12px;
+    margin-right: 55px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.sub_banner button:hover{
+    background-color: #080808;
+    color: #FBC31C;
     height: 35px;
     width: 120px;
     margin-top:35px;
@@ -251,4 +280,158 @@
     width: 100%;
     height: 360px;
     /* object-fit: cover; */
+}
+
+/* ----------------------- */
+
+.pr-i2-name
+{
+font-size: 18px;
+font-weight: bold;
+color: #282828;
+line-height: 40px;
+text-decoration: none
+}
+.pr-i2-name:hover
+{
+font-size: 18px;
+font-weight: bold;
+color: #FBC31C;
+line-height: 40px;
+}
+.pr-rating, .pr-i2-rating
+{
+padding: 0px;
+}
+.pr-i2-rating li i
+{
+font-size: 16px;
+color: #fba82b;
+padding: 0 1px;
+}
+.pr-i2-rating
+{
+width: 196px;
+height: 16px;
+list-style-type: none
+}
+.old-price
+{
+font-size: 14px;
+color: #666666;
+text-decoration: line-through;
+margin-top: 2px;
+}
+.new-price
+{
+font-size: 18px;
+color: #FBC31C;
+font-weight:bold;
+}
+.text_product
+{
+margin-top: 19px;
+font-size: 14px;
+color: #666666;
+line-height: 18px;
+}
+.productList_image{
+
+width: 100%;
+height: 238px;
+border-radius: 10px;
+
+}
+.btn_add {
+position: absolute;
+top: 194px;
+left: 252px;
+font-size: 24px;
+cursor: pointer;
+color:#FBC31C
+}
+.pr-i3
+{
+background-color: #fff;
+border-radius: 10px;
+margin-bottom: 30px;
+width: 300px;
+height: 450px;
+box-shadow: 0px 4px 8px #888888;
+position: relative;
+}
+
+
+.container_information {
+margin: 16px 6px 0px 6px;
+}
+.productList_price{
+margin-top: 18px;
+}
+
+.pr-i3:hover{
+transform: scale(1.05); /* Sản phẩm phóng to 110% kích thước gốc */
+transition: transform 0.3s ease-in-out; /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+/* -------------------------------------- */
+
+/* Style for icon account */
+/* Style cho dropdown container */
+.cart_item .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style cho nội dung dropdown, ẩn đi khi không hoạt động */
+.cart_item .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 5px 10px; /* Giảm kích thước padding */
+    white-space: nowrap; /* Ngăn chặn xuống dòng */
+}
+
+/* Style cho các liên kết bên trong dropdown */
+.cart_item .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hiển thị dropdown content khi hover */
+.cart_item .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Thêm một chút hiệu ứng cho button */
+.cart_item button {
+    background-color: #FBC31C; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Hiệu ứng khi hover vào button */
+.cart_item button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #FBC31C;
+}
+/* Hiệu ứng khi hover vào dropdown link */
+.cart_item .dropdown-content a:hover {
+    background-color: #ddd;
+    color: #333;
 }

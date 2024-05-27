@@ -289,19 +289,27 @@ body, button, input{
 }
 .pr-color li:nth-child(1)
 {
-	background-color: #666;
+	background-color: #000;
 }
 .pr-color li:nth-child(2)
 {
-	background-color: #ef77b1;
+	background-color: #f0db40;
 }
 .pr-color li:nth-child(3)
 {
-	background-color: #5bcbe4;
+	background-color: #dd44a0;
 }
 .pr-color li:nth-child(4)
 {
-	background-color: #2b4398;
+	background-color: #666;
+}
+.pr-color li:nth-child(5)
+{
+	background-color: #2920d4;
+}
+.pr-color li:nth-child(6)
+{
+	background-color: #7fe946;
 }
 .pr-color li:nth-child(1),
 .pr-color li:nth-child(2),
@@ -449,11 +457,14 @@ body, button, input{
 
 /* --------------------------- */
 /* cài thông báo hiển thị add to cart thành công */
+/* Basic styling for the toast message */
+
+
 .toast {
     visibility: hidden;
     min-width: 250px;
     margin-left: -125px;
-    background-color: #FBC31C;
+    background-color: #FBC31C !important;
     color: #fdfdfd;
     text-align: center;
     border-radius: 2px;
@@ -480,13 +491,13 @@ body, button, input{
     to {bottom: 0; opacity: 0;}
 }
 
-.productList_image{
+/* .productList_image{
     
     width: 100%;
     height: 238px;
 	border-radius: 10px;
     
-}
+} */
 
 .btn_add {
     position: absolute;
@@ -609,3 +620,59 @@ margin: 16px 6px 0px 6px;
   .suggestions li:hover {
     background-color: #f0f0f0; /* Nền khi rê chuột lên */
   }
+  
+  .custom-tab {
+    position: relative;
+}
+
+.custom-tab::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: -1px;
+    left: 0;
+    background-color: #fbc31c;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.custom-tab.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/*dấu tích */
+.pr-color {
+    list-style: none;
+    padding: 0;
+}
+
+.color-item {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.color-item .checkmark {
+    position: absolute;
+    top: -12px; /* Adjust this value to move the checkmark higher */
+    right: -8px;
+    display: none;
+    color: gray;
+    font-size: 20px;
+}
+
+.color-item.selected {
+    border: 2px solid black;
+}
+
+.color-item.selected .checkmark {
+    display: block;
+}
+

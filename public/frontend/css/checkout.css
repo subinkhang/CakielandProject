@@ -2,194 +2,224 @@
     margin-bottom: 100px;
     }
     p1{
-        color: #080808;
+    color: #080808;
     }
     h1{
-        color: #FBC31C;
+    color: #FBC31C;
     }
     h5{
-        color: #080808;
+    color: #080808;
     }
     h2{
-        color: #080808;
+    color: #080808;
     }
     h3{
-        color: #080808;
+    color: #080808;
     }
     h4{
-        color: #080808;
+    color: #080808;
     }
     h6{
-        color: #080808;
+    color: #080808;
     }
     .cont{
-        margin-top: 15px;
+    margin-top: 15px;
     }
     .bt-pay{
-        margin-bottom: 50px;
-        margin-top: 50px;
-        text-align: center;
-        border: none;
-        border-radius:20px;
-        background-color: #FBC31C;
-        width: 150px;
+    margin-left: 400px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: center;
+    border: none;
+    border-radius:20px;
+    background-color: #FBC31C;
+    width: 150px;
     }
     .info{
-        margin-top:20px;
+    margin-top:20px;
     }
     .title{
-        margin-top: 50px;
+    margin-top: 50px;
     }
     .ip{
-        margin-top:10px;
+    margin-top:10px;
     }
     .deli{
-        border: solid #F3F3F3 1px;
-        border-radius: 15px;
-        background-color: #F3F3F3;
-        margin-bottom: 10px;
-        height: 42px;
+    border: solid #F3F3F3 1px;
+    border-radius: 15px;
+    background-color: #F3F3F3;
+    margin-bottom: 10px;
+    height: 42px;
     }
     .pmmt{
-        margin-top: 20px;
+    margin-top: 20px;
     }
     .pmbox{
-        border-radius: 20px;
+    border-radius: 20px;
     }
-    
+
     #btn-p{
-        border: none;
+    border: none;
     }
-    
+
     .pr-list-co{
-        margin-bottom: 80px;
-        box-shadow: 2px 2px 0px 0px #f3f3f3;
+    margin-bottom: 80px;
+    box-shadow: 2px 2px 0px 0px #f3f3f3;
     }
     .sub{
-        text-align: left;
+    text-align: left;
     }
     .price{
-        color:#FBC31C
+    color:#FBC31C
     }
     .col4.info.num{
-        text-align: left;
+    text-align: left;
     }
-/*----------------header---------------*/
+    /*----------------header---------------*/
     .bg-breadcrub {
-        background-size: cover;
-        padding: 120px 0;
+    background-size: cover;
+    padding: 120px 0;
     }
-    
+
     .my-3 {
-        margin-top: 1rem !important;
-        margin-bottom: 1rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
     }
-    
+
     .bg-breadcrub h2
     {
-        color: #282828;
-        font-size: 55px;
-        font-weight: 700;
+    color: #282828;
+    font-size: 55px;
+    font-weight: 700;
     }
     .breadcrumb
     {
-        justify-content: center;
+    justify-content: center;
     }
     .breadcrumb-item a
     {
-        font-size: 18px;
-        color: #282828 !important;
-        font-weight: bold;
+    font-size: 18px;
+    color: #282828 !important;
+    font-weight: bold;
     }
     .bg-breadcrub .active
     {
-        color: #666666;
+    color: #666666;
     }
-/*============================*/
+    /*============================*/
     body .modalbox{
-        align-items: center;
-        text-align: center;
+    align-items: center;
+    text-align: center;
     }
 
     /*-------------------------DONE--------------*/
     .popup {
-        display: none;  /* Initially hidden */
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);  /* Center the popup */
-        background-color: #f3f3f3;
-        padding: 20px;
-        border-radius: 25px;
-        z-index: 10;  /* Ensure the popup is on top of other content */
-      }
-     
-      
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the popup */
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 25px;
+    z-index: 10; /* Ensure the popup is on top of other content */
+    }
+
+
     .modalbox {
-        text-align: center;
-        width: 500px;
+    text-align: center;
+    width: 500px;
     }
 
     .modalbox.btnback{
-        text-align: center;
-    }
-      
-    .btnback {
-        margin-top: 50px;
-        margin-left: 150px;
-        text-align: center;
-        border: none;
-        border-radius:20px;
-        background-color: #FBC31C;
-        width: 200px;
-        height: 40px;
-      }
-    .popup.active {  /* Show the popup when active class is added */
-        display: block;
-      }      
-    .modalbox i{
-        font-size: 60px;
-        color: green;
-    }
-    .modalbox h3{
-        margin-top: 20px;
-    }
-    .overlay{
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.75);
-        display: none;
-        z-index: 9;
-    }
-    .overlay.active{
-        display: block;
+    text-align: center;
     }
 
-    /*---------------Bank Method----------------   IF DONE -----> LINK ABOVE */
+    .btnback {
+    margin-top: 50px;
+    margin-left: 150px;
+    text-align: center;
+    border: none;
+    border-radius:20px;
+    background-color: #FBC31C;
+    width: 200px;
+    height: 40px;
+    }
+    .popup.active { /* Show the popup when active class is added */
+    display: block;
+    }
+    .modalbox i{
+    font-size: 60px;
+    color: green;
+    }
+    .modalbox h3{
+    margin-top: 20px;
+    }
+    .overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    z-index: 9;
+    }
+    .overlay.active{
+    display: block;
+    }
+
+    /*---------------Bank Method---------------- IF DONE -----> LINK ABOVE */
     .bankmethod{
-        display: none;  /* Initially hidden */
-        position: fixed;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);  /* Center the popup */
-        background-color: #f3f3f3;
-        border-radius: 25px;
-        z-index: 10;
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the popup */
+    background-color: #f3f3f3;
+    border-radius: 25px;
+    z-index: 10;
     }
     .bankmethod.active{
-        display: block;
+    display: block;
     }
     .qr{
-        width: 320px;
-        height: 320px;
+    width: 320px;
+    height: 320px;
     }
     /*------------------------------CHECK INFO-----------------------*/
     #checkinfo{
-        display: none;
-        color: red;
-        font-size: 12px;
-        margin-top: 5px;
+    display: none;
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    }
+
+    form.boxac{
+    text-align: center;
+    width: 570px;
+    height: 560px;
+    display: grid;
+    place-content: center;
+    }
+    .box_account h1{
+    margin-top: 30px;
+    font-weight: bold;
+    }
+    .boxac{
+    margin-top: 15px;
+    height: 50px;
+    background-color: #f3f3f3;
+    border-radius: 100px;
+    border: #f3f3f3;
+    width: 570px;
+    }
+    #list tr {
+    margin-top: 50px;
+    margin-bottom: 20px; /* Tạo khoảng cách giữa các hàng */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+    border-radius: 10px; /* Bo tròn góc của hàng */
+    }
+    tr{
+        margin-top: 30px;
     }

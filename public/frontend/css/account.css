@@ -100,6 +100,7 @@
 
 /* ACCOUNT */
 
+
 form.boxac{
     text-align: center;
     width: 570px;
@@ -134,11 +135,12 @@ form.boxac{
 .button_ac1{
     width: 130px;
     height: 35px;
-    background-color: #f3f3f3;
-    border: #f3f3f3;
+    background-color: #080808;
+    border: #080808;
     border-radius: 30px;
     margin-top: 30px;
-    color: #080808;
+    color: #FBC31C;
+    margin-bottom: 150px;
 }
 .button_ac2{
     width: 130px;
@@ -154,13 +156,28 @@ form.boxac{
     margin-top: 30px;
     background-color: #666666;
     border: 1px solid #666666;
-    border-radius: 50%;
+    border-radius: 70%;
     height: 200px;
     width: 200px;
+    z-index: 99999;
+}
+.circle {
+    width: 200px; /* Đặt kích thước mong muốn */
+    height: 200px;
+    border-radius: 70%;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+
+.circle img {
+    width: 200px;
+    height: 200px;
+    z-index: -1;
 }
 .button_ac1:hover{
-    background-color: #080808;
-    color: #f3f3f3;
+    background-color: #FBC31C;
+    color: ;
 }
 .button_ac2:hover{
     background-color: #080808;
@@ -253,4 +270,26 @@ form.boxac{
 .bg-breadcrub .active
 {
 	color: #666666;
+}
+.ava_upload{
+    width: 130px;
+    height: 35px;
+    background-color: #FBC31C;
+    border: #FBC31C;
+    border-radius: 30px;
+    margin-top: 30px;
+    color: #080808;
+    /* margin-bottom: 150px; */
+    padding-left: 200px;
+}
+.avatar{
+    position: relative;
+    padding-left: 700px;
+
+}
+.user-avatar {
+    width: 200px; /* Đặt kích thước ảnh */
+    height: 200px;
+    border-radius: 50%; /* Bo góc ảnh để tạo hình tròn */
+    object-fit: cover; /* Để ảnh không bị méo */
 }
