@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 use DB;
 use Session;
@@ -30,9 +32,45 @@ class HomepageController extends Controller
         } else {
             // Nếu hợp lệ, lưu vào cơ sở dữ liệu
             DB::table('email_customer')->insert($data);
-        }
 
-        return response()->json(['success' => 'Email has been submitted'], 200);
+            // Gửi email thông qua Gmail
+            // try {
+                $mail = new PHPMailer(true);
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'cakielandofficial@gmail.com'; // Địa chỉ Gmail của bạn
+                $mail->Password = 'gqjnegaeydcxcabt'; // Mật khẩu Gmail của bạn
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                $mail->setFrom('cakielandofficial@gmail.com', 'CakieLand');
+                $mail->addAddress($data['email']);
+
+                $mail->isHTML(true);
+                $mail->Subject = 'Subject';
+                $mail->Body = 'Content';
+
+                $mail->send();
+                return response()->json(['success' => 'Email has been submitted'], 200);
+            // } 
+            // catch (Exception $e) {
+            //     return response()->json(['error' => 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo], 500);
+            // }
+        }
+        // $data = [];
+        // $data['email'] = $request->email;
+
+        // // Kiểm tra xem địa chỉ email có hợp lệ không
+        // $emailPattern = '/^[^\s@]+@[^\s@]+\.[^\s@]+$/';
+        // if (!preg_match($emailPattern, $data['email'])) {
+        //     return response()->json(['error' => 'Email is not valid'], 400);
+        // } else {
+        //     // Nếu hợp lệ, lưu vào cơ sở dữ liệu
+        //     DB::table('email_customer')->insert($data);
+        // }
+
+        // return response()->json(['success' => 'Email has been submitted'], 200);
     }
     public function getAllProducts()
     {

@@ -38,6 +38,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     {{-- //====================================== --}}
     <link rel="stylesheet" href="{{ asset('backend/css/adminDashboard.css') }}">
     <title>Admin Dashboard</title>
+    <link rel="icon" href="{{ asset('frontend/images/Logo Title.png') }}">
 </head>
 
 <body>
