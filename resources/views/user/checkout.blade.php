@@ -8,18 +8,20 @@
         <div class="row">
             <div class="container">
                 <div class="row">
-                    <div class="col-6"></div>
+                    <div class="col-6">
+                        <h1 class="title"><b>INVOICE</b></h1>
+                    </div>
                     <div class="col-6">
                         <h1 class="title"><b>DELIVERY DETAILS</b></h1>
                     </div>
                     <div class="col-6">
                         <div class="container">
-
+                            <form>
                             <div class="row pr-list-co">
                                 <table id="list">
-
                                 </table>
                             </div>
+                            </form>
                         </div>
 
                         <table class="table table-borderless">
