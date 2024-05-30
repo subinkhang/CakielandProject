@@ -245,13 +245,14 @@
 #sortForm {
     margin: 10px 0;
 }
+
+/* Base style */
 .select-custom {
     display: block;
     width: 100%;
     padding: 8px 16px;
-    border: 2px solid #f3e0d2; /* Soft border color */
+    border: 2px solid #FBC31C;
     border-radius: 20px; /* Rounded corners */
-    background-image: linear-gradient(to right, #f9f0e3, #f0c8a0); /* Gradient background */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
     cursor: pointer;
     font-size: 16px;
@@ -261,7 +262,6 @@
 
 .select-custom:hover, .select-custom:focus {
     box-shadow: 0 8px 16px rgba(178, 150, 99, 0.5); /* Enhanced shadow on hover/focus */
-    background-image: linear-gradient(to right, #f0c8a0, #f9f0e3); /* Reverse gradient for visual effect */
 }
 
 /* Style adjustments for options */
