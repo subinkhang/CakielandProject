@@ -106,3 +106,7 @@ use App\Http\Controllers\AdminListProductController;
 Route::get('/download-product', [AdminListProductController::class, 'export_excel']);
 use App\Http\Controllers\AdminListBillController;
 Route::get('/download-bill', [AdminListBillController::class, 'export_excel']);
+
+use App\Http\Controllers\ImageSearchController;
+
+Route::post('/search-by-image', [ImageSearchController::class, 'searchByImage'])->name('search-by-image');

@@ -10,14 +10,19 @@
         "@tailwindcss/typography": "^0.5.10",
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.2",
-        "axios": "^1.6.8",
+        "axios": "^1.7.2",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.31",
         "tailwindcss": "^3.1.0",
         "vite": "^5.0"
     },
     "dependencies": {
+        "@huggingface/inference": "^2.7.0",
         "cropperjs": "^1.6.2",
-        "jquery-autocomplete": "^1.2.8"
+        "express": "^4.19.2",
+        "fs": "^0.0.1-security",
+        "jquery-autocomplete": "^1.2.8",
+        "multer": "^1.4.5-lts.1",
+        "path": "^0.12.7"
     }
 }

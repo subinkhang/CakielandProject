@@ -1,32 +1,18 @@
-<?php
-
-use App\Livewire\Actions\Logout;
-use Livewire\Volt\Component;
-
-new class extends Component {
-    /**
-     * Log the current user out of the application.
-     */
-    public function logout(Logout $logout): void
-    {
-        $logout();
-
-        $this->redirect('/', navigate: true);
-    }
-}; ?>
-<div>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="{{ asset('frontend/images/Logo Title.png') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/homepage.css') }}">
-        <link rel="stylesheet" href="{{ 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css' }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('frontend/images/Logo Title.png') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/homepage.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Search by Image</title>
+</head>
+<body>
+    <div>
         <div class="container-fluid nav_top nav_top-header">
             <div class="container">
                 <div class="d-flex align-items-center justify-content-between">
@@ -37,11 +23,15 @@ new class extends Component {
                     </div>
                     <div class="col-1"></div>
                     <div class="search-header flex-grow-1 mx-3">
-                        <form action="{{ URL::to('search-product-list') }}" method="POST" class="d-flex" id="searchForm">
+                        <form action="{{ URL::to('search-product-list') }}" method="POST" class="d-flex align-items-center">
                             {{ csrf_field() }}
                             <input type="text" class="form-control search-input-header" placeholder="Search products..." id="searchInput" name="keywords_submit" oninput="checkInput()">
                             <div class="suggestions text_p1" style="display: none;" id="suggestions"></div>
-                            <button type="submit" class="btn_search-header" name="search_item" id="searchButton" disabled>Search</button>
+                            <button type="submit" class="btn_search-header" name="search_item">Search</button>
+                            <input type="file" id="imageUpload" name="image" style="display: none;" accept="image/*">
+                            <button type="button" class="btn btn-link p-0 ml-2" id="imageUploadButton" style="color:#080808;" >
+                                <i class="fa fa-camera"></i>
+                            </button>
                         </form>
                     </div>
                     <div class="d-flex align-items-center">
@@ -121,3 +111,52 @@ new class extends Component {
         </script>
     </body>
 </div>
+
+        {{-- Phần hiển thị kết quả tìm kiếm --}}
+        @if(session('result'))
+            <div class="container mt-3">
+                <h3>Best Match:</h3>
+                <p>{{ session('result')['best_match'] }}</p>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="container mt-3">
+                <h3>Error:</h3>
+                <p>{{ session('error') }}</p>
+            </div>
+        @endif
+    </div>
+
+    <script>
+        document.getElementById('imageUploadButton').addEventListener('click', function() {
+            document.getElementById('imageUpload').click();
+        });
+
+        document.getElementById('imageUpload').addEventListener('change', function() {
+            const formData = new FormData();
+            formData.append('image', this.files[0]);
+
+            fetch('{{ route("search-by-image") }}', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Hiển thị kết quả tìm kiếm
+                if (data.best_match) {
+                    alert('Best Match: ' + data.best_match);
+                } else if (data.error) {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+
+    <script src="{{ asset('frontend/js/homepage.js') }}"></script>
+</body>
+</html>
