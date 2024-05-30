@@ -153,13 +153,14 @@ form.boxac{
     margin-bottom: 150px;
 }
 .circle {
-    margin-top: 30px;
+    /* margin-top: 30px; */
     background-color: #666666;
     border: 1px solid #666666;
     border-radius: 70%;
     height: 200px;
     width: 200px;
     z-index: 99999;
+    /* padding-left: 700px; */
 }
 .circle {
     width: 200px; /* Đặt kích thước mong muốn */
@@ -168,7 +169,9 @@ form.boxac{
     overflow: hidden;
     z-index: 9999;
 }
-
+.circle:hover{
+    color: #080808;
+}
 
 .circle img {
     width: 200px;
@@ -177,7 +180,7 @@ form.boxac{
 }
 .button_ac1:hover{
     background-color: #FBC31C;
-    color: ;
+    color: #080808;
 }
 .button_ac2:hover{
     background-color: #080808;
