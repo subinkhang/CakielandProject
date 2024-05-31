@@ -80,12 +80,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <table class="table table-striped b-t b-light">
                                 <thead>
                                     <tr>
-                                        <!-- <th style="width:20px;">
-              <label class="i-checks m-b-none">
-              <input type="checkbox"><i></i>
-              </label>
-            </th> -->
-                                        <!-- <th></th> -->
                                         <th>Id</th>
                                         <th>Product's name</th>
                                         <th>Price</th>

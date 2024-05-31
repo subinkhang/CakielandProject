@@ -9,7 +9,7 @@
     @foreach ($product_detail as $key => $product)
         <div class="container mt-5 carousel_product">
             <div class="row detail">
-                <div class="col-lg-6 pr-slide carousel" data-bs-ride="carousel" id="pr-slide">
+                {{-- <div class="col-lg-6 pr-slide carousel" data-bs-ride="carousel" id="pr-slide">
                     <div class="carousel-indicators">
                         <div class="row">
                             <div class="col-4">
@@ -32,7 +32,7 @@
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#pr-slide" role="button" data-bs-slide="next">
+                        <a class="carousel-control-next" href="#pr-slide" role="button" data-bs-slide="next" id="next-slide">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </a>
@@ -52,6 +52,65 @@
                         @endforeach
                     </div>
                 </div>
+                <script>
+                    var galleryImages = @json($gallery_images->map(function($image) {
+                        return asset('backend/upload/' . $image->image_product);
+                    }));
+                </script>
+                <script src="{{ asset('path/to/your/custom.js') }}"></script> --}}
+                <div class="col-lg-6 pr-slide carousel" data-bs-ride="carousel" id="pr-slide">
+                    <div class="carousel-indicators">
+                        <div class="row" id="carousel-indicators">
+                            <div class="col-4">
+                                <img data-bs-target="#pr-slide" data-bs-slide-to="0" class="active carousel-btn1"
+                                    src="{{ asset('public/backend/upload/' . $product->thumbnail) }}" />
+                            </div>
+                            @php $slide_index = 1; @endphp
+                            @foreach ($gallery_images as $image)
+                                @if ($slide_index < 3)
+                                    <div class="col-4">
+                                        <img data-bs-target="#pr-slide" data-bs-slide-to="{{ $slide_index }}"
+                                            class="carousel-btn{{ $slide_index + 1 }}"
+                                            src="{{ asset('backend/upload/' . $image->image_product) }}" />
+                                    </div>
+                                @endif
+                                @php $slide_index++; @endphp
+                            @endforeach
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#pr-slide" role="button" data-bs-slide="prev" id="prev-slide">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#pr-slide" role="button" data-bs-slide="next" id="next-slide">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                    <div class="carousel-inner parent">
+                        <div class="carousel-item active">
+                            <img src="{{ asset('public/backend/upload/' . $product->thumbnail) }}" alt="" class="w-100 img-fluid">
+                        </div>
+                        @php $slide_index = 1; @endphp
+                        @foreach ($gallery_images as $image)
+                            <div class="carousel-item">
+                                <img src="{{ asset('backend/upload/' . $image->image_product) }}" alt="" class="img-fluid w-100">
+                            </div>
+                            @php $slide_index++; @endphp
+                        @endforeach
+                    </div>
+                </div>
+                
+                <script>
+                    var galleryImages = @json($gallery_images->map(function($image) {
+                        return asset('backend/upload/' . $image->image_product);
+                    }));
+                </script>
+                <script src="{{ asset('path/to/your/custom.js') }}"></script>
+                
+                
+                
+                
+                
                 <div class="col-lg-6">
                     <div class="col-12">
                         <h6 class="pr-detail-name"> {{ $product->name }} </h6>
@@ -64,10 +123,10 @@
                         </ul>
                         <div class="row mb-3">
                             <div class="col-md-2 col-3 ">
-                                <p class="old-price"> {{ $product->fake_price }} </p>
+                                <p class="old-price"> ${{ $product->fake_price }} </p>
                             </div>
                             <div class="col-md-2 col-3">
-                                <p class="new-price"> {{ $product->price }} </p>
+                                <p class="new-price"> ${{ $product->price }} </p>
                             </div>
                             {{-- <button class="btn-shopnow bg-vang my-3" onclick="addToCart(this)" onclick="AddCart(4)">Add to
                             cart</button> --}}
@@ -115,7 +174,6 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="des" role="tabpanel" aria-labelledby="home-tab"
                         tabindex="0">
-                        {{-- <p>{{$product->description_detail}}</p> --}}
                         <h3 class="pr-des">Why choose product?</h3>
                         <p>{{ $product->description_detail }}</p>
                         {{-- <ul>
@@ -124,8 +182,8 @@
                         <li>Strong capacity, safe materials</li>
                         <li>Equipped with two convenient sticks</li>
                     </ul> --}}
-                        <h3 class="pr-des">Product Description</h3>
-                        <p>{{ $product->description_technique }}</p>
+                        {{-- <h3 class="pr-des">Product Description</h3>
+                        <p>{{ $product->description_technique }}</p> --}}
                         {{-- <ol>
                         <li>Compact design, convenient to hold</li>
                         <p>Philips HR3705 Egg Beater (300W) has a compact design with a sturdy handle so you can use it
@@ -146,42 +204,8 @@
                     </ol> --}}
                     </div>
                     <div class="tab-pane" id="info" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                        <h3 class="pr-des">Product information</h3>
-                        <table>
-                            <p>{{ $product->description_information }}</p>
-                            {{-- <tr>
-                            <td>Trademark:</td>
-                            <td>Philips</td>
-                        </tr>
-                        <tr>
-                            <td>Brand origin:</td>
-                            <td>Netherlands</td>
-                        </tr>
-                        <tr>
-                            <td>Material:</td>
-                            <td>High quality plastic, stainless steel</td>
-                        </tr>
-                        <tr>
-                            <td>Wattage:</td>
-                            <td>300W</td>
-                        </tr>
-                        <tr>
-                            <td>Size:</td>
-                            <td>186 x 84 x 154 mm</td>
-                        </tr>
-                        <tr>
-                            <td>Product weight:</td>
-                            <td>0.853kg</td>
-                        </tr>
-                        <tr>
-                            <td>Warranty form:</td>
-                            <td>Warranty</td>
-                        </tr>
-                        <tr>
-                            <td>Warranty period:</td>
-                            <td>12 month</td>
-                        </tr> --}}
-                        </table>
+                        <h3 class="pr-des">Product Description</h3>
+                        <p>{{ $product->description_technique }}</p>
                     </div>
                     <div class="tab-pane" id="info" role="tabpanel" aria-labelledby="profile-tab"
                         tabindex="0">
