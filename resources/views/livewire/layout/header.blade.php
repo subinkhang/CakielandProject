@@ -92,6 +92,13 @@
                     </div>
                 </div>
             </div>
+            {{-- <script src="https://app.chatgptbuilder.io/webchat/plugin.js?v=5"></script><script>ktt10.setup({id:"arRLK8NKov",accountId:"1103805",color:"#F2E319"})</script> --}}
+            {{-- <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+            <df-messenger
+            chat-title="testEngChat"
+            agent-id="6528fe60-536d-45b0-a2f6-d400d5236444"
+            language-code="en"
+            ></df-messenger> --}}
         </div>
         <script src="{{ asset('frontend/js/homepage.js') }}"></script>
         <script>
