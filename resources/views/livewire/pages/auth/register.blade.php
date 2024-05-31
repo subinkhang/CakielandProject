@@ -29,10 +29,22 @@ new #[Layout('layouts.guest')] class extends Component
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered($user = User::create($validated)));
-
+        // $this->redirect()->intended(route('verify-email', absolute: false));
         Auth::login($user);
+        $this->redirect('/login');
+        // $this->redirectIntended(default: route('verify-email', absolute: false), navigate: true);
 
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+
+
+        // $this->redirect(route('dashboard', absolute: false), navigate: true);
+        
+        // if ($request->user()->hasVerifiedEmail()) {
+        //     $this->redirect()->intended(route('dashboard', absolute: false));
+        // }
+
+        // // $request->user()->sendEmailVerificationNotification();
+
+        // $this->back()->with('status', 'verification-link-sent');
     }
 }; ?>
 
