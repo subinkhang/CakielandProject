@@ -45,6 +45,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // User routes
     Route::post('/update-account', 'App\Http\Controllers\AccountController@update_account');
 
+    // Product Routes
+    Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
+    Route::post('/search-product-list', 'App\Http\Controllers\ProductListController@search');
+    Route::get('/search-product-list', 'App\Http\Controllers\ProductListController@searchSort');
+    
+    // Product Detail Routes
+    Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
+    Route::get('/product-detail', function () {
+        return redirect('/product-list');
+    });
+
+    // Category & sub-category Routes
+    Route::get('/category{category_id}', 'App\Http\Controllers\ProductListController@showCategory');
+    Route::get('/sub-category{sub_category_id}', 'App\Http\Controllers\ProductListController@showSubCategory');
+
     // Account Routes
     Route::get('/account', 'App\Http\Controllers\AccountController@index');
     Route::post('/update-account', [AccountController::class, 'updateAccount'])->name('update.account');

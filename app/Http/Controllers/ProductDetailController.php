@@ -7,6 +7,7 @@ use DB;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Post;
 session_start();
 // class ProductDetailController extends Controller
 // {
@@ -131,17 +132,20 @@ class ProductDetailController extends Controller
                               ->take(4)
                               ->get();
 
-        return view('user/productDetail', [
-            'product_detail' => $product_detail,
-            'product_color' => $product_color,
-            'related_products' => $related_products,
-            'colors' => $colors,
-            'gallery_images' => $gallery_images,
-            'product_id' => $product_id, // Truyền product_id vào view
-        ]);
+        // Posts
+        $post = Post::all();
+
+
+        return view('user/productDetail', compact(
+            'product_detail', 
+            'product_color', 
+            'related_products', 
+            'colors', 
+            'gallery_images', 
+            'post'
+        ));
+
     }
 }
 
 //end
-
-

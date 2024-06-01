@@ -198,6 +198,19 @@
             </div>
         </div>
     @endforeach
+
+    <!-- COMMENT AND POST -->
+    @foreach ($post as $posts)
+
+        <h1>{{$posts->title}}</h1>
+
+        <h1>{{$posts->description}}</h1>
+        
+    @endforeach
+
+    <livewire:comments :model="$posts"/>
+
+
     <div class="container related-pr mt-5 mb-3">
         <div class="row">
             <div class="col-12 justify-content-start mb-3">
