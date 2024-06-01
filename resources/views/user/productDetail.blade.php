@@ -192,9 +192,11 @@
     @endforeach
 
     <!-- COMMENT AND POST -->
-    @foreach ($post as $posts)
-        <livewire:comments :model="$posts"/>
-    @endforeach
+    <div class="max-w-2xl mx-auto py-8">
+        @foreach ($post as $posts)
+            <livewire:comments :model="$posts"/>
+        @endforeach
+    </div>
     {{-- @if ($post->isEmpty())
         <div>
             <livewire:comments :model="new \App\Models\Post(['product_id' => $product_detail->first()->id, 'title' => 'Untitled'])"/>

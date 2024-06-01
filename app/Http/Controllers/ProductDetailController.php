@@ -88,9 +88,11 @@ class ProductDetailController extends Controller
     public function product_detail($product_id)
     {
         
-        DB::table('posts')->insert([
-            'product_id' => $product_id,
-        ]);
+        if (!DB::table('posts')->where('product_id', $product_id)->exists()) {
+            DB::table('posts')->insert([
+                'product_id' => $product_id,
+            ]);
+        }
         // Get product details from product table
         $product_detail = DB::table('product')
                             ->where('product.id', $product_id)
