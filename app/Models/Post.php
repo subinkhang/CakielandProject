@@ -10,4 +10,9 @@ class Post extends Model
 {
     use HasFactory;
     use Commentable;
+
+    protected $fillable = [
+        'title', 
+        'product_id' // Thêm dòng này
+    ];
 }

@@ -8,13 +8,9 @@ use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Post;
+use App\Models\Product;
+
 session_start();
-// class ProductDetailController extends Controller
-// {
-//     public function product_detail($product_id)
-// {
-//     // Lấy chi tiết sản phẩm hiện tại từ bảng product
-//     $product_detail = DB::table('product')->where('id', $product_id)->first();
 
 //     // Lấy category_id của sản phẩm hiện tại
 //     $category_id = $product_detail->category_id;
@@ -91,6 +87,10 @@ class ProductDetailController extends Controller
 {
     public function product_detail($product_id)
     {
+        
+        DB::table('posts')->insert([
+            'product_id' => $product_id,
+        ]);
         // Get product details from product table
         $product_detail = DB::table('product')
                             ->where('product.id', $product_id)
@@ -133,8 +133,7 @@ class ProductDetailController extends Controller
                               ->get();
 
         // Posts
-        $post = Post::all();
-
+        $post = Post::where('product_id', $product_id)->get();
 
         return view('user/productDetail', compact(
             'product_detail', 
@@ -144,7 +143,6 @@ class ProductDetailController extends Controller
             'gallery_images', 
             'post'
         ));
-
     }
 }
 
