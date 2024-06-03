@@ -137,6 +137,7 @@ class ProductDetailController extends Controller
             'related_products' => $related_products,
             'colors' => $colors,
             'gallery_images' => $gallery_images,
+            'product_id' => $product_id, // Truyền product_id vào view
         ]);
     }
 }

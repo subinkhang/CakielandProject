@@ -1,11 +1,12 @@
 <x-app-layout>
     <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/productDetail.css') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMKeKxHeE/8D6LJJ6Gu0JeBdbVYlc2X6I5f3/0n" crossorigin="anonymous">
-
-    <livewire:breadcrumb-banner />
+    
+    @livewire('breadcrumb-banner', ['productId' => $product_detail->first()->id])
+    {{-- @livewire('breadcrumb', ['productId' => $product_detail->first()->id]) --}}
     @foreach ($product_detail as $key => $product)
         <div class="container mt-5 carousel_product">
             <div class="row detail">
