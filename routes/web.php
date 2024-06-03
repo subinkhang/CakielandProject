@@ -90,5 +90,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/delete-list-voucher/{id}', 'App\Http\Controllers\AdminListVoucherController@delete_list_voucher');
     //Admin Add Voucher
     Route::get('/admin-add-voucher', 'App\Http\Controllers\AdminAddVoucherController@add_voucher');
-    Route::post('/insert-code-coupon', 'App\Http\Controllers\AdminAddVoucherController@insert_coupon_code');
+    Route::post('/admin-add-voucher', 'App\Http\Controllers\AdminAddVoucherController@insert_coupon_code');
 });

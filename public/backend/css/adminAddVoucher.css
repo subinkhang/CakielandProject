@@ -1,0 +1,84 @@
+.menu{
+    margin-left: 2%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    color: #282828;
+}
+.text-title{
+    width:96%;
+    height: 40px;
+    margin:0% 2% 0% 2%;
+    border-radius: 15px;
+    border: 2px solid #666666;
+    overflow-wrap: break-word;
+    padding: 0px 10px;
+    padding-top: 7px
+}
+.bt-pay{
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: center;
+    border: none;
+    border-radius:20px;
+    background-color: #FBC31C;
+    width: 100px;
+    margin-left: 350px;
+}
+#btn-p{
+    border: none;
+    background-color: #FBC31C;
+}
+#text-name{
+    padding-top: 30px;
+}
+#desc{
+    height: 120px;
+}
+#detail{
+    height: 400px;
+}
+#tech{
+    margin-bottom: 20px;
+    height: 160px;
+}
+textarea{
+    resize: none;
+}
+
+/*-------------------RIGHT-----------------*/
+.right{
+    margin-left: 2%;
+}
+.right-text{
+    padding-top: 100px;
+}
+.image{
+    padding-top: 5px;
+}
+.cont{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 50px));
+    gap: 20px;
+    padding: 20px;
+}
+#gal{
+    justify-content: space-evenly;
+    width: 200px;
+    height: 300px;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
+    display: flex;
+}
+.color{
+    width: 40px; 
+    height: 40px; 
+    border-radius: 10px;
+    border: 1px solid black;
+}
+figure{
+    width: 40%;
+    height: 10%;
+}
+
+
