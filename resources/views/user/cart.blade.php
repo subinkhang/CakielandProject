@@ -39,10 +39,10 @@
                         <div class="search">
                             <div class="row">
                                 <div class="col-8">
-                                    <input type="text" class="w-100 text_p1 boxvoucher" placeholder="Voucher">
+                                    <input type="text" class="w-100 text_p1 boxvoucher" id="voucher-input" placeholder="Voucher">
                                 </div>
                                 <div class="col-4">
-                                    <button class="btn_search1">Submit</button>
+                                    <button class="btn_search1" id="check-voucher-btn">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -71,8 +71,8 @@
                                     <td class="col-8">
                                         <p1>Discount</p1>
                                     </td>
-                                    <td class="col-4 text-end" id="discount-price">
-                                        <p1>2.00</p1>
+                                    <td class="col-4 text-end">
+                                        <p1 id="discount-price">0.00</p1>
                                     </td>
                                 </tr>
 
@@ -82,7 +82,7 @@
                                         <h3><b>TOTAL</b></h3>
                                     </td>
                                     <td class="col-2 text-end" id="totalprice">
-                                        <h3><b></b></h3>
+                                        <h3><b>$</b></h3>
                                     </td>
                                 </tr>
                             </table>
@@ -119,4 +119,40 @@
     <script src="../header-footer/js/jquery-3.7.1.min.js"></script>
     <script src="../header-footer/js/bootstrap.bundle.js"></script>
     <script src="{{ asset('frontend/js/cart.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#check-voucher-btn').click(function() {
+                var voucherCode = $('#voucher-input').val();
+        
+                $.ajax({
+                    url: '/check-voucher',
+                    type: 'POST',
+                    data: {
+                        code_voucher: voucherCode,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.error) {
+                            alert(response.error);
+                        } else {
+                            var discountPriceElement = $('#discount-price');
+                            var discountValue = 0;
+        
+                            if (response.condition_voucher == "2") {
+                                discountValue = parseFloat(response.value_voucher);
+                            } else{
+                                discountValue = (response.value_voucher / 100) * parseFloat($('#rightsub').text());
+                            }
+                            discountPriceElement.text(discountValue.toFixed(2));
+                            updateTotal();
+                        }
+                    },
+                    error: function(xhr) {
+                        alert('An error occurred. Please try again.');
+                    }
+                });
+            });
+        });
+        </script>
 </x-app-layout>

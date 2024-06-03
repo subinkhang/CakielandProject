@@ -43,7 +43,7 @@ let total = 0;
 subtotalElements.forEach((subtotalElement) => {
 total += parseFloat(subtotalElement.textContent.replace("$", ""));
 });
-document.getElementById("rightsub").textContent = `$${total.toFixed(2)}`;
+document.getElementById("rightsub").textContent = `${total.toFixed(2)}`;
 const shippingPrice = parseFloat(
 document.getElementById("shipping-price").textContent.replace("$", "")
 );
@@ -124,7 +124,7 @@ for (let i = index; i < products.length; i++) { const nextItem=document.getEleme
     var table = document.getElementById("prod");
     let total = 0;
     const maxRows = 3;
-    for (let i = 0; i < products.length; i++) {
+    for (let i = 0; i < products.length; i++) { 
         var newRow=document.createElement("tr"); 
         newRow.classList.add('newrow');
         newRow.id=`item${i}`; 
@@ -192,7 +192,7 @@ for (let i = index; i < products.length; i++) { const nextItem=document.getEleme
         const full = total + shippingPrice - discountPrice;
         const totalprice = document.getElementById("totalprice");
         totalprice.innerHTML = `<span>
-            <h3><b>${full.toFixed(2)}</h3></b>
+            <h3><b>$${full.toFixed(2)}</h3></b>
         </span>`;
         });
 
