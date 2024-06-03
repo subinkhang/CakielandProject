@@ -54,9 +54,9 @@
                                 <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
                             </div>
                         </div>
-                        <div class="col-2 box_eye"><i class="fa-regular fa-eye"
+                        {{-- <div class="col-2 box_eye"><i class="fa-regular fa-eye"
                                 onclick="togglePasswordVisibility(this)"></i></div>
-                        <div class="col-2"></div>
+                        <div class="col-2"></div> --}}
                     </div>
                     <div class="row">
                         <div class="col-4"></div>

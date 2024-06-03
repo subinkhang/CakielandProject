@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-2"></div>
                         <div class="col-2"></div>
-                        <div class="col-8">
+                        <div class="col-6">
                             {{-- <input type="text" placeholder="Password" class="box3signup"> --}}
                             <div class="mt-4">
                                 <x-input-label for="password" :value="__('Password')" />
@@ -63,6 +63,7 @@
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             </div>
                         </div>
+                        
                         <div class="col-2"></div>
                         <div class="col-2"></div>
                         <div class="col-8">
