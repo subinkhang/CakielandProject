@@ -4,52 +4,32 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
 
 // Auth Routes
-Route::view('/', 'auth/login');
+// Route::view('/', 'auth/login');
 Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
 Route::view('profile', 'profile')->middleware(['auth', 'verified'])->name('profile');
 require __DIR__ . '/auth.php';
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    // User routes
-    Route::get('/account', 'App\Http\Controllers\AccountController@index');
-    Route::post('/update-account', 'App\Http\Controllers\AccountController@update_account');
-
-    // Product Routes
-    Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
-    Route::post('/search-product-list', 'App\Http\Controllers\ProductListController@search');
-    Route::get('/search-product-list', 'App\Http\Controllers\ProductListController@searchSort');
-    Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
-    Route::get('/product-detail', function () {
-        return redirect('/product-list');
-    });
-
-    // Category & sub-category Routes
-    Route::get('/category{category_id}', 'App\Http\Controllers\ProductListController@showCategory');
-    Route::get('/sub-category{sub_category_id}', 'App\Http\Controllers\ProductListController@showSubCategory');
-
-    // Product Detail Routes
-    Route::get('/product-detail', 'App\Http\Controllers\ProductDetailController@index');
-
-    // Account Routes
-    Route::get('/account', 'App\Http\Controllers\AccountController@index');
-    Route::post('/update-account', [AccountController::class, 'updateAccount'])->name('update.account');
-    Route::post('/update/{user_id}', 'App\Http\Controllers\CheckoutController@update');
-
-    // Cart & Checkout Routes
-    Route::get('/cart', 'App\Http\Controllers\CartController@index');
-    Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
-
-    // My Orders Routes
-    Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@myorders');
-    Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@myorders_detail');
-
-    // User Dashboard Routes
-    Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
-    Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts')->name('dashboard');
-
-    //VNPAY
-    Route::post('/vnpay', 'App\Http\Controllers\CheckoutController@vnpay');
+// Product Routes
+Route::get('/product-list', 'App\Http\Controllers\ProductListController@getPagedProducts');
+Route::post('/search-product-list', 'App\Http\Controllers\ProductListController@search');
+Route::get('/search-product-list', 'App\Http\Controllers\ProductListController@searchSort');
+Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductDetailController@product_detail');
+Route::get('/product-detail', function () {
+    return redirect('/product-list');
 });
+
+// Category & sub-category Routes
+Route::get('/category{category_id}', 'App\Http\Controllers\ProductListController@showCategory');
+Route::get('/sub-category{sub_category_id}', 'App\Http\Controllers\ProductListController@showSubCategory');
+
+// Product Detail Routes
+Route::get('/product-detail', 'App\Http\Controllers\ProductDetailController@index');
+
+Route::get('/cart', 'App\Http\Controllers\CartController@index');
+
+// User Dashboard Routes
+Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
+Route::get('/dashboard', 'App\Http\Controllers\HomePageController@getAllProducts')->name('dashboard');
 
 // About Us Routes
 Route::get('/about-us', 'App\Http\Controllers\AboutUsController@index');
@@ -57,7 +37,28 @@ Route::get('/about-us', 'App\Http\Controllers\AboutUsController@index');
 // Other Routes
 Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
 Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
-Route::get('/', function () { return redirect('/dashboard'); })->middleware(['auth', 'verified']);
+Route::get('/', function () { return redirect('/dashboard'); });
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    // User routes
+    Route::post('/update-account', 'App\Http\Controllers\AccountController@update_account');
+
+    // Account Routes
+    Route::get('/account', 'App\Http\Controllers\AccountController@index');
+    Route::post('/update-account', [AccountController::class, 'updateAccount'])->name('update.account');
+    Route::post('/update/{user_id}', 'App\Http\Controllers\CheckoutController@update');
+
+    // Cart & Checkout Routes
+    Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
+
+    // My Orders Routes
+    Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@myorders');
+    Route::get('/my-orders', 'App\Http\Controllers\MyOrdersController@myorders_detail');
+
+    //VNPAY
+    Route::post('/vnpay', 'App\Http\Controllers\CheckoutController@vnpay');
+});
 
 // Admin routes
 Route::middleware(['auth', 'admin'])->group(function () {
