@@ -194,4 +194,140 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-//Image
+//tab-bar khi chọn thì đổi chữ vàng
+function changeColor(tab) {
+    // Loại bỏ class 'active' khỏi tất cả các tab
+    var tabs = document.querySelectorAll('.custom-tab');
+    tabs.forEach(function(item) {
+        item.classList.remove('active');
+    });
+
+    // Thêm class 'active' vào tab được click
+    tab.classList.add('active');
+}
+
+
+//image
+// document.addEventListener('DOMContentLoaded', function () {
+//     const carouselInner = document.querySelector('.carousel-inner');
+//     const carouselIndicators = document.getElementById('carousel-indicators');
+//     const nextButton = document.getElementById('next-slide');
+//     const prevButton = document.getElementById('prev-slide');
+
+//     function updateCarousel(index) {
+//         const nextImages = [
+//             galleryImages[index],
+//             galleryImages[(index + 1) % galleryImages.length],
+//             galleryImages[(index + 2) % galleryImages.length]
+//         ];
+
+//         // Preload images
+//         const preloadImages = nextImages.map(src => {
+//             const img = new Image();
+//             img.src = src;
+//             return img;
+//         });
+
+//         // Wait for all images to be loaded
+//         Promise.all(preloadImages.map(img => new Promise(resolve => img.onload = resolve)))
+//             .then(() => {
+//                 // Update carousel-inner
+//                 const carouselItems = carouselInner.querySelectorAll('.carousel-item');
+//                 carouselItems.forEach((item, i) => {
+//                     const img = item.querySelector('img');
+//                     img.src = nextImages[i % nextImages.length];
+//                     item.classList.toggle('active', i === 0);
+//                 });
+
+//                 // Update carousel-indicators
+//                 const indicatorItems = carouselIndicators.querySelectorAll('.col-4 img');
+//                 indicatorItems.forEach((item, i) => {
+//                     item.src = nextImages[i % nextImages.length];
+//                     item.classList.toggle('active', i === 0);
+//                 });
+//             });
+//     }
+
+//     nextButton.addEventListener('click', function () {
+//         const activeItem = carouselInner.querySelector('.carousel-item.active img');
+//         const currentIndex = galleryImages.indexOf(activeItem.src);
+//         const nextIndex = (currentIndex + 1) % galleryImages.length;
+//         updateCarousel(nextIndex);
+//     });
+
+//     prevButton.addEventListener('click', function () {
+//         const activeItem = carouselInner.querySelector('.carousel-item.active img');
+//         const currentIndex = galleryImages.indexOf(activeItem.src);
+//         const prevIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+//         updateCarousel(prevIndex);
+//     });
+// });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const carouselInner = document.querySelector('.carousel-inner');
+    const carouselIndicators = document.getElementById('carousel-indicators');
+    const nextButton = document.getElementById('next-slide');
+    const prevButton = document.getElementById('prev-slide');
+
+    function updateCarousel(nextIndex) {
+        const nextImages = [
+            galleryImages[nextIndex],
+            galleryImages[(nextIndex + 1) % galleryImages.length],
+            galleryImages[(nextIndex + 2) % galleryImages.length]
+        ];
+
+        // Preload images
+        const preloadImages = [];
+        nextImages.forEach(image => {
+            const img = new Image();
+            img.src = image;
+            preloadImages.push(img);
+        });
+
+        // After preloading, update the carousel
+        Promise.all(preloadImages.map(image => image.onload)).then(() => {
+            // Update carousel inner images
+            const carouselItems = carouselInner.querySelectorAll('.carousel-item');
+            carouselItems.forEach((carouselItem, index) => {
+                const img = carouselItem.querySelector('img');
+                img.src = nextImages[index % nextImages.length];
+                if (index === 0) {
+                    carouselItem.classList.add('active');
+                } else {
+                    carouselItem.classList.remove('active');
+                }
+            });
+
+            // Update carousel indicators images
+            const indicatorItems = carouselIndicators.querySelectorAll('.col-4 img');
+            indicatorItems.forEach((indicatorItem, index) => {
+                indicatorItem.src = nextImages[index % nextImages.length];
+                indicatorItem.classList.toggle('active', index === 0);
+            });
+        });
+    }
+
+    nextButton.addEventListener('click', function () {
+        const activeItem = carouselInner.querySelector('.carousel-item.active');
+        const activeImgSrc = activeItem.querySelector('img').src;
+        const currentIndex = galleryImages.indexOf(activeImgSrc);
+        const nextIndex = (currentIndex + 1) % galleryImages.length;
+        updateCarousel(nextIndex);
+    });
+
+    prevButton.addEventListener('click', function () {
+        const activeItem = carouselInner.querySelector('.carousel-item.active');
+        const activeImgSrc = activeItem.querySelector('img').src;
+        const currentIndex = galleryImages.indexOf(activeImgSrc);
+        const prevIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateCarousel(prevIndex);
+    });
+});
+
+
+
+
+
+
+

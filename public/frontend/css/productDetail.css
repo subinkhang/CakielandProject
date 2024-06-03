@@ -246,6 +246,12 @@ body, button, input{
     border-radius: 12px;
     color: #fdfdfd;
 }
+
+.btn-shopnow:hover {
+    background-color: #080808; /* Nền đen */
+    color: #ffcc00; /* Màu chữ vàng */
+}
+
 #pr-number
 {
     text-align: center;
@@ -258,7 +264,7 @@ body, button, input{
 {
 	font-size: 55px;
 	font-weight: bold;
-	color: #000;
+	color: #080808;
 	margin-bottom: 16px;
 }
 .pr-detail-content
@@ -289,7 +295,7 @@ body, button, input{
 }
 .pr-color li:nth-child(1)
 {
-	background-color: #000;
+	background-color: #080808;
 }
 .pr-color li:nth-child(2)
 {
@@ -416,7 +422,7 @@ body, button, input{
 {
 	font-size: 16px;
 	font-weight: bold;
-	color: #000;
+	color: #080808;
 	line-height: 40px;
 }
 .pr-i3-name:hover
@@ -669,10 +675,13 @@ margin: 16px 6px 0px 6px;
 }
 
 .color-item.selected {
-    border: 2px solid black;
+    border: 2px solid #080808;
 }
 
 .color-item.selected .checkmark {
     display: block;
 }
 
+.custom-tab.active, .custom-tab:hover {
+    color: #FBC31C !important; /* Màu chữ vàng */
+}

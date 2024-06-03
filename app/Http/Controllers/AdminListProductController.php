@@ -17,11 +17,22 @@ class AdminListProductController extends Controller
         $all_product = DB::table('product')->get();
         return view('admin/adminListProduct', ['all_product' => $all_product]);
     }
+
     public function delete_list_product($id)
     {
-        DB::table('product')->where ('id', $id)->delete();
-        Session::put('messagedelete', 'Successfully delete a product');
-        // return view('admin/adminListProduct');
+        // Xóa các bản ghi liên quan trong bảng gallery trước
+        DB::table('gallery')->where('product_id', $id)->delete();
+        
+        // Xóa các bản ghi liên quan trong bảng product_detail trước
+        DB::table('product_detail')->where('product_id', $id)->delete();
+        
+        // Sau đó xóa bản ghi trong bảng product
+        DB::table('product')->where('id', $id)->delete();
+
+        // Đặt thông báo xóa thành công
+        Session::put('messagedelete', 'Successfully deleted the product');
+        
+        // Chuyển hướng lại trang danh sách sản phẩm
         return Redirect::to('admin-list-product');
     }
 }
