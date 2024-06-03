@@ -134,18 +134,15 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
-                        var discountPriceElement = $('#discount-price');
-                        var errorElement = $('#voucher-error');
-                        errorElement.text(''); // Xóa thông báo lỗi trước đó
-
                         if (response.error) {
-                            errorElement.text(response.error); // Hiển thị thông báo lỗi
+                            alert(response.error);
                         } else {
+                            var discountPriceElement = $('#discount-price');
                             var discountValue = 0;
-
+        
                             if (response.condition_voucher == "2") {
                                 discountValue = parseFloat(response.value_voucher);
-                            } else {
+                            } else{
                                 discountValue = (response.value_voucher / 100) * parseFloat($('#rightsub').text());
                             }
                             discountPriceElement.text(discountValue.toFixed(2));
