@@ -189,16 +189,15 @@
     @endforeach
 
     <!-- COMMENT AND POST -->
-    <div class="max-w-2xl mx-auto py-8">
-        @foreach ($post as $posts)
-            <livewire:comments :model="$posts"/>
-        @endforeach
-    </div>
-    {{-- @if ($post->isEmpty())
-        <div>
-            <livewire:comments :model="new \App\Models\Post(['product_id' => $product_detail->first()->id, 'title' => 'Untitled'])"/>
+    <div class="comment-section">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+        <div class="max-w-2xl mx-auto py-8">
+            @foreach ($post as $posts)
+                <livewire:comments :model="$posts"/>
+            @endforeach
         </div>
-    @endif --}}
+    </div>
     
 
     <div class="container related-pr mt-5 mb-3">
@@ -245,6 +244,7 @@
             @endforeach
         </div>
     </div>
+</div>
 
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>

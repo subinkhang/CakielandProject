@@ -2066,7 +2066,7 @@ select {
 
 .text-green-400 {
   --tw-text-opacity: 1;
-  color: rgb(74 222 128 / var(--tw-text-opacity));
+  color: rgb(251 195 28 / var(--tw-text-opacity));
 }
 
 .text-green-500 {
@@ -2978,7 +2978,7 @@ select {
 
   .dark\:text-green-400 {
     --tw-text-opacity: 1;
-    color: rgb(74 222 128 / var(--tw-text-opacity));
+    color: rgb(251 195, 28 / var(--tw-text-opacity));
   }
 
   .dark\:text-white {
@@ -3081,4 +3081,84 @@ select {
     --tw-text-opacity: 1;
     color: rgb(209 213 219 / var(--tw-text-opacity));
   }
+}
+/* Custom styles for the comment section */
+.comment-section {
+  background-color: white;
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 2xl;
+}
+
+.comment-section h2 {
+  text-align: left;
+}
+
+.comment-section form {
+  margin-bottom: 1.5rem;
+}
+
+.comment-section .comment-form,
+.comment-section .comment-item {
+  background-color: white;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.comment-section .comment-item {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.comment-section .comment-item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-section .comment-item-footer button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #2563eb;
+  padding: 0;
+}
+
+.comment-section .comment-item-footer button:hover {
+  text-decoration: underline;
+}
+
+.comment-section .comment-item-footer svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.comment-section .comment-item .comment-content {
+  margin-top: 0.5rem;
+  color: #4a5568;
+}
+
+.comment-section .comment-item .reply-section {
+  margin-left: 2rem;
+}
+/* Custom styles for the comment section button */
+/* Custom styles for the Post Comment button */
+.post-comment-button {
+  background-color: #2563eb; /* Màu nền */
+  color: white; /* Màu chữ */
+  padding: 0.5rem 1rem; /* Khoảng cách bên trong */
+  border: none; /* Bỏ viền */
+  border-radius: 0.25rem; /* Bo góc */
+  cursor: pointer; /* Con trỏ chuột */
+  font-size: 0.875rem; /* Cỡ chữ */
+  font-weight: 500; /* Độ đậm chữ */
+  text-align: center; /* Canh giữa chữ */
+}
+
+.post-comment-button:hover {
+  background-color: #1d4ed8; /* Màu nền khi hover */
 }
