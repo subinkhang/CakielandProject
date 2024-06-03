@@ -140,26 +140,26 @@
                                 </div>
 
                                 <h6 class="pmmt"><b>Payment Methods</b></h6>
-                                <select class="form-select form-select-pm pmbox">
+                                <input type="text" name="payment_method" id="payment_method" value="COD">
+                                {{-- <select class="form-select form-select-pm pmbox" onchange="updatePaymentMethod(this)">
                                     <option selected>COD</option>
                                     <option>Bank</option>
-                                </select>
-                                <h6 id="checkinfo">Please check information</h6>
-                                <div class="col-8 bt-pay pm">
+                                </select> --}}
+                                {{-- <div class="col-8 bt-pay pm">
                                     <button type="submit" class="btn" id="btn-p">
                                         <p1>Payment</p1>
                                     </button>
-                                </div>
+                                </div> --}}
                             </div>
                         </form>
                         
                         <form action="{{ URL::to('/vnpay') }}" method="POST">
                              @csrf
-                            <button type="submit" name="redirect">VNPAY</button>
+                            <button type="submit" name="redirect" id="btn-p" >VNPAY</button>
                         </form>
-                        
-
-
+                            <button type="submit" class="btn" id="btn-p">
+                                <p1>Payment</p1>
+                            </button>
                     </div>
                 </div>
             </div>
@@ -179,60 +179,82 @@
         </div>
     </div>
 
-    <!------------QR---------------->
-    <div class="bankmethod">
-        <img src="{{ asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg') }}"
-            class="qr">
-    </div>
-
     <script>
-        document.getElementById('updateForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        const btn = document.getElementById("btn-p");
+        const popup = document.querySelector(".popup");
+        const bankmethod = document.querySelector(".bankmethod");
+        const overlay = document.querySelector(".overlay");
 
-            var formData = new FormData(this);
+        // overlay.addEventListener("click", () => {
+        //     popup.classList.remove("active");
+        //     overlay.classList.remove("active");
+        //     bankmethod.classList.remove("active");
+        // });
 
-            // Lấy sản phẩm từ localStorage và tính tổng
-            var products = JSON.parse(localStorage.getItem('products'));
-            var total = products.reduce(function(sum, item) {
-                return sum + (item.price * item.quantity);
-            }, 0);
+        // btn.addEventListener("click", (e) => {
+        //     popup.classList.add("active");
+        //     overlay.classList.add("active");
+        // });
+        document.getElementById('btn-p').addEventListener('click', function(e) {
+        e.preventDefault();
 
-            // Lấy thông tin giỏ hàng từ localStorage
-            var cartData = JSON.parse(localStorage.getItem('cartData'));
-            var shipping = cartData.shippingPrice;
-            var discount = cartData.discountPrice;
+        var form = document.getElementById('updateForm');
+        var formData = new FormData(form);
 
-            // Tính tổng cuối cùng
-            total += shipping;
-            total -= discount;
-            // Thêm tổng vào FormData
-            formData.append('total', total);
-            stringProductData = JSON.stringify(cartData.products)
-            console.log('stringProductData:', stringProductData);
-            // Thêm cartData vào FormData dưới dạng JSON string
-            formData.append('productData', stringProductData);
-            // console.log('cartData:', JSON.stringify(cartData));
-            // for (var pair of formData.entries()) {
-            //     console.log(pair[0] + ', ' + pair[1]);
-            // }
+        // Lấy sản phẩm từ localStorage và tính tổng
+        var products = JSON.parse(localStorage.getItem('products'));
+        var total = products.reduce(function(sum, item) {
+            return sum + (item.price * item.quantity);
+        }, 0);
 
-            var data = {
-                name: formData.get('name'),
-                phone: formData.get('phone'),
-                address: formData.get('address'),
-                total: total,
-                cartData: cartData
-            };
+        // Lấy thông tin giỏ hàng từ localStorage
+        var cartData = JSON.parse(localStorage.getItem('cartData'));
+        var shipping = cartData.shippingPrice;
+        var discount = cartData.discountPrice;
 
-            // Gửi dữ liệu qua axios
-            axios.post('{{ url('/update/' . auth()->user()->id) }}', data)
-                .then(function(response) {
-                    console.log('Success:', response);
-                })
-                .catch(function(error) {
-                    console.log('Error:', error);
-                });
-        });
+        // Tính tổng cuối cùng
+        total += shipping;
+        total -= discount;
+
+        // Thêm tổng vào FormData
+        formData.append('total', total);
+        var stringProductData = JSON.stringify(cartData.products);
+        console.log('stringProductData:', stringProductData);
+
+        // Thêm cartData vào FormData dưới dạng JSON string
+        formData.append('cartData', JSON.stringify(cartData));
+
+        var data = {
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            address: formData.get('address'),
+            total: total,
+            cartData: cartData,
+            payment_method: formData.get('payment_method'),
+        };
+
+        // Gửi dữ liệu qua axios
+        axios.post('{{ url('/update/' . auth()->user()->id) }}', data)
+            .then(function(response) {
+                // popup.classList.add("active");
+                // overlay.classList.add("active");
+                console.log('Success:', response);
+            })
+            .catch(function(error) {
+                console.log('Error:', error);
+            });
+        axios.post('{{ url('/vnpay') }}', data)
+            .then(function(response) {
+                if (response.data.code === '00') {
+                    window.location.href = response.data.data;
+                } else {
+                    console.log('Error:', response.data.message);
+                }
+            }).catch(function(error) {
+                console.log('Error:', error);
+            });
+    });
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

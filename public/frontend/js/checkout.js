@@ -5,7 +5,6 @@
 
 const btn = document.getElementById("btn-p");
 const popup = document.querySelector(".popup");
-const qr = document.querySelector(".qr");
 const bankmethod = document.querySelector(".bankmethod");
 const overlay = document.querySelector(".overlay");
 
@@ -17,19 +16,21 @@ overlay.addEventListener("click", () => {
 
 btn.addEventListener("click", (e) => {
     // e.preventDefault();
-    const select = document.querySelector(".form-select-pm");
-    const bankoption = document.querySelector(".bankmethod");
-    const selectoption = select.value;
-    if (selectoption === "COD") {
-        popup.classList.add("active");
-        overlay.classList.add("active");
-    }
+    // const select = document.querySelector(".form-select-pm");
+    // const bankoption = document.querySelector(".bankmethod");
+    // const selectoption = select.value;
+    // if (selectoption === "COD") {
+    //     popup.classList.add("active");
+    //     overlay.classList.add("active");
+    // }
 
-    if (selectoption === "Bank") {
-        console.log("bank");
-        bankoption.classList.add("active");
-        overlay.classList.add("active");
-    }
+    // if (selectoption === "Bank") {
+    //     console.log("bank");
+    //     bankoption.classList.add("active");
+    //     overlay.classList.add("active");
+    // }
+    popup.classList.add("active");
+    overlay.classList.add("active");
 });
 
 const btn_back = document.getElementById('btn_back');

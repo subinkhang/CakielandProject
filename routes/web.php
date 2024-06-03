@@ -48,6 +48,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/account', 'App\Http\Controllers\AccountController@index');
     Route::post('/update-account', [AccountController::class, 'updateAccount'])->name('update.account');
     Route::post('/update/{user_id}', 'App\Http\Controllers\CheckoutController@update');
+    
 
     // Cart & Checkout Routes
     Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
@@ -58,6 +59,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //VNPAY
     Route::post('/vnpay', 'App\Http\Controllers\CheckoutController@vnpay');
+    
 });
 
 // Admin routes
