@@ -23,6 +23,12 @@
                     </a>
                 </li>
                 <li>
+                    <a class="{{ request()->is('admin-list-voucher') ? 'active' : '' }}" href="{{ url('/admin-list-voucher') }}">
+                        <i class="fa-solid fa-ticket"></i>
+                        <span>List Voucher</span>
+                    </a>
+                </li>
+                <li>
                     <a class="{{ request()->is('admin-user') ? 'active' : '' }}" href="{{ url('/admin-user') }}">
                         <i class="fa fa-user"></i>
                         <span>User</span>

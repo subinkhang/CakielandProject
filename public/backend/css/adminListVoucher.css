@@ -1,0 +1,52 @@
+
+.btn_addpro
+{
+    width: 60px;
+    height: 30px;
+    border: #FBC31C;
+    border-radius: 12px;
+    color: #fdfdfd;
+    background-color: #FBC31C;
+}
+#icon{
+    color: #FBC31C;
+}
+#heading{
+    background-color: #ffd145 !important;
+}
+#background{
+    background-color: #ffe69b !important;
+}
+.thungrac{
+    color: #FBC31C !important;
+}
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #FBC31C;
+    color: #fdfdfd;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 3;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

@@ -84,4 +84,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Admin Routes
     Route::get('/admin-dashboard', 'App\Http\Controllers\AdminController@show_dashboard');
     Route::get('/admin-dashboard', 'App\Http\Controllers\AdminController@count_data');
+
+    //Admin List Voucher
+    Route::get('/admin-list-voucher', 'App\Http\Controllers\AdminListVoucherController@get_list_voucher');
+    Route::get('/delete-list-voucher/{id}', 'App\Http\Controllers\AdminListVoucherController@delete_list_voucher');
 });

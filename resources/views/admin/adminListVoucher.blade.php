@@ -37,8 +37,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="{{ asset('backend/js/raphael-min.js') }}"></script>
     <script src="{{ asset('backend/js/morris.js') }}"></script>
 
-    <link rel="stylesheet" href="{{ asset('backend/css/admin-list-product.css') }}">
-    <title>List Product</title>
+    <link rel="stylesheet" href="{{ asset('backend/css/adminListVoucher.css') }}">
+    <title>List Voucher</title>
     <link rel="icon" href="{{ asset('frontend/images/Logo Title.png') }}">
 </head>
 
@@ -53,55 +53,63 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="table-agile-info" id="background">
                     <div class="panel panel-default">
                         <div class="panel-heading" id="heading">
-                            Product List
+                            Voucher List
                         </div>
-                        <!-- <div class="row w3-res-tb">
-      <div class="col-sm-5 m-b-xs">
-        <select class="input-sm form-control w-sm inline v-middle">
-          <option value="0">Bulk action</option>
-          <option value="1">Delete selected</option>
-          <option value="2">Bulk edit</option>
-          <option value="3">Export</option>
-        </select>
-        <button class="btn btn-sm btn-default">Apply</button>
-      </div>
-      <div class="col-sm-4">
-      </div>
-      <div class="col-sm-3">
-        <div class="input-group">
-          <input type="text" class="input-sm form-control" placeholder="Search">
-          <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="button">Go!</button>
-          </span>
-        </div>
-      </div>
-    </div> -->
                         <div class="table-responsive">
                             <table class="table table-striped b-t b-light">
                                 <thead>
                                     <tr>
+                                        <!-- <th></th> -->
                                         <th>Id</th>
-                                        <th>Product's name</th>
-                                        <th>Price</th>
-                                        <th>Date</th>
-                                        <th><a href="{{ url('/admin-add-product') }}"><input type="submit" class="btn_addpro" value="Add"></th></a>
-                                        <!-- <th style="width:30px;"></th> -->
+                                        <th>Voucher name</th>
+                                        <th>Discount code</th>
+                                        <th>Number of discount codes</th>
+                                        <th>Discount conditions</th>
+                                        <th>Reduced value</th>
+                                        <th><a href="{{ url('/admin-add-voucher') }}"><input type="submit" class="btn_addpro" value="Add"></th></a>
+                                        {{-- <th></th>
+                                        <th></th>
+                                        <th></th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($all_product as $key => $cate_pro)
+                                    @foreach ($all_voucher as $key => $coupon)
                                         <tr>
                                             <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-                                            <td>{{ $cate_pro->id }}</td>
-                                            <td>{{ $cate_pro->name }}</td>
-                                            <td><span class="text-ellipsis">{{ $cate_pro->price }}</span></td>
-                                            <td><span class="text-ellipsis">{{ $cate_pro->created_at }}</span></td>
+                                            <td>{{ $coupon->id }}</td>
+                                            <td>{{ $coupon->name_voucher }}</td>
+                                            <td><span class="text-ellipsis">{{ $coupon->code_voucher }}</span></td>
+                                            <td><span class="text-ellipsis">{{ $coupon->number_voucher }}</span></td>
+                                            <td><span class="text-ellipsis">
+                                                <?php
+                                                if($coupon->condition_voucher==1){
+                                                    ?>
+                                                    Giảm theo %
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                                    Giảm theo tiền
+                                                    <?php
+                                                }
+                                                ?>
+                                                </span></td>
+                                                <td><span class="text-ellipsis">
+                                                    <?php
+                                                    if($coupon->condition_voucher==1){
+                                                        ?>
+                                                        Giảm {{ $coupon->value_voucher }} %
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                        Giảm {{ $coupon->value_voucher }} $
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    </span></td>
                                             <td>
-                                                <a href="{{ URL::to('/admin-edit-product/' . $cate_pro->id) }}" class="active" ui-toggle-class="" id="icon">
-                                                    <i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a onclick="return confirm('Are you sure to delete?')" href="{{ URL::to('/delete-list-product/' . $cate_pro->id)}}">
-                                                        <i class="fa-regular fa-trash-can trash-icon thungrac" style="margin-left: 20px;"></i>
-                                                    </a>
+                                                <a onclick="return confirm('Are you sure to delete?')" href="{{ URL::to('/delete-list-voucher/' . $coupon->id)}}">
+                                                    <i class="fa-regular fa-trash-can trash-icon thungrac" style="margin-left: 20px;"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
