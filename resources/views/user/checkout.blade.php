@@ -174,7 +174,7 @@
             <i class="fa-solid fa-circle-check"></i>
             <h3>PAYMENT COMPLETE</h3>
             <div class="btnback">
-                <a class="btn" href="http://localhost:8000"> Back to HomePage </a>
+                <a class="btn" href="http://localhost:8000" id="btn_back"> Back to HomePage </a>
             </div>
         </div>
     </div>

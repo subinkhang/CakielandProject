@@ -32,6 +32,14 @@ btn.addEventListener("click", (e) => {
     }
 });
 
+const btn_back = document.getElementById('btn_back');
+// Lắng nghe sự kiện click trên nút
+btn_back.addEventListener('click', function() {
+    // Xóa hết dữ liệu trong localStorage
+    localStorage.clear();
+});
+
+
 // const btn = document.getElementById("btn-p");
 // const popup = document.querySelector(".popup");
 // const qr = document.querySelector(".qr");
