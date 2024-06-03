@@ -8,6 +8,9 @@ use DB;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use App\Exports\ExportProductData;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 session_start();
 
 class AdminListProductController extends Controller
@@ -47,5 +50,9 @@ class AdminListProductController extends Controller
         // Điều hướng về trang danh sách sản phẩm
         return Redirect::to('admin-list-product');
     }
-
+    
+    public function export_excel()
+    {
+        return Excel::download(new ExportProductData, 'products.xlsx', ExcelExcel::XLSX);
+    }
 }
