@@ -111,11 +111,8 @@
                         return asset('backend/upload/' . $image->image_product);
                     }));
                 </script>
+                
                 <script src="{{ asset('path/to/your/custom.js') }}"></script>
-                
-                
-                
-                
                 
                 <div class="col-lg-6">
                     <div class="col-12">
@@ -129,10 +126,10 @@
                         </ul>
                         <div class="row mb-3">
                             <div class="col-md-2 col-3 ">
-                                <p class="old-price"> ${{ $product->fake_price }} </p>
+                                <p class="old-price"> {{ $product->fake_price }} </p>
                             </div>
                             <div class="col-md-2 col-3">
-                                <p class="new-price"> ${{ $product->price }} </p>
+                                <p class="new-price"> {{ $product->price }} </p>
                             </div>
                         </div>
                         <p class="pr-detail-content">{{ $product->description }}</p>
