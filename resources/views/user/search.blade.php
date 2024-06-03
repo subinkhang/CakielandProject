@@ -269,5 +269,15 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.href.includes('search-product-list')) {
+                const paginationLinks = document.querySelectorAll('.cartegory_page_number a');
+                paginationLinks.forEach(link => {
+                    link.href = link.href.replace('search-product-list', 'product-list');
+                });
+            }
+        });
+    </script>
     <!-- END FOOTER -->
 </x-app-layout>
