@@ -287,12 +287,11 @@ function handleUpdateForm() {
             console.log('Error:', error);
         });
 }
-
 function handleVNPay(event) {
     event.preventDefault(); // Ngăn chặn form bị submit
 
     var formData = new FormData(document.getElementById('updateForm'));
-    var total = parseFloat(formData.get('total'));
+
     var data = {
         name: formData.get('name'),
         phone: formData.get('phone'),
@@ -300,12 +299,12 @@ function handleVNPay(event) {
         total: formData.get('total'),
         cartData: JSON.parse(localStorage.getItem('cartData'))
     };
-    console.log('Data to be sent to /vnpay:', data);
+
     axios.post('{{ url('/save-temp-data') }}', data)
         .then(function(response) {
             console.log('Data saved:', response);
             if (response.data.success) {
-                axios.post('{{ url('/vnpay') }}', data) // Không có dấu ngoặc đóng thừa ở đây
+                axios.post('{{ url('/vnpay') }}',data)
                     .then(function(response) {
                         console.log('Success:', response);
                         if (response.data.code === '00') {
