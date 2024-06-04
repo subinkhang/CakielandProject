@@ -37,11 +37,11 @@ new class extends Component {
                     </div>
                     <div class="col-1"></div>
                     <div class="search-header flex-grow-1 mx-3">
-                        <form action="{{ URL::to('search-product-list') }}" method="POST" class="d-flex">
+                        <form action="{{ URL::to('search-product-list') }}" method="POST" class="d-flex" id="searchForm">
                             {{ csrf_field() }}
-                            <input type="text" class="form-control search-input-header" placeholder="Search products..." id="searchInput" name="keywords_submit">
+                            <input type="text" class="form-control search-input-header" placeholder="Search products..." id="searchInput" name="keywords_submit" oninput="checkInput()">
                             <div class="suggestions text_p1" style="display: none;" id="suggestions"></div>
-                            <button type="submit" class="btn_search-header" name="search_item">Search</button>
+                            <button type="submit" class="btn_search-header" name="search_item" id="searchButton" disabled>Search</button>
                         </form>
                     </div>
                     <div class="d-flex align-items-center">
@@ -99,5 +99,20 @@ new class extends Component {
             </div>
         </div>
         <script src="{{ asset('frontend/js/homepage.js') }}"></script>
+        <script>
+            function checkInput() {
+                const searchInput = document.getElementById('searchInput');
+                const searchButton = document.getElementById('searchButton');
+        
+                if (searchInput.value.trim() === '') {
+                    searchButton.disabled = true;
+                } else {
+                    searchButton.disabled = false;
+                }
+            }
+        
+            // Run the checkInput function when the page loads to set the initial state
+            document.addEventListener('DOMContentLoaded', checkInput);
+        </script>
     </body>
 </div>

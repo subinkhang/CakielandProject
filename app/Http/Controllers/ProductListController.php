@@ -135,8 +135,14 @@ class ProductListController extends Controller
     {
         $keywords = $request->keywords_submit;
 
+        $cate = DB::table('category')->orderby('id', 'desc')->get();
+        $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
+
         $sort = $request->input('sort', 'none');
         $query = Product::query();
+        
+        // Thêm điều kiện tìm kiếm
+        $query->where('name', 'like', '%' . $keywords . '%');
 
         switch ($sort) {
             case 'increase':
@@ -153,14 +159,27 @@ class ProductListController extends Controller
                 break;
         }
 
-        $data['list_product'] = $query->paginate(9);
+        $new_query = Product::query();
+        $new_query->select('brand');
+        $brands = $new_query->distinct()->pluck('brand');
+        
+        // Truyền dữ liệu thương hiệu vào view
+        $data['brands'] = $brands;
 
+        $data['list_product'] = $query->paginate(9);
         $search_product = DB::table('product')
             ->where('name', 'like', '%' . $keywords . '%')
             ->get();
 
-        return view('user/search', ['list_product' => $data['list_product'], 'search_product' => $search_product]);
+        return view('user/search', [
+            'list_product' => $data['list_product'],
+            'search_product' => $search_product,
+            'category' => $cate,
+            'sub_category' => $sub_cate,
+            'brands' => $data['brands']
+        ]);
     }
+
 
     public function searchSort(Request $request)
     {

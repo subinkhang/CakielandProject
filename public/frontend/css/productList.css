@@ -712,3 +712,22 @@ to {bottom: 0; opacity: 0;}
 .text-hidden{
     display: none;
 }
+.pr-list-sidebar-title h3 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: left;
+    display: inline-block; /* Set display to inline-block */
+    position: relative; /* Add position relative */
+    padding-bottom: 10px; /* Add padding bottom to create space for the underline */
+}
+
+.pr-list-sidebar-title h3::after {
+    content: '';
+    display: block;
+    width: 100%; /* Make the width 100% of the h3 */
+    height: 4px;
+    background-color: #333;
+    margin-top: 10px; /* Adjust margin top if needed */
+    border-radius: 2px;
+}

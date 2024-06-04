@@ -36,7 +36,7 @@ Route::get('/about-us', 'App\Http\Controllers\AboutUsController@index');
 
 // Other Routes
 Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
-Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
+// Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
 Route::get('/', function () { return redirect('/dashboard'); });
 
 
