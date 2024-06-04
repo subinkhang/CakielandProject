@@ -209,10 +209,10 @@
                 <div class="col-3">
                     <div class="pr-i3" data-brand="{{ $related_product->brand }}">
                         <div class="id" style="display: none;">
-                            {{ $related_products->id }}
+                            {{ $related_product->id }}
                         </div>
-                        <a href="{{ URL::to('product-detail/' . $related_products->id) }}">
-                            <img src="{{ asset('public/backend/upload/' . $related_products->thumbnail) }}"
+                        <a href="{{ URL::to('product-detail/' . $related_product->id) }}">
+                            <img src="{{ asset('public/backend/upload/' . $related_product->thumbnail) }}"
                                 alt="" class="w-100 productList_image">
                             <div class="text-hidden" style="display: none;">{{ asset($related_product->thumbnail) }}</div>
                         </a>
