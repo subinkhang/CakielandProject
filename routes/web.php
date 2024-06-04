@@ -94,3 +94,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Route::get('/', function () { return redirect('/dashboard'); });
+
+
+// AdminUser Routes
+Route::get('/admin-user', 'App\Http\Controllers\AdminUserController@get_list_user');
+
+
+use App\Http\Controllers\AdminUserController;
+Route::get('/download-user', [AdminUserController::class, 'export_excel']);
+use App\Http\Controllers\AdminListProductController;
+Route::get('/download-product', [AdminListProductController::class, 'export_excel']);
+use App\Http\Controllers\AdminListBillController;
+Route::get('/download-bill', [AdminListBillController::class, 'export_excel']);

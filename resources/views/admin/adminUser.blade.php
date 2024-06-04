@@ -44,6 +44,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <body>
     <section id="container">
+
         <livewire:adminHeader />
         <livewire:adminSidebar />
         <!-- làm từ đây -->
@@ -52,57 +53,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="table-agile-info" id="background">
                     <div class="panel panel-default">
                         <div class="panel-heading" id="heading">
-                            Product List
+                            User List
                         </div>
-                        <!-- <div class="row w3-res-tb">
-      <div class="col-sm-5 m-b-xs">
-        <select class="input-sm form-control w-sm inline v-middle">
-          <option value="0">Bulk action</option>
-          <option value="1">Delete selected</option>
-          <option value="2">Bulk edit</option>
-          <option value="3">Export</option>
-        </select>
-        <button class="btn btn-sm btn-default">Apply</button>
-      </div>
-      <div class="col-sm-4">
-      </div>
-      <div class="col-sm-3">
-        <div class="input-group">
-          <input type="text" class="input-sm form-control" placeholder="Search">
-          <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="button">Go!</button>
-          </span>
-        </div>
-      </div>
-    </div> -->
                         <div class="table-responsive">
                             <table class="table table-striped b-t b-light">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Product's name</th>
-                                        <th>Price</th>
+                                        <th>User's name</th>
+                                        <th>Role</th>
                                         <th>Date</th>
-                                        <th><a href="{{ url('/admin-add-product') }}"><input type="submit" class="btn_addpro" value="Add"></th></a>
-                                        <a href="{{ url('/download-product') }}"><input type="submit" class="btn_download" value="Donwload Data"></a>
-                                        <!-- <th style="width:30px;"></th> -->
+                                        <a href="{{ url('/download-user') }}"><input type="submit" class="btn_download" value="Donwload Data"></a>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($all_product as $key => $cate_pro)
+                                    @foreach ($users as $key => $user)
                                         <tr>
-                                            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-                                            <td>{{ $cate_pro->id }}</td>
-                                            <td>{{ $cate_pro->name }}</td>
-                                            <td><span class="text-ellipsis">{{ $cate_pro->price }}</span></td>
-                                            <td><span class="text-ellipsis">{{ $cate_pro->created_at }}</span></td>
-                                            <td>
-                                                <a href="{{ URL::to('/admin-edit-product/' . $cate_pro->id) }}" class="active" ui-toggle-class="" id="icon">
-                                                    <i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a onclick="return confirm('Are you sure to delete?')" href="{{ URL::to('/delete-list-product/' . $cate_pro->id)}}">
-                                                        <i class="fa-regular fa-trash-can trash-icon thungrac" style="margin-left: 20px;"></i>
-                                                    </a>
-                                            </td>
+                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->role }}</td>
+                                            <td><span class="text-ellipsis">{{ $user->created_at }}</span></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -112,7 +82,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="row">
 
                                 <div class="col-sm-5 text-center">
-                                    <small class="text-muted inline m-t-sm m-b-sm">showing 1-{{ count($all_product) }} of {{ count($all_product) }} items</small>
+                                    <small class="text-muted inline m-t-sm m-b-sm">showing 1-{{ count($users) }} of {{ count($users) }} items</small>
                                 </div>
                         </footer>
                     </div>

@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.6",
+        "maatwebsite/excel": "^3.1",
         "phpmailer/phpmailer": "^6.9"
     },
     "require-dev": {

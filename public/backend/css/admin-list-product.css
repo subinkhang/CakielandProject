@@ -8,6 +8,17 @@
     color: #fdfdfd;
     background-color: #FBC31C;
 }
+.btn_download
+{
+    width: 130px;
+    height: 40px;
+    border: #FBC31C;
+    border-radius: 12px;
+    color: #fdfdfd;
+    background-color: #FBC31C;
+    float: right;
+    margin: 20px 20px 0 0;
+}
 #icon{
     color: #FBC31C;
 }

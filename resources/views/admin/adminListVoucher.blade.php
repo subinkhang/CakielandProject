@@ -118,9 +118,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <footer class="panel-footer">
                             <div class="row">
-
                                 <div class="col-sm-5 text-center">
-                                    <small class="text-muted inline m-t-sm m-b-sm">showing 01-08 of 50 items</small>
+                                    <small class="text-muted inline m-t-sm m-b-sm">showing 1-{{ count($all_voucher) }} of {{ count($all_voucher) }} items</small>
                                 </div>
                         </footer>
                     </div>
