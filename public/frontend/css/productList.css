@@ -462,11 +462,11 @@ color: #080808;
     height: 10px;
     border-right: 2px solid #666;
     border-bottom: 2px solid #666;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
     margin-left: auto; /* Push arrow to the far right */
 }
 .mainmenu li.active .arrow {
-    transform: rotate(-45deg); /* Rotate 90 degrees when active */
+    transform: rotate(45deg); /* Rotate 90 degrees when active */
 }
 /* Sub-category background width */
 .menucon li a {
@@ -485,7 +485,10 @@ color: #080808;
 .menucon li {
     margin-bottom: 5px; /* Add margin between sub-category items */
 }
-
+.hehe {
+    width: 14px;
+    height: 14px;
+}
 /* ---------------------------------------------------- */
 
 .pagination {

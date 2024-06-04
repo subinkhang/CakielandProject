@@ -44,12 +44,12 @@
             <div class="col-2 policies">
                 <h3 class="footer-title">Products</h3>
                 <ul>
-                    <li><a href="category1">Bar ingredients</a></li>
-                    <li><a href="category2">Bar Tool</a></li>
-                    <li><a href="category3">Cooking utensils</a></li>
-                    <li><a href="category4">Baking tools</a></li>
-                    <li><a href="category5">Wet ingredients</a></li>
-                    <li><a href="category6">Dry ingredients</a></li>
+                    <li><a href="category6">Bar ingredients</a></li>
+                    <li><a href="category5">Bar Tool</a></li>
+                    <li><a href="category4">Cooking utensils</a></li>
+                    <li><a href="category3">Baking tools</a></li>
+                    <li><a href="category2">Wet ingredients</a></li>
+                    <li><a href="category1">Dry ingredients</a></li>
                 </ul>
             </div>
             <div class="col-2 services">
