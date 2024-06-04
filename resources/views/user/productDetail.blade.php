@@ -59,13 +59,18 @@
                 </script>
                 <script src="{{ asset('path/to/your/custom.js') }}"></script> --}}
                 <div class="col-lg-6 pr-slide carousel" data-bs-ride="carousel" id="pr-slide">
+                    <div class="id" style="display: none;">
+                        {{ $product->id }}
+                    </div>
                     <div class="carousel-indicators">
                         <div class="row" id="carousel-indicators">
-                            <div class="col-4">
+                            <div class="col-4 ">
                                 <img data-bs-target="#pr-slide" data-bs-slide-to="0" class="active carousel-btn1"
                                     src="{{ asset('public/backend/upload/' . $product->thumbnail) }}" />
+                                    <div class="text-hidden" style="display: none;">{{ asset($product->thumbnail) }}</div>
                             </div>
                             @php $slide_index = 1; @endphp
+                            
                             @foreach ($gallery_images as $image)
                                 @if ($slide_index < 3)
                                     <div class="col-4">
@@ -113,7 +118,7 @@
                 
                 <div class="col-lg-6">
                     <div class="col-12">
-                        <h6 class="pr-detail-name"> {{ $product->name }} </h6>
+                        <h6 class="pr-detail-name pr-i2-name"> {{ $product->name }} </h6>
                         <ul class="pr-i3-rating d-flex mb-3 star">
                             <li><i class="fa-solid fa-star"></i></li>
                             <li><i class="fa-solid fa-star"></i></li>
@@ -151,7 +156,7 @@
                             <input type="number" value="1" id="pr-number">
                             <button id="btn-plus"><i class="fa-solid fa-plus"></i></button>
                         </div>
-                        <button class="btn-shopnow bg-vang my-3" onclick="addToCart(this)">Add to cart</button>
+                        <button class="btn-shopnow btn_shop bg-vang my-3" onclick="addToCart(this)">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -176,32 +181,6 @@
                         tabindex="0">
                         <h3 class="pr-des">Why choose product?</h3>
                         <p>{{ $product->description_detail }}</p>
-                        {{-- <ul>
-                        <li>Compact design, convenient handle</li>
-                        <li>Turbo function with 5 smart attack speeds</li>
-                        <li>Strong capacity, safe materials</li>
-                        <li>Equipped with two convenient sticks</li>
-                    </ul> --}}
-                        {{-- <h3 class="pr-des">Product Description</h3>
-                        <p>{{ $product->description_technique }}</p> --}}
-                        {{-- <ol>
-                        <li>Compact design, convenient to hold</li>
-                        <p>Philips HR3705 Egg Beater (300W) has a compact design with a sturdy handle so you can use it
-                            easily without getting tired of your hands after long-term use. Parts are easily removable and
-                            biodegradable in the dishwasher.</p>
-                        <li>Turbo function with 5 smart speeds</li>
-                        <p>The machine has a Turbo function with 5 beating speeds from low to high, helping you easily
-                            choose the speed to suit each different type of ingredient. Combining beneficial adjustment
-                            buttons on the machine's body helps you operate easily and quickly.</p>
-                        <li>Strong company, safe materials</li>
-                        <p>In particular, the Philips handheld plane operates with a fairly high capacity of 300W, and the
-                            motor makes no noise when operating. The tool helps you perfect, mix faster, more evenly and
-                            softer. Besides, the body is made of sturdy plastic and the mixing bars are made of
-                            high-quality, non-toxic stainless steel, ensuring absolute safety for your family's health.</p>
-                        <li>Equipped with two benefits</li>
-                        <p>In particular, included with the Phillips HR3705 egg are 2 types of mixing rods that users can
-                            change to suit different types of food to increase mixing efficiency.</p>
-                    </ol> --}}
                     </div>
                     <div class="tab-pane" id="info" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                         <h3 class="pr-des">Product Description</h3>
@@ -227,11 +206,15 @@
             @foreach ($related_products as $key => $related_products)
                 <div class="col-3">
                     <div class="pr-i3" data-brand="{{ $related_products->brand }}">
+                        <div class="id" style="display: none;">
+                            {{ $related_products->id }}
+                        </div>
                         <a href="{{ URL::to('product-detail/' . $related_products->id) }}">
                             <img src="{{ asset('public/backend/upload/' . $related_products->thumbnail) }}"
                                 alt="" class="w-100 productList_image">
+                            <div class="text-hidden" style="display: none;">{{ asset($related_products->thumbnail) }}</div>
                         </a>
-                        <span class="btn_add" onclick="addToCart(this)"><i
+                        <span class="btn_shop btn_add" onclick="addToCart(this)"><i
                                 class="fa-solid fa-circle-plus"></i></span>
                         <div class="container_information">
                             <a href="#" class="pr-i2-name">{{ $related_products->name }}</a>
@@ -257,67 +240,8 @@
                     </div>
                 </div>
             @endforeach
-
-            {{-- <div class="col-3">
-                <div class="pr-i3">
-                    <img src="{{ asset('frontend/images/product.png') }}" alt="" class="productList_image">
-                    <span class="btn_add" onclick="addToCart(this)"><i class="fa-solid fa-circle-plus"></i></span>
-                    <div class="container_information">
-                        <a href="#" class="pr-i2-name">Salim</a>
-                        <ul class="pr-i2-rating d-flex">
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                        </ul>
-                        <div class="text_product">
-                            The product is contained in a glass bottle, environmentally friendly and beautiful, can be
-                            used to decorate the dispenser.
-                        </div>
-                        <div class="row productList_price">
-                            <div class="col-6">
-                                <p class="old-price">$123.00</p>
-                            </div>
-                            <div class="col-6 text-end">
-                                <p class="new-price">$100.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="pr-i3">
-                    <img src="{{ asset('frontend/images/product.png') }}" alt="" class="productList_image">
-                    <span class="btn_add" onclick="addToCart(this)"><i class="fa-solid fa-circle-plus"></i></span>
-                    <div class="container_information">
-                        <a href="#" class="pr-i2-name">Salim</a>
-                        <ul class="pr-i2-rating d-flex">
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                        </ul>
-                        <div class="text_product">
-                            The product is contained in a glass bottle, environmentally friendly and beautiful, can be
-                            used to decorate the dispenser.
-                        </div>
-                        <div class="row productList_price">
-                            <div class="col-6">
-                                <p class="old-price">$123.00</p>
-                            </div>
-                            <div class="col-6 text-end">
-                                <p class="new-price">$100.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
-
-    <!-- END PRODUCT DETAIL -->
 
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>

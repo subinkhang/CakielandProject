@@ -54,6 +54,50 @@ document.addEventListener("DOMContentLoaded", function() {
 // });
 
 
+
+const addButtons = document.querySelectorAll('.btn_shop');
+
+    addButtons.forEach((button, index) => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const ids = document.querySelectorAll('.id');
+        const names = document.querySelectorAll('.pr-i2-name');
+        const images = document.querySelectorAll('.text-hidden');
+        const descriptions = document.querySelectorAll('.text_product');
+        const fakePrices = document.querySelectorAll('.old-price');
+        const prices = document.querySelectorAll('.new-price');
+        
+        // Truy xuất thông tin của sản phẩm dựa trên chỉ số hiện tại
+        const product = {
+            id: ids[index].innerText.trim(),
+            name: names[index].innerText,
+            image: images[index].innerText.split('/').pop(),
+            fake_price: fakePrices[index].innerText.replace("$", ""),
+            price: prices[index].innerText.replace("$", ""),
+        };
+
+            let products = localStorage.getItem('products');
+            products = products ? JSON.parse(products) : [];
+
+            const existingProductIndex = products.findIndex(p => p.name === product.name);
+
+            if (existingProductIndex >= 0) {
+                var selectedQuantity = parseInt(document.getElementById('pr-number').value);
+                products[existingProductIndex].quantity = (products[existingProductIndex].quantity || 1) + selectedQuantity;
+            } else {
+                // If product does not exist in the cart, add it
+                var selectedQuantity = parseInt(document.getElementById('pr-number').value);
+                product.quantity = selectedQuantity;
+                products.push(product);
+            }
+
+            localStorage.setItem('products', JSON.stringify(products));
+            console.log(product);
+        });
+    });
+
+
+
 // Đợi tất cả các phần tử HTML được tải xong
 document.addEventListener("DOMContentLoaded", function() {
     // Lấy phần tử button với id là btn-minus

@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 id: document.querySelectorAll('.pr-i2-id')[index].innerText.trim(),
                 name: document.querySelectorAll('.pr-i2-name')[index].innerText,
                 image: document.querySelectorAll('.text-hidden')[index].innerText.split('/').pop(),
-                description: document.querySelectorAll('.text_product')[index].innerText,
                 fake_price: document.querySelectorAll('.old-price')[index].innerText,
                 price: document.querySelectorAll('.new-price')[index].innerText,
             };

@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-1"></div>
                     <!----------------------RIGHT------------------------------------->
-                    <div class="col-4 col">
+                    <div class="col-4">
                         <h3 id="voucher-text"><b>VOUCHER</b></h3>
                         <div class="search">
                             <div class="row">
