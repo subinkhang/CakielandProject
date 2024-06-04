@@ -75,7 +75,7 @@ new class extends Component {
                                             <div class="dropdown-menu-right-header">
                                                 @if (auth()->user()->role === 'admin')
                                                     <button onclick="window.location='{{ url('/admin-dashboard') }}'" class="dropdown-item-header">
-                                                        {{ __('Manage') }}
+                                                        {{ __('Admin') }}
                                                     </button>
                                                 @endif
                                                 <button onclick="window.location='{{ url('/account') }}'" class="dropdown-item-header">

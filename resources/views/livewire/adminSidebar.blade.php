@@ -11,7 +11,7 @@
                     </a>
                 </li>
                 <li>
-                    <a  class="{{ request()->is('admin-list-product') ? 'active' : '' }}" href="{{ url('/admin-list-product') }}">
+                    <a  class="{{ request()->is(['admin-list-product', 'admin-add-product']) ? 'active' : '' }}" href="{{ url('/admin-list-product') }}">
                         <i class="fa-solid fa-utensils"></i>
                         <span>Products</span>
                     </a>
@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="{{ request()->is('admin-list-voucher') ? 'active' : '' }}" href="{{ url('/admin-list-voucher') }}">
+                    <a class="{{ request()->is(['admin-list-voucher', 'admin-add-voucher']) ? 'active' : '' }}" href="{{ url('/admin-list-voucher') }}">
                         <i class="fa-solid fa-ticket"></i>
                         <span>List Voucher</span>
                     </a>
