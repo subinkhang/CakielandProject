@@ -44,7 +44,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <body>
     <section id="container">
-
         <livewire:adminHeader />
         <livewire:adminSidebar />
         <!-- làm từ đây -->
