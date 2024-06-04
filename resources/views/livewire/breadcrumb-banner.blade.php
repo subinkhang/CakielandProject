@@ -4,6 +4,7 @@
         $url = url()->current();
         $isProductDetail = Str::contains($url, 'product-detail');
         $isSubCategory = Str::contains($url, 'sub-category');
+        $isCategory = Str::contains($url, 'category');
         $categories = [
             4 => 'Dry ingredients',
             5 => 'Wet ingredients',
@@ -27,8 +28,10 @@
             12 => 'Electric mixer'
         ];
         $subCategoryId = intval(last(explode('sub-category', $url)));
-        $categoryName = $categories[floor(($subCategoryId - 1) / 2) + 1] ?? 'Category';
+        // $categoryName = $categories[floor(($subCategoryId - 1) / 2) + 1] ?? 'Category';
         $subCategoryName = $subCategories[$subCategoryId] ?? 'SubCategory';
+        $categoryId = intval(last(explode('category', $url)));
+        // $categoryName = $categories[$categoryId] ?? 'Category';
     @endphp
 
     @if ($isProductDetail)
@@ -45,6 +48,9 @@
             </div>
         </div>
     @elseif ($isSubCategory)
+    @php
+    $categoryName = $categories[floor(($subCategoryId - 1) / 2) + 1] ?? 'Category';
+    @endphp
         <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
             <div class="col-12 text-center">
                 <h2>{{ $subCategoryName }}</h2>
@@ -57,6 +63,30 @@
                 </nav>
             </div>
         </div>
+    @elseif ($isCategory)
+    @php
+    
+    $newCategories = [
+        1 => 'Dry ingredients',
+        2 => 'Wet ingredients',
+        3 => 'Baking tools',
+        4 => 'Cooking utensils',
+        5 => 'Bar tool',
+        6 => 'Bar ingredients'
+    ];
+    $categoryName = $newCategories[$categoryId] ?? 'Category';
+    @endphp
+    <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
+        <div class="col-12 text-center">
+            <h2>{{ $categoryName }}</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item active">{{ $categoryName }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     @else
         <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
             <div class="col-12 text-center">

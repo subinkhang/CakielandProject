@@ -152,23 +152,40 @@ function validateEmail(email) {
 }
 
 $(document).ready(function() {
-    // Sự kiện click trên category-link
-    $('.mainmenu a.category-link').on('click', function(e) {
-        e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
-        
-        // Lấy đối tượng li chứa category-link được click
-        var $li = $(this).parent('li');
-        
-        // Ẩn tất cả các menucon khác
-        $('.mainmenu li').not($li).removeClass('active').find('.menucon').slideUp();
-        
-        // Hiển thị hoặc ẩn menucon của mục được click
-        $li.toggleClass('active').find('.menucon').slideToggle();
+    // Event listener for click on the arrow icon within category-link
+    $('.mainmenu li .category-link .arrow').on('click', function(e) {
+      e.preventDefault(); // Prevent default link behavior
+  
+      // Get the li element containing the clicked arrow
+      var $li = $(this).closest('li');
+  
+      // Toggle active class for the sub-menu
+      $li.find('.menucon').slideToggle();
+  
+      // Set the arrow's rotation to 0 degrees immediately
+      $(this).find('.arrow').css('transform', 'rotate(0deg)'); // Reset rotation
+  
+      // Toggle rotation class for the arrow icon
+      $(this).find('.arrow').toggleClass('rotated');
     });
-
-    // Ngăn chặn sự kiện click trên các mục con để không đóng menu chính
+  
+    // Prevent click event on sub-category links from closing the menu
     $('.mainmenu .menucon a').on('click', function(e) {
-        e.stopPropagation();
+      e.stopPropagation();
     });
-});
+  });
 
+  $(document).ready(function() {
+    // Event listener for click on the arrow icon within category-link
+    $('.mainmenu li .category-link .arrow').on('click', function(e) {
+      e.preventDefault(); // Prevent default link behavior
+  
+      // Toggle active class for the sub-menu's parent li element
+      $(this).closest('li').toggleClass('active');
+    });
+  
+    // Prevent click event on sub-category links from closing the menu
+    $('.mainmenu .menucon a').on('click', function(e) {
+      e.stopPropagation();
+    });
+  });

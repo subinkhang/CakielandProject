@@ -41,10 +41,10 @@
                                     @endforeach
 
                                     <li
-                                        class="{{ Request::is('category' . $cate->id) || $isParentActive ? 'active' : '' }}">
+                                        class="mainmenu_title {{ Request::is('category' . $cate->id) || $isParentActive ? 'active' : '' }}">
                                         <a href="{{ URL::to('/category' . $cate->id) }}" class="category-link">
                                             <span>{{ $cate->name }}</span>
-                                            <span class="arrow"></span>
+                                            <span class="arrow hehe"></span>
                                         </a>
                                         <ul class="menucon">
                                             @foreach ($sub_category as $sub_cate)
