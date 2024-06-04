@@ -304,7 +304,7 @@ function handleVNPay(event) {
         .then(function(response) {
             console.log('Data saved:', response);
             if (response.data.success) {
-                axios.post('{{ url('/vnpay') }}',data)
+                axios.post('{{ url('/vnpay') }}')
                     .then(function(response) {
                         console.log('Success:', response);
                         if (response.data.code === '00') {
