@@ -1,285 +1,285 @@
 .image_container {
-    position: relative; /* Enable positioning for child elements */
+position: relative; /* Enable positioning for child elements */
 }
 .text_overlay {
-    position: absolute; /* Position the text overlay on top of the image */
-    top: 20%; /* Center vertically */
-    left: 10%;
-    padding: 20px;
-    text-align:start;
+position: absolute; /* Position the text overlay on top of the image */
+top: 20%; /* Center vertically */
+left: 10%;
+padding: 20px;
+text-align:start;
 }
 .text_overlay_title{
-    color: #080808;
-    text-transform:uppercase;
-    line-height: 65px;
+color: #080808;
+text-transform:uppercase;
+line-height: 65px;
 }
 .text_overlay_p{
-    color: #282828;
-    margin-top: 12px;
+color: #282828;
+margin-top: 12px;
 }
 .text_overlay_btn{
-    background-color: #FBC31C;
-    color: #fdfdfd;
-    height: 35px;
-    width: 120px;
-    margin-top:35px;
-    border: none;
-    border-radius: 12px;
-    margin-right: 55px;
+background-color: #FBC31C;
+color: #fdfdfd;
+height: 35px;
+width: 120px;
+margin-top:35px;
+border: none;
+border-radius: 12px;
+margin-right: 55px;
 }
 
 /* --------------------- */
 
 .service-content h4
 {
-	font-size: 18px;
-	color: #282828;
-	font-weight: bold;
+font-size: 18px;
+color: #282828;
+font-weight: bold;
 }
 .service-content p
 {
-	font-size: 16px;
-	color: #666;
-    line-height: 20px;
+font-size: 16px;
+color: #666;
+line-height: 20px;
 }
 .service-item
 {
-	margin-top: 140px;
+margin-top: 140px;
 }
 
 /* --------------------- */
 
 .categories_item {
-    box-shadow: 5px 5px 10px #f3f3f3;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+box-shadow: 5px 5px 10px #f3f3f3;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .categories_item img {
-    padding: 45px;
+padding: 45px;
 }
 
 .categories_item p {
-    color: #080808;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    padding-bottom: 20px;
+color: #080808;
+font-weight: bold;
+text-align: center;
+text-transform: uppercase;
+padding-bottom: 20px;
 }
 
 .categories_item:hover {
-    transform: translateY(-10px);
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+transform: translateY(-10px);
+box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .categories_title {
-    color: #080808;
-    margin-top: 80px;
-    margin-bottom: 30px;
+color: #080808;
+margin-top: 80px;
+margin-bottom: 30px;
 }
 
 /* --------------------- */
 
 .marquee marquee
 {
-	width: 100%;
-	height: 70px;
-	color: #fdfdfd;
-	background-color: #FBC31C;
-	line-height: 70px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+width: 100%;
+height: 70px;
+color: #fdfdfd;
+background-color: #FBC31C;
+line-height: 70px;
+margin-top: 50px;
+margin-bottom: 50px;
 }
 
 /* --------------------- */
 
 .feature_pr_title{
-    color: #080808;
-    margin-bottom: 30px;
-    text-transform: uppercase;
+color: #080808;
+margin-bottom: 30px;
+text-transform: uppercase;
 }
 
 /* --------------------- */
 
 .banner_btn {
-    background-color: #080808;
-    color: #FBC31C;
-    height: 35px;
-    width: 120px;
-    margin-top: 35px;
-    border: none;
-    border-radius: 12px;
-    margin-right: 55px;
-    transition: background-color 0.3s, color 0.3s; /* Thêm transition cho hiệu ứng mềm mại */
+background-color: #080808;
+color: #FBC31C;
+height: 35px;
+width: 120px;
+margin-top: 35px;
+border: none;
+border-radius: 12px;
+margin-right: 55px;
+transition: background-color 0.3s, color 0.3s; /* Thêm transition cho hiệu ứng mềm mại */
 }
 
 .banner_btn:hover {
-    background-color: #fdfdfd; /* Màu nền khi hover */
-    color: #FBC31C; /* Màu chữ khi hover */
+background-color: #fdfdfd; /* Màu nền khi hover */
+color: #FBC31C; /* Màu chữ khi hover */
 }
 
 .bg_banner {
-    background-color: #FBC31C;
+background-color: #FBC31C;
 }
 
 .banner_title {
-    color: #080808;
-    padding-top: 25%;
+color: #080808;
+padding-top: 25%;
 }
 
 .banner_para {
-    color: #282828;
-    margin-top: 20px;
+color: #282828;
+margin-top: 20px;
 }
 
 /* --------------------- */
 
 .sub_banner_title{
-    margin-top: 80px;
-    margin-bottom: 30px;
+margin-top: 80px;
+margin-bottom: 30px;
 }
 .sub_banner p
 {
-	color: #282828;
-	font-size: 14px;
+color: #282828;
+font-size: 14px;
 }
 .sub_banner h3
 {
-	color: #080808;
-	font-size: 18px;
-	font-weight: bold;
+color: #080808;
+font-size: 18px;
+font-weight: bold;
 }
 .sub_banner
 {
-	padding: 30px 20px;
-	margin-bottom: 16px;
-	background-size: cover;
+padding: 30px 20px;
+margin-bottom: 16px;
+background-size: cover;
 }
 .sub_banner button{
-    background-color: #FBC31C;
-    color: #fdfdfd;
-    height: 35px;
-    width: 120px;
-    margin-top:35px;
-    border: none;
-    border-radius: 12px;
-    margin-right: 55px;
-    transition: background-color 0.3s, color 0.3s;
+background-color: #FBC31C;
+color: #fdfdfd;
+height: 35px;
+width: 120px;
+margin-top:35px;
+border: none;
+border-radius: 12px;
+margin-right: 55px;
+transition: background-color 0.3s, color 0.3s;
 }
 .sub_banner button:hover{
-    background-color: #080808;
-    color: #FBC31C;
-    height: 35px;
-    width: 120px;
-    margin-top:35px;
-    border: none;
-    border-radius: 12px;
-    margin-right: 55px;
+background-color: #080808;
+color: #FBC31C;
+height: 35px;
+width: 120px;
+margin-top:35px;
+border: none;
+border-radius: 12px;
+margin-right: 55px;
 }
 
 /* --------------------- */
 
 .getintouch{
-    /* background-position: center; */
-    /* background-size:100%;
-    margin-top: 50px; */
-    /* margin-bottom: 50px; */
+/* background-position: center; */
+/* background-size:100%;
+margin-top: 50px; */
+/* margin-bottom: 50px; */
 }
 .getintouch_info{
-    padding: 70px;
-    text-align: center;
+padding: 70px;
+text-align: center;
 }
 .getintouch_search{
-    width: 100%;
-    height: 43px;
-    color: #666666;
-    height: 45px;
-    border: none;
-    padding: 0;
-    background-color: #fdfdfd;
-    border-radius: 20px;
+width: 100%;
+height: 43px;
+color: #666666;
+height: 45px;
+border: none;
+padding: 0;
+background-color: #fdfdfd;
+border-radius: 20px;
 }
 .getintouch_search input{
-    color: #666666;
-    height: 45px;
-    border: none;
-    padding: 0;
-    background: none;
+color: #666666;
+height: 45px;
+border: none;
+padding: 0;
+background: none;
 }
 .btn_submit{
-    background-color: #080808;
-    color: #FBC31C;
-    height: 38px;
-    padding: 0;
-    border-radius: 20px;
-    width: 100%;
-    border: none;
-    margin: 2px;
+background-color: #080808;
+color: #FBC31C;
+height: 38px;
+padding: 0;
+border-radius: 20px;
+width: 100%;
+border: none;
+margin: 2px;
 }
 .getintouch_search .col-4
 {
-    padding-right: 5px;
+padding-right: 5px;
 }
 .getintouch_search{
-    margin-top: 10px;
-    border: 1px solid #666666;
-    border-radius: 22px;
-    height: 44px;
+margin-top: 10px;
+border: 1px solid #666666;
+border-radius: 22px;
+height: 44px;
 }
 
-/* --------------cai nay la vut vao style cua header/foooter ne, nho doi ca file html------- */ 
+/* --------------cai nay la vut vao style cua header/foooter ne, nho doi ca file html------- */
 
 .nav_top {
-    position: fixed;
-    top: -20px; /* Vị trí cố định phía trên cùng */
-    /* left: 50px; Vị trí cố định phía trái */
-    /* width: 100%; Chiều rộng bằng 100% trang */
-    z-index: 10; /* Đặt mức độ ưu tiên hiển thị cao hơn các thành phần khác */
-    background-color: #fdfdfd; /* Thiết lập màu nền (màu trắng) */
-    position: -10px;
-  }
+position: fixed;
+top: -20px; /* Vị trí cố định phía trên cùng */
+/* left: 50px; Vị trí cố định phía trái */
+/* width: 100%; Chiều rộng bằng 100% trang */
+z-index: 10; /* Đặt mức độ ưu tiên hiển thị cao hơn các thành phần khác */
+background-color: #fdfdfd; /* Thiết lập màu nền (màu trắng) */
+position: -10px;
+}
 .slide{
-    z-index: 1;
-    margin-top: 85px;
+z-index: 1;
+margin-top: 85px;
 }
 .page_ul_li{
-    margin-bottom: 0;
+margin-bottom: 0;
 }
 
-/* --------------cai nay la vut vao style cua header/foooter ne, nho doi ca file html------- */ 
+/* --------------cai nay la vut vao style cua header/foooter ne, nho doi ca file html------- */
 
 .suggestions {
-    position: absolute; /* Vị trí tuyệt đối */
-    background-color: #fdfdfd; /* Màu nền */
-    top: 54px;
-    border-radius: 12px;
-    width: 300px; /* Chiều rộng bằng 100% */
-    z-index: 10; /* Mức độ ưu tiên hiển thị */
-    display: none; /* Ẩn mặc định */
-    color: #666;
-  }
-  .suggestions ul {
-    list-style: none; /* Xóa dấu đầu dòng */
-    padding: 0;
-    margin: 0;
-  }
-  .suggestions li {
-    padding: 5px; /* Khoảng cách giữa các gợi ý */
-  }
-  .suggestions li:hover {
-    background-color: #f0f0f0; /* Nền khi rê chuột lên */
-  }
+position: absolute; /* Vị trí tuyệt đối */
+background-color: #fdfdfd; /* Màu nền */
+top: 54px;
+border-radius: 12px;
+width: 300px; /* Chiều rộng bằng 100% */
+z-index: 10; /* Mức độ ưu tiên hiển thị */
+display: none; /* Ẩn mặc định */
+color: #666;
+}
+.suggestions ul {
+list-style: none; /* Xóa dấu đầu dòng */
+padding: 0;
+margin: 0;
+}
+.suggestions li {
+padding: 5px; /* Khoảng cách giữa các gợi ý */
+}
+.suggestions li:hover {
+background-color: #f0f0f0; /* Nền khi rê chuột lên */
+}
 
-  .image_getintouch {
-    width: 2000px;
-    height: 370px;
-    margin-bottom: 160px;
-    margin-top: 100px;
+.image_getintouch {
+width: 2000px;
+height: 370px;
+margin-bottom: 160px;
+margin-top: 100px;
 }
 
 .the_image {
-    width: 100%;
-    height: 360px;
-    /* object-fit: cover; */
+width: 100%;
+height: 360px;
+/* object-fit: cover; */
 }
 
 /* ----------------------- */
@@ -379,59 +379,75 @@ transition: transform 0.3s ease-in-out; /* Hiệu ứng chuyển đổi mượt 
 /* Style for icon account */
 /* Style cho dropdown container */
 .cart_item .dropdown {
-    position: relative;
-    display: inline-block;
+position: relative;
+display: inline-block;
 }
 
 /* Style cho nội dung dropdown, ẩn đi khi không hoạt động */
 .cart_item .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    padding: 5px 10px; /* Giảm kích thước padding */
-    white-space: nowrap; /* Ngăn chặn xuống dòng */
+display: none;
+position: absolute;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+padding: 5px 10px; /* Giảm kích thước padding */
+white-space: nowrap; /* Ngăn chặn xuống dòng */
 }
 
 /* Style cho các liên kết bên trong dropdown */
 .cart_item .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
 }
 
 /* Hiển thị dropdown content khi hover */
 .cart_item .dropdown:hover .dropdown-content {
-    display: block;
+display: block;
 }
 
 /* Thêm một chút hiệu ứng cho button */
 .cart_item button {
-    background-color: #FBC31C; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 4px;
+background-color: #FBC31C; /* Green */
+border: none;
+color: white;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 12px;
+margin: 4px 2px;
+transition-duration: 0.4s;
+cursor: pointer;
+border-radius: 4px;
 }
 
 /* Hiệu ứng khi hover vào button */
 .cart_item button:hover {
-    background-color: white;
-    color: black;
-    border: 2px solid #FBC31C;
+background-color: white;
+color: black;
+border: 2px solid #FBC31C;
 }
 /* Hiệu ứng khi hover vào dropdown link */
 .cart_item .dropdown-content a:hover {
-    background-color: #ddd;
-    color: #333;
+background-color: #ddd;
+color: #333;
+}
+/* .qr{
+position: fixed;
+z-index: 20;
+} */
+.mess {
+position: fixed;
+bottom: 20px;
+right: 20px;
+font-size: 150px;
+background: radial-gradient(circle farthest-corner at 25% 98%, #0078ff 5%, #4b69ff 25%, #af37f0 55%, #ff557d 78%,
+#fa696e 83%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text; /* For non-webkit browsers */
+text-fill-color: transparent; /* For non-webkit browsers */
 }
