@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 //     });
 // });
 
-
+/*----------------------------------ADD TO CART------------------------------------------*/
 
 const addButtons = document.querySelectorAll('.btn_shop');
 
@@ -80,23 +80,42 @@ const addButtons = document.querySelectorAll('.btn_shop');
             products = products ? JSON.parse(products) : [];
 
             const existingProductIndex = products.findIndex(p => p.name === product.name);
-
+            var selectedQuantity = parseInt(document.getElementById('pr-number').value);
             if (existingProductIndex >= 0) {
-                var selectedQuantity = parseInt(document.getElementById('pr-number').value);
                 products[existingProductIndex].quantity = (products[existingProductIndex].quantity || 1) + selectedQuantity;
             } else {
                 // If product does not exist in the cart, add it
-                var selectedQuantity = parseInt(document.getElementById('pr-number').value);
                 product.quantity = selectedQuantity;
                 products.push(product);
             }
+            function updateCartCount() {
+                // Lấy dữ liệu từ localStorage
+                let products = localStorage.getItem('products');
+                products = products ? JSON.parse(products) : [];
+
+                // Tính tổng số lượng sản phẩm
+                let totalQuantity = selectedQuantity;
+                for (const product of products) {
+                    if (product.quantity) {
+                        totalQuantity += product.quantity;
+                    }
+                }
+
+                // Gán giá trị tổng vào phần tử HTML
+                const cartCountElement = document.querySelector('.cart-count-header');
+                cartCountElement.innerText = totalQuantity.toString();
+                console.log(totalQuantity)
+            }
+
+            // Gọi hàm updateCartCount để cập nhật giá trị ban đầu
+            updateCartCount();
 
             localStorage.setItem('products', JSON.stringify(products));
             console.log(product);
         });
     });
 
-
+/*------------------------------END ADD TO CART---------------------------------------*/
 
 // Đợi tất cả các phần tử HTML được tải xong
 document.addEventListener("DOMContentLoaded", function() {

@@ -66,7 +66,7 @@ new class extends Component {
                             <li class="cart_item-header position-relative">
                                 <a href="{{ url('/cart') }}" class="nav-link-header">
                                     <i class="fa-solid fa-cart-shopping"></i>
-                                    <div class="cart-count-header">2</div>
+                                    <div class="cart-count-header">0</div>
                                 </a>
                             </li>
                             <div class="col-1"></div>
@@ -126,7 +126,32 @@ new class extends Component {
             }
 
             // Run the checkInput function when the page loads to set the initial state
-            document.addEventListener('DOMContentLoaded', checkInput);
+            function updateCartCount() {
+                // Lấy dữ liệu từ localStorage
+                let products = localStorage.getItem('products');
+                products = products ? JSON.parse(products) : [];
+
+                // Tính tổng số lượng sản phẩm
+                let totalQuantity = 0;
+                for (const product of products) {
+                    if (product.quantity) {
+                        totalQuantity += product.quantity;
+                    }
+                }
+
+                // Gán giá trị tổng vào phần tử HTML
+                const cartCountElement = document.querySelector('.cart-count-header');
+                cartCountElement.innerText = totalQuantity.toString();
+                console.log(totalQuantity)
+            }
+
+            // Gọi hàm updateCartCount để cập nhật giá trị ban đầu
+            updateCartCount();
+
+            // Lắng nghe sự kiện storage khi có sự thay đổi trong localStorage
+            window.addEventListener('storage', () => {
+                updateCartCount();
+            });
         </script>
     </body>
 </div>

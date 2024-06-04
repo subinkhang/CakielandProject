@@ -3,13 +3,27 @@ document.addEventListener("DOMContentLoaded", function() {
     var addButtonList = document.querySelectorAll('.btn_add');
     addButtonList.forEach(function(addButton) {
         addButton.addEventListener('click', function() {
-            // Lấy số lượng hiện tại của giỏ hàng từ phần tử trong header
-            var cartItemCountElement = document.querySelector('.cart_item p');
-            var currentCartItemCount = parseInt(cartItemCountElement.textContent);
+            function updateCartCount() {
+                // Lấy dữ liệu từ localStorage
+                let products = localStorage.getItem('products');
+                products = products ? JSON.parse(products) : [];
 
-            // Tăng số lượng giỏ hàng lên 1 và cập nhật lên header
-            var newCartItemCount = currentCartItemCount + 1;
-            cartItemCountElement.textContent = newCartItemCount;
+                // Tính tổng số lượng sản phẩm
+                let totalQuantity = 1;
+                for (const product of products) {
+                    if (product.quantity) {
+                        totalQuantity += product.quantity;
+                    }
+                }
+
+                // Gán giá trị tổng vào phần tử HTML
+                const cartCountElement = document.querySelector('.cart-count-header');
+                cartCountElement.innerText = totalQuantity.toString();
+                console.log(totalQuantity)
+            }
+
+            // Gọi hàm updateCartCount để cập nhật giá trị ban đầu
+            updateCartCount();
         });
     });
 
