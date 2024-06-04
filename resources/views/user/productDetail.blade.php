@@ -1,5 +1,6 @@
 <x-app-layout>
     <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/css/productDetail.css') }}">
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -189,17 +190,16 @@
     @endforeach
 
     <!-- COMMENT AND POST -->
-    <div class="comment-section">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
-        <div class="max-w-2xl mx-auto py-8">
-            @foreach ($post as $posts)
-                <livewire:comments :model="$posts"/>
-            @endforeach
+    <div data-my-div>
+        <div class="comment-section">
+            <div class="max-w-2xl mx-auto py-8">
+                @foreach ($post as $posts)
+                    <livewire:comments :model="$posts"/>
+                @endforeach
+            </div>
         </div>
     </div>
     
-
     <div class="container related-pr mt-5 mb-3">
         <div class="row">
             <div class="col-12 justify-content-start mb-3">
@@ -245,7 +245,6 @@
         </div>
     </div>
 </div>
-
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('frontend/js/productDetail.js') }}"></script>
