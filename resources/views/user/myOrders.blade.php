@@ -13,10 +13,10 @@
                     <div class="line"></div>
                     <div class="col-8 list_ac">
                         <ul>
-                            <li><a href="../Account/account.html">My Proflie</a></li>
-                            <li><a href="../Cart/cart.html">My Carts</a></li>
-                            <li><a href="#">My Orders</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="{{ url('/account') }}">My Proflie</a></li>
+                            <li><a href="{{ url('/cart') }}">My Carts</a></li>
+                            <li><a href="{{ url('/my-orders') }}">My Orders</a></li>
+                            <li><a href="{{ url('/about-us') }}">Help</a></li>
                         </ul>
                     </div>
                 </div>

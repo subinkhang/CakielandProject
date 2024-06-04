@@ -73,6 +73,11 @@ new class extends Component {
                                     <x-slot name="content">
                                         @if (auth()->check())
                                             <div class="dropdown-menu-right-header">
+                                                @if (auth()->user()->role === 'admin')
+                                                    <button onclick="window.location='{{ url('/admin-dashboard') }}'" class="dropdown-item-header">
+                                                        {{ __('Manage') }}
+                                                    </button>
+                                                @endif
                                                 <button onclick="window.location='{{ url('/account') }}'" class="dropdown-item-header">
                                                     {{ __('Account') }}
                                                 </button>

@@ -35,10 +35,10 @@ new #[Layout('layouts.guest')] class extends Component
         event(new Registered($user = User::create($validated)));
         // $this->redirect()->intended(route('verify-email', absolute: false));
         Auth::login($user);
-        $this->redirect('/login');
+        // $this->redirect('/login');
         // $this->redirectIntended(default: route('verify-email', absolute: false), navigate: true);
 
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+        $this->redirect(route('verification.notice'), navigate: true);
 
         
     }

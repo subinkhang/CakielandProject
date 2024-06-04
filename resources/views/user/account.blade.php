@@ -15,10 +15,10 @@
                         <div class="line"></div>
                         <div class="col-8 list_ac">
                             <ul>
-                                <li><a href="#">My Proflie</a></li>
-                                <li><a href="{{ asset('views/user/cart.blabe.php') }}">My Carts</a></li>
-                                <li><a href="../MyOrder/myorder.html">My Orders</a></li>
-                                <li><a href="#">Help</a></li>
+                                <li><a href="{{ url('/account') }}">My Proflie</a></li>
+                                <li><a href="{{ url('/cart') }}">My Carts</a></li>
+                                <li><a href="{{ url('/my-orders') }}">My Orders</a></li>
+                                <li><a href="{{ url('/about-us') }}">Help</a></li>
                             </ul>
                         </div>
                     </div>

@@ -5,7 +5,7 @@ use App\Http\Controllers\AccountController;
 
 // Auth Routes
 // Route::view('/', 'auth/login');
-Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('dashboard', 'dashboard')->middleware(['auth'])->name('dashboard');
 Route::view('profile', 'profile')->middleware(['auth', 'verified'])->name('profile');
 require __DIR__ . '/auth.php';
 
@@ -37,7 +37,7 @@ Route::get('/about-us', 'App\Http\Controllers\AboutUsController@index');
 // Other Routes
 Route::get('/error-page', 'App\Http\Controllers\ErrorPageController@index');
 // Route::get('/pagination', 'App\Http\Controllers\PaginationController@index');
-Route::get('/', function () { return redirect('/dashboard'); });
+
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -92,3 +92,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin-add-voucher', 'App\Http\Controllers\AdminAddVoucherController@add_voucher');
     Route::post('/admin-add-voucher', 'App\Http\Controllers\AdminAddVoucherController@insert_coupon_code');
 });
+
+Route::get('/', function () { return redirect('/dashboard'); });
