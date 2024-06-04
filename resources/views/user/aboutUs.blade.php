@@ -10,7 +10,7 @@
             <div class="col-12 infor">
                 <div class="row small_in4">
                     <div class="col-6 img_in4">
-                        <img src="{{ asset('frontend/images/About us/tải xuống (17).jfif') }}" alt=""
+                        <img src="{{ asset('frontend\images\About us\213a961918fedb2cc5fe53c844db35a3.jpg') }}" alt=""
                             class="img_in4_1 w-100">
                     </div>
                     <div class="col-6 description_in4">
@@ -40,28 +40,19 @@
                         <img src="{{ asset('frontend/images/About us/1.png') }}" alt="" class="img_policy">
                         <h3>Privacy policy</h3>
                         <p>Our privacy policy outlines how we collect, use, and disclose information you provide while
-                            using
-                            our website and services. We take data security seriously and employ safeguards to keep your
-                            information protected.</p>
+                            using our website and services.</p>
                     </div>
                     <div class="col-4 policy_small_2">
                         <img src="{{ asset('frontend/images/About us/2.png') }}" alt="" class="img_policy">
                         <h3>Shipping policy</h3>
                         <p>We offer a variety of shipping options to suit your needs, with clear details provided at
-                            checkout. You'll be able to choose from standard shipping with estimated delivery
-                            timeframes, or
-                            opt for expedited shipping for a faster delivery at an additional cost.</p>
+                            checkout. </p>
                     </div>
                     <div class="col-4 policy_small_3">
                         <img src="{{ asset('frontend/images/About us/3.png') }}" alt="" class="img_policy">
                         <h3>Returns policy</h3>
-                        <p> If you're not satisfied with your baking supplies, you can easily return them within 5 days
-                            of
-                            receiving your order. Simply contact our friendly customer service team to initiate the
-                            return
-                            process. For unopened and unused items in their original packaging, we offer a full refund
-                            on
-                            the purchase price.</p>
+                        <p> You can easily return them within 5 days
+                            of receiving your order. </p>
                     </div>
                 </div>
             </div>
