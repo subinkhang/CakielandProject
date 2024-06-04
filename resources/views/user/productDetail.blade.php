@@ -187,51 +187,12 @@
                         <h3 class="pr-des">Product Description</h3>
                         <p>{{ $product->description_technique }}</p>
                     </div>
-                    <div class="tab-pane" id="info" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                        <h3 class="pr-des">Product information</h3>
-                        <table>
-                            <p>{{ $product->description_information }}</p>
-                            {{-- <tr>
-                            <td>Trademark:</td>
-                            <td>Philips</td>
-                        </tr>
-                        <tr>
-                            <td>Brand origin:</td>
-                            <td>Netherlands</td>
-                        </tr>
-                        <tr>
-                            <td>Material:</td>
-                            <td>High quality plastic, stainless steel</td>
-                        </tr>
-                        <tr>
-                            <td>Wattage:</td>
-                            <td>300W</td>
-                        </tr>
-                        <tr>
-                            <td>Size:</td>
-                            <td>186 x 84 x 154 mm</td>
-                        </tr>
-                        <tr>
-                            <td>Product weight:</td>
-                            <td>0.853kg</td>
-                        </tr>
-                        <tr>
-                            <td>Warranty form:</td>
-                            <td>Warranty</td>
-                        </tr>
-                        <tr>
-                            <td>Warranty period:</td>
-                            <td>12 month</td>
-                        </tr> --}}
-                        </table>
-                    </div>
                     <div class="tab-pane" id="info" role="tabpanel" aria-labelledby="profile-tab"
                         tabindex="0">
 
                     </div>
                     <div class="tab-pane" id="review" role="tabpanel" aria-labelledby="messages-tab"
                         tabindex="0">
-
                     </div>
                 </div>
             </div>
