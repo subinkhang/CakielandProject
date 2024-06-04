@@ -11,13 +11,12 @@
     width: 636px;
     height: 560px;
     border: 1px solid #666;
-    border-radius: 30px;
+    border-radius: 20px;
     display: grid;
     place-content: center;
 }
 div .formsignin{
-    margin-top: 130px;
-    
+    margin-top: 60px;
 }
 .headingsignin{
     color: #080808;
@@ -99,4 +98,10 @@ p{
     color: red;
     text-align: center;
     padding-right: 10px;
+}
+.img_login img{
+    border-radius: 20px;
+    width: 636px;
+    height: 560px;
+    margin-top: 60px;
 }

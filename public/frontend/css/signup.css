@@ -93,6 +93,15 @@ div .linksi{
  }
 
 .error{
+    width: 400px;
     color: red;
     text-align: center;
+    padding-right: 10px;
+}
+.text-red {
+    color: red;
+}
+span{
+    text-align: center;
+    padding-left: 30px;
 }

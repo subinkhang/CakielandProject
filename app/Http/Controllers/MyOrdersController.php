@@ -23,7 +23,7 @@ class MyOrdersController extends Controller
     }
 
     $data = DB::table('order_detail')
-        ->select('order_detail.order_id', 'order_detail.product_id', 'order_detail.price', 'order_detail.quantity', 'order_detail.total_money', 'order.status', 'product.name', 'product.thumbnail')
+        ->select('order_detail.order_id', 'order_detail.product_id', 'order_detail.price', 'order_detail.quantity', 'order_detail.total_money', 'order.status', 'product.name', 'product.thumbnail',DB::raw('DATE(order.order_date) as order_date'))
         ->join('product', 'order_detail.product_id', '=', 'product.id')
         ->join('order', 'order_detail.order_id', '=', 'order.id')
         ->where('order.user_id', $userId)
@@ -39,60 +39,6 @@ class MyOrdersController extends Controller
     $orders = [];
     foreach ($data->groupBy('status') as $status => $orderItems) {
         $orders[$status] = [];
-        // foreach ($orderItems as $item) {
-        // $orderId = $item->order_id;
-        // $productId = $item->product_id;
-        // $price = $item->price;
-        // $quantity = $item->quantity;
-        // $totalMoney = $item->total_money;
-        // $productName = $item->name;
-        // $productThumbnail = $item->thumbnail; // Lấy đường dẫn ảnh từ cơ sở dữ liệu
-
-        // if (!isset($orders[$status][$orderId])) {
-        //     $orders[$status][$orderId] = [
-        //         'order_id' => $orderId,
-        //         'total_price' => $totalMoney,
-        //         'items' => [],
-        //     ];
-        // }
-
-        // $orders[$status][$orderId]['items'][] = [
-        //     'product_id' => $productId,
-        //     'price' => $price,
-        //     'quantity' => $quantity,
-        //     'total_money' => $totalMoney,
-        //     'product_name' => $productName,
-        //     'product_thumbnail' => $productThumbnail, // Thêm đường dẫn ảnh vào mảng items
-        // ];
-        // }
-
-        // foreach ($orderItems as $item) {
-        //     $orderId = $item->order_id;
-        //     $productId = $item->product_id;
-        //     $price = $item->price;
-        //     $quantity = $item->quantity;
-        //     $totalMoney = $item->total_money;
-        //     $productName = $item->name;
-        //     $productThumbnail = $item->thumbnail; // Lấy đường dẫn ảnh từ cơ sở dữ liệu
-        
-        //     if (!isset($orders[$status][$orderId])) {
-        //         $orders[$status][$orderId] = [
-        //             'order_id' => $orderId,
-        //             'total_price' => $totalMoney,
-        //             'items' => [],
-        //         ];
-        //     }
-        
-        //     $orders[$status][$orderId]['items'][] = [
-        //         'product_id' => $productId,
-        //         'price' => $price,
-        //         'quantity' => $quantity,
-        //         'total_money' => $totalMoney,
-        //         'product_name' => $productName,
-        //         'product_thumbnail' => $productThumbnail, // Thêm đường dẫn ảnh vào mảng items
-        //     ];
-        // }
-
         $orders = [];
 
 foreach ($data as $item) {
@@ -100,16 +46,17 @@ foreach ($data as $item) {
     $productId = $item->product_id;
     $price = $item->price;
     $quantity = $item->quantity;
-    $totalMoney = $item->total_money;
+    $totalPrice = $price * $quantity;
     $productName = $item->name;
     $productThumbnail = $item->thumbnail;
     $status = $item->status;
-
+    $orderDate = $item->order_date;
     if (!isset($orders[$orderId])) {
         $orders[$orderId] = [
             'order_id' => $orderId,
-            'total_price' => $totalMoney,
+            'total_price' => 0,
             'status' => $status,
+            'order_date' => $orderDate,
             'items' => [],
         ];
     }
@@ -118,14 +65,11 @@ foreach ($data as $item) {
         'product_id' => $productId,
         'price' => $price,
         'quantity' => $quantity,
-        'total_money' => $totalMoney,
         'product_name' => $productName,
         'product_thumbnail' => $productThumbnail,
     ];
+    $orders[$orderId]['total_price'] += $totalPrice;
 }
-
-
-        
     }
 
     return view('user/myOrders', [

@@ -32,8 +32,6 @@
                             <div class="col-8 box_account">
                                 <h1>MY PROFILE</h1>
                             </div>
-                            {{-- <img class="hoho" id="avatarPreview" src="{{ $avatar ? asset('public/avatars/' . $avatar) . '?' . time() : asset('default-avatar.png') }}" style="display: none" alt=""> --}}
-                            
                             <div class="col-4 avatar">
                                     <label for="avatarUpload">
                                         <img class="circle" id="avatarPreview" src="{{ $avatar ? asset('public/avatars/' . $avatar) . '?' . time() : asset('default-avatar.png') }}" alt="">

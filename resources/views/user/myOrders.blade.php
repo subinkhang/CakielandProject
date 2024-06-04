@@ -42,7 +42,15 @@
                             @foreach ($orders as $order)
                                 <div class="col-12 product_detail_3 " data-order-id="{{ $order['order_id'] }}" data-status="{{ $order['status'] }}">
                                     <div class="col-12 order_title">
-                                        <h5>({{ $statuses[$order['status']] }})</h5>
+                                        <h5>
+                                            @if ($order['status'] == 1)
+                                                <span class="completed">{{ $statuses[$order['status']] }}</span>
+                                            @elseif ($order['status'] == 0)
+                                                <span class="cancelled">{{ $statuses[$order['status']] }}</span>
+                                            @else
+                                                <span class="delivering">{{ $statuses[$order['status']] }}</span>
+                                            @endif
+                                        </h5>
                                     </div>
                                     {{-- @foreach ($data[$key] as $order) --}}
                                         @foreach ($order['items'] as $item)
@@ -58,16 +66,17 @@
                                                     <p class="price">{{ $item['price'] }}</p>
                                                 </div>
                                             </div>
+                                            <div class="product-separator"></div>
                                         @endforeach
                                         <div class="row">
                                             <div class="col-3 status">
-                                                <h5>Order status:</h5>
+                                                <h5>Order date:</h5>
                                             </div>
                                             <div class="col-5 order_deli">
-                                                <h5>{{ $statuses[$order['status']] }}</h5>
+                                                <h5>{{ $order['order_date'] }}</h5>
                                             </div>
                                             <div class="col-4 total_price">
-                                                <h6>Total: {{ $order['total_price'] }}</h6>
+                                                <h5>Total: {{ $order['total_price'] }}</h5>
                                                 <button type="submit" class="button_order">Buy Again</button>
                                             </div>
                                         </div>

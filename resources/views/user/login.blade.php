@@ -54,9 +54,9 @@
                                 <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
                             </div>
                         </div>
-                        <div class="col-2 box_eye"><i class="fa-regular fa-eye"
+                        {{-- <div class="col-2 box_eye"><i class="fa-regular fa-eye"
                                 onclick="togglePasswordVisibility(this)"></i></div>
-                        <div class="col-2"></div>
+                        <div class="col-2"></div> --}}
                     </div>
                     <div class="row">
                         <div class="col-4"></div>
@@ -106,7 +106,7 @@
                 </form>
             </div>
             <div class="col-6 img_signin">
-                <img src="{{ asset('frontend/images/sign-in-up/c641ce7483c4728b418ba7d5d93a9ddc.jpg') }}" alt=""
+                <img src="{{ asset('public\frontend\images\sign-in-up\955ed0d990df425966eef4659cf9d745.jpg') }}" alt=""
                     class="w-100 img">
             </div>
         </div>
