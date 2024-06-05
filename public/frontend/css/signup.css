@@ -88,8 +88,6 @@ div .linksi{
 }
 .box_eye i{
     padding-top: 45px;
-    /* width: auto;
-    height: auto; */
  }
 
 .error{
@@ -101,7 +99,8 @@ div .linksi{
 .text-red {
     color: red;
 }
-span{
-    text-align: center;
-    padding-left: 30px;
+.error-message{
+    width: 400px;
+    color: red;
+    margin-top: 10px;
 }
