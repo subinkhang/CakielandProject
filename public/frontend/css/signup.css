@@ -9,15 +9,19 @@
 .formsignup{
     text-align: center;
     width: 636px;
-    height: 700px;
+    height: 600px;
     border: 1px solid #666;
-    border-radius: 30px;
+    border-radius: 20px;
     display: grid;
     place-content: center;
 }
+.img_signup img{
+    border-radius: 20px;
+    height: 600px;
+    margin-top: 20px;
+}
 div .formsignup{
-    margin-top: 130px;
-   
+    margin-top: 20px;
 }
 .headingsignup h2{
     color: #080808;
@@ -68,7 +72,7 @@ div .formsignup{
     background-color: #FBC31C;
     border: #FBC31C;
     border-radius: 30px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 div .linksi{
@@ -102,5 +106,5 @@ div .linksi{
 .error-message{
     width: 400px;
     color: red;
-    margin-top: 10px;
+    margin-top: 5px;
 }
