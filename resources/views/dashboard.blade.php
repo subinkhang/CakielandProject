@@ -175,9 +175,11 @@
             <!-- ĐỔI THÀNH PRODUCT KHI CÓ DATA -->
             @foreach ($all_product as $key => $list_product_user)
                 <div class="col-3">
+            
                     <div class="pr-i3">
                         <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
                             <img src="{{ asset('public/backend/upload/' . $list_product_user->thumbnail) }}" alt="" class="w-100 productList_image">
+                            <div class="text-hidden" style="display:none">{{ asset($list_product_user->thumbnail) }}</div>
                         </a>
                         <span class="btn_add"><i class="fa-solid fa-circle-plus"
                                 onclick="addToCart(this)"></i></span>
@@ -192,6 +194,9 @@
                             </ul>
                             <div class="text_product">
                                 {{ strlen($list_product_user->description) > 115 ? substr($list_product_user->description, 0, 115).'...' : $list_product_user->description }}
+                            </div>
+                            <div class="pr-i2-id" style="display: none;">
+                                {{ $list_product_user->id }}
                             </div>
                             <div class="row productList_price">
                                 <div class="col-6">

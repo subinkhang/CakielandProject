@@ -36,6 +36,7 @@ subtotalElement.innerHTML = `<span>$${total.toFixed(2)}</span>`;
 
 updateTotal();
 }
+
 function updateTotal() {
 const subtotalElements = document.querySelectorAll(".subprice"); // Get all elements with class 'subprice'
 let total = 0;
@@ -60,7 +61,11 @@ totalprice.innerHTML = `<span>
 /*-------------REMOVE ITEM------------*/
 
 function deleteItem(index) {
+    
 // Xóa phần tử DOM tương ứng
+const inputElement = document.querySelector(`input[name="quan[${index}]"]`);
+var currentValue = parseInt(inputElement.value);
+console.log(currentValue)
 const itemId = `item${index}`;
 const rmitem = document.getElementById(itemId);
 if (rmitem) {
@@ -75,6 +80,26 @@ document.body.appendChild(toast);
 toast.innerText = "Delete item successfully!";
 toast.className = "toast show";
 setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+function updateCartCount() {
+    // Lấy dữ liệu từ localStorage
+    let products = localStorage.getItem('products');
+    products = products ? JSON.parse(products) : [];
+
+    // Tính tổng số lượng sản phẩm
+    let totalQuantity = currentValue;
+    for (const product of products) {
+        if (product.quantity) {
+            totalQuantity = (totalQuantity - product.quantity);
+        }
+    }
+    // Gán giá trị tổng vào phần tử HTML
+    const cartCountElement = document.querySelector('.cart-count-header');
+    cartCountElement.innerText = Math.abs(totalQuantity.toString());
+    console.log(Math.abs(totalQuantity))
+}
+
+// Gọi hàm updateCartCount để cập nhật giá trị ban đầu
+updateCartCount();
 }
 
 // Cập nhật lại mảng products trong localStorage
@@ -90,15 +115,23 @@ for (let i = index; i < products.length; i++) { const nextItem=document.getEleme
     nextItem.querySelector(".price").setAttribute("name", `price[${i}]`);
     nextItem.querySelector(".subprice").id=`subprice_${i}`; nextItem.querySelector("span input").name=`quan[${i}]`;
     nextItem.querySelector(".btn-minuse").setAttribute("onclick", `decreaseQuantity(${i})`);
-    nextItem.querySelector(".btn-pluss").setAttribute("onclick", `increaseQuantity(${i})`); } } } }
-    /*----------------GET ITEM---------------------*/ document.addEventListener("DOMContentLoaded", (event)=> {
+    nextItem.querySelector(".btn-pluss").setAttribute("onclick", `increaseQuantity(${i})`); } }
+ }
+ }
+    /*----------------GET ITEM---------------------*/ 
+    document.addEventListener("DOMContentLoaded", (event)=> {
     const products = JSON.parse(localStorage.getItem("products"));
     var table = document.getElementById("prod");
     let total = 0;
     const maxRows = 3;
-    for (let i = 0; i < products.length; i++) { var newRow=document.createElement("tr"); newRow.classList.add('newrow');
-        newRow.id=`item${i}`; const subtotal=products[i].price * products[i].quantity; const
-        price=parseFloat(products[i].price); console.log(price); newRow.innerHTML=` <th scope="row">
+    for (let i = 0; i < products.length; i++) {
+        var newRow=document.createElement("tr"); 
+        newRow.classList.add('newrow');
+        newRow.id=`item${i}`; 
+        const subtotal=products[i].price * products[i].quantity; 
+        const price=parseFloat(products[i].price); 
+        console.log(price); 
+        newRow.innerHTML=` <th scope="row">
         </th>
         <div style="margin-top: 180px;">
             <td class="col-2 text-center">${i + 1}</td>

@@ -8,10 +8,75 @@ document.addEventListener("DOMContentLoaded", function() {
             carouselInstance.next();
         }, 3000); // Thời gian giữa các slide là 10 giây
     }
-
     // Chạy hàm khi trang web đã tải hoàn toàn
     runCarousel();
+/*------------------------------------------------------------------------------*/
+    const addButtons = document.querySelectorAll('.btn_add');
+    addButtons.forEach((button, index) => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        function updateCartCount() {
+            // Lấy dữ liệu từ localStorage
+            let products = localStorage.getItem('products');
+            products = products ? JSON.parse(products) : [];
+
+            // Tính tổng số lượng sản phẩm
+            let totalQuantity = 1;
+            for (const product of products) {
+                if (product.quantity) {
+                    totalQuantity += product.quantity;
+                }
+            }
+
+            // Gán giá trị tổng vào phần tử HTML
+            const cartCountElement = document.querySelector('.cart-count-header');
+            cartCountElement.innerText = totalQuantity.toString();
+            console.log(totalQuantity)
+        }
+
+        // Gọi hàm updateCartCount để cập nhật giá trị ban đầu
+        updateCartCount();
+        const product = {
+            id: document.querySelectorAll('.pr-i2-id')[index].innerText.trim(),
+            name: document.querySelectorAll('.pr-i2-name')[index].innerText,
+            image: document.querySelectorAll('.text-hidden')[index].innerText.split('/').pop(),
+            fake_price: document.querySelectorAll('.old-price')[index].innerText.replace("$", ""),
+            price: document.querySelectorAll('.new-price')[index].innerText.replace("$", ""),
+        };
+
+        let products = localStorage.getItem('products');
+        products = products ? JSON.parse(products) : [];
+
+        const existingProductIndex = products.findIndex(p => p.name === product.name);
+
+        if (existingProductIndex >= 0) {
+            // If product already exists in the cart, increase the quantity
+            products[existingProductIndex].quantity = (products[existingProductIndex].quantity || 1) + 1;
+        } else {
+            // If product does not exist in the cart, add it
+            product.quantity = 1;
+            products.push(product);
+        }
+
+        localStorage.setItem('products', JSON.stringify(products));
+    });
 });
+});
+
+function addToCart(element) {
+    // Hiển thị toast message
+    var toast = document.getElementById("toast");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast";
+        toast.className = "toast";
+        document.body.appendChild(toast);
+    }
+    toast.innerText = "Add to cart successfully!";
+    toast.className = "toast show";
+    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+}
+
 
 const searchInput = document.getElementById('searchInput');
 const suggestionsDiv = document.querySelector('.suggestions');
