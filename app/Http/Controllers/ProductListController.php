@@ -21,10 +21,8 @@ class ProductListController extends Controller
         $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
 
         $query = Product::query();
-        $query->select('product.name', 'product.fake_price', 'product.price', 'product.thumbnail', 'product.description', 'product.description_detail', 'product.description_technique', 'product.brand', 'product.created_at', 'product.updated_at', 'product.category_id', 'product.deleted', 'product.sub_category_id')
-            ->join('category', 'category.id', '=', 'product.category_id')
-            ->where('product.category_id', $category_id)
-            ->get();
+        $query->select('product.*')
+        ->where('product.category_id', $category_id);
 
         switch ($sort) {
             case 'increase':
@@ -63,11 +61,12 @@ class ProductListController extends Controller
         $cate = DB::table('category')->orderby('id', 'desc')->get();
         $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
 
+        $cate = DB::table('category')->orderby('id', 'desc')->get();
+        $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
+
         $query = Product::query();
-        $query->select('product.name', 'product.fake_price', 'product.price', 'product.thumbnail', 'product.description', 'product.description_detail', 'product.description_technique', 'product.brand', 'product.created_at', 'product.updated_at', 'product.category_id', 'product.deleted', 'product.sub_category_id')
-            ->join('sub_category', 'sub_category.id', '=', 'product.sub_category_id')
-            ->where('product.sub_category_id', $sub_category_id)
-            ->get();
+        $query->select('product.*')
+        ->where('product.sub_category_id', $sub_category_id);
 
         switch ($sort) {
             case 'increase':
@@ -98,6 +97,7 @@ class ProductListController extends Controller
         return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product, 'category' => $cate,
             'sub_category' => $sub_cate, 'brands' => $data['brands']]);
     }
+
 
     public function getPagedProducts(Request $request)
     {
@@ -137,7 +137,7 @@ class ProductListController extends Controller
 
     public function search(Request $request)
     {
-        $keywords = $request->keywords_submit;
+        $keywords = $request->input('keywords_submit', '');
 
         $cate = DB::table('category')->orderby('id', 'desc')->get();
         $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
@@ -146,7 +146,9 @@ class ProductListController extends Controller
         $query = Product::query();
 
         // Thêm điều kiện tìm kiếm
-        $query->where('name', 'like', '%' . $keywords . '%');
+        if ($keywords) {
+            $query->where('name', 'like', '%' . $keywords . '%');
+        }
 
         switch ($sort) {
             case 'increase':
@@ -181,7 +183,7 @@ class ProductListController extends Controller
             'search_product' => $search_product,
             'category' => $cate,
             'sub_category' => $sub_cate,
-            'brands' => $data['brands']
+            'brands' => $brands
         ]);
     }
 

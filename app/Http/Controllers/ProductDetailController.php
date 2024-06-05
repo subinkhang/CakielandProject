@@ -7,13 +7,10 @@ use DB;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Post;
+use App\Models\Product;
+
 session_start();
-// class ProductDetailController extends Controller
-// {
-//     public function product_detail($product_id)
-// {
-//     // Lấy chi tiết sản phẩm hiện tại từ bảng product
-//     $product_detail = DB::table('product')->where('id', $product_id)->first();
 
 //     // Lấy category_id của sản phẩm hiện tại
 //     $category_id = $product_detail->category_id;
@@ -90,6 +87,12 @@ class ProductDetailController extends Controller
 {
     public function product_detail($product_id)
     {
+        
+        if (!DB::table('posts')->where('product_id', $product_id)->exists()) {
+            DB::table('posts')->insert([
+                'product_id' => $product_id,
+            ]);
+        }
         // Get product details from product table
         $product_detail = DB::table('product')
                             ->where('product.id', $product_id)
@@ -131,17 +134,24 @@ class ProductDetailController extends Controller
                               ->take(4)
                               ->get();
 
-        return view('user/productDetail', [
-            'product_detail' => $product_detail,
-            'product_color' => $product_color,
-            'related_products' => $related_products,
-            'colors' => $colors,
-            'gallery_images' => $gallery_images,
-            'product_id' => $product_id, // Truyền product_id vào view
-        ]);
+        // Posts
+        $post = Post::where('product_id', $product_id)->get();
+
+        $product_name = DB::table('product')
+                            ->where('product.id', $product_id)
+                            ->select('product.name')
+                            ->get();
+
+        return view('user/productDetail', compact(
+            'product_detail', 
+            'product_color', 
+            'related_products', 
+            'colors', 
+            'gallery_images', 
+            'product_name', 
+            'post'
+        ));
     }
 }
 
 //end
-
-

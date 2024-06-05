@@ -1,5 +1,5 @@
 <x-app-layout>
-    <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
+    <title>Product List</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/productList.css') }}">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
@@ -139,8 +139,8 @@
                                 $escapedBrand = preg_replace('/[^A-Za-z0-9]/', '-', $list_product_user->brand);
                             @endphp
                             <div class="col-4 product-item {{ $escapedBrand }}">
-                                <div class="pr-i3" data-brand="{{ $list_product_user->brand }}">
-                                    <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
+                                <div class="pr-i3 product_detail_a" data-brand="{{ $list_product_user->brand }}">
+                                    <a href="{{ URL::to('/product-detail/' . $list_product_user->id) }}">
                                         <img src="{{ asset('public/backend/upload/' . $list_product_user->thumbnail) }}"
                                             alt="" class="w-100 productList_image">
                                         <div class="text-hidden">{{ asset($list_product_user->thumbnail) }}</div>
@@ -148,7 +148,7 @@
                                         <span class="btn_add"><i class="fa-solid fa-circle-plus"
                                                 onclick="addToCart(this)"></i></span>
                                         <div class="container_information">
-                                            <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}"
+                                            <a href="{{ URL::to('/product-detail/' . $list_product_user->id) }}"
                                                 class="pr-i2-name">{{ strlen($list_product_user->name) > 30 ? substr($list_product_user->name, 0, 30) . '...' : $list_product_user->name }}</a>
                                             <ul class="pr-i2-rating d-flex">
                                                 <li><i class="fa-solid fa-star"></i></li>

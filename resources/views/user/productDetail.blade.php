@@ -1,5 +1,6 @@
 <x-app-layout>
-    <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
+    <title>{{ $product_name[0]->name }}</title>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/css/productDetail.css') }}">
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -111,11 +112,8 @@
                         return asset('backend/upload/' . $image->image_product);
                     }));
                 </script>
+                
                 <script src="{{ asset('path/to/your/custom.js') }}"></script>
-                
-                
-                
-                
                 
                 <div class="col-lg-6">
                     <div class="col-12">
@@ -129,13 +127,11 @@
                         </ul>
                         <div class="row mb-3">
                             <div class="col-md-2 col-3 ">
-                                <p class="old-price"> ${{ $product->fake_price }} </p>
+                                <p class="old-price"> {{ $product->fake_price }} </p>
                             </div>
                             <div class="col-md-2 col-3">
-                                <p class="new-price"> ${{ $product->price }} </p>
+                                <p class="new-price"> {{ $product->price }} </p>
                             </div>
-                            {{-- <button class="btn-shopnow bg-vang my-3" onclick="addToCart(this)" onclick="AddCart(4)">Add to
-                            cart</button> --}}
                         </div>
                         <p class="pr-detail-content">{{ $product->description }}</p>
 
@@ -147,11 +143,6 @@
                                 </li>
                             @endforeach
                         </ul>
-                        {{-- <ul class="pr-color d-flex ps-0 mt-3" id="colorList">
-                        @foreach ($product_colors as $color)
-                            <li style="background-color: {{ $color }};"></li>
-                        @endforeach
-                    </ul> --}}
                         <div class="d-flex">
                             <button id="btn-minus"><i class="fa-solid fa-minus"></i></button>
                             <input type="number" value="1" id="pr-number">
@@ -166,7 +157,6 @@
             <div class="col-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-
                         <button class="nav-link active custom-tab" id="home-tab" data-bs-toggle="tab"
                             data-bs-target="#des" type="button" role="tab" aria-controls="home"
                             aria-selected="true">DESCRIPTION</button>
@@ -187,9 +177,9 @@
                         <h3 class="pr-des">Product Description</h3>
                         <p>{{ $product->description_technique }}</p>
                     </div>
-                    <div class="tab-pane" id="info" role="tabpanel" aria-labelledby="profile-tab"
-                        tabindex="0">
-
+                    <div class="tab-pane" id="info" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                        <h3 class="pr-des">Product information</h3>
+                        <table></table>
                     </div>
                     <div class="tab-pane" id="review" role="tabpanel" aria-labelledby="messages-tab"
                         tabindex="0">
@@ -198,26 +188,38 @@
             </div>
         </div>
     @endforeach
+
+    <!-- COMMENT AND POST -->
+    <div data-my-div>
+        <div class="comment-section">
+            <div class="max-w-2xl mx-auto py-8">
+                @foreach ($post as $posts)
+                    <livewire:comments :model="$posts"/>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    
     <div class="container related-pr mt-5 mb-3">
         <div class="row">
             <div class="col-12 justify-content-start mb-3">
                 <h3>Related Product</h3>
             </div>
-            @foreach ($related_products as $key => $related_products)
+            @foreach ($related_products as $key => $related_product)
                 <div class="col-3">
-                    <div class="pr-i3" data-brand="{{ $related_products->brand }}">
+                    <div class="pr-i3" data-brand="{{ $related_product->brand }}">
                         <div class="id" style="display: none;">
-                            {{ $related_products->id }}
+                            {{ $related_product->id }}
                         </div>
-                        <a href="{{ URL::to('product-detail/' . $related_products->id) }}">
-                            <img src="{{ asset('public/backend/upload/' . $related_products->thumbnail) }}"
+                        <a href="{{ URL::to('product-detail/' . $related_product->id) }}">
+                            <img src="{{ asset('public/backend/upload/' . $related_product->thumbnail) }}"
                                 alt="" class="w-100 productList_image">
-                            <div class="text-hidden" style="display: none;">{{ asset($related_products->thumbnail) }}</div>
+                            <div class="text-hidden" style="display: none;">{{ asset($related_product->thumbnail) }}</div>
                         </a>
                         <span class="btn_shop btn_add" onclick="addToCart(this)"><i
                                 class="fa-solid fa-circle-plus"></i></span>
                         <div class="container_information">
-                            <a href="#" class="pr-i2-name">{{ $related_products->name }}</a>
+                            <a href="#" class="pr-i2-name">{{ $related_product->name }}</a>
                             <ul class="pr-i2-rating d-flex">
                                 <li><i class="fa-solid fa-star"></i></li>
                                 <li><i class="fa-solid fa-star"></i></li>
@@ -226,14 +228,14 @@
                                 <li><i class="fa-solid fa-star"></i></li>
                             </ul>
                             <div class="text_product">
-                                <p>{{ $related_products->description }}</p>
+                                <p>{{ $related_product->description }}</p>
                             </div>
                             <div class="row productList_price">
                                 <div class="col-6">
-                                    <p class="old-price">{{ $related_products->fake_price }}</p>
+                                    <p class="old-price">{{ $related_product->fake_price }}</p>
                                 </div>
                                 <div class="col-6 text-end">
-                                    <p class="new-price">{{ $related_products->price }}</p>
+                                    <p class="new-price">{{ $related_product->price }}</p>
                                 </div>
                             </div>
                         </div>
@@ -242,7 +244,7 @@
             @endforeach
         </div>
     </div>
-
+</div>
     <script src="{{ asset('frontend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('frontend/js/productDetail.js') }}"></script>
