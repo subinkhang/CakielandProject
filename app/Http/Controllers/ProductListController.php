@@ -48,8 +48,8 @@ class ProductListController extends Controller
             ->whereNotNull('product.brand'); // Thêm điều kiện lọc các sản phẩm có brand không null
         $brands = $new_query->distinct()->pluck('brand');
 
-        // Truyền dữ liệu thương hiệu vào view
-        $data['brands'] = $brands;
+        $data['list_product'] = $query->paginate(9);
+        $all_product = DB::table('product')->get();
 
         $data['list_product'] = $query->paginate(9);
         $all_product = DB::table('product')->get();  // Consider optimizing this if only used for display.
@@ -60,6 +60,9 @@ class ProductListController extends Controller
     public function showSubCategory(Request $request, $sub_category_id)
     {
         $sort = $request->input('sort', 'none');
+        $cate = DB::table('category')->orderby('id', 'desc')->get();
+        $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
+
         $cate = DB::table('category')->orderby('id', 'desc')->get();
         $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
 
@@ -99,6 +102,7 @@ class ProductListController extends Controller
             'sub_category' => $sub_cate, 'brands' => $data['brands']]);
     }
 
+
     public function getPagedProducts(Request $request)
     {
         $cate = DB::table('category')->orderby('id', 'desc')->get();
@@ -137,7 +141,7 @@ class ProductListController extends Controller
 
     public function search(Request $request)
     {
-        $keywords = $request->keywords_submit;
+        $keywords = $request->input('keywords_submit', '');
 
         $cate = DB::table('category')->orderby('id', 'desc')->get();
         $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
@@ -146,7 +150,9 @@ class ProductListController extends Controller
         $query = Product::query();
 
         // Thêm điều kiện tìm kiếm
-        $query->where('name', 'like', '%' . $keywords . '%');
+        if ($keywords) {
+            $query->where('name', 'like', '%' . $keywords . '%');
+        }
 
         switch ($sort) {
             case 'increase':
@@ -181,7 +187,7 @@ class ProductListController extends Controller
             'search_product' => $search_product,
             'category' => $cate,
             'sub_category' => $sub_cate,
-            'brands' => $data['brands']
+            'brands' => $brands
         ]);
     }
 

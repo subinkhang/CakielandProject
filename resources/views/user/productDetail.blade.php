@@ -1,5 +1,5 @@
 <x-app-layout>
-    <title>{{ ucwords(str_replace('-', ' ', last(explode('/', url()->current())))) }}</title>
+    <title>{{ $product_name[0]->name }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/css/productDetail.css') }}">
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}

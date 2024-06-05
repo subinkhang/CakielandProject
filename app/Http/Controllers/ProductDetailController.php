@@ -137,12 +137,18 @@ class ProductDetailController extends Controller
         // Posts
         $post = Post::where('product_id', $product_id)->get();
 
+        $product_name = DB::table('product')
+                            ->where('product.id', $product_id)
+                            ->select('product.name')
+                            ->get();
+
         return view('user/productDetail', compact(
             'product_detail', 
             'product_color', 
             'related_products', 
             'colors', 
             'gallery_images', 
+            'product_name', 
             'post'
         ));
     }
