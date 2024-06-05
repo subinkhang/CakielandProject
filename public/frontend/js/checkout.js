@@ -70,35 +70,32 @@ btn_back.addEventListener('click', function() {
 // });
 
 //---------------------CHECK------------
-// const emailInput = document.getElementById("email");
-const nameInput = document.getElementById("name");
-const phoneInput = document.getElementById("phone");
-const addressInput = document.getElementById("address");
-const paymentButton = document.getElementById("btn-p");
-const errorMessage = document.getElementById("checkinfo");
+// Lấy các trường dữ liệu
+const nameInput = document.getElementById('name');
+const phoneInput = document.getElementById('phone');
+const addressInput = document.getElementById('address');
 
-function allInputsFilledAndEmailValid() {
-    // const email = emailInput.value;
-    const phone = phoneInput.value;
-    const isValidEmail = email !== "" && email.includes("@");
-    const isValidPhone = phone !== "" && phone.length > 0 && !isNaN(phone);
-    return (
-        isValidEmail &&
-        nameInput.value !== "" &&
-        phoneInput.value !== "" &&
-        addressInput.value !== ""
-    );
+// Lấy nút "Payment"
+const paymentButton = document.getElementById('btn-p');
+
+// Kiểm tra các trường dữ liệu và cập nhật trạng thái nút "Payment"
+function updatePaymentButton() {
+  if (nameInput.value.trim() !== '' && phoneInput.value.trim() !== '' && addressInput.value.trim() !== '') {
+    paymentButton.disabled = false;
+    document.getElementById("checkinfo").style.display = "none";
+  } else {
+    paymentButton.disabled = true;
+    document.getElementById("checkinfo").style.display = "block";
+  }
 }
 
-function updatePaymentButtonState() {
-    if (allInputsFilledAndEmailValid()) {
-        paymentButton.removeAttribute("disabled");
-        errorMessage.style.display = "none";
-    } else {
-        paymentButton.setAttribute("disabled", true);
-        errorMessage.style.display = "block";
-    }
-}
+// Thêm sự kiện cho các trường dữ liệu
+nameInput.addEventListener('input', updatePaymentButton);
+phoneInput.addEventListener('input', updatePaymentButton);
+addressInput.addEventListener('input', updatePaymentButton);
+
+// Khởi tạo trạng thái nút "Payment"
+updatePaymentButton();
 
 // emailInput.addEventListener("input", updatePaymentButtonState);
 // nameInput.addEventListener("input", updatePaymentButtonState);

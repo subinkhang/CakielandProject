@@ -75,7 +75,7 @@
                     <!----------------------right----------------------------->
 
                     <div class="col-5 cont">
-                        <form required id="updateForm" role="form">
+                        <form required id="updateForm" role="form"> 
                             {{ csrf_field() }}
                             <div class="row">
                                 <h6><b>E-mail</b></h6>
@@ -93,15 +93,15 @@
                                         <div class="font-medium text-base text-gray-800 w-full">
                                             <span x-show="!editing" x-text="name"></span>
                                             <input x-show="editing" id="name" x-model="name" class="deli"
-                                                name="name" placeholder="Nguyen Van A"
+                                                name="name" placeholder="Nguyen Van A" required
                                                 @keydown.enter="editing = false"
                                                 @change="if (name == '') editing = false"
                                                 class="deli border-0 outline-none bg-transparent w-full"
-                                                style="width: 550px">
+                                                style="width: 550px; margin-top:10px">
                                         </div>
                                     @else
                                         <input type="text" placeholder="Nguyen Van A" class="deli" id="name"
-                                            name="name">
+                                            name="name" style="width: 550px; margin-top:10px" required>
                                     @endif
                                 </div>
                                 <h6 class="ip"><b>Phone Number</b></h6>
@@ -111,13 +111,13 @@
                                         <div class="font-medium text-base text-gray-800 w-full">
                                             <span x-show="!editing" x-text="phone"></span>
                                             <input x-show="editing" id="phone" x-model="phone" name="phone"
-                                                @keydown.enter="editing = false"
+                                                @keydown.enter="editing = false" required
                                                 @change="if (phone == '') editing = false"
-                                                class="border-0 outline-none bg-transparent w-full" style="width: 100%">
+                                                class="border-0 outline-none bg-transparent w-full"style="width: 550px; margin-top:10px">
                                         </div>
                                     @else
                                         <input type="tel" placeholder="0123456789" class="deli" id="phone"
-                                            name="phone">
+                                            name="phone" style="width: 550px; margin-top:10px" required>
                                     @endif
                                 </div>
                                 <h6 class="ip"><b>Address</b></h6>
@@ -128,14 +128,14 @@
                                             class="font-medium text-base text-gray-800 w-full d-flex align-items-center">
                                             <span x-show="!editing" x-text="address"></span>
                                             <input x-show="editing" id="address" x-model="address" name="address"
-                                                @keydown.enter="editing = false"
+                                                @keydown.enter="editing = false"  required
                                                 @change="if (address == '') editing = false"
                                                 class="border-0 outline-none bg-transparent w-full flex-grow-1"
-                                                x-bind:style="editing ? 'width: 100%' : ''">
+                                                x-bind:style="editing ? 'style="width: 550px; margin-top:10px"' : ''">
                                         </div>
                                     @else
                                         <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli"
-                                            id="address" name="address">
+                                            id="address" name="address" style="width: 550px; margin-top:10px" required>
                                     @endif
                                 </div>
 
@@ -146,7 +146,7 @@
                                 </select>
                                 <h6 id="checkinfo">Please check information</h6>
                                 <div class="col-8 bt-pay pm">
-                                    <button type="submit" class="btn" id="btn-p">
+                                    <button type="submit" class="btn" id="btn-p">  
                                         <p1>Payment</p1>
                                     </button>
                                 </div>
