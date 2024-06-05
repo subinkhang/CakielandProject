@@ -40,18 +40,18 @@
                                         @endif
                                     @endforeach
 
-                                    <li
-                                        class="mainmenu_title {{ Request::is('category' . $cate->id) || $isParentActive ? 'active' : '' }}">
+                                    <li class="mainmenu_title {{ Request::is('category' . $cate->id) || $isParentActive ? 'active' : '' }}">
                                         <a href="{{ URL::to('/category' . $cate->id) }}" class="category-link">
                                             <span>{{ $cate->name }}</span>
-                                            <span class="arrow hehe"></span>
+                                            <div class="arrow-wrapper">
+                                                <span class="arrow hehe"></span>
+                                            </div>
                                         </a>
                                         <ul class="menucon">
                                             @foreach ($sub_category as $sub_cate)
                                                 @if ($sub_cate->category_id == $cate->id)
                                                     <li class="menu_title">
-                                                        <a href="{{ URL::to('/sub-category' . $sub_cate->id) }}"
-                                                            class="{{ Request::is('sub-category' . $sub_cate->id) ? 'active' : '' }}">
+                                                        <a href="{{ URL::to('/sub-category' . $sub_cate->id) }}" class="{{ Request::is('sub-category' . $sub_cate->id) ? 'active' : '' }}">
                                                             {{ $sub_cate->name }}
                                                         </a>
                                                     </li>
@@ -59,6 +59,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
+                                    
                                 @endforeach
                             </ul>
 

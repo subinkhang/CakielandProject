@@ -25,7 +25,7 @@ searchInput.addEventListener('keyup', function() {
     // const data = ['Sản phẩm 1', 'Sản phẩm 2', 'Sản phẩm 3', 'Từ khóa liên quan'];
 
     // Lọc dữ liệu gợi ý
-    const data = JSON.parse(localStorage.getItem('productNames'))
+    const data = JSON.parse(localStorage.getItem('productNames'));
     console.log(data);
 
     for (let i = 0; i < data.length; i++) {
@@ -53,6 +53,9 @@ searchInput.addEventListener('keyup', function() {
     } else {
         suggestionsDiv.style.display = 'none';
     }
+
+    // Đặt chiều rộng của suggestionsDiv bằng với searchInput
+    suggestionsDiv.style.width = `${searchInput.offsetWidth-5}px`;
 });
 
 // Bắt sự kiện click bên ngoài ô tìm kiếm để ẩn danh sách gợi ý
@@ -123,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('click', function (e) {
         if (!userIcon.contains(e.target) && !dropdown.contains(e.target)) {
-            // dropdown.classList.remove('show');
+            dropdown.classList.remove('show');
         }
     });
 });

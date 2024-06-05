@@ -153,31 +153,29 @@ function validateEmail(email) {
 
 $(document).ready(function() {
     // Event listener for click on the arrow icon within category-link
-    $('.mainmenu li .category-link .arrow').on('click', function(e) {
-      e.preventDefault(); // Prevent default link behavior
-  
-      // Get the li element containing the clicked arrow
-      var $li = $(this).closest('li');
-  
-      // Toggle active class for the sub-menu
-      $li.find('.menucon').slideToggle();
-  
-      // Set the arrow's rotation to 0 degrees immediately
-      $(this).find('.arrow').css('transform', 'rotate(0deg)'); // Reset rotation
-  
-      // Toggle rotation class for the arrow icon
-      $(this).find('.arrow').toggleClass('rotated');
+    $('.mainmenu li .category-link .arrow-wrapper').on('click', function(e) {
+        e.preventDefault(); // Prevent default link behavior
+
+        // Get the li element containing the clicked arrow
+        var $li = $(this).closest('li');
+
+        // Toggle active class for the sub-menu
+        $li.find('.menucon').slideToggle();
+
+        // Toggle rotation class for the arrow icon
+        $(this).find('.arrow').toggleClass('rotated');
     });
-  
+
     // Prevent click event on sub-category links from closing the menu
     $('.mainmenu .menucon a').on('click', function(e) {
-      e.stopPropagation();
+        e.stopPropagation();
     });
-  });
+});
+
 
   $(document).ready(function() {
     // Event listener for click on the arrow icon within category-link
-    $('.mainmenu li .category-link .arrow').on('click', function(e) {
+    $('.mainmenu li .category-link .arrow-wrapper').on('click', function(e) {
       e.preventDefault(); // Prevent default link behavior
   
       // Toggle active class for the sub-menu's parent li element
