@@ -21,10 +21,8 @@ class ProductListController extends Controller
         $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
 
         $query = Product::query();
-        $query->select('product.name', 'product.fake_price', 'product.price', 'product.thumbnail', 'product.description', 'product.description_detail', 'product.description_technique', 'product.brand', 'product.created_at', 'product.updated_at', 'product.category_id', 'product.deleted', 'product.sub_category_id')
-            ->join('category', 'category.id', '=', 'product.category_id')
-            ->where('product.category_id', $category_id)
-            ->get();
+        $query->select('product.*')
+        ->where('product.category_id', $category_id);
 
         switch ($sort) {
             case 'increase':
@@ -48,8 +46,8 @@ class ProductListController extends Controller
             ->whereNotNull('product.brand'); // Thêm điều kiện lọc các sản phẩm có brand không null
         $brands = $new_query->distinct()->pluck('brand');
 
-        $data['list_product'] = $query->paginate(9);
-        $all_product = DB::table('product')->get();
+        // Truyền dữ liệu thương hiệu vào view
+        $data['brands'] = $brands;
 
         $data['list_product'] = $query->paginate(9);
         $all_product = DB::table('product')->get();  // Consider optimizing this if only used for display.
@@ -67,10 +65,8 @@ class ProductListController extends Controller
         $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
 
         $query = Product::query();
-        $query->select('product.name', 'product.fake_price', 'product.price', 'product.thumbnail', 'product.description', 'product.description_detail', 'product.description_technique', 'product.brand', 'product.created_at', 'product.updated_at', 'product.category_id', 'product.deleted', 'product.sub_category_id')
-            ->join('sub_category', 'sub_category.id', '=', 'product.sub_category_id')
-            ->where('product.sub_category_id', $sub_category_id)
-            ->get();
+        $query->select('product.*')
+        ->where('product.sub_category_id', $sub_category_id);
 
         switch ($sort) {
             case 'increase':
