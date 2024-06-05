@@ -65,16 +65,18 @@ class CheckoutController extends Controller
         return Redirect::to('user/checkout')->with('cartData', $products);
     }
 
-    public function vnpay() {
+    public function vnpay(Request $request) {
+        $data = $request->all();
+        $cartData = $data['cartData'];
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "http://127.0.0.1:8000/vnpay-return"; // Thay đổi URL này
         $vnp_TmnCode = "P03I39T7";
         $vnp_HashSecret = "GC37G6ESGMPYA1AHWNY40DNDGGF8DEGR";
-        
-        $vnp_TxnRef = '123462';
+        $vnp_TxnRef = '123463';
         $vnp_OrderInfo = 'Thanh toán đơn hàng TEST';
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = 24000 * 100;
+
+        $vnp_Amount =  $cartData['total']*24000 *100 ; // Lưu ý: Total đã tính theo đơn vị nhỏ nhất (VND)
         $vnp_Locale = 'vn';
         $vnp_BankCode = 'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];

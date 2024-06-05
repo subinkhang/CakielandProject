@@ -190,7 +190,7 @@
             <i class="fa-solid fa-circle-check"></i>
             <h3>PAYMENT COMPLETE</h3>
             <div class="btnback">
-                <a class="btn" href="http://localhost:8000" id="btn_back"> Back to HomePage </a>
+                <a class="btn" href="http://localhost:8000"> Back to HomePage </a>
             </div>
         </div>
     </div> --}}
@@ -287,11 +287,12 @@ function handleUpdateForm() {
             console.log('Error:', error);
         });
 }
+
 function handleVNPay(event) {
     event.preventDefault(); // Ngăn chặn form bị submit
 
     var formData = new FormData(document.getElementById('updateForm'));
-
+    var total = parseFloat(formData.get('total'));
     var data = {
         name: formData.get('name'),
         phone: formData.get('phone'),
@@ -299,12 +300,12 @@ function handleVNPay(event) {
         total: formData.get('total'),
         cartData: JSON.parse(localStorage.getItem('cartData'))
     };
-
+    console.log('Data to be sent to /vnpay:', data);
     axios.post('{{ url('/save-temp-data') }}', data)
         .then(function(response) {
             console.log('Data saved:', response);
             if (response.data.success) {
-                axios.post('{{ url('/vnpay') }}')
+                axios.post('{{ url('/vnpay') }}', data) // Không có dấu ngoặc đóng thừa ở đây
                     .then(function(response) {
                         console.log('Success:', response);
                         if (response.data.code === '00') {
