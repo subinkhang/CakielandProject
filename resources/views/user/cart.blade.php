@@ -45,6 +45,7 @@
                                     <button class="btn_search1" id="check-voucher-btn">Submit</button>
                                 </div>
                             </div>
+                            <div id="voucher-error" class="text-danger" style="text-align:center"></div>
                         </div>
                         <div class="container">
                             <table class="table table-borderless">
@@ -133,15 +134,18 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
+                        var discountPriceElement = $('#discount-price');
+                        var errorElement = $('#voucher-error');
+                        errorElement.text(''); // Xóa thông báo lỗi trước đó
+
                         if (response.error) {
-                            alert(response.error);
+                            errorElement.text(response.error); // Hiển thị thông báo lỗi
                         } else {
-                            var discountPriceElement = $('#discount-price');
                             var discountValue = 0;
-        
+
                             if (response.condition_voucher == "2") {
                                 discountValue = parseFloat(response.value_voucher);
-                            } else{
+                            } else {
                                 discountValue = (response.value_voucher / 100) * parseFloat($('#rightsub').text());
                             }
                             discountPriceElement.text(discountValue.toFixed(2));
