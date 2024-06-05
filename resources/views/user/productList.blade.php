@@ -75,34 +75,34 @@
                                     <div class="row">
                                         @php $count = 0; @endphp
                                         @foreach ($brands as $index => $brand)
-                                            @php
-                                                $escapedBrand = preg_replace('/[^A-Za-z0-9]/', '-', $brand);
-                                                $isHidden = $index >= 6 ? 'hidden-brand' : '';
-                                            @endphp
-                                            <div class="col-6 filter-box {{ $isHidden }}">
-                                                <input type="checkbox" class="filter-checkbox"
-                                                    id="checkbox-{{ $escapedBrand }}" name="brand"
-                                                    value="{{ $escapedBrand }}">
-                                                <label for="checkbox-{{ $escapedBrand }}">{{ $brand }}</label>
-                                                <br>
-                                            </div>
-                                            @php $count++; @endphp
-                                            @if ($count == ceil($brands->count() / 2))
+                                            @if ($brand)
+                                                @php
+                                                    $escapedBrand = preg_replace('/[^A-Za-z0-9]/', '-', $brand);
+                                                    $isHidden = $index >= 6 ? 'hidden-brand' : '';
+                                                @endphp
+                                                <div class="col-6 filter-box {{ $isHidden }}">
+                                                    <input type="checkbox" class="filter-checkbox"
+                                                        id="checkbox-{{ $escapedBrand }}" name="brand"
+                                                        value="{{ $escapedBrand }}">
+                                                    <label for="checkbox-{{ $escapedBrand }}">{{ $brand }}</label>
+                                                    <br>
+                                                </div>
+                                                @php $count++; @endphp
+                                                @if ($count == ceil($brands->count() / 2))
                                     </div>
                                     <div class="row">
-                                        @endif
+                                                @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                     @if ($brands->count() > 6)
                                         <div class="row">
                                             <div class="col-12 text-more-less">
-                                                <button type="button" id="toggleBrands"
-                                                    class="btn btn-link">More</button>
+                                                <button type="button" id="toggleBrands" class="btn btn-link">More</button>
                                             </div>
                                         </div>
                                     @endif
                                 </form>
-
                             </div>
                         </div>
                     </div>

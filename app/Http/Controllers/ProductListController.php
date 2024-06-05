@@ -13,17 +13,18 @@ session_start();
 
 class ProductListController extends Controller
 {
-    public function showCategory(Request $request,$category_id){
+    public function showCategory(Request $request, $category_id)
+    {
         $sort = $request->input('sort', 'none');
 
-        $cate=DB::table('category')->orderby('id','desc')->get();
-        $sub_cate=DB::table('sub_category')->orderby('id','desc')->get();
+        $cate = DB::table('category')->orderby('id', 'desc')->get();
+        $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
 
         $query = Product::query();
-        $query->select('product.name', 'product.fake_price', 'product.price','product.thumbnail', 'product.description','product.description_detail','product.description_technique','product.brand','product.created_at','product.updated_at','product.category_id','product.deleted','product.sub_category_id')
-        ->join('category','category.id', '=', 'product.category_id')
-        ->where('product.category_id',$category_id)->get();
-
+        $query->select('product.name', 'product.fake_price', 'product.price', 'product.thumbnail', 'product.description', 'product.description_detail', 'product.description_technique', 'product.brand', 'product.created_at', 'product.updated_at', 'product.category_id', 'product.deleted', 'product.sub_category_id')
+            ->join('category', 'category.id', '=', 'product.category_id')
+            ->where('product.category_id', $category_id)
+            ->get();
 
         switch ($sort) {
             case 'increase':
@@ -42,8 +43,9 @@ class ProductListController extends Controller
 
         $new_query = Product::query();
         $new_query->select('brand');
-        $new_query->join('category','category.id', '=', 'product.category_id')
-        ->where('product.category_id',$category_id);
+        $new_query->join('category', 'category.id', '=', 'product.category_id')
+            ->where('product.category_id', $category_id)
+            ->whereNotNull('product.brand'); // Thêm điều kiện lọc các sản phẩm có brand không null
         $brands = $new_query->distinct()->pluck('brand');
 
         // Truyền dữ liệu thương hiệu vào view
@@ -51,20 +53,21 @@ class ProductListController extends Controller
 
         $data['list_product'] = $query->paginate(9);
         $all_product = DB::table('product')->get();  // Consider optimizing this if only used for display.
-        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product, 
-        'category'=>$cate, 'sub_category'=>$sub_cate, 'brands' => $data['brands']]);
+        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product,
+            'category' => $cate, 'sub_category' => $sub_cate, 'brands' => $data['brands']]);
     }
 
-    public function showSubCategory(Request $request,$sub_category_id){
+    public function showSubCategory(Request $request, $sub_category_id)
+    {
         $sort = $request->input('sort', 'none');
-        $cate=DB::table('category')->orderby('id','desc')->get();
-        $sub_cate=DB::table('sub_category')->orderby('id','desc')->get();
+        $cate = DB::table('category')->orderby('id', 'desc')->get();
+        $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
 
         $query = Product::query();
-        $query->select('product.name', 'product.fake_price', 'product.price','product.thumbnail', 'product.description','product.description_detail','product.description_technique','product.brand','product.created_at','product.updated_at','product.category_id','product.deleted','product.sub_category_id')
-        ->join('sub_category','sub_category.id', '=', 'product.sub_category_id')
-        ->where('product.sub_category_id',$sub_category_id)->get();
-
+        $query->select('product.name', 'product.fake_price', 'product.price', 'product.thumbnail', 'product.description', 'product.description_detail', 'product.description_technique', 'product.brand', 'product.created_at', 'product.updated_at', 'product.category_id', 'product.deleted', 'product.sub_category_id')
+            ->join('sub_category', 'sub_category.id', '=', 'product.sub_category_id')
+            ->where('product.sub_category_id', $sub_category_id)
+            ->get();
 
         switch ($sort) {
             case 'increase':
@@ -83,22 +86,23 @@ class ProductListController extends Controller
 
         $new_query = Product::query();
         $new_query->select('brand');
-        $new_query->join('sub_category','sub_category.id', '=', 'product.sub_category_id')
-        ->where('product.sub_category_id',$sub_category_id);
+        $new_query->join('sub_category', 'sub_category.id', '=', 'product.sub_category_id')
+            ->where('product.sub_category_id', $sub_category_id)
+            ->whereNotNull('product.brand'); // Thêm điều kiện lọc các sản phẩm có brand không null
         $brands = $new_query->distinct()->pluck('brand');
         // Truyền dữ liệu thương hiệu vào view
         $data['brands'] = $brands;
 
         $data['list_product'] = $query->paginate(9);
         $all_product = DB::table('product')->get();  // Consider optimizing this if only used for display.
-        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product, 'category'=>$cate,
-        'sub_category'=>$sub_cate, 'brands' => $data['brands']]);
+        return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product, 'category' => $cate,
+            'sub_category' => $sub_cate, 'brands' => $data['brands']]);
     }
 
     public function getPagedProducts(Request $request)
     {
-        $cate=DB::table('category')->orderby('id','desc')->get();
-        $sub_cate=DB::table('sub_category')->orderby('id','desc')->get();
+        $cate = DB::table('category')->orderby('id', 'desc')->get();
+        $sub_cate = DB::table('sub_category')->orderby('id', 'desc')->get();
 
         $sort = $request->input('sort', 'none');
         $query = Product::query();
@@ -120,17 +124,17 @@ class ProductListController extends Controller
 
         $new_query = Product::query();
         $new_query->select('brand');
+        $new_query->whereNotNull('brand'); // Thêm điều kiện lọc các sản phẩm có brand không null
         $brands = $new_query->distinct()->pluck('brand');
         // Truyền dữ liệu thương hiệu vào view
         $data['brands'] = $brands;
 
         $data['list_product'] = $query->paginate(9);
-        $all_product = DB::table('product')->get(); 
+        $all_product = DB::table('product')->get();
         return view('user/productList', ['list_product' => $data['list_product'], 'all_product' => $all_product,
-        'category'=>$cate, 'sub_category'=>$sub_cate, 'brands' => $data['brands']]);
+            'category' => $cate, 'sub_category' => $sub_cate, 'brands' => $data['brands']]);
     }
 
-    
     public function search(Request $request)
     {
         $keywords = $request->keywords_submit;
@@ -140,7 +144,7 @@ class ProductListController extends Controller
 
         $sort = $request->input('sort', 'none');
         $query = Product::query();
-        
+
         // Thêm điều kiện tìm kiếm
         $query->where('name', 'like', '%' . $keywords . '%');
 
@@ -161,8 +165,9 @@ class ProductListController extends Controller
 
         $new_query = Product::query();
         $new_query->select('brand');
+        $new_query->whereNotNull('brand'); // Thêm điều kiện lọc các sản phẩm có brand không null
         $brands = $new_query->distinct()->pluck('brand');
-        
+
         // Truyền dữ liệu thương hiệu vào view
         $data['brands'] = $brands;
 
@@ -179,7 +184,6 @@ class ProductListController extends Controller
             'brands' => $data['brands']
         ]);
     }
-
 
     public function searchSort(Request $request)
     {
