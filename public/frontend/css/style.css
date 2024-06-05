@@ -1,77 +1,78 @@
 /* dinh nghia file */
-*
-{
+* {
     outline: none;
 }
-ul, ol{
+ul,
+ol {
     list-style: none;
 }
-a
-{
-	text-decoration: none;
+a {
+    text-decoration: none;
 }
 @font-face {
     font-family: VN;
-    src: url('../fonts/BeVietnamPro-Regular.ttf');
+    src: url("../fonts/BeVietnamPro-Regular.ttf");
 }
-body, button, input{
+body,
+button,
+input {
     font-family: VN;
     background-color: #fdfdfd;
 }
-.text_h1{
+.text_h1 {
     font-family: VN;
     font-size: 55px;
     font-weight: bold;
 }
-.text_h2{
+.text_h2 {
     font-family: VN;
     font-size: 32px;
-    font-weight: bold
+    font-weight: bold;
 }
-.text_h3{
+.text_h3 {
     font-family: VN;
     font-size: 26px;
-    font-weight: bold
+    font-weight: bold;
 }
-.text_h4{
+.text_h4 {
     font-family: VN;
     font-size: 22px;
-    font-weight: bold
+    font-weight: bold;
 }
-.text_h5{
+.text_h5 {
     font-family: VN;
     font-size: 18px;
-    font-weight: bold
+    font-weight: bold;
 }
-.text_h6{
+.text_h6 {
     font-family: VN;
     font-size: 16px;
-    font-weight: bold
+    font-weight: bold;
 }
-.text_p1{
+.text_p1 {
     font-family: VN;
     font-size: 14px;
 }
-.text_p2{
+.text_p2 {
     font-family: VN;
     font-size: 12px;
 }
 
-.nav_top{
+.nav_top {
     margin-top: 20px;
 }
 
 /* --------------------------- */
 
-.search input{
+.search input {
     color: #666666;
     height: 45px;
     border: none;
     padding: 0;
     background: none;
 }
-.btn_search{
-    background-color: #FBC31C;
+.btn_search {
+    background-color: #fbc31c;
     color: #fdfdfd;
     height: 38px;
     padding: 0;
@@ -80,11 +81,10 @@ body, button, input{
     border: none;
     margin: 2px;
 }
-.search .col-4
-{
+.search .col-4 {
     padding-right: 5px;
 }
-.search{
+.search {
     margin-top: 40px;
     border: 1px solid #666666;
     border-radius: 22px;
@@ -93,36 +93,36 @@ body, button, input{
 
 /* --------------------------- */
 
-.cart_item{
+.cart_item {
     position: relative;
     width: 40px;
     height: 40px;
     margin-left: 20px;
 }
-.cart_item div{
+.cart_item div {
     width: 18px;
     height: 18px;
     border-radius: 9px;
     text-align: center;
     line-height: 18px;
-    background-color: #FBC31C;
+    background-color: #fbc31c;
     position: absolute;
     top: 7px;
     right: 4px;
     color: #fdfdfd;
     font-size: 12px;
 }
-.cart_item i{
+.cart_item i {
     font-size: 22px;
     color: #080808;
     line-height: 70px;
 }
-.user_item{
+.user_item {
     width: 40px;
     height: 40px;
     margin-left: 20px;
 }
-.user_item i{
+.user_item i {
     font-size: 22px;
     color: #080808;
     line-height: 70px;
@@ -148,7 +148,7 @@ body, button, input{
 }
 /* Hiệu ứng khi hover vào button */
 .user_item button:hover {
-    color: #FBC31C;
+    color: #fbc31c;
 }
 /* Hiệu ứng khi hover vào dropdown link */
 .user_item .dropdown-content a:hover {
@@ -167,47 +167,45 @@ body, button, input{
     margin-top: -100px;
 }
 
-.page_item a{
+.page_item a {
     color: #080808;
     line-height: 70px;
     font-size: 22pz;
 }
-.page_item{
+.page_item {
     margin-left: 20px;
     margin-right: 20px;
 }
 
 /* --------------------------- */
 
-.bg-footer
-{
-	color: #fdfdfd;
-	font-size: 16px;
-	line-height: 35px;
+.bg-footer {
+    color: #fdfdfd;
+    font-size: 16px;
+    line-height: 35px;
     background-color: #282828;
 }
-.footer-title
-{
-	color: #fdfdfd;
-	font-size: 22px;
-	font-weight: bold;
-	margin-bottom: 32px;
+.footer-title {
+    color: #fdfdfd;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 32px;
 }
-.bg-footer ul
-{
-	padding: 0;
-	margin: 0;
-	list-style: none;
+.bg-footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
-.bg-footer ul li a
-{
-	color: #fdfdfd;
-	font-size: 16px;
-	line-height: 35px;
-	text-transform: capitalize;
+.bg-footer ul li a {
+    color: #fdfdfd;
+    font-size: 16px;
+    line-height: 35px;
+    text-transform: capitalize;
 }
 /* General styles */
-body, button, input {
+body,
+button,
+input {
     font-family: VN;
     background-color: #fdfdfd;
 }
@@ -216,7 +214,7 @@ body, button, input {
 .nav_top-header {
     background-color: #f8f9fa;
     padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo-header img {
@@ -235,7 +233,7 @@ body, button, input {
 }
 
 .btn_search-header {
-    background-color: #FBC31C;
+    background-color: #fbc31c;
     color: #fdfdfd;
     border-radius: 0 22px 22px 0;
     padding: 10px 20px;
@@ -285,7 +283,7 @@ body, button, input {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background-color: #FBC31C;
+    background-color: #fbc31c;
     color: #fdfdfd;
     font-size: 12px;
     text-align: center;
@@ -311,7 +309,7 @@ body, button, input {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 5px;
     z-index: 1000;
     display: none;
@@ -334,9 +332,31 @@ body, button, input {
 
 .dropdown-item-header:hover {
     background-color: #f8f9fa;
-    color: #FBC31C;
+    color: #fbc31c;
 }
 
 .no-wrap {
     white-space: nowrap;
+}
+
+.page_ul_li-header {
+    margin-right: 50px; /* Adjust this value as needed */
+}
+/* Giảm khoảng cách giữa các biểu tượng và phần tử khác */
+.page_ul_li-header .col-1,
+.page_ul_li-header .col-2 {
+    display: none; /* Ẩn các khoảng cách không cần thiết */
+}
+
+.page_ul_li-header .page_item-header,
+.page_ul_li-header .cart_item-header,
+.page_ul_li-header .user_item-header {
+    margin-left: 40px; /* Giảm khoảng cách giữa các mục */
+}
+.logo-header {
+    margin-left: 200px; /* Adjust this value as needed */
+}
+
+.user_item-header {
+    margin-left: 200px; /* Adjust this value as needed */
 }

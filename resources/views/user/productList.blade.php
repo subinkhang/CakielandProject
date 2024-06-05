@@ -40,18 +40,18 @@
                                         @endif
                                     @endforeach
 
-                                    <li
-                                        class="mainmenu_title {{ Request::is('category' . $cate->id) || $isParentActive ? 'active' : '' }}">
+                                    <li class="mainmenu_title {{ Request::is('category' . $cate->id) || $isParentActive ? 'active' : '' }}">
                                         <a href="{{ URL::to('/category' . $cate->id) }}" class="category-link">
                                             <span>{{ $cate->name }}</span>
-                                            <span class="arrow hehe"></span>
+                                            <div class="arrow-wrapper">
+                                                <span class="arrow hehe"></span>
+                                            </div>
                                         </a>
                                         <ul class="menucon">
                                             @foreach ($sub_category as $sub_cate)
                                                 @if ($sub_cate->category_id == $cate->id)
                                                     <li class="menu_title">
-                                                        <a href="{{ URL::to('/sub-category' . $sub_cate->id) }}"
-                                                            class="{{ Request::is('sub-category' . $sub_cate->id) ? 'active' : '' }}">
+                                                        <a href="{{ URL::to('/sub-category' . $sub_cate->id) }}" class="{{ Request::is('sub-category' . $sub_cate->id) ? 'active' : '' }}">
                                                             {{ $sub_cate->name }}
                                                         </a>
                                                     </li>
@@ -59,6 +59,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
+                                    
                                 @endforeach
                             </ul>
 
@@ -74,34 +75,34 @@
                                     <div class="row">
                                         @php $count = 0; @endphp
                                         @foreach ($brands as $index => $brand)
-                                            @php
-                                                $escapedBrand = preg_replace('/[^A-Za-z0-9]/', '-', $brand);
-                                                $isHidden = $index >= 6 ? 'hidden-brand' : '';
-                                            @endphp
-                                            <div class="col-6 filter-box {{ $isHidden }}">
-                                                <input type="checkbox" class="filter-checkbox"
-                                                    id="checkbox-{{ $escapedBrand }}" name="brand"
-                                                    value="{{ $escapedBrand }}">
-                                                <label for="checkbox-{{ $escapedBrand }}">{{ $brand }}</label>
-                                                <br>
-                                            </div>
-                                            @php $count++; @endphp
-                                            @if ($count == ceil($brands->count() / 2))
+                                            @if ($brand)
+                                                @php
+                                                    $escapedBrand = preg_replace('/[^A-Za-z0-9]/', '-', $brand);
+                                                    $isHidden = $index >= 6 ? 'hidden-brand' : '';
+                                                @endphp
+                                                <div class="col-6 filter-box {{ $isHidden }}">
+                                                    <input type="checkbox" class="filter-checkbox"
+                                                        id="checkbox-{{ $escapedBrand }}" name="brand"
+                                                        value="{{ $escapedBrand }}">
+                                                    <label for="checkbox-{{ $escapedBrand }}">{{ $brand }}</label>
+                                                    <br>
+                                                </div>
+                                                @php $count++; @endphp
+                                                @if ($count == ceil($brands->count() / 2))
                                     </div>
                                     <div class="row">
-                                        @endif
+                                                @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                     @if ($brands->count() > 6)
                                         <div class="row">
                                             <div class="col-12 text-more-less">
-                                                <button type="button" id="toggleBrands"
-                                                    class="btn btn-link">More</button>
+                                                <button type="button" id="toggleBrands" class="btn btn-link">More</button>
                                             </div>
                                         </div>
                                     @endif
                                 </form>
-
                             </div>
                         </div>
                     </div>

@@ -15,6 +15,7 @@ new class extends Component {
     }
 }; ?>
 <div>
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +29,7 @@ new class extends Component {
 
     <body>
         <div class="container-fluid nav_top nav_top-header">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="logo-header">
                         <a href="{{ url('/dashboard') }}">
@@ -37,11 +38,15 @@ new class extends Component {
                     </div>
                     <div class="col-1"></div>
                     <div class="search-header flex-grow-1 mx-3">
-                        <form action="{{ URL::to('search-product-list') }}" method="POST" class="d-flex" id="searchForm">
+                        <form action="{{ URL::to('search-product-list') }}" method="POST" class="d-flex"
+                            id="searchForm">
                             {{ csrf_field() }}
-                            <input type="text" class="form-control search-input-header" placeholder="Search products..." id="searchInput" name="keywords_submit" oninput="checkInput()">
+                            <input type="text" class="form-control search-input-header"
+                                placeholder="Search products..." id="searchInput" name="keywords_submit"
+                                oninput="checkInput()">
                             <div class="suggestions text_p1" style="display: none;" id="suggestions"></div>
-                            <button type="submit" class="btn_search-header" name="search_item" id="searchButton" disabled>Search</button>
+                            <button type="submit" class="btn_search-header" name="search_item" id="searchButton"
+                                disabled>Search</button>
                         </form>
                     </div>
                     <div class="d-flex align-items-center">
@@ -74,11 +79,13 @@ new class extends Component {
                                         @if (auth()->check())
                                             <div class="dropdown-menu-right-header">
                                                 @if (auth()->user()->role === 'admin')
-                                                    <button onclick="window.location='{{ url('/admin-dashboard') }}'" class="dropdown-item-header">
+                                                    <button onclick="window.location='{{ url('/admin-dashboard') }}'"
+                                                        class="dropdown-item-header">
                                                         {{ __('Admin') }}
                                                     </button>
                                                 @endif
-                                                <button onclick="window.location='{{ url('/account') }}'" class="dropdown-item-header">
+                                                <button onclick="window.location='{{ url('/account') }}'"
+                                                    class="dropdown-item-header">
                                                     {{ __('Account') }}
                                                 </button>
                                                 <button wire:click="logout" class="dropdown-item-header">
@@ -87,10 +94,12 @@ new class extends Component {
                                             </div>
                                         @else
                                             <div class="dropdown-menu-right-header">
-                                                <button onclick="window.location='{{ url('/login') }}'" class="dropdown-item-header no-wrap">
+                                                <button onclick="window.location='{{ url('/login') }}'"
+                                                    class="dropdown-item-header no-wrap">
                                                     {{ __('Log In') }}
                                                 </button>
-                                                <button onclick="window.location='{{ url('/register') }}'" class="dropdown-item-header no-wrap">
+                                                <button onclick="window.location='{{ url('/register') }}'"
+                                                    class="dropdown-item-header no-wrap">
                                                     {{ __('Sign Up') }}
                                                 </button>
                                             </div>
@@ -108,14 +117,14 @@ new class extends Component {
             function checkInput() {
                 const searchInput = document.getElementById('searchInput');
                 const searchButton = document.getElementById('searchButton');
-        
+
                 if (searchInput.value.trim() === '') {
                     searchButton.disabled = true;
                 } else {
                     searchButton.disabled = false;
                 }
             }
-        
+
             // Run the checkInput function when the page loads to set the initial state
             document.addEventListener('DOMContentLoaded', checkInput);
         </script>

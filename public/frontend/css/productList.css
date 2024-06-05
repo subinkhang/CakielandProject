@@ -489,6 +489,31 @@ color: #080808;
     width: 14px;
     height: 14px;
 }
+/* Arrow wrapper styles */
+.arrow-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Tăng kích thước vùng bấm vào */
+    height: 30px; /* Tăng kích thước vùng bấm vào */
+}
+
+/* Arrow styles */
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #666;
+    border-bottom: 2px solid #666;
+    transform: rotate(-45deg);
+    margin-right: 10px;
+}
+
+.mainmenu li.active .arrow {
+    transform: rotate(45deg); /* Rotate 90 degrees when active */
+}
+
 /* ---------------------------------------------------- */
 
 .pagination {

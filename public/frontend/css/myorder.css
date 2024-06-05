@@ -97,9 +97,9 @@
 	margin-bottom: 0;
 }
 .pr-list-sidebar a:hover{
-    color: #FBC31C;
-    font-style: italic;
-    font-weight: bold;
+    background-color: #FBC31C;
+    color: #333; /* Darker text for better contrast */
+    border-radius: 10px;
 }
 .pr-list-sidebar li:nth-child(1) a{
     padding-top: 20px;
@@ -119,6 +119,9 @@
     font-size: 18px;
     padding-top: 20px;
     padding-bottom: 20px;
+  }
+  .pr-list-sidebar li:nth-child(3) a:hover{
+    color: #080808;
   }
 .my_account h3{
     color: #080808;
