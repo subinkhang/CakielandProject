@@ -26,6 +26,7 @@ Route::get('/sub-category{sub_category_id}', 'App\Http\Controllers\ProductListCo
 Route::get('/product-detail', 'App\Http\Controllers\ProductDetailController@index');
 
 Route::get('/cart', 'App\Http\Controllers\CartController@index');
+Route::post('/check-voucher', 'App\Http\Controllers\CartController@checkVoucher');
 
 // User Dashboard Routes
 Route::post('/save-email', 'App\Http\Controllers\HomePageController@save_email');
