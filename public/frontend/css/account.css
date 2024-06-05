@@ -206,12 +206,12 @@ form.boxac{
 }
 .pr-list-sidebar ul li a
 {
-    margin-top: 20px;
 	font-size: 16px;
 	color: #666;
 	line-height: 40px;
-	border-bottom: 1px dashed #f3f3f3;
+	border-bottom: 1px solid #f3f3f3;
 	display: block;
+    padding:30px;
 }
 .pr-list-sidebar ul li:nth-last-child(1) a
 {
@@ -219,21 +219,43 @@ form.boxac{
 }
 .pr-list-sidebar ul li:nth-child(1) a
 {
-	color: #FBC31C;
+	font-weight: bold;
+    color: #FBC31C;
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
+.pr-list-sidebar li:nth-child(2) a{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}  
+.pr-list-sidebar li:nth-child(4) a{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.pr-list-sidebar li:nth-child(3) a {  
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.pr-list-sidebar li:nth-child(1) a:hover{
+    color: #080808;
+  }
 .pr-list-sidebar li:hover
 {
-	font-style: italic;
+	background-color: #FBC31C;
+    color: #333; /* Darker text for better contrast */
+    border-radius: 10px;
 }
 .pr-list-sidebar
 {
-    margin-top: 30px;
 	border: 1px solid #f3f3f3;
 	padding: 0 16px;
-	margin-bottom: 24px;
-	padding-top: 16px;
-    height: 310px;
+	margin-bottom: 50px;
+	padding-top: 30px;
+    height: 400px;
     width: 330px;
+    margin-top: 30px;
+    border-radius: 12px;
 }
 .pr-list-sidebar .line
 {
