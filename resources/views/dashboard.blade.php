@@ -184,7 +184,7 @@
                         <span class="btn_add"><i class="fa-solid fa-circle-plus"
                                 onclick="addToCart(this)"></i></span>
                         <div class="container_information">
-                            <a href="#" class="pr-i2-name">{{ strlen($list_product_user->name) > 30 ? substr($list_product_user->name, 0, 30).'...' : $list_product_user->name }}</a>
+                            <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}" class="pr-i2-name">{{ strlen($list_product_user->name) > 25 ? substr($list_product_user->name, 0, 25).'...' : $list_product_user->name }}</a>
                             <ul class="pr-i2-rating d-flex">
                                 <li><i class="fa-solid fa-star"></i></li>
                                 <li><i class="fa-solid fa-star"></i></li>

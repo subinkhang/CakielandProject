@@ -28,29 +28,28 @@
             12 => 'Electric mixer'
         ];
         $subCategoryId = intval(last(explode('sub-category', $url)));
-        // $categoryName = $categories[floor(($subCategoryId - 1) / 2) + 1] ?? 'Category';
         $subCategoryName = $subCategories[$subCategoryId] ?? 'SubCategory';
         $categoryId = intval(last(explode('category', $url)));
-        // $categoryName = $categories[$categoryId] ?? 'Category';
     @endphp
 
     @if ($isProductDetail)
         <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
             <div class="col-12 text-center">
-                <h2>{{ $productName }}</h2>
+                <h2>{{ strlen($productName) > 25 ? substr($productName, 0, 25) . '...' : $productName }}</h2>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ url('/product-list') }}">Product List</a></li>
+                        {{-- <li class="breadcrumb-item active">{{ strlen($productName) > 10 ? substr($productName, 0, 10) . '...' : $productName }}</li> --}}
                         <li class="breadcrumb-item active">{{ $productName }}</li>
                     </ol>
                 </nav>
             </div>
         </div>
     @elseif ($isSubCategory)
-    @php
-    $categoryName = $categories[floor(($subCategoryId - 1) / 2) + 1] ?? 'Category';
-    @endphp
+        @php
+        $categoryName = $categories[floor(($subCategoryId - 1) / 2) + 1] ?? 'Category';
+        @endphp
         <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
             <div class="col-12 text-center">
                 <h2>{{ $subCategoryName }}</h2>
@@ -64,29 +63,28 @@
             </div>
         </div>
     @elseif ($isCategory)
-    @php
-    
-    $newCategories = [
-        1 => 'Dry ingredients',
-        2 => 'Wet ingredients',
-        3 => 'Baking tools',
-        4 => 'Cooking utensils',
-        5 => 'Bar tool',
-        6 => 'Bar ingredients'
-    ];
-    $categoryName = $newCategories[$categoryId] ?? 'Category';
-    @endphp
-    <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
-        <div class="col-12 text-center">
-            <h2>{{ $categoryName }}</h2>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">{{ $categoryName }}</li>
-                </ol>
-            </nav>
+        @php
+        $newCategories = [
+            1 => 'Dry ingredients',
+            2 => 'Wet ingredients',
+            3 => 'Baking tools',
+            4 => 'Cooking utensils',
+            5 => 'Bar tool',
+            6 => 'Bar ingredients'
+        ];
+        $categoryName = $newCategories[$categoryId] ?? 'Category';
+        @endphp
+        <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
+            <div class="col-12 text-center">
+                <h2>{{ $categoryName }}</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Home</a></li>
+                        <li class="breadcrumb-item active">{{ $categoryName }}</li>
+                    </ol>
+                </nav>
+            </div>
         </div>
-    </div>
     @else
         <div class="contanier-fluid bg-breadcrub my-3" style="background-image: url('{{'/frontend/images/pr-detail/banner.png'}}');">
             <div class="col-12 text-center">

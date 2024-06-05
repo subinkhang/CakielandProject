@@ -117,7 +117,7 @@
                 
                 <div class="col-lg-6">
                     <div class="col-12">
-                        <h6 class="pr-detail-name pr-i2-name"> {{ $product->name }} </h6>
+                        <h6 class="pr-detail-name pr-i2-name main_product_name"> {{ $product->name }} </h6>
                         <ul class="pr-i3-rating d-flex mb-3 star">
                             <li><i class="fa-solid fa-star"></i></li>
                             <li><i class="fa-solid fa-star"></i></li>
@@ -219,7 +219,7 @@
                         <span class="btn_shop btn_add" onclick="addToCart(this)"><i
                                 class="fa-solid fa-circle-plus"></i></span>
                         <div class="container_information">
-                            <a href="#" class="pr-i2-name">{{ $related_product->name }}</a>
+                            <a href="{{ URL::to('product-detail/' . $related_product->id) }}" class="pr-i2-name">{{ strlen($related_product->name) > 25 ? substr($related_product->name, 0, 25) . '...' : $related_product->name }}</a>
                             <ul class="pr-i2-rating d-flex">
                                 <li><i class="fa-solid fa-star"></i></li>
                                 <li><i class="fa-solid fa-star"></i></li>
@@ -228,7 +228,7 @@
                                 <li><i class="fa-solid fa-star"></i></li>
                             </ul>
                             <div class="text_product">
-                                <p>{{ $related_product->description }}</p>
+                                <p>{{ strlen($related_product->description) > 115 ? substr($related_product->description, 0, 115) . '...' : $related_product->description }}</p>
                             </div>
                             <div class="row productList_price">
                                 <div class="col-6">
