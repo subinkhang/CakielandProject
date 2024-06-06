@@ -40,6 +40,9 @@ class AdminListProductController extends Controller
             // Xóa các bản ghi liên quan trong bảng order
             DB::table('order_detail')->where('product_id', $id)->delete();
 
+            // Xóa các bản ghi liên quan trong bảng post
+            DB::table('posts')->where('product_id', $id)->delete();
+
             // Xóa sản phẩm trong bảng product
             DB::table('product')->where('id', $id)->delete();
         });
@@ -50,9 +53,9 @@ class AdminListProductController extends Controller
         // Điều hướng về trang danh sách sản phẩm
         return Redirect::to('admin-list-product');
     }
-    
+
     public function export_excel()
     {
-        return Excel::download(new ExportProductData, 'products.xlsx', ExcelExcel::XLSX);
+        return Excel::download(new ExportProductData(), 'products.xlsx', ExcelExcel::XLSX);
     }
 }
