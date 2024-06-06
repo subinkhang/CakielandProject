@@ -66,7 +66,7 @@ new #[Layout('layouts.guest')] class extends Component
                                 <div class="col-6" class="email_box">
                                     {{-- <x-input-label for="email" :value="__('Email:')" /> --}}
                                     <x-text-input wire:model="email" id="email" class="box1signin" type="email" name="email" placeholder="Email" required autofocus />
-                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('email')" class="mt-2 error" />
                                 </div>
                             </div>
                             <div class="row">
