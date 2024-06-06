@@ -273,7 +273,11 @@ margin-top: 50px; */
     height: 360px;
     /* object-fit: cover; */
 }
-
+.suggestions {
+    display: none;
+    max-height: 200px; /* Adjust this value as needed */
+    overflow-y: auto;
+}
 /* ----------------------- */
 
 .pr-i2-name {
@@ -468,3 +472,4 @@ z-index: 20;
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
+

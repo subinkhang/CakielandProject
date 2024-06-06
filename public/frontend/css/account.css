@@ -302,3 +302,7 @@ form.boxac {
     border-radius: 50%; /* Bo góc ảnh để tạo hình tròn */
     object-fit: cover; /* Để ảnh không bị méo */
 }
+ .oho{
+    flex: 0 0 auto;
+    width: 100%;
+ }

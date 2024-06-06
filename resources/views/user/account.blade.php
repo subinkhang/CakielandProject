@@ -9,11 +9,11 @@
             <div class="row">
                 <div class="col-3 pr-list-sidebar">
                     <div class="row pr-list-sidebar-title">
-                        <div class="col-8 my_account">
+                        <div class="col-8 my_account oho">
                             <h3>My Account</h3>
                         </div>
                         <div class="line"></div>
-                        <div class="col-8 list_ac">
+                        <div class="col-8 list_ac oho">
                             <ul>
                                 <li><a href="{{ url('/account') }}">My Proflie</a></li>
                                 <li><a href="{{ url('/cart') }}">My Carts</a></li>

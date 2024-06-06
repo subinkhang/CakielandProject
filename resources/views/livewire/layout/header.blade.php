@@ -38,15 +38,11 @@ new class extends Component {
                     </div>
                     <div class="col-1"></div>
                     <div class="search-header flex-grow-1 mx-3">
-                        <form action="{{ URL::to('search-product-list') }}" method="POST" class="d-flex"
-                            id="searchForm">
+                        <form action="{{ URL::to('search-product-list') }}" method="POST" class="d-flex" id="searchForm">
                             {{ csrf_field() }}
-                            <input type="text" class="form-control search-input-header"
-                                placeholder="Search products..." id="searchInput" name="keywords_submit"
-                                oninput="checkInput()">
-                            <div class="suggestions text_p1" style="display: none;" id="suggestions"></div>
-                            <button type="submit" class="btn_search-header" name="search_item" id="searchButton"
-                                disabled>Search</button>
+                            <input type="text" class="form-control search-input-header" placeholder="Search products..." id="searchInput" name="keywords_submit" oninput="checkInput()">
+                            <div class="suggestions text_p1" id="suggestions"></div>
+                            <button type="submit" class="btn_search-header" name="search_item" id="searchButton" disabled>Search</button>
                         </form>
                     </div>
                     <div class="d-flex align-items-center">

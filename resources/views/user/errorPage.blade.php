@@ -21,8 +21,6 @@
     <div class='c'>
         <div class='_404'>404</div>
         <hr>
-        <div class='_1'>THE PAGE</div>
-        <div class='_2'>WAS NOT FOUND</div>
       <div style="margin-top: 50px;"></div>
         <a class='btn' href="{{ url('/dashboard') }}">BACK TO HOMEPAGE</a>
     </div>

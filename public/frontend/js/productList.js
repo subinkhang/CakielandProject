@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 id: document.querySelectorAll('.pr-i2-id')[index].innerText.trim(),
                 name: document.querySelectorAll('.pr-i2-name')[index].innerText,
                 image: document.querySelectorAll('.text-hidden')[index].innerText.split('/').pop(),
-                fake_price: document.querySelectorAll('.old-price')[index].innerText,
-                price: document.querySelectorAll('.new-price')[index].innerText,
+                fake_price: document.querySelectorAll('.old-price')[index].innerText.replace('$', ''),
+                price: document.querySelectorAll('.new-price')[index].innerText.replace('$', ''),
             };
 
             let products = localStorage.getItem('products');

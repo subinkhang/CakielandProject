@@ -751,7 +751,7 @@ to {bottom: 0; opacity: 0;}
 }
 
 .pr-list-sidebar-title h3::after {
-    content: '';
+    /* content: ''; */
     display: block;
     width: 100%; /* Make the width 100% of the h3 */
     height: 4px;
