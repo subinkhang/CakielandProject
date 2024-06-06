@@ -75,7 +75,7 @@
                     <!----------------------right----------------------------->
 
                     <div class="col-5 cont">
-                        <form required id="updateForm" role="form"> 
+                        <form required id="updateForm" role="form">
                             {{ csrf_field() }}
                             <div class="row">
                                 <h6><b>E-mail</b></h6>
@@ -93,15 +93,15 @@
                                         <div class="font-medium text-base text-gray-800 w-full">
                                             <span x-show="!editing" x-text="name"></span>
                                             <input x-show="editing" id="name" x-model="name" class="deli"
-                                                name="name" placeholder="Nguyen Van A" required
+                                                name="name" placeholder="Nguyen Van A"
                                                 @keydown.enter="editing = false"
                                                 @change="if (name == '') editing = false"
                                                 class="deli border-0 outline-none bg-transparent w-full"
-                                                style="width: 550px; margin-top:10px">
+                                                style="width: 550px">
                                         </div>
                                     @else
                                         <input type="text" placeholder="Nguyen Van A" class="deli" id="name"
-                                            name="name" style="width: 550px; margin-top:10px" required>
+                                            name="name">
                                     @endif
                                 </div>
                                 <h6 class="ip"><b>Phone Number</b></h6>
@@ -111,13 +111,13 @@
                                         <div class="font-medium text-base text-gray-800 w-full">
                                             <span x-show="!editing" x-text="phone"></span>
                                             <input x-show="editing" id="phone" x-model="phone" name="phone"
-                                                @keydown.enter="editing = false" required
+                                                @keydown.enter="editing = false"
                                                 @change="if (phone == '') editing = false"
-                                                class="border-0 outline-none bg-transparent w-full"style="width: 550px; margin-top:10px">
+                                                class="border-0 outline-none bg-transparent w-full" style="width: 100%">
                                         </div>
                                     @else
                                         <input type="tel" placeholder="0123456789" class="deli" id="phone"
-                                            name="phone" style="width: 550px; margin-top:10px" required>
+                                            name="phone">
                                     @endif
                                 </div>
                                 <h6 class="ip"><b>Address</b></h6>
@@ -128,14 +128,14 @@
                                             class="font-medium text-base text-gray-800 w-full d-flex align-items-center">
                                             <span x-show="!editing" x-text="address"></span>
                                             <input x-show="editing" id="address" x-model="address" name="address"
-                                                @keydown.enter="editing = false"  required
+                                                @keydown.enter="editing = false"
                                                 @change="if (address == '') editing = false"
                                                 class="border-0 outline-none bg-transparent w-full flex-grow-1"
-                                                x-bind:style="editing ? 'style="width: 550px; margin-top:10px"' : ''">
+                                                x-bind:style="editing ? 'width: 100%' : ''">
                                         </div>
                                     @else
                                         <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli"
-                                            id="address" name="address" style="width: 550px; margin-top:10px" required>
+                                            id="address" name="address">
                                     @endif
                                 </div>
 
@@ -145,94 +145,125 @@
                                     <option>Bank</option>
                                 </select>
                                 <h6 id="checkinfo">Please check information</h6>
-                                <div class="col-8 bt-pay pm">
-                                    <button type="submit" class="btn" id="btn-p">  
+                                {{-- <div class="col-8 bt-pay pm">
+                                    <button type="submit" class="btn" id="btn-p">
                                         <p1>Payment</p1>
                                     </button>
-                                </div>
+                                </div> --}}
                             </div>
                         </form>
-                        
-                        <form action="{{ URL::to('/vnpay') }}" method="POST">
-                             @csrf
-                            <button type="submit" name="redirect">VNPAY</button>
-                        </form>
-                        
-
-
-                    </div>
-                </div>
-            </div>
-
+                        <form required id="updateForm" role="form">
+                            {{ csrf_field() }}
+                            <div class="row">
+                                <!-- Form fields here -->
+                                <button type="submit" onclick="handleVNPay(event);" name="redirect" id="btn-p" class="btn bt-pay pm">VNPay</button>
+                            </div>
+                        </form> 
+ @if (session('popup'))
+<div class="overlay active"></div>
+<div class="popup active">
+    <div class="modalbox center">
+        <i class="fa-solid fa-circle-check"></i>
+        <h3>{{ session('popup') }}</h3>
+        <div class="btnback">
+            <a class="btn" href="http://localhost:8000">Back to HomePage</a>
         </div>
     </div>
+</div>
 
-    <!-----------DONE--------------->
-    <div class="overlay"></div>
-    <div class="popup">
-        <div class="modalbox center">
-            <i class="fa-solid fa-circle-check"></i>
-            <h3>PAYMENT COMPLETE</h3>
-            <div class="btnback">
-                <a class="btn" href="http://localhost:8000" id="btn_back"> Back to HomePage </a>
-            </div>
-        </div>
-    </div>
+<script>
+    // Xóa local storage khi popup thành công được hiển thị
+    localStorage.removeItem('cartData');
+    localStorage.removeItem('products');
+</script>
+@endif
+<script>
+function handleUpdateForm() {
+    var formData = new FormData(document.getElementById('updateForm'));
+    // Lấy sản phẩm từ localStorage và tính tổng
+    var products = JSON.parse(localStorage.getItem('products'));
+    var total = products.reduce(function(sum, item) {
+        return sum + (item.price * item.quantity);
+    }, 0);
+    // Lấy thông tin giỏ hàng từ localStorage
+    var cartData = JSON.parse(localStorage.getItem('cartData'));
+    var shipping = cartData.shippingPrice;
+    var discount = cartData.discountPrice;
+    // Tính tổng cuối cùng
+    total += shipping;
+    total -= discount;
+    // Thêm tổng vào FormData
+    formData.append('total', total);
+    stringProductData = JSON.stringify(cartData.products)
+    console.log('stringProductData:', stringProductData);
+    // Thêm cartData vào FormData dưới dạng JSON string
+    formData.append('productData', stringProductData);
 
-    <!------------QR---------------->
-    <div class="bankmethod">
-        <img src="{{ asset('frontend/images/checkout-cart/cay-lan-bot-trung-go-xa-cu-tu-nhien-ichigo-ig-5550-201903061343233383.jpg') }}"
-            class="qr">
-    </div>
+    var data = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        address: formData.get('address'),
+        total: total,
+        cartData: cartData
+    };
 
-    <script>
-        document.getElementById('updateForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            var formData = new FormData(this);
-
-            // Lấy sản phẩm từ localStorage và tính tổng
-            var products = JSON.parse(localStorage.getItem('products'));
-            var total = products.reduce(function(sum, item) {
-                return sum + (item.price * item.quantity);
-            }, 0);
-
-            // Lấy thông tin giỏ hàng từ localStorage
-            var cartData = JSON.parse(localStorage.getItem('cartData'));
-            var shipping = cartData.shippingPrice;
-            var discount = cartData.discountPrice;
-
-            // Tính tổng cuối cùng
-            total += shipping;
-            total -= discount;
-            // Thêm tổng vào FormData
-            formData.append('total', total);
-            stringProductData = JSON.stringify(cartData.products)
-            console.log('stringProductData:', stringProductData);
-            // Thêm cartData vào FormData dưới dạng JSON string
-            formData.append('productData', stringProductData);
-            // console.log('cartData:', JSON.stringify(cartData));
-            // for (var pair of formData.entries()) {
-            //     console.log(pair[0] + ', ' + pair[1]);
-            // }
-
-            var data = {
-                name: formData.get('name'),
-                phone: formData.get('phone'),
-                address: formData.get('address'),
-                total: total,
-                cartData: cartData
-            };
-
-            // Gửi dữ liệu qua axios
-            axios.post('{{ url('/update/' . auth()->user()->id) }}', data)
-                .then(function(response) {
-                    console.log('Success:', response);
-                })
-                .catch(function(error) {
-                    console.log('Error:', error);
-                });
+    // Gửi dữ liệu qua axios
+    axios.post('{{ url('/update/' . auth()->user()->id) }}', data)
+        .then(function(response) {
+            console.log('Success:', response);
+        })
+        .catch(function(error) {
+            console.log('Error:', error);
         });
+}
+
+function handleVNPay(event) {
+    event.preventDefault(); // Ngăn chặn form bị submit
+
+    var formData = new FormData(document.getElementById('updateForm'));
+
+    var data = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        address: formData.get('address'),
+        total: formData.get('total'),
+        cartData: JSON.parse(localStorage.getItem('cartData'))
+    };
+
+    axios.post('{{ url('/save-temp-data') }}', data)
+        .then(function(response) {
+            console.log('Data saved:', response);
+            if (response.data.success) {
+                axios.post('{{ url('/vnpay') }}', data) 
+                    .then(function(response) {
+                        console.log('Success:', response);
+                        if (response.data.code === '00') {
+                            window.location.href = response.data.data; // Chuyển hướng đến trang thanh toán VNPay
+                        }
+                    })
+                    .catch(function(error) {
+                        console.log('Error:', error);
+                    });
+            }
+        })
+        .catch(function(error) {
+            console.log('Error:', error);
+        });
+}
+
+document.getElementById('btn-p').addEventListener('click', handleVNPay);
+
+const btn = document.getElementById("btn-p");
+const popup = document.querySelector(".popup");
+const qr = document.querySelector(".qr");
+const bankmethod = document.querySelector(".bankmethod");
+const overlay = document.querySelector(".overlay");
+
+overlay.addEventListener("click", () => {
+    popup.classList.remove("active");
+    overlay.classList.remove("active");
+    bankmethod.classList.remove("active");
+});
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
