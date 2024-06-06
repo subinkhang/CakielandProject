@@ -165,10 +165,10 @@
                                             </div>
                                             <div class="row productList_price">
                                                 <div class="col-6">
-                                                    <p class="old-price">{{ $list_product_user->fake_price }}</p>
+                                                    <p class="old-price">${{ number_format(floatval($list_product_user->fake_price), 2) }}</p>
                                                 </div>
                                                 <div class="col-6 text-end">
-                                                    <p class="new-price">{{ $list_product_user->price }}</p>
+                                                    <p class="new-price">${{ number_format($list_product_user->price, 2) }}</p>
                                                 </div>
                                             </div>
                                         </div>
