@@ -1,131 +1,28 @@
-// Add axios to Payment button
-
-
-//=======================================================
-
-const btn = document.getElementById("btn-p");
-const popup = document.querySelector(".popup");
-const qr = document.querySelector(".qr");
-const bankmethod = document.querySelector(".bankmethod");
-const overlay = document.querySelector(".overlay");
-
-overlay.addEventListener("click", () => {
-    popup.classList.remove("active");
-    overlay.classList.remove("active");
-    bankmethod.classList.remove("active");
-});
-
-btn.addEventListener("click", (e) => {
-    // e.preventDefault();
-    const select = document.querySelector(".form-select-pm");
-    const bankoption = document.querySelector(".bankmethod");
-    const selectoption = select.value;
-    if (selectoption === "COD") {
-        popup.classList.add("active");
-        overlay.classList.add("active");
-    }
-
-    if (selectoption === "Bank") {
-        console.log("bank");
-        bankoption.classList.add("active");
-        overlay.classList.add("active");
-    }
-});
-
-const btn_back = document.getElementById('btn_back');
-// Lắng nghe sự kiện click trên nút
-btn_back.addEventListener('click', function() {
-    // Xóa hết dữ liệu trong localStorage
-    localStorage.clear();
-});
-
-
-// const btn = document.getElementById("btn-p");
-// const popup = document.querySelector(".popup");
-// const qr = document.querySelector(".qr");
-// const bankmethod = document.querySelector(".bankmethod");
-// const overlay = document.querySelector(".overlay");
-
-// overlay.addEventListener("click", () => {
-//     popup.classList.remove("active");
-//     overlay.classList.remove("active");
-//     bankmethod.classList.remove("active");
-// });
-
-// btn.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     const select = document.querySelector(".form-select-pm");
-//     const bankoption = document.querySelector(".bankmethod");
-//     const selectoption = select.value;
-//     if (selectoption === "COD") {
-//         popup.classList.add("active");
-//         overlay.classList.add("active");
-//     }
-
-//     if (selectoption === "Bank") {
-//         console.log("bank");
-//         bankoption.classList.add("active");
-//         overlay.classList.add("active");
-//     }
-// });
-
-//---------------------CHECK------------
-// Lấy các trường dữ liệu
-const nameInput = document.getElementById('name');
-const phoneInput = document.getElementById('phone');
-const addressInput = document.getElementById('address');
-
-// Lấy nút "Payment"
-const paymentButton = document.getElementById('btn-p');
-
-// Kiểm tra các trường dữ liệu và cập nhật trạng thái nút "Payment"
-function updatePaymentButton() {
-  if (nameInput.value.trim() !== '' && phoneInput.value.trim() !== '' && addressInput.value.trim() !== '') {
-    paymentButton.disabled = false;
-    document.getElementById("checkinfo").style.display = "none";
-  } else {
-    paymentButton.disabled = true;
-    document.getElementById("checkinfo").style.display = "block";
-  }
-}
-
-// Thêm sự kiện cho các trường dữ liệu
-nameInput.addEventListener('input', updatePaymentButton);
-phoneInput.addEventListener('input', updatePaymentButton);
-addressInput.addEventListener('input', updatePaymentButton);
-
-// Khởi tạo trạng thái nút "Payment"
-updatePaymentButton();
-
-// emailInput.addEventListener("input", updatePaymentButtonState);
-// nameInput.addEventListener("input", updatePaymentButtonState);
-// phoneInput.addEventListener("input", updatePaymentButtonState);
-// addressInput.addEventListener("input", updatePaymentButtonState);
-
-// updatePaymentButtonState();
-
-/*--------------------Fill info of product----------------------*/
 document.addEventListener("DOMContentLoaded", (event) => {
+    // Kiểm tra xem dữ liệu giỏ hàng có trong localStorage không
     const cartData = JSON.parse(localStorage.getItem("cartData"));
+    if (!cartData || !cartData.products) {
+        console.error('No cartData found in localStorage or cartData.products is empty');
+        return;
+    }
+
     var table = document.getElementById("list");
-    let total = 0;
     const maxRows = 3;
+    
     for (let i = 0; i < cartData.products.length; i++) {
         var newRow = document.createElement("tr");
         newRow.id = `item${i}`;
         newRow.innerHTML = `
-        <tr>
-    <td style="height: 150px; width: 170px;">
-        <img src="public/backend/upload/${cartData.products[i].image}"
+            <td style="height: 150px; width: 170px;">
+                <img src="public/backend/upload/${cartData.products[i].image}"
             class="img-fluid" style="height: 150px; width: 150px;">
-    </td>
-    <td>
-        <h5><b>${cartData.products[i].name}</b></h5>
-        <p>Quantity: <span>${cartData.products[i].quantity}</span></p>
-        <p class="price"><b>$${cartData.products[i].price}</b></p>
-    </td>
-    </tr>
-    `;
+            </td>
+            <td>
+                <h5><b>${cartData.products[i].name}</b></h5>
+                <p>Quantity: <span>${cartData.products[i].quantity}</span></p>
+                <p class="price"><b>$${cartData.products[i].price}</b></p>
+            </td>
+        `;
         table.appendChild(newRow);
     }
 
@@ -141,72 +38,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const shipping = document.getElementById("shipping");
     const discount = document.getElementById("discount");
     const tt = document.getElementById("total");
-    subtt.innerHTML = `<span>
-        <p1><b>${cartData.rightsub.toFixed(2)}</p1></b>
-    </span>`;
-    shipping.innerHTML = `<span>
-        <p1><b>${cartData.shippingPrice.toFixed(2)}</p1></b>
-    </span>`;
-    discount.innerHTML = `<span>
-        <p1><b>${cartData.discountPrice.toFixed(2)}</p1></b>
-    </span>`;
+
+    subtt.innerHTML = `<span><p1><b>${cartData.rightsub.toFixed(2)}</p1></b></span>`;
+    shipping.innerHTML = `<span><p1><b>${cartData.shippingPrice.toFixed(2)}</p1></b></span>`;
+    discount.innerHTML = `<span><p1><b>${cartData.discountPrice.toFixed(2)}</p1></b></span>`;
     tt.innerHTML = `<span><b>$${cartData.total.toFixed(2)}</b></span>`;
 });
-
-// $(document).ready(function(){
-//     $('#updateForm').on('submit', function(event){
-//         event.preventDefault(); // Prevent the default form submission
-
-//         $.ajax({
-//             url: "{{ url('/checkout-update/' . auth()->user()->id) }}",
-//             method: "POST",
-//             data: $(this).serialize(), // Serialize the form data
-//             success: function(response) {
-//                 // Handle success - display a message, update the UI, etc.
-//                 alert('Your details have been successfully updated.');
-//             },
-//             error: function(xhr, status, error) {
-//                 // Handle error - display an error message, etc.
-//                 alert('There was an error updating your details. Please try again.');
-//             }
-//         });
-//     });
-// });
-
-
-//Code mới
-// document.addEventListener("DOMContentLoaded", (event) => {
-//     const cartData = JSON.parse(localStorage.getItem("cartData"));
-//     if (!cartData || !cartData.products) {
-//         console.error("No cart data found or cart data is invalid.");
-//         return;
-//     }
-
-//     const table = document.getElementById("list");
-
-//     cartData.products.forEach((product, i) => {
-//         const newRow = document.createElement("tr");
-//         newRow.id = `item${i}`;
-//         newRow.innerHTML = `
-//             <td style="height: 150px; width: 170px;">
-//                 <img src="${product.imageURL}" class="img-fluid" style="height: 150px; width: 150px;">
-//             </td>
-//             <td>
-//                 <h5><b>${product.name}</b></h5>
-//                 <p>Quantity: <span>${product.quantity}</span></p>
-//                 <p class="price"><b>$${product.price.toFixed(2)}</b></p>
-//             </td>
-//         `;
-//         table.appendChild(newRow);
-//     });
-
-//     const subtt = document.getElementById("subtotal");
-//     const shipping = document.getElementById("shipping");
-//     const discount = document.getElementById("discount");
-//     const tt = document.getElementById("total");
-
-//     subtt.innerHTML = `<span><p1><b>$${cartData.rightsub.toFixed(2)}</p1></b></span>`;
-//     shipping.innerHTML = `<span><p1><b>$${cartData.shippingPrice.toFixed(2)}</p1></b></span>`;
-//     discount.innerHTML = `<span><p1><b>-$${cartData.discountPrice.toFixed(2)}</p1></b></span>`;
-//     tt.innerHTML = `<span><b>$${cartData.total.toFixed(2)}</b></span>`;
-// });
