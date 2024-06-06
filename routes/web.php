@@ -74,6 +74,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //VNPAY
     Route::post('/vnpay', 'App\Http\Controllers\CheckoutController@vnpay');
+    Route::get('/vnpay-return', 'App\Http\Controllers\CheckoutController@vnpayReturn');
+    Route::post('/save-temp-data', 'App\Http\Controllers\CheckoutController@saveTempData');
+
 });
 
 // Admin routes
