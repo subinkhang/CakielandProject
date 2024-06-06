@@ -4,7 +4,7 @@ function updateCartCount() {
     products = products ? JSON.parse(products) : [];
 
     // Tính tổng số lượng sản phẩm
-    let totalQuantity = 1;
+    let totalQuantity = 0;
     for (const product of products) {
         if (product.quantity) {
             totalQuantity += product.quantity;
@@ -25,6 +25,8 @@ const inputElement = document.querySelector(`input[name="quan[${index}]"]`);
 var currentValue = parseInt(inputElement.value);
 if (currentValue > 1) {
 inputElement.value = currentValue - 1;
+updateLocalStorage(index, currentValue - 1);
+updateCartCount();
 }
 var num = inputElement.value;
 console.log(num);
@@ -37,8 +39,7 @@ const total = parseFloat(num) * parseFloat(price);
 console.log(total);
 subtotalElement.innerHTML = `<span>$${total.toFixed(2)}</span>`;
 updateTotal();
-updateLocalStorage(index, currentValue - 1);
-updateCartCount();
+
 }
 
 function increaseQuantity(index) {
