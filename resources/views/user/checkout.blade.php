@@ -139,17 +139,6 @@
                                     @endif
                                 </div>
 
-                                <h6 class="pmmt"><b>Payment Methods</b></h6>
-                                <select class="form-select form-select-pm pmbox">
-                                    <option selected>COD</option>
-                                    <option>Bank</option>
-                                </select>
-                                <h6 id="checkinfo">Please check information</h6>
-                                {{-- <div class="col-8 bt-pay pm">
-                                    <button type="submit" class="btn" id="btn-p">
-                                        <p1>Payment</p1>
-                                    </button>
-                                </div> --}}
                             </div>
                         </form>
                         <form required id="updateForm" role="form">
@@ -194,19 +183,18 @@ function handleUpdateForm() {
     total -= discount;
     // Thêm tổng vào FormData
     formData.append('total', total);
-    stringProductData = JSON.stringify(cartData.products)
+    stringProductData = JSON.stringify(cartData.products);
     console.log('stringProductData:', stringProductData);
     // Thêm cartData vào FormData dưới dạng JSON string
     formData.append('productData', stringProductData);
-
+    
     var data = {
         name: formData.get('name'),
         phone: formData.get('phone'),
         address: formData.get('address'),
         total: total,
-        cartData: cartData
+        cartData: cartData,
     };
-
     // Gửi dữ liệu qua axios
     axios.post('{{ url('/update/' . auth()->user()->id) }}', data)
         .then(function(response) {
@@ -260,9 +248,8 @@ const bankmethod = document.querySelector(".bankmethod");
 const overlay = document.querySelector(".overlay");
 
 overlay.addEventListener("click", () => {
-    popup.classList.remove("active");
-    overlay.classList.remove("active");
-    bankmethod.classList.remove("active");
+    // popup.classList.remove("active");
+    // bankmethod.classList.remove("active");
 });
     </script>
 
