@@ -1,3 +1,25 @@
+function updateCartCount() {
+    // Lấy dữ liệu từ localStorage
+    let products = localStorage.getItem('products');
+    products = products ? JSON.parse(products) : [];
+
+    // Tính tổng số lượng sản phẩm
+    let totalQuantity = 1;
+    for (const product of products) {
+        if (product.quantity) {
+            totalQuantity += product.quantity;
+        }
+    }
+
+    // Gán giá trị tổng vào phần tử HTML
+    const cartCountElement = document.querySelector('.cart-count-header');
+    cartCountElement.innerText = totalQuantity.toString();
+    console.log(totalQuantity)
+}
+
+// Gọi hàm updateCartCount để cập nhật giá trị ban đầu
+updateCartCount();
+
 function decreaseQuantity(index) {
 const inputElement = document.querySelector(`input[name="quan[${index}]"]`);
 var currentValue = parseInt(inputElement.value);
@@ -15,6 +37,8 @@ const total = parseFloat(num) * parseFloat(price);
 console.log(total);
 subtotalElement.innerHTML = `<span>$${total.toFixed(2)}</span>`;
 updateTotal();
+updateLocalStorage(index, currentValue - 1);
+updateCartCount();
 }
 
 function increaseQuantity(index) {
@@ -33,8 +57,23 @@ console.log(subtotalElement);
 const total = parseFloat(num) * parseFloat(price);
 console.log(total);
 subtotalElement.innerHTML = `<span>$${total.toFixed(2)}</span>`;
-
 updateTotal();
+updateLocalStorage(index, currentValue + 1);
+updateCartCount();
+}
+
+function updateLocalStorage(index, quantity) {
+    // Lấy dữ liệu từ localStorage
+    let products = localStorage.getItem('products');
+    products = products ? JSON.parse(products) : [];
+
+    // Cập nhật số lượng sản phẩm tại vị trí index
+    if (index >= 0 && index < products.length) {
+        products[index].quantity = quantity;
+    }
+
+    // Lưu lại dữ liệu vào localStorage
+    localStorage.setItem('products', JSON.stringify(products));
 }
 
 function updateTotal() {
