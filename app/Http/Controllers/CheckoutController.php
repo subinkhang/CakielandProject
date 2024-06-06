@@ -7,6 +7,7 @@ use DB;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Voucher;
 
 session_start();
 
@@ -29,7 +30,7 @@ public function update(Request $request, $user_id) {
         echo '</pre>';
         // dừng lại để kiểm tra dữ liệu
         // die(); // bình luận lại dòng này sau khi kiểm tra
-    
+        $cartData = $data['cartData'];
         // Tạo order
         $order = [];
         $order['user_id'] = $user_id;
@@ -39,7 +40,7 @@ public function update(Request $request, $user_id) {
         $order['address'] = $data['address'];
         $order['order_date'] = date('Y-m-d H:i:s');
         $order['status'] = 2;
-        $order['total_money'] = $data['total'];
+        $order['total_money'] = $cartData['total'];
         // Chèn order và lấy id của order vừa tạo
         $order_id = DB::table('order')->insertGetId($order);
     
@@ -73,7 +74,10 @@ public function update(Request $request, $user_id) {
         $vnp_Returnurl = "http://127.0.0.1:8000/vnpay-return"; // Thay đổi URL này
         $vnp_TmnCode = "P03I39T7";
         $vnp_HashSecret = "GC37G6ESGMPYA1AHWNY40DNDGGF8DEGR";
-        $vnp_TxnRef = '123464s';
+        // Lấy mã đơn hàng có giá trị lớn nhất từ bảng order
+    $maxOrderId = DB::table('order')->max('id');
+    // Tăng giá trị đó lên 1 để làm mã đơn hàng mới
+    $vnp_TxnRef = $maxOrderId + 1;
         $vnp_OrderInfo = 'Thanh toán đơn hàng TEST';
         $vnp_OrderType = 'billpayment';
 
@@ -137,6 +141,28 @@ public function update(Request $request, $user_id) {
             if ($tempData) {
                 $request->merge($tempData); // Thêm dữ liệu tạm thời vào request
                 $this->update($request, auth()->user()->id); // Gọi phương thức update để cập nhật database
+                
+                // Lấy discountPrice từ dữ liệu nhận được sau khi thanh toán
+                $cartData = $tempData['cartData'];
+                $discountPrice = $cartData['discountPrice'];
+                $codevoucher = $cartData['codevoucher'];
+    
+                // Kiểm tra xem discountPrice có lớn hơn 0 không
+                if ($discountPrice > 0) {
+                    // Giảm đi 1 đơn vị của cột 'number_voucher' trong bảng 'voucher'
+                    // Lưu ý: Điều này cần được thực hiện dựa trên mã voucher đã sử dụng,
+                    // bạn cần lấy mã voucher từ dữ liệu cartData hoặc từ địa chỉ email/người dùng...
+                    // Dưới đây là một ví dụ giả sử mã voucher được lưu trong session là 'voucher_code'
+    
+                    // Kiểm tra xem mã voucher tồn tại trong database không
+                    $voucher = Voucher::where('code_voucher', $codevoucher)->first();
+
+                    if ($voucher) {
+                        // Giảm số lượng voucher nếu discountPrice > 0
+                        $voucher->number_voucher -= 1;
+                        $voucher->save();
+                    }
+                }
             }
             // Hiển thị popup "Payment Complete"
             return redirect('/checkout')->with('popup', 'Payment Complete');

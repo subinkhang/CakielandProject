@@ -277,6 +277,9 @@ for (let i = index; i < products.length; i++) { const nextItem=document.getEleme
         const total = parseFloat(
         document.getElementById("totalprice").textContent.replace("$", "")
         );
+        const codevoucher =
+            document.getElementById("voucher-input").value
+            ;
         const rightsubtotal = parseFloat(
         document.getElementById("rightsub").textContent.replace("$", "")
         );
@@ -288,6 +291,7 @@ for (let i = index; i < products.length; i++) { const nextItem=document.getEleme
         discountPrice: discountPrice,
         total: total,
         rightsub: rightsubtotal,
+        codevoucher: codevoucher,
         };
         localStorage.setItem("cartData", JSON.stringify(dataToStore));
         }
