@@ -1,6 +1,18 @@
 @startuml
 title Guest gửi email cho Admin để nhận thông tin
 
+skinparam actor  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
 actor Guest
 participant EmailClient as "Email Client"
 participant MailServer as "Mail Server"

@@ -1,0 +1,33 @@
+@startuml
+title Sequence Diagram: Admin Dashboard
+
+skinparam actor {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+actor Admin
+participant DashboardPage as "Trang Dashboard Admin"
+participant Database as "Cơ Sở Dữ Liệu"
+
+Admin -> DashboardPage : Truy cập trang dashboard
+DashboardPage -> Database : Yêu cầu số lượng user
+DashboardPage -> Database : Yêu cầu số lượt đặt hàng
+DashboardPage -> Database : Yêu cầu số tiền đã có được
+DashboardPage -> Database : Yêu cầu số mail từ guest yêu cầu tư vấn
+
+Database -> DashboardPage : Trả về số lượng user
+Database -> DashboardPage : Trả về số lượt đặt hàng
+Database -> DashboardPage : Trả về số tiền đã có được
+Database -> DashboardPage : Trả về số mail từ guest yêu cầu tư vấn
+
+DashboardPage -> Admin : Hiển thị thông tin tổng quan
+
+@enduml

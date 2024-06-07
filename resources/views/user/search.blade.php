@@ -200,7 +200,7 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-8 getintouch_info">
-                    <h1 class="text_h1">GET IN TOUCH WITH SUBIN</h1>
+                    <h1 class="text_h1">GET IN TOUCH WITH CAKIELAND</h1>
                     <p class="text_p1">With the cake baked to perfection, the canvas is set for creativity to flourish.
                         From simple frosting and sprinkles to elaborate designs and piped decorations, the
                         possibilities are endless.</p>

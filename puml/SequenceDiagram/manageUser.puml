@@ -1,0 +1,32 @@
+@startuml
+title Sequence Diagram: Quản lý thông tin người dùng
+
+skinparam actor  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+actor Admin
+participant UserManagementPage as "Trang Quản Lý Người Dùng"
+participant Database as "Cơ Sở Dữ Liệu"
+
+Admin -> UserManagementPage : Truy cập trang quản lý người dùng
+UserManagementPage -> Database : Yêu cầu danh sách thông tin người dùng
+Database -> UserManagementPage : Trả về danh sách thông tin người dùng
+UserManagementPage -> Admin : Hiển thị danh sách thông tin người dùng
+
+Admin -> UserManagementPage : Nhấp vào "Xuất dữ liệu"
+UserManagementPage -> Database : Yêu cầu xuất dữ liệu người dùng
+Database -> UserManagementPage : Trả về dữ liệu người dùng dưới dạng file
+UserManagementPage -> Admin : Cung cấp file dữ liệu để tải xuống
+
+note over Admin, UserManagementPage : Admin chỉ có thể xem và xuất dữ liệu, không thể chỉnh sửa
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+actor Guest
+actor Admin
+
+usecase "Gửi mail yêu cầu tư vấn" as UC1
+usecase "Nhận mail tư vấn sản phẩm" as UC2
+
+Guest --> UC1
+UC1 --> Admin
+Admin --> UC2
+UC2 --> Guest
+
+@enduml

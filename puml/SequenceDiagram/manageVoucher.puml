@@ -1,0 +1,23 @@
+@startuml
+title Sequence Diagram: Admin quản lý thông tin voucher
+
+actor Admin
+participant VoucherManagementPage as "Trang Danh Sách Voucher"
+participant Database as "Cơ Sở Dữ Liệu"
+
+== Thêm voucher ==
+Admin -> VoucherManagementPage : Truy cập trang quản lý voucher
+Admin -> VoucherManagementPage : Nhập thông tin voucher mới
+Admin -> VoucherManagementPage : Bấm nút "Thêm"
+VoucherManagementPage -> Database : Gửi thông tin voucher mới để lưu
+Database -> VoucherManagementPage : Xác nhận thêm voucher thành công
+VoucherManagementPage -> Admin : Hiển thị thông báo thêm voucher thành công
+
+== Xóa voucher ==
+Admin -> VoucherManagementPage : Chọn voucher cần xóa
+Admin -> VoucherManagementPage : Bấm nút "Xóa voucher"
+VoucherManagementPage -> Database : Gửi yêu cầu xóa voucher
+Database -> VoucherManagementPage : Xác nhận xóa voucher thành công
+VoucherManagementPage -> Admin : Hiển thị thông báo xóa voucher thành công
+
+@enduml

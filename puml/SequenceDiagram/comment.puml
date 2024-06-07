@@ -1,0 +1,55 @@
+@startuml
+title Sequence Diagram: Quy trình bình luận vào sản phẩm
+
+skinparam actor  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+actor User
+participant ProductPage as "Trang Chi Tiết Sản Phẩm"
+participant CommentService as "Dịch Vụ Bình Luận"
+participant Database as "Cơ Sở Dữ Liệu"
+
+User -> ProductPage : Truy cập trang sản phẩm
+ProductPage -> User : Hiển thị sản phẩm và bình luận hiện có
+
+alt Người dùng chưa đăng nhập
+    ProductPage -> User : Yêu cầu đăng nhập để bình luận
+else Người dùng đã đăng nhập
+    User -> ProductPage : Nhập bình luận mới
+    ProductPage -> CommentService : Gửi bình luận mới
+    CommentService -> Database : Lưu bình luận vào cơ sở dữ liệu
+    Database -> CommentService : Xác nhận bình luận đã lưu
+    CommentService -> ProductPage : Xác nhận bình luận thành công
+    ProductPage -> User : Hiển thị bình luận mới
+
+    group Xóa bình luận
+        User -> ProductPage : Nhấp nút xóa bình luận
+        ProductPage -> CommentService : Yêu cầu xóa bình luận
+        CommentService -> Database : Xóa bình luận khỏi cơ sở dữ liệu
+        Database -> CommentService : Xác nhận xóa bình luận
+        CommentService -> ProductPage : Xác nhận xóa thành công
+        ProductPage -> User : Cập nhật hiển thị sau khi xóa
+    end
+
+    group Sửa bình luận
+        User -> ProductPage : Nhấp nút sửa bình luận
+        ProductPage -> User : Hiển thị form sửa bình luận
+        User -> ProductPage : Nhập nội dung sửa
+        ProductPage -> CommentService : Gửi yêu cầu sửa bình luận
+        CommentService -> Database : Cập nhật bình luận trong cơ sở dữ liệu
+        Database -> CommentService : Xác nhận cập nhật bình luận
+        CommentService -> ProductPage : Xác nhận sửa bình luận thành công
+        ProductPage -> User : Hiển thị bình luận đã sửa
+    end
+end
+
+@enduml

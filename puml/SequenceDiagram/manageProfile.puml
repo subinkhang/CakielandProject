@@ -1,0 +1,36 @@
+@startuml
+title Sequence Diagram: Quản lý tài khoản cá nhân
+
+skinparam actor  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+actor User
+participant ProfilePage as "Trang Thông Tin Cá Nhân"
+participant Database as "Cơ Sở Dữ Liệu"
+
+User -> ProfilePage : Truy cập trang thông tin cá nhân
+User -> ProfilePage : Nhập thông tin cần cập nhật (tên, ngày sinh, địa chỉ, số điện thoại, avatar)
+
+alt Kiểm tra số điện thoại
+    ProfilePage -> ProfilePage : Kiểm tra số điện thoại hợp lệ
+    alt Số điện thoại hợp lệ
+        ProfilePage -> Database : Gửi yêu cầu cập nhật thông tin (không bao gồm email)
+        Database -> ProfilePage : Xác nhận cập nhật thành công
+        ProfilePage -> User : Thông báo cập nhật thành công
+    else Số điện thoại không hợp lệ
+        ProfilePage -> User : Thông báo lỗi số điện thoại không hợp lệ
+    end
+end
+
+note over User, ProfilePage : Không cho phép cập nhật email
+
+@enduml

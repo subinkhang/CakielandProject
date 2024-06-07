@@ -1,0 +1,38 @@
+
+
+@startuml
+title Sequence Diagram: Sử dụng voucher trong trang giỏ hàng
+
+
+skinparam actor {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+actor User
+participant CartPage as "Trang Giỏ Hàng"
+participant VoucherService as "Dịch Vụ Voucher"
+participant Database as "Cơ Sở Dữ Liệu"
+
+User -> CartPage : Truy cập trang giỏ hàng
+User -> CartPage : Nhập mã voucher
+CartPage -> VoucherService : Gửi mã voucher để xác thực
+VoucherService -> Database : Kiểm tra mã voucher trong cơ sở dữ liệu
+Database -> VoucherService : Trả về kết quả xác thực và giá trị giảm giá
+
+alt Mã voucher hợp lệ
+    VoucherService -> CartPage : Xác thực thành công và gửi giá trị giảm giá
+    CartPage -> User : Hiển thị giá trị giảm giá và cập nhật tổng giá
+else Mã voucher không hợp lệ
+    VoucherService -> CartPage : Xác thực thất bại
+    CartPage -> User : Thông báo mã voucher không hợp lệ
+end
+
+@enduml

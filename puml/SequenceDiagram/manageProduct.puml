@@ -1,0 +1,43 @@
+@startuml
+title Sequence Diagram: Admin quản lý thông tin sản phẩm
+
+skinparam actor {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+actor Admin
+participant ProductManagementPage as "Trang Danh Sách Sản Phẩm"
+participant Database as "Cơ Sở Dữ Liệu"
+
+== Thêm sản phẩm ==
+Admin -> ProductManagementPage : Truy cập trang quản lý sản phẩm
+Admin -> ProductManagementPage : Nhập thông tin sản phẩm mới
+Admin -> ProductManagementPage : Bấm nút "Thêm sản phẩm"
+ProductManagementPage -> Database : Gửi thông tin sản phẩm mới để lưu
+Database -> ProductManagementPage : Xác nhận thêm sản phẩm thành công
+ProductManagementPage -> Admin : Hiển thị thông báo thêm sản phẩm thành công
+
+== Xóa sản phẩm ==
+Admin -> ProductManagementPage : Chọn sản phẩm cần xóa
+Admin -> ProductManagementPage : Bấm icon "Thùng rác"
+ProductManagementPage -> Database : Gửi yêu cầu xóa sản phẩm
+Database -> ProductManagementPage : Xác nhận xóa sản phẩm thành công
+ProductManagementPage -> Admin : Hiển thị thông báo xóa sản phẩm thành công
+
+== Sửa sản phẩm ==
+Admin -> ProductManagementPage : Chọn sản phẩm cần sửa
+Admin -> ProductManagementPage : Nhập thông tin cập nhật sản phẩm
+Admin -> ProductManagementPage : Bấm nút "Lưu thay đổi"
+ProductManagementPage -> Database : Gửi thông tin cập nhật để lưu
+Database -> ProductManagementPage : Xác nhận cập nhật sản phẩm thành công
+ProductManagementPage -> Admin : Hiển thị thông báo cập nhật sản phẩm thành công
+
+@enduml
