@@ -83,7 +83,7 @@
                                         <h3><b>TOTAL</b></h3>
                                     </td>
                                     <td class="col-2 text-end" id="totalprice">
-                                        <h3><b>$</b></h3>
+                                        <h3><b></b></h3>
                                     </td>
                                 </tr>
                             </table>

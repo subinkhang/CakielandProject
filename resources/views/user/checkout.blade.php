@@ -113,11 +113,11 @@
                                             <input x-show="editing" id="phone" x-model="phone" name="phone"
                                                 @keydown.enter="editing = false"
                                                 @change="if (phone == '') editing = false"
-                                                class="border-0 outline-none bg-transparent w-full" style="width: 100%">
+                                                class="border-0 outline-none bg-transparent w-full" style="width: 550px">
                                         </div>
                                     @else
                                         <input type="tel" placeholder="0123456789" class="deli" id="phone"
-                                            name="phone">
+                                            name="phone" style="width: 550px">
                                     @endif
                                 </div>
                                 <h6 class="ip"><b>Address</b></h6>
@@ -128,14 +128,14 @@
                                             class="font-medium text-base text-gray-800 w-full d-flex align-items-center">
                                             <span x-show="!editing" x-text="address"></span>
                                             <input x-show="editing" id="address" x-model="address" name="address"
-                                                @keydown.enter="editing = false"
+                                                @keydown.enter="editing = false" 
                                                 @change="if (address == '') editing = false"
                                                 class="border-0 outline-none bg-transparent w-full flex-grow-1"
-                                                x-bind:style="editing ? 'width: 100%' : ''">
+                                                x-bind:style="editing ? 'width: 550px' : ''">
                                         </div>
                                     @else
                                         <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli"
-                                            id="address" name="address">
+                                            id="address" name="address" style="width: 550px">
                                     @endif
                                 </div>
 
@@ -155,7 +155,7 @@
         <i class="fa-solid fa-circle-check"></i>
         <h3>{{ session('popup') }}</h3>
         <div class="btnback">
-            <a class="btn" href="http://localhost:8000">Back to HomePage</a>
+            <a class="btn" id="back" href = "http://localhost:8000">Back to HomePage</a>
         </div>
     </div>
 </div>
@@ -164,6 +164,7 @@
     // Xóa local storage khi popup thành công được hiển thị
     localStorage.removeItem('cartData');
     localStorage.removeItem('products');
+
 </script>
 @endif
 <script>
@@ -241,7 +242,8 @@ function handleVNPay(event) {
 
 document.getElementById('btn-p').addEventListener('click', handleVNPay);
 
-const btn = document.getElementById("btn-p");
+
+
 const popup = document.querySelector(".popup");
 const qr = document.querySelector(".qr");
 const bankmethod = document.querySelector(".bankmethod");
