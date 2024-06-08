@@ -86,6 +86,7 @@
                                 </div>
 
 
+                                <!-- Tên người nhận -->
                                 <h6 class="ip"><b>Name</b></h6>
                                 <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ name: '{{ auth()->user()->name }}', editing: false }"
                                     @click.away="editing = false" @click="editing = true">
@@ -93,7 +94,7 @@
                                         <div class="font-medium text-base text-gray-800 w-full">
                                             <span x-show="!editing" x-text="name"></span>
                                             <input x-show="editing" id="name" x-model="name" class="deli"
-                                                name="name" placeholder="Nguyen Van A"
+                                                name="name" placeholder="Nguyen Van A" required
                                                 @keydown.enter="editing = false"
                                                 @change="if (name == '') editing = false"
                                                 class="deli border-0 outline-none bg-transparent w-full"
@@ -101,43 +102,47 @@
                                         </div>
                                     @else
                                         <input type="text" placeholder="Nguyen Van A" class="deli" id="name"
-                                            name="name">
+                                            name="name" required>
                                     @endif
                                 </div>
+
+                                <!-- Số điện thoại -->
                                 <h6 class="ip"><b>Phone Number</b></h6>
                                 <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ phone: '{{ auth()->user()->phone_number }}', editing: false }"
                                     @click.away="editing = false" @click="editing = true">
                                     @if (auth()->user()->phone_number)
                                         <div class="font-medium text-base text-gray-800 w-full">
                                             <span x-show="!editing" x-text="phone"></span>
-                                            <input x-show="editing" id="phone" x-model="phone" name="phone"
+                                            <input required x-show="editing" id="phone" x-model="phone" name="phone"
                                                 @keydown.enter="editing = false"
                                                 @change="if (phone == '') editing = false"
                                                 class="border-0 outline-none bg-transparent w-full" style="width: 550px">
                                         </div>
                                     @else
-                                        <input type="tel" placeholder="0123456789" class="deli" id="phone"
-                                            name="phone" style="width: 550px">
+                                        <input required type="tel" placeholder="0123456789" class="deli" id="phone"
+                                            name="phone" required style="width: 550px">
                                     @endif
                                 </div>
+
+                                <!-- Địa chỉ giao hàng -->
                                 <h6 class="ip"><b>Address</b></h6>
                                 <div class="col-12 boxac w-full d-flex align-items-center" x-data="{ address: '{{ auth()->user()->address }}', editing: false }"
                                     @click.away="editing = false" @click="editing = true">
                                     @if (auth()->user()->address)
-                                        <div
-                                            class="font-medium text-base text-gray-800 w-full d-flex align-items-center">
+                                        <div class="font-medium text-base text-gray-800 w-full d-flex align-items-center">
                                             <span x-show="!editing" x-text="address"></span>
-                                            <input x-show="editing" id="address" x-model="address" name="address"
+                                            <input required x-show="editing" id="address" x-model="address" name="address"
                                                 @keydown.enter="editing = false" 
                                                 @change="if (address == '') editing = false"
                                                 class="border-0 outline-none bg-transparent w-full flex-grow-1"
                                                 x-bind:style="editing ? 'width: 550px' : ''">
                                         </div>
                                     @else
-                                        <input type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli"
-                                            id="address" name="address" style="width: 550px">
+                                        <input required type="text" placeholder="11/22/33 Ho Chi Minh city" class="deli"
+                                            id="address" name="address" required style="width: 550px">
                                     @endif
                                 </div>
+
 
                             </div>
                         </form>
@@ -209,7 +214,16 @@ function handleUpdateForm() {
 function handleVNPay(event) {
     event.preventDefault(); // Ngăn chặn form bị submit
 
-    var formData = new FormData(document.getElementById('updateForm'));
+    var form = document.getElementById('updateForm');
+    
+    // Kiểm tra tính hợp lệ của form
+    if (!form.checkValidity()) {
+        // Hiển thị thông báo nếu có trường nào chưa được điền đầy đủ
+        alert('Please fill out all required fields.');
+        return;
+    }
+
+    var formData = new FormData(form);
 
     var data = {
         name: formData.get('name'),
@@ -219,7 +233,7 @@ function handleVNPay(event) {
         cartData: JSON.parse(localStorage.getItem('cartData'))
     };
 
-    axios.post('{{ url('/save-temp-data') }}', data)
+    axios.post('{{ url('/save-temp-data/') }}', data)
         .then(function(response) {
             console.log('Data saved:', response);
             if (response.data.success) {

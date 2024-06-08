@@ -8,6 +8,7 @@ use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Voucher;
+use Illuminate\Support\Facades\Log;
 
 session_start();
 
@@ -19,19 +20,13 @@ class CheckoutController extends Controller
         return view('user/checkout', compact('user'));
     }
 
-
-public function update(Request $request, $user_id) {
-        // Nhận dữ liệu từ request
+    public function update(Request $request, $user_id)
+    {
         $data = $request->all();
-    
-        // In ra màn hình để kiểm tra data nhận được
-        echo '<pre>';
-        print_r($data);
-        echo '</pre>';
-        // dừng lại để kiểm tra dữ liệu
-        // die(); // bình luận lại dòng này sau khi kiểm tra
+        Log::info('Update method called with data: ', $data); // Ghi log dữ liệu đầu vào
+
         $cartData = $data['cartData'];
-        // Tạo order
+        
         $order = [];
         $order['user_id'] = $user_id;
         $order['fullname'] = $data['name'];
@@ -41,16 +36,12 @@ public function update(Request $request, $user_id) {
         $order['order_date'] = date('Y-m-d H:i:s');
         $order['status'] = 2;
         $order['total_money'] = $cartData['total'];
-        // Chèn order và lấy id của order vừa tạo
+        
         $order_id = DB::table('order')->insertGetId($order);
-    
-        // Nhận cartData từ data
-        $cartData = $data['cartData'];
-    
-        // Lấy danh sách sản phẩm từ cartData
+        Log::info('Order created with ID: ', ['order_id' => $order_id]); // Ghi log ID của order vừa tạo
+        
         $products = $cartData['products'];
-    
-        // Lặp qua các sản phẩm và chèn vào bảng order_detail
+        
         foreach ($products as $product) {
             $orderDetail = [];
             $orderDetail['order_id'] = $order_id;
@@ -59,29 +50,31 @@ public function update(Request $request, $user_id) {
             $orderDetail['quantity'] = $product['quantity'];
             $orderDetail['total_money'] = $product['price'] * $product['quantity'];
             DB::table('order_detail')->insert($orderDetail);
+            Log::info('Order detail inserted: ', $orderDetail); // Ghi log chi tiết order được chèn vào
         }
-    
-        // Xóa dữ liệu tạm thời sau khi đã xử lý
+        
         session()->forget('tempData');
-    
+        
         return Redirect::to('user/checkout')->with('cartData', $products);
     }
 
-    public function vnpay(Request $request) {
+    public function vnpay(Request $request)
+    {
         $data = $request->all();
+        Log::info('VNPay method called with data: ', $data); // Ghi log dữ liệu đầu vào
+        
         $cartData = $data['cartData'];
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://127.0.0.1:8000/vnpay-return"; // Thay đổi URL này
+        $vnp_Returnurl = "http://127.0.0.1:8000/vnpay-return";
         $vnp_TmnCode = "P03I39T7";
         $vnp_HashSecret = "GC37G6ESGMPYA1AHWNY40DNDGGF8DEGR";
-        // Lấy mã đơn hàng có giá trị lớn nhất từ bảng order
-    $maxOrderId = DB::table('order')->max('id');
-    // Tăng giá trị đó lên 1 để làm mã đơn hàng mới
-    $vnp_TxnRef = $maxOrderId + 1;
+        
+        // Sử dụng uniqid() để tạo vnp_TxnRef duy nhất
+        $vnp_TxnRef = uniqid();
         $vnp_OrderInfo = 'Thanh toán đơn hàng TEST';
         $vnp_OrderType = 'billpayment';
 
-        $vnp_Amount =  $cartData['total']*24000 *100 ; // Lưu ý: Total đã tính theo đơn vị nhỏ nhất (VND)
+        $vnp_Amount = $cartData['total'] * 24000 * 100;
         $vnp_Locale = 'vn';
         $vnp_BankCode = 'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
@@ -127,53 +120,98 @@ public function update(Request $request, $user_id) {
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
         $returnData = array('code' => '00', 'message' => 'success', 'data' => $vnp_Url);
+        Log::info('VNPay URL generated: ', ['url' => $vnp_Url]); // Ghi log URL VNPay
+
         if (isset($_POST['redirect'])) {
             return response()->json($returnData);
         } else {
             echo json_encode($returnData);
         }
     }
-    public function vnpayReturn(Request $request) {
-        // Kiểm tra kết quả trả về từ VNPay
+
+    public function saveTempData(Request $request)
+    {
+        $tempData = $request->all();
+        session(['tempData' => $tempData]);
+
+        // Lưu một giá trị kiểm tra vào session
+        session(['test' => 'test_value']);
+
+        // Kiểm tra session ID
+        $sessionId = session()->getId();
+        Log::info('Session ID on save: ', ['session_id' => $sessionId]);
+
+        // Kiểm tra xem tempData đã được lưu trong session hay chưa
+        $tempDataFromSession = session('tempData');
+        $testValueFromSession = session('test');
+
+        if ($tempDataFromSession) {
+            Log::info('Temp data successfully saved in session: ', $tempDataFromSession); // Ghi log dữ liệu tạm thời lưu vào session
+        } else {
+            Log::error('Failed to save temp data in session.');
+        }
+
+        if ($testValueFromSession) {
+            Log::info('Test value successfully saved in session: ', ['test' => $testValueFromSession]); // Ghi log giá trị kiểm tra lưu vào session
+        } else {
+            Log::error('Failed to save test value in session.');
+        }
+
+        return response()->json(['success' => true]);
+    }
+
+    public function vnpayReturn(Request $request)
+    {
+        Log::info('VNPay return called with response: ', $request->all()); // Ghi log dữ liệu trả về từ VNPay
+
+        // Kiểm tra session ID
+        $sessionId = session()->getId();
+        Log::info('Session ID on return: ', ['session_id' => $sessionId]);
+
         if ($request->vnp_ResponseCode == '00') {
-            // Lấy dữ liệu tạm thời từ session
+            Log::info('$request->vnp_ResponseCode: ', $request->all()); // Ghi log dữ liệu trả về từ VNPay
             $tempData = session('tempData');
-            if ($tempData) {
-                $request->merge($tempData); // Thêm dữ liệu tạm thời vào request
-                $this->update($request, auth()->user()->id); // Gọi phương thức update để cập nhật database
-                
-                // Lấy discountPrice từ dữ liệu nhận được sau khi thanh toán
+            Log::info('Temp data from session: ', is_array($tempData) ? $tempData : [$tempData]); // Ghi log dữ liệu tạm thời từ session
+
+            if (!empty($tempData)) {
+                if (!is_array($tempData)) {
+                    $tempData = json_decode(json_encode($tempData), true); // Chuyển đổi thành mảng nếu cần
+                }
+                $request->merge($tempData);
+                Log::info('Merging tempData into request: ', $tempData); // Ghi log dữ liệu tạm thời sau khi merge vào request
+
+                try {
+                    $this->update($request, auth()->user()->id);
+                    Log::info('Update method called successfully'); // Ghi log sau khi gọi phương thức update
+                } catch (\Exception $e) {
+                    Log::error('Error in update method: ', ['error' => $e->getMessage()]); // Ghi log lỗi nếu phương thức update gặp lỗi
+                    return redirect('/checkout')->with('popup', 'Payment Complete but data update failed');
+                }
+
                 $cartData = $tempData['cartData'];
                 $discountPrice = $cartData['discountPrice'];
                 $codevoucher = $cartData['codevoucher'];
-    
-                // Kiểm tra xem discountPrice có lớn hơn 0 không
-                if ($discountPrice > 0) {
-                    // Giảm đi 1 đơn vị của cột 'number_voucher' trong bảng 'voucher'
-                    // Lưu ý: Điều này cần được thực hiện dựa trên mã voucher đã sử dụng,
-                    // bạn cần lấy mã voucher từ dữ liệu cartData hoặc từ địa chỉ email/người dùng...
-                    // Dưới đây là một ví dụ giả sử mã voucher được lưu trong session là 'voucher_code'
-    
-                    // Kiểm tra xem mã voucher tồn tại trong database không
-                    $voucher = Voucher::where('code_voucher', $codevoucher)->first();
 
+                if ($discountPrice > 0) {
+                    $voucher = Voucher::where('code_voucher', $codevoucher)->first();
                     if ($voucher) {
-                        // Giảm số lượng voucher nếu discountPrice > 0
                         $voucher->number_voucher -= 1;
                         $voucher->save();
+                        Log::info('Voucher updated: ', ['voucher' => $voucher]); // Ghi log thông tin voucher được cập nhật
+                    } else {
+                        Log::warning('Voucher not found: ', ['code_voucher' => $codevoucher]); // Ghi log nếu không tìm thấy voucher
                     }
                 }
+            } else {
+                Log::error('Temp data not found in session'); // Ghi log nếu không tìm thấy dữ liệu tạm thời trong session
+                return redirect('/checkout')->with('popup', 'Payment Complete but temp data not found');
             }
-            // Hiển thị popup "Payment Complete"
+
             return redirect('/checkout')->with('popup', 'Payment Complete');
         } else {
-            // Xử lý khi thanh toán không thành công
+            Log::error('VNPay payment failed with response: ', $request->all()); // Ghi log nếu thanh toán VNPay thất bại
             return redirect('/checkout')->with('popup', 'Payment Failed');
         }
     }
-    public function saveTempData(Request $request) {
-        // Lưu tạm dữ liệu vào session
-        session(['tempData' => $request->all()]);
-        return response()->json(['success' => true]);
-    }
+
 }
