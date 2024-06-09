@@ -1,44 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>error</title>
-    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/errorpage.css') }}">
+    <link href="{{asset ('https://fonts.googleapis.com/css?family=opensans:500') }}" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4 margin text-center">
-                <h1><b>Oops!</b></h1>
-            </div>
-            <div class="col-4"></div>
-            <div class="col-4"></div>
-            <div class="col-4 error text-center">
-                <img src="{{ '' }}" class="img-fluid imageerror">
-            </div>
-            <div class="col-4"></div>
-            <div class="col-4"></div>
-            <div class="col-4 text-center">
-                <p2>Sorry, the page you're looking for doesn't extist.</p2> <br>
-                <p2>If you think something is broken, report a problem.</p2>
-            </div>
-            <div class="col-4"></div>
-            <div class="col-5"></div>
-            <div class="col-2" style="margin-top:20px">
-                <div>
-                    <button class="btn_search">Return Homepage</button>
-                </div>
-            </div>
-            <div class="col-5"></div>
-        </div>
-
+    <div id="clouds">
+        <div class="cloud x1"></div>
+        <div class="cloud x1_5"></div>
+        <div class="cloud x2"></div>
+        <div class="cloud x3"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x5"></div>
+    </div>
+    <div class='c'>
+        <div class='_404'>404</div>
+        <hr>
+      <div style="margin-top: 50px;"></div>
+        <a class='btn' href="{{ url('/dashboard') }}">BACK TO HOMEPAGE</a>
+    </div>
 </body>
+
 
 </html>

@@ -462,11 +462,11 @@ color: #080808;
     height: 10px;
     border-right: 2px solid #666;
     border-bottom: 2px solid #666;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
     margin-left: auto; /* Push arrow to the far right */
 }
 .mainmenu li.active .arrow {
-    transform: rotate(-45deg); /* Rotate 90 degrees when active */
+    transform: rotate(45deg); /* Rotate 90 degrees when active */
 }
 /* Sub-category background width */
 .menucon li a {
@@ -484,6 +484,34 @@ color: #080808;
 
 .menucon li {
     margin-bottom: 5px; /* Add margin between sub-category items */
+}
+.hehe {
+    width: 14px;
+    height: 14px;
+}
+/* Arrow wrapper styles */
+.arrow-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Tăng kích thước vùng bấm vào */
+    height: 30px; /* Tăng kích thước vùng bấm vào */
+}
+
+/* Arrow styles */
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #666;
+    border-bottom: 2px solid #666;
+    transform: rotate(-45deg);
+    margin-right: 10px;
+}
+
+.mainmenu li.active .arrow {
+    transform: rotate(45deg); /* Rotate 90 degrees when active */
 }
 
 /* ---------------------------------------------------- */
@@ -711,4 +739,23 @@ to {bottom: 0; opacity: 0;}
 }
 .text-hidden{
     display: none;
+}
+.pr-list-sidebar-title h3 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: left;
+    display: inline-block; /* Set display to inline-block */
+    position: relative; /* Add position relative */
+    padding-bottom: 10px; /* Add padding bottom to create space for the underline */
+}
+
+.pr-list-sidebar-title h3::after {
+    /* content: ''; */
+    display: block;
+    width: 100%; /* Make the width 100% of the h3 */
+    height: 4px;
+    background-color: #333;
+    margin-top: 10px; /* Adjust margin top if needed */
+    border-radius: 2px;
 }

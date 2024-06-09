@@ -68,19 +68,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="panel-heading" id="order_list_heading">
                             Order List
                         </div>
-                        <div class="row w3-res-tb">
-                            <div class="col-sm-4">
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="input-group">
-                                    <input type="text" class="input-sm form-control">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-sm btn-default search_button"
-                                            type="button">Search!</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped b-t b-light">
                                 <thead>
@@ -103,6 +90,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <th>
                                             <div class="order_column">Status</div>
                                         </th>
+                                        <a href="{{ url('/download-bill') }}"><input type="submit" class="btn_download" value="Donwload Data"></a>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -153,17 +141,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <footer class="panel-footer">
                             <div class="row">
                                 <div class="col-sm-5 text-center">
-                                    <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
-                                </div>
-                                <div class="col-sm-7 text-right text-center-xs">
-                                    <ul class="pagination pagination-sm m-t-none m-b-none">
-                                        <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-                                        <li><a href="">1</a></li>
-                                        <li><a href="">2</a></li>
-                                        <li><a href="">3</a></li>
-                                        <li><a href="">4</a></li>
-                                        <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
-                                    </ul>
+                                    <small class="text-muted inline m-t-sm m-b-sm">showing 1-{{ count($grouped_orders) }} of {{ count($grouped_orders) }} items</small>
                                 </div>
                             </div>
                         </footer>

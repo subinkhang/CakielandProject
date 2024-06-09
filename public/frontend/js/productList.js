@@ -3,13 +3,27 @@ document.addEventListener("DOMContentLoaded", function() {
     var addButtonList = document.querySelectorAll('.btn_add');
     addButtonList.forEach(function(addButton) {
         addButton.addEventListener('click', function() {
-            // Lấy số lượng hiện tại của giỏ hàng từ phần tử trong header
-            var cartItemCountElement = document.querySelector('.cart_item p');
-            var currentCartItemCount = parseInt(cartItemCountElement.textContent);
+            function updateCartCount() {
+                // Lấy dữ liệu từ localStorage
+                let products = localStorage.getItem('products');
+                products = products ? JSON.parse(products) : [];
 
-            // Tăng số lượng giỏ hàng lên 1 và cập nhật lên header
-            var newCartItemCount = currentCartItemCount + 1;
-            cartItemCountElement.textContent = newCartItemCount;
+                // Tính tổng số lượng sản phẩm
+                let totalQuantity = 1;
+                for (const product of products) {
+                    if (product.quantity) {
+                        totalQuantity += product.quantity;
+                    }
+                }
+
+                // Gán giá trị tổng vào phần tử HTML
+                const cartCountElement = document.querySelector('.cart-count-header');
+                cartCountElement.innerText = totalQuantity.toString();
+                console.log(totalQuantity)
+            }
+
+            // Gọi hàm updateCartCount để cập nhật giá trị ban đầu
+            updateCartCount();
         });
     });
 
@@ -24,9 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 id: document.querySelectorAll('.pr-i2-id')[index].innerText.trim(),
                 name: document.querySelectorAll('.pr-i2-name')[index].innerText,
                 image: document.querySelectorAll('.text-hidden')[index].innerText.split('/').pop(),
-                description: document.querySelectorAll('.text_product')[index].innerText,
-                fake_price: document.querySelectorAll('.old-price')[index].innerText,
-                price: document.querySelectorAll('.new-price')[index].innerText,
+                fake_price: document.querySelectorAll('.old-price')[index].innerText.replace('$', ''),
+                price: document.querySelectorAll('.new-price')[index].innerText.replace('$', ''),
             };
 
             let products = localStorage.getItem('products');
@@ -153,23 +166,38 @@ function validateEmail(email) {
 }
 
 $(document).ready(function() {
-    // Sự kiện click trên category-link
-    $('.mainmenu a.category-link').on('click', function(e) {
-        e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
-        
-        // Lấy đối tượng li chứa category-link được click
-        var $li = $(this).parent('li');
-        
-        // Ẩn tất cả các menucon khác
-        $('.mainmenu li').not($li).removeClass('active').find('.menucon').slideUp();
-        
-        // Hiển thị hoặc ẩn menucon của mục được click
-        $li.toggleClass('active').find('.menucon').slideToggle();
+    // Event listener for click on the arrow icon within category-link
+    $('.mainmenu li .category-link .arrow-wrapper').on('click', function(e) {
+        e.preventDefault(); // Prevent default link behavior
+
+        // Get the li element containing the clicked arrow
+        var $li = $(this).closest('li');
+
+        // Toggle active class for the sub-menu
+        $li.find('.menucon').slideToggle();
+
+        // Toggle rotation class for the arrow icon
+        $(this).find('.arrow').toggleClass('rotated');
     });
 
-    // Ngăn chặn sự kiện click trên các mục con để không đóng menu chính
+    // Prevent click event on sub-category links from closing the menu
     $('.mainmenu .menucon a').on('click', function(e) {
         e.stopPropagation();
     });
 });
 
+
+  $(document).ready(function() {
+    // Event listener for click on the arrow icon within category-link
+    $('.mainmenu li .category-link .arrow-wrapper').on('click', function(e) {
+      e.preventDefault(); // Prevent default link behavior
+  
+      // Toggle active class for the sub-menu's parent li element
+      $(this).closest('li').toggleClass('active');
+    });
+  
+    // Prevent click event on sub-category links from closing the menu
+    $('.mainmenu .menucon a').on('click', function(e) {
+      e.stopPropagation();
+    });
+  });

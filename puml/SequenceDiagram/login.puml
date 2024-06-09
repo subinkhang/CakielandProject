@@ -1,0 +1,37 @@
+@startuml
+title Sequence Diagram: Đăng nhập
+
+skinparam actor  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+actor User
+participant LoginPage as "Trang Đăng Nhập"
+participant AuthService as "Dịch Vụ Xác Thực"
+participant Database as "Cơ Sở Dữ Liệu"
+participant HomePage as "Trang Chủ"
+
+User -> LoginPage : Truy cập trang đăng nhập
+User -> LoginPage : Nhập thông tin tài khoản (email và mật khẩu)
+LoginPage -> AuthService : Gửi thông tin đăng nhập
+AuthService -> Database : Xác thực thông tin
+Database -> AuthService : Trả về kết quả xác thực
+
+alt Đăng nhập thành công
+  AuthService -> LoginPage : Xác thực thành công
+  LoginPage -> HomePage : Chuyển hướng đến trang chủ
+  HomePage -> User : Hiển thị trang chủ
+else Đăng nhập thất bại
+  AuthService -> LoginPage : Xác thực thất bại
+  LoginPage -> User : Hiển thị thông báo lỗi "Thông tin đăng nhập không chính xác"
+end
+
+@enduml

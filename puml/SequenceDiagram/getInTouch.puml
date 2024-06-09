@@ -1,0 +1,37 @@
+@startuml
+title Guest gửi email cho Admin để nhận thông tin
+
+skinparam actor  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant  {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+actor Guest
+participant EmailClient as "Email Client"
+participant MailServer as "Mail Server"
+participant Admin
+participant AdminMailbox as "Admin Mailbox"
+
+Guest -> EmailClient : Gửi yêu cầu email
+EmailClient -> MailServer : Gửi email tới admin@example.com
+MailServer -> AdminMailbox : Chuyển email đến hộp thư của Admin
+AdminMailbox -> Admin : Thông báo có email mới
+
+alt Admin trả lời
+  Admin -> AdminMailbox : Soạn và gửi email trả lời
+  AdminMailbox -> MailServer : Chuyển email trả lời đến Mail Server
+  MailServer -> EmailClient : Gửi email trả lời tới Guest
+  EmailClient -> Guest : Thông báo có email trả lời
+else Admin không trả lời
+  MailServer -> EmailClient : Không có phản hồi từ Admin
+  EmailClient -> Guest : Thông báo không có phản hồi từ Admin
+end
+
+@enduml

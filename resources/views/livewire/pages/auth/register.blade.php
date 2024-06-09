@@ -14,7 +14,7 @@ new #[Layout('layouts.guest')] class extends Component
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
-
+    // public $currentError = null;
     /**
      * Handle an incoming registration request.
      */
@@ -25,17 +25,15 @@ new #[Layout('layouts.guest')] class extends Component
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
-
         $validated['password'] = Hash::make($validated['password']);
-
         event(new Registered($user = User::create($validated)));
-
         Auth::login($user);
+        $this->redirect(route('verification.notice'), navigate: true);
 
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+        
     }
-}; ?>
-
+}; 
+?>
 <div>
     <head>
         <meta charset="UTF-8">
@@ -45,8 +43,10 @@ new #[Layout('layouts.guest')] class extends Component
         <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('frontend/css/signup.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <form wire:submit="register">
+        @csrf
         <!-- Name -->
         <body>
             <div class="container">
@@ -68,28 +68,21 @@ new #[Layout('layouts.guest')] class extends Component
                             <div class="row">
                                 <div class="col-2"></div>
                                 <div class="col-8">
-                                    {{-- <input type="text" placeholder="Full name" class="box1signup"> --}}
-                                    {{-- <div> --}}
                                         <x-input-label for="name" :value="__()" />
                                         <x-text-input wire:model="name" id="name" class="box1signup" type="text" name="name" placeholder="Full name" required autofocus autocomplete="name" />
-                                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                        
                                     {{-- </div> --}}
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-2"></div>
                                 <div class="col-8">
-                                    {{-- <input type="text" placeholder="Email/Phone number" class="box2signup"> --}}
-                                    {{-- <div class="mt-4"> --}}
                                         <x-input-label for="email" :value="__()" />
                                         <x-text-input wire:model="email" id="email" class="box2signup" type="email" name="email" placeholder="Email" required autocomplete="username" />
-                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                                    {{-- </div> --}}
+                                       
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-2"></div>
                                 <div class="col-6">
-                                    {{-- <input type="text" placeholder="Password" class="box3signup"> --}}
-                                    {{-- <div class="mt-4"> --}}
                                         <x-input-label for="password" :value="__()" />
                             
                                         <x-text-input wire:model="password" id="password" class="box3signup"
@@ -97,12 +90,10 @@ new #[Layout('layouts.guest')] class extends Component
                                                         name="password"
                                                         placeholder="Password"
                                                         required autocomplete="new-password" />
-                            
-                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                                    {{-- </div> --}}
+                                        
                                 </div>
                                 <div class="col-2 box_eye">
-                                    <i class="fa-regular fa-eye" onclick="togglePasswordVisibility(this, 'passwordInput')"></i></div>
+                                    <i class="fa-regular fa-eye" onclick="togglePasswordVisibility(this)"></i></div>
                                 <div class="col-2"></div>
                                 <div class="col-2"></div>
                                 <div class="col-6">
@@ -113,14 +104,29 @@ new #[Layout('layouts.guest')] class extends Component
                                         <x-text-input wire:model="password_confirmation" id="password_confirmation" class="box4signup"
                                                         type="password"
                                                         name="password_confirmation" placeholder="Confirm password" required autocomplete="new-password" />
-                            
-                                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                       
+                                            @foreach ($errors->get('name') as $message)
+                                            <div class="error-message">{{ $message }}</div>
+                                        @endforeach
+                                        
+                                        @foreach ($errors->get('email') as $message)
+                                            <div class="error-message">{{ $message }}</div>
+                                        @endforeach
+                                        
+                                        @foreach ($errors->get('password') as $message)
+                                            <div class="error-message">{{ $message }}</div>
+                                        @endforeach
+                                        
+                                        @foreach ($errors->get('password_confirmation') as $message)
+                                            <div class="error-message">{{ $message }}</div>
+                                        @endforeach
                                     {{-- </div> --}}
                                 </div>
+                               
                                 <div class="col-2 box_eye">
-                                    <i class="fa-regular fa-eye" onclick="togglePasswordVisibility(this, 'confirmPasswordInput')"></i></div>
+                                    <i class="fa-regular fa-eye" onclick="togglePasswordVisibility(this)"></i></div>
                                 <div class="col-2"></div>
-                                <div class="col-2"></div>
+                                
                             </div>
                             <div class="row">
                                 <div class="col-4"></div>
@@ -132,8 +138,7 @@ new #[Layout('layouts.guest')] class extends Component
                             <div class="row linksi">
                                 <div class="col-2"></div>
                                 <div class="col-8 linksi2">
-                                    {{-- <p>Have account?</p>
-                                    <p class="p1">Sign in now!</p> --}}
+                                    
                                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}" wire:navigate>
                                         {{ __('Have an account? Sign in now!') }}
                                     </a>
@@ -143,8 +148,8 @@ new #[Layout('layouts.guest')] class extends Component
                         </form>
                     </div>
                     <div class="col-6 img_signup">
-                        <img src="{{ asset('frontend/images/sign-in-up/a85174c75e3e6730400cd94d739dbfb6.jpg') }}"
-                            alt="" class="w-100">
+                        <img src="{{ asset('frontend\images\sign-in-up\30ea1aafa8c9aefb20bde0664e7bb4a9.jpg') }}"
+                        alt="" class="w-100">
                     </div>
                 </div>
             </div>

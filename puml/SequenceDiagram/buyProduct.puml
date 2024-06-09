@@ -1,0 +1,31 @@
+@startuml
+title Sequence Diagram: Người dùng mua sản phẩm
+
+skinparam actor {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+actor User
+participant CartPage as "Trang Giỏ Hàng"
+participant CheckoutPage as "Trang Thanh Toán"
+participant Database as "Cơ Sở Dữ Liệu"
+
+User -> CartPage : Truy cập trang giỏ hàng
+User -> CartPage : Bấm nút "Payment"
+CartPage -> CheckoutPage : Điều hướng đến trang thanh toán
+
+User -> CheckoutPage : Nhập thông tin giao hàng
+User -> CheckoutPage : Bấm nút "Thanh Toán"
+CheckoutPage -> Database : Lưu thông tin đơn hàng và thông tin giao hàng
+Database -> CheckoutPage : Xác nhận lưu thông tin đơn hàng thành công
+CheckoutPage -> User : Hiển thị thông báo hoàn tất giao dịch
+
+@enduml

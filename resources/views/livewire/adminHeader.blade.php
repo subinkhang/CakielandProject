@@ -29,22 +29,19 @@ new class extends Component {
         <ul class="nav pull-right top-menu">
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <img alt="" src="{{ asset('backend/images/2.png') }}">
+                    <img alt="" src="{{ asset('frontend/images/Logo Title.png') }}">
                     <span class="username">Admin</span>
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu extended logout">
-                    {{-- <li><a href="{{ asset('backend/login.html') }}"><i class="fa fa-key"></i> Log Out</a></li> --}}
-                    <li wire:click="logout" class="">
-                        <x-dropdown-link>
+                    <li class="">
+                        <a href="{{ url('/') }}">
                             <i class="fa fa-key"></i>
-                            {{ __('Log Out') }}
-                        </x-dropdown-link>
+                            {{ __('User side') }}
+                        </a>
                     </li>
                 </ul>
             </li>
-            <!-- user login dropdown end -->
-
         </ul>
         <!--search & user info end-->
     </div>

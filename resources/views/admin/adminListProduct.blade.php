@@ -44,7 +44,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <body>
     <section id="container">
-
         <livewire:adminHeader />
         <livewire:adminSidebar />
         <!-- làm từ đây -->
@@ -80,17 +79,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <table class="table table-striped b-t b-light">
                                 <thead>
                                     <tr>
-                                        <!-- <th style="width:20px;">
-              <label class="i-checks m-b-none">
-              <input type="checkbox"><i></i>
-              </label>
-            </th> -->
-                                        <!-- <th></th> -->
                                         <th>Id</th>
                                         <th>Product's name</th>
                                         <th>Price</th>
                                         <th>Date</th>
                                         <th><a href="{{ url('/admin-add-product') }}"><input type="submit" class="btn_addpro" value="Add"></th></a>
+                                        <a href="{{ url('/download-product') }}"><input type="submit" class="btn_download" value="Donwload Data"></a>
                                         <!-- <th style="width:30px;"></th> -->
                                     </tr>
                                 </thead>
@@ -105,9 +99,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <td>
                                                 <a href="{{ URL::to('/admin-edit-product/' . $cate_pro->id) }}" class="active" ui-toggle-class="" id="icon">
                                                     <i class="fa-solid fa-pen-to-square"></i></a>
-                                                <a onclick="return confirm('Are you sure to delete?')" href="{{ URL::to('/delete-list-product/' . $cate_pro->id)}}">
-                                                    <i class="fa-regular fa-trash-can trash-icon thungrac" onclick="deleteProduct(this)" style="margin-left: 20px;"></i>
-                                                </a>
+                                                    <a onclick="return confirm('Are you sure to delete?')" href="{{ URL::to('/delete-list-product/' . $cate_pro->id)}}">
+                                                        <i class="fa-regular fa-trash-can trash-icon thungrac" style="margin-left: 20px;"></i>
+                                                    </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -118,7 +112,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="row">
 
                                 <div class="col-sm-5 text-center">
-                                    <small class="text-muted inline m-t-sm m-b-sm">showing 01-08 of 50 items</small>
+                                    <small class="text-muted inline m-t-sm m-b-sm">showing 1-{{ count($all_product) }} of {{ count($all_product) }} items</small>
                                 </div>
                         </footer>
                     </div>

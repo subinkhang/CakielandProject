@@ -36,23 +36,30 @@ new #[Layout('layouts.guest')] class extends Component
 }; ?>
 
 <div>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-    </div>
+    <link href="{{ asset('frontend/css/verifyEmail.css') }}" rel="stylesheet">
+    <div class="verification-container">
+        <h1 class="verification-message">
+            {{ __('Đăng ký thành công!') }}
+        </h1>
 
-    @if (session('status') == 'verification-link-sent')
-        <div class="mb-4 font-medium text-sm text-green-600">
-            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+        <div class="verification-message">
+            {{ __('Cảm ơn bạn đã đăng ký! Trước khi bắt đầu, bạn có thể xác nhận địa chỉ email của mình bằng cách nhấp vào liên kết mà chúng tôi vừa gửi qua email cho bạn không? Nếu bạn không nhận được email, chúng tôi sẽ rất vui lòng gửi cho bạn một liên kết khác.') }}
         </div>
-    @endif
-
-    <div class="mt-4 flex items-center justify-between">
-        <x-primary-button wire:click="sendVerification">
-            {{ __('Resend Verification Email') }}
-        </x-primary-button>
-
-        <button wire:click="logout" type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            {{ __('Log Out') }}
-        </button>
+    
+        @if (session('status') == 'verification-link-sent')
+            <div class="status-message">
+                {{ __('Một liên kết xác thực mới đã được gửi đến địa chỉ email mà bạn đã cung cấp khi đăng ký.') }}
+            </div>
+        @endif
+    
+        <div class="button-group">
+            <x-primary-button wire:click="sendVerification" class="verification-button">
+                {{ __('Gửi lại Email Xác Thực') }}
+            </x-primary-button>
+    
+            <button wire:click="logout" type="submit" class="logout-button">
+                {{ __('Đăng Xuất') }}
+            </button>
+        </div>
     </div>
 </div>

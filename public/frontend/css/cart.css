@@ -84,8 +84,8 @@ margin-bottom: 100px;
 #prod tr {
 margin-top: 120px;
 margin-bottom: 20px; /* Tạo khoảng cách giữa các hàng */
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
-border-radius: 10px; /* Bo tròn góc của hàng */
+box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), inset -2px 0 0 0 rgba(0, 0, 0, 0.10); /* Thêm bóng đổ bên phải bên trong */
+border-radius: 15px; /* Bo tròn góc của hàng */
 transition: opacity 0.3s ease;
 }
 .fade-out {

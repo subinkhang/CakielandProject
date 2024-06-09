@@ -17,13 +17,13 @@
                         <i class="fa-solid fa-envelope"></i>
                     </div>
                     <div class="col-10">
-                        <p>22520094@gm.uit.edu.vn</p>
+                        <p>cakielandofficial@gmail.com</p>
                     </div>
                     <div class="col-2">
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <div class="col-10">
-                        <p>0707351958</p>
+                        <p>0707351783</p>
                     </div>
                     <div class="col-2">
                         <i class="fa-solid fa-location-pin"></i>
@@ -44,21 +44,22 @@
             <div class="col-2 policies">
                 <h3 class="footer-title">Products</h3>
                 <ul>
-                    <li><a href="#">Baking tools</a></li>
-                    <li><a href="#">Dry ingredients</a></li>
-                    <li><a href="#">Wet ingredient</a></li>
-                    <li><a href="#">Recipes</a></li>
-                    <li><a href="#">Other</a></li>
+                    <li><a href="category6">Bar ingredients</a></li>
+                    <li><a href="category5">Bar Tool</a></li>
+                    <li><a href="category4">Cooking utensils</a></li>
+                    <li><a href="category3">Baking tools</a></li>
+                    <li><a href="category2">Wet ingredients</a></li>
+                    <li><a href="category1">Dry ingredients</a></li>
                 </ul>
             </div>
             <div class="col-2 services">
                 <h3 class="footer-title">Policies</h3>
                 <ul>
-                    <li><a href="about-us">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Privacy policy</a></li>
-                    <li><a href="#">Return policy</a></li>
-                    <li><a href="#">Shipping policy</a></li>
+                    <li><a href="about-us">About Us</a></li>
+                    <li><a href="about-us">Contact</a></li>
+                    <li><a href="about-us">Privacy policy</a></li>
+                    <li><a href="about-us">Shipping policy</a></li>
+                    <li><a href="about-us">Return policy</a></li>
                 </ul>
             </div>
             <div class="col-3 bocongthuong">
@@ -69,4 +70,7 @@
             </div>
         </div>
     </div>
+    <a href="https://m.me/271053872769047">
+        <i class="fa-brands fa-facebook-messenger fa-3x mess"></i>
+    </a>
 </div>

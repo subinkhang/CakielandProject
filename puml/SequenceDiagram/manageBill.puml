@@ -1,0 +1,31 @@
+@startuml
+title Sequence Diagram: Admin quản lý thông tin đơn hàng
+
+skinparam actor {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam participant {
+    BackgroundColor FBC31C
+    BorderColor Black
+    FontColor Black
+}
+
+actor Admin
+participant OrderManagementPage as "Trang Danh Sách Đơn Hàng"
+participant Database as "Cơ Sở Dữ Liệu"
+
+Admin -> OrderManagementPage : Truy cập trang quản lý đơn hàng
+OrderManagementPage -> Database : Yêu cầu danh sách đơn hàng
+Database -> OrderManagementPage : Trả về danh sách đơn hàng
+OrderManagementPage -> Admin : Hiển thị danh sách đơn hàng
+
+Admin -> OrderManagementPage : Chọn đơn hàng để chỉnh sửa trạng thái
+Admin -> OrderManagementPage : Chỉnh sửa trạng thái đơn hàng
+OrderManagementPage -> Database : Gửi yêu cầu cập nhật trạng thái đơn hàng
+Database -> OrderManagementPage : Xác nhận cập nhật trạng thái thành công
+OrderManagementPage -> Admin : Hiển thị trạng thái đơn hàng đã cập nhật
+
+@enduml

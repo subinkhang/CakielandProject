@@ -17,6 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => \App\Http\Middleware\Admin::class,
 
         ]);
+        // Add this line
+        // $middleware->add(StartSession::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -129,9 +129,8 @@ new #[Layout('layouts.guest')] class extends Component
                             </div>
                         </form>
                     </div>
-                    <div class="col-6 img_signin">
-                        <img src="{{ asset('frontend/images/sign-in-up/c641ce7483c4728b418ba7d5d93a9ddc.jpg') }}" alt=""
-                            class="w-100 img">
+                    <div class="col-6 img_login">
+                        <img src="{{ asset('frontend\images\sign-in-up\01ae857952278f548a3828014742dd26.jpg') }}" alt="" class="w-100 img">
                     </div>
                 </div>
             </div>

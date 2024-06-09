@@ -1,5 +1,6 @@
 <x-app-layout>
     <link rel="stylesheet" href="{{ asset('frontend/css/homepage.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Home Page</title>
 
     <div id="carouselExample" class="carousel slide">
@@ -174,14 +175,16 @@
             <!-- ĐỔI THÀNH PRODUCT KHI CÓ DATA -->
             @foreach ($all_product as $key => $list_product_user)
                 <div class="col-3">
+            
                     <div class="pr-i3">
                         <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}">
                             <img src="{{ asset('public/backend/upload/' . $list_product_user->thumbnail) }}" alt="" class="w-100 productList_image">
+                            <div class="text-hidden" style="display:none">{{ asset($list_product_user->thumbnail) }}</div>
                         </a>
                         <span class="btn_add"><i class="fa-solid fa-circle-plus"
                                 onclick="addToCart(this)"></i></span>
                         <div class="container_information">
-                            <a href="#" class="pr-i2-name">{{ strlen($list_product_user->name) > 30 ? substr($list_product_user->name, 0, 30).'...' : $list_product_user->name }}</a>
+                            <a href="{{ URL::to('product-detail/' . $list_product_user->id) }}" class="pr-i2-name">{{ strlen($list_product_user->name) > 25 ? substr($list_product_user->name, 0, 25).'...' : $list_product_user->name }}</a>
                             <ul class="pr-i2-rating d-flex">
                                 <li><i class="fa-solid fa-star"></i></li>
                                 <li><i class="fa-solid fa-star"></i></li>
@@ -191,6 +194,9 @@
                             </ul>
                             <div class="text_product">
                                 {{ strlen($list_product_user->description) > 115 ? substr($list_product_user->description, 0, 115).'...' : $list_product_user->description }}
+                            </div>
+                            <div class="pr-i2-id" style="display: none;">
+                                {{ $list_product_user->id }}
                             </div>
                             <div class="row productList_price">
                                 <div class="col-6">

@@ -8,6 +8,9 @@ use DB;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use App\Exports\ExportBillData;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 session_start();
 
 class AdminListBillController extends Controller
@@ -56,5 +59,10 @@ class AdminListBillController extends Controller
             ->update(['status' => 2]);
         Session::put('message', 'Order status delivery successfully');
         return Redirect::to('admin-list-bill');
+    }
+    
+    public function export_excel()
+    {
+        return Excel::download(new ExportBillData, 'bills.xlsx', ExcelExcel::XLSX);
     }
 }

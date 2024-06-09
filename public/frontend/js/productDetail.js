@@ -53,6 +53,69 @@ document.addEventListener("DOMContentLoaded", function() {
 //     });
 // });
 
+/*----------------------------------ADD TO CART------------------------------------------*/
+
+const addButtons = document.querySelectorAll('.btn_shop');
+
+    addButtons.forEach((button, index) => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const ids = document.querySelectorAll('.id');
+        const names = document.querySelectorAll('.pr-i2-name');
+        const images = document.querySelectorAll('.text-hidden');
+        const descriptions = document.querySelectorAll('.text_product');
+        const fakePrices = document.querySelectorAll('.old-price');
+        const prices = document.querySelectorAll('.new-price');
+        
+        // Truy xuất thông tin của sản phẩm dựa trên chỉ số hiện tại
+        const product = {
+            id: ids[index].innerText.trim(),
+            name: names[index].innerText,
+            image: images[index].innerText.split('/').pop(),
+            fake_price: fakePrices[index].innerText.replace("$", ""),
+            price: prices[index].innerText.replace("$", ""),
+        };
+
+            let products = localStorage.getItem('products');
+            products = products ? JSON.parse(products) : [];
+
+            const existingProductIndex = products.findIndex(p => p.name === product.name);
+            var selectedQuantity = parseInt(document.getElementById('pr-number').value);
+            if (existingProductIndex >= 0) {
+                products[existingProductIndex].quantity = (products[existingProductIndex].quantity || 1) + selectedQuantity;
+            } else {
+                // If product does not exist in the cart, add it
+                product.quantity = selectedQuantity;
+                products.push(product);
+            }
+            function updateCartCount() {
+                // Lấy dữ liệu từ localStorage
+                let products = localStorage.getItem('products');
+                products = products ? JSON.parse(products) : [];
+
+                // Tính tổng số lượng sản phẩm
+                let totalQuantity = selectedQuantity;
+                for (const product of products) {
+                    if (product.quantity) {
+                        totalQuantity += product.quantity;
+                    }
+                }
+
+                // Gán giá trị tổng vào phần tử HTML
+                const cartCountElement = document.querySelector('.cart-count-header');
+                cartCountElement.innerText = totalQuantity.toString();
+                console.log(totalQuantity)
+            }
+
+            // Gọi hàm updateCartCount để cập nhật giá trị ban đầu
+            updateCartCount();
+
+            localStorage.setItem('products', JSON.stringify(products));
+            console.log(product);
+        });
+    });
+
+/*------------------------------END ADD TO CART---------------------------------------*/
 
 // Đợi tất cả các phần tử HTML được tải xong
 document.addEventListener("DOMContentLoaded", function() {
@@ -194,4 +257,140 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-//Image
+//tab-bar khi chọn thì đổi chữ vàng
+function changeColor(tab) {
+    // Loại bỏ class 'active' khỏi tất cả các tab
+    var tabs = document.querySelectorAll('.custom-tab');
+    tabs.forEach(function(item) {
+        item.classList.remove('active');
+    });
+
+    // Thêm class 'active' vào tab được click
+    tab.classList.add('active');
+}
+
+
+//image
+// document.addEventListener('DOMContentLoaded', function () {
+//     const carouselInner = document.querySelector('.carousel-inner');
+//     const carouselIndicators = document.getElementById('carousel-indicators');
+//     const nextButton = document.getElementById('next-slide');
+//     const prevButton = document.getElementById('prev-slide');
+
+//     function updateCarousel(index) {
+//         const nextImages = [
+//             galleryImages[index],
+//             galleryImages[(index + 1) % galleryImages.length],
+//             galleryImages[(index + 2) % galleryImages.length]
+//         ];
+
+//         // Preload images
+//         const preloadImages = nextImages.map(src => {
+//             const img = new Image();
+//             img.src = src;
+//             return img;
+//         });
+
+//         // Wait for all images to be loaded
+//         Promise.all(preloadImages.map(img => new Promise(resolve => img.onload = resolve)))
+//             .then(() => {
+//                 // Update carousel-inner
+//                 const carouselItems = carouselInner.querySelectorAll('.carousel-item');
+//                 carouselItems.forEach((item, i) => {
+//                     const img = item.querySelector('img');
+//                     img.src = nextImages[i % nextImages.length];
+//                     item.classList.toggle('active', i === 0);
+//                 });
+
+//                 // Update carousel-indicators
+//                 const indicatorItems = carouselIndicators.querySelectorAll('.col-4 img');
+//                 indicatorItems.forEach((item, i) => {
+//                     item.src = nextImages[i % nextImages.length];
+//                     item.classList.toggle('active', i === 0);
+//                 });
+//             });
+//     }
+
+//     nextButton.addEventListener('click', function () {
+//         const activeItem = carouselInner.querySelector('.carousel-item.active img');
+//         const currentIndex = galleryImages.indexOf(activeItem.src);
+//         const nextIndex = (currentIndex + 1) % galleryImages.length;
+//         updateCarousel(nextIndex);
+//     });
+
+//     prevButton.addEventListener('click', function () {
+//         const activeItem = carouselInner.querySelector('.carousel-item.active img');
+//         const currentIndex = galleryImages.indexOf(activeItem.src);
+//         const prevIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+//         updateCarousel(prevIndex);
+//     });
+// });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const carouselInner = document.querySelector('.carousel-inner');
+    const carouselIndicators = document.getElementById('carousel-indicators');
+    const nextButton = document.getElementById('next-slide');
+    const prevButton = document.getElementById('prev-slide');
+
+    function updateCarousel(nextIndex) {
+        const nextImages = [
+            galleryImages[nextIndex],
+            galleryImages[(nextIndex + 1) % galleryImages.length],
+            galleryImages[(nextIndex + 2) % galleryImages.length]
+        ];
+
+        // Preload images
+        const preloadImages = [];
+        nextImages.forEach(image => {
+            const img = new Image();
+            img.src = image;
+            preloadImages.push(img);
+        });
+
+        // After preloading, update the carousel
+        Promise.all(preloadImages.map(image => image.onload)).then(() => {
+            // Update carousel inner images
+            const carouselItems = carouselInner.querySelectorAll('.carousel-item');
+            carouselItems.forEach((carouselItem, index) => {
+                const img = carouselItem.querySelector('img');
+                img.src = nextImages[index % nextImages.length];
+                if (index === 0) {
+                    carouselItem.classList.add('active');
+                } else {
+                    carouselItem.classList.remove('active');
+                }
+            });
+
+            // Update carousel indicators images
+            const indicatorItems = carouselIndicators.querySelectorAll('.col-4 img');
+            indicatorItems.forEach((indicatorItem, index) => {
+                indicatorItem.src = nextImages[index % nextImages.length];
+                indicatorItem.classList.toggle('active', index === 0);
+            });
+        });
+    }
+
+    nextButton.addEventListener('click', function () {
+        const activeItem = carouselInner.querySelector('.carousel-item.active');
+        const activeImgSrc = activeItem.querySelector('img').src;
+        const currentIndex = galleryImages.indexOf(activeImgSrc);
+        const nextIndex = (currentIndex + 1) % galleryImages.length;
+        updateCarousel(nextIndex);
+    });
+
+    prevButton.addEventListener('click', function () {
+        const activeItem = carouselInner.querySelector('.carousel-item.active');
+        const activeImgSrc = activeItem.querySelector('img').src;
+        const currentIndex = galleryImages.indexOf(activeImgSrc);
+        const prevIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateCarousel(prevIndex);
+    });
+});
+
+
+
+
+
+
+
