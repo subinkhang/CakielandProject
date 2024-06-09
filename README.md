@@ -4,8 +4,8 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://www.uit.edu.vn/" title="Trường Đại học Công nghệ Thông tin" style="border: none;">
-    <img src="https://uithcm-my.sharepoint.com/:i:/g/personal/22520622_ms_uit_edu_vn/EfUogz2wKuBFp8czQsWRmG0Bq9fMFFzo60NGnyanVuXadw?e=36hXAz" alt="Logo Cakieland">
+  <a href="https://maichedaimat.id.vn/wp-content/uploads/2024/06/webj-1.png?fbclid=IwAR0dMjk_9utdWoRDaS9BctDVWdyugTwRNqBmgSvcTvPWkAriEjk3wWs-Xwk" title="Cakieland" style="border: none;">
+    <img src="https://maichedaimat.id.vn/wp-content/uploads/2024/06/webj-1.png?fbclid=IwAR0dMjk_9utdWoRDaS9BctDVWdyugTwRNqBmgSvcTvPWkAriEjk3wWs-Xwk" alt="Logo Cakieland">
   </a>
 </p>
 
