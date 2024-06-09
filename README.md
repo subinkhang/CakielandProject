@@ -5,7 +5,7 @@
 </p>
 <p align="center">
   <a href="https://www.uit.edu.vn/" title="Trường Đại học Công nghệ Thông tin" style="border: none;">
-    <img src="" alt="Trường Đại học Công nghệ Thông tin | University of Information Technology">
+    <img src="https://uithcm-my.sharepoint.com/:i:/g/personal/22520622_ms_uit_edu_vn/EfUogz2wKuBFp8czQsWRmG0Bq9fMFFzo60NGnyanVuXadw?e=36hXAz" alt="Logo Cakieland">
   </a>
 </p>
 
